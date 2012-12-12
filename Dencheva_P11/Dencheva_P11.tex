@@ -1,0 +1,156 @@
+% This is the aspauthor.tex LaTeX file
+% Copyright 2010, Astronomical Society of the Pacific Conference Series
+
+\documentclass[11pt,twoside]{article}
+\usepackage{asp2010}
+
+\resetcounters
+
+\bibliographystyle{asp2010}
+
+\markboth{Dencheva, Hack, and Fruchter}{Headerlets}
+
+\begin{document}
+
+\title{Headerlets: Share HST Astrometric Solutions Without The Data}
+\author{Nadia~Dencheva, Warren~Hack, and Andrew~Fruchter}
+\affil{Space Telescope Science Institutee, 3700 San Martin Dr., Baltimore, MD 21210}
+
+\begin{abstract}
+File format for storing astrometric metadata of images is presented. 
+Software implementation of the format and methods for working with 
+it are described. Possible applications and availability within 
+the HST archive are discussed.
+\end{abstract}
+
+\section{Motivation}
+The original motivation for this work was a WCS based replacement
+of Multidrizzle, now released as Astrodrizzle, and specifically a
+requirement for the availability and management of multiple WCS
+sets, complete with distortion,
+within one science file. However, the concept of encapsulating
+astrometric solutions is more general than that since each solution
+may represent a different catalog. Furthermore, computing accurate
+astrometric solutions requires considerable effort and time so having
+a way to distribute them, apply them to a science observation and
+switch between different WCSs efficiently would facilitate many
+aspects of data analysis.
+
+\subsection{Headerlets}
+A headerlet is a self-consistent representation of a single WCS,
+including all distortion, for all chips/detectors of a single
+exposure. This is different from alternate WCS defined in WCS
+Paper I \citep{greisen_2002} in that by definition
+all alternate WCSs share the same distortion model while headerlets
+may be based on different distortion models. A headerlet does not 
+include alternate WCSs. It has no observational data
+which makes it relatively small and light to distribute. 
+It is stored as a multi-extension FITS file
+following the structure of the science file it was derived from.
+The WCS informationin the science header is stored in the header of 
+an HDU with EXTNAME 'SIPWCS'. All other HDUs in the headerlet 
+(containing distortion information), have the same EXTNAME as the 
+corresponding HDUs in the science file.
+
+\subsection{SIPWCS - A New FITS Extension Type}
+We introduce a new HDU with extname 'SIPWCS'. It has no data and contains 
+all the WCS related keywords from a science header.
+As a minimum all basic WCS keywords \citep{greisen_2002} are included. SIP
+convention keywords \citep{shupe_2005} and distortion Lookup table keywords, 
+if present in the science file, are included as well. A headerlet has as
+many SIPWCS extensions as there are data extensions in the science
+file it was derived from. 
+
+\subsection{Headerlet File Format}
+As a minimum a headerlet has a Primary header
+ and a SIPWCS extension. It may have one D2IMARR HDU and a number of
+WCSDVARR HDUs. The Primary header contains keywords which define a headerlet as
+unique, as well as keywords which provide a way to ensure the headerlet is 
+applied to the correct science file. Detailed definition of all keywords is given in two STScI software report \citep{hack_fc} and \citep{hack_hlet}.
+
+An example of the file structure of an HST ACS/WFC science
+file and a headerlet derived from it is shown in Figure 1.
+The SIPWCS extension along with all WCSDVARR and the D2IMARR extensions fully describe the WCS of each chip.
+
+\begin{figure}[!h]
+\plotone{P11_f1.eps}
+\caption{File structure of an ACS/WFC science file (160 MB) and the corresponding headerlet (100 KB); Colors: green - headerlet; blue - WCS for chip 1; red - WCS for chip 2}
+\end{figure}
+
+Note that a headerlet derived from a WFC3/UVIS image would only contain a 
+Primary header and two SIPWCS extensions (one for each SCI extension) as
+WFC3/UVIS does not currently have non-polynomial distortion or detector
+defect correction.
+
+\section{Working With Headerlets}
+Headerlets are implemented in a python module, headerlet.py, part of STWCS. The functionality includes methods to:
+
+\begin{itemize}
+\item Create a headerlet
+\begin{itemize}
+  \item from the Primary WCS
+  \item or from an alternate WCS
+\end{itemize}
+\item Apply a headerlet to a science file
+\begin{itemize}
+  \item as Primary WCS
+  \item or alternate WCS
+\end{itemize}
+\item Attach a headerlet to a science file
+\begin{itemize}
+  \item the entire FITS file is attached as a NonstandardHDU
+  \item transparent to FITS readers
+  \item but PyFITS provides full access to it
+\end{itemize}
+\item Extract a headerlet extension form a science file
+\begin{itemize}
+  \item PyFITS is used to read a headerlet HDU (MEF FITS file by itself) and save it to disk
+\end{itemize}
+\item Restore a WCS from an attached headerlet HDU
+\begin{itemize}
+  \item replaces the Primary WCS
+\end{itemize}
+\end{itemize}
+
+An optional GUI interface is available through TEAL.
+The complete API and usage examples are available from STSCI's documentaion pages.
+
+\section{Headerlet HDU - A New Type of FITS Extension}
+The word `headerlet` has been used sofar in three different ways:
+
+\begin{itemize}
+\item A single WCS representation
+\item The multiextension FITS file storing a WCS
+\item The extension of a science file containing a headerlet (as a WCS representation)
+\end{itemize}
+
+The last usage of the term `headerlet` is discussed in this section.
+When a headerlet is applied to an image, a copy of the original 
+headerlet file is appended to the image's HDU list as a special extension
+HDU called a `HeaderletHDU`. A HeaderletHDU consists of a simple header
+describing the headerlet, and has as its data the headerlet file itself,
+(which may be compressed). A HeaderletHDU has an 'XTENSION' 
+value of 'HDRLET'. Support for this is provided through the implementation
+of a NonstandardExtHDU in PyFITS. If stwcs.wcsutil.headerlet is imported,
+PyFITS will recognize these extension as HeaderletHDU.
+
+HeaderletHDU objects are similar to other HDU objects in PyFITS.
+However, they have a special `.headerlet` attribute that returns
+the actual headerlet contained in the HDU data as a `Headerlet` object.
+
+\section{Summary}
+We introduce the concept of a headerlet, present its file format
+and describe its implementation. Headerlets are not HST specific.
+The FITS WCS standard and all WCS conventions implemented in PyWCS
+are supported. They are already used within the DrizzlePac package. 
+The HST archive is in the process of defining procedures and 
+implementation details to support archiving HST headerlets and making
+them available to the community through a searchable tool.
+
+\acknowledgements The support for saving FITS files as extensions to other FITS files in PyFITS was implemented by Erik Bray.
+
+\bibliography{P11} 
+
+\footnote{STScI technical reports are located at \url{http://stsdas.stsci.edu/tsr}}
+
+\end{document}

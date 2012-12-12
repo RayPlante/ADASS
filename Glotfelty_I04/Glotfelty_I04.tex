@@ -1,0 +1,439 @@
+% This is the aspauthor.tex LaTeX file 
+% Copyright 2010, Astronomical Society of the Pacific Conference Series
+
+\documentclass[11pt,twoside]{article} 
+\usepackage{asp2010}
+
+\resetcounters
+
+\bibliographystyle{asp2010}
+
+\markboth{Kenny J. Glotfelty}{One Hop: In The Right Direction}
+
+\begin{document}
+
+\title{One Hop: In The Right Direction} \author{Kenny J. Glotfelty}
+\affil{Smithsonian Astrophysical Observatory, 60 Garden Street, Cambridge, MA 01238, USA}
+
+\begin{abstract}
+
+Accelerated by the ease of access to data triggered by growing archive
+registries and common search protocols, many more application than
+before are now directly interfacing with archives.  Gone and going are
+the days when data sat behind proprietary archive interfaces.  What were
+once exclusively considered analysis tools designed to consume files
+on disk are now becoming first-class front ends to archives to discover
+and retrieve remote data-sets.  More than that, whether by saving files
+to disk or sending and servicing SAMP messages, these applications are
+themselves now local data service providers for other local applications.
+
+The problem is that often data that are retrieve remotely are directly
+cast into the applications internal data model -- likely altering
+the data in the process.  Content may be added (eg new columns),
+nonessential information (to the current application) may be purged,
+provenance altered, or content directly modified (eg WCS conventions).
+This then possibly insufficient or incompatible view of the  data is then
+what is presented to postliminary tools in the work-flow. The remote
+data have in essence become trapped in the application that retrieved
+it from the remote service.
+
+In this paper we will discuss this "one hop" effect and the strain
+it imposes on application developers.  We will showcase a current
+example of this problem and discuss why a "return to source" model
+of sending all applications back to the original remote source is,
+in general, insufficient.
+
+
+\end{abstract}
+
+
+
+\section{Introduction}
+
+
+The FITS format standard was first published in 
+1981 \citep{1981A&AS...44..363W}.  Its eventual
+adoption by most astronomical observing facilities ushered in a new era for
+application developers.  They could focus on algorithms without having to
+worry about which bits in which bytes represented which pieces of data.
+General purpose tools could be written to analyze data from multiple
+instruments, facilities or even multiple wavebands.
+
+The problem quickly then became one of physical data access.  The Internet
+was still very young, and most data was stored on magnetic tape on
+some dusty shelf in the original observers' office.  Getting access
+to a colleges data involved shipping tapes back and forth, and
+hoping that each had the same tape drive hardware.  Truly lucky were the
+observers at the major institutes that did have Internet connections;
+though connection speeds were a significant gating factor and making
+local copies of large data-sets might have been cost prohibitive.
+
+Luckily with the rise of the Internet came increased bandwidth and
+reduced storage costs.  Most major facilities now make their newly
+acquired data available on-line (possibly after any proprietary period)
+and as of January 2011, all NSF proposals are required to include a "Data
+Management Plan"\footnote{ \url{http://www.nsf.gov/bfa/dias/policy/dmp.jsp}}
+ that reinforces the importance of on-line data access.
+There are even efforts underway to catalog, publish and curate some of
+the archival data stored on physical media, eg digitizing the Harvard
+College Observatory astronomical glass plate stacks \citep{2006vopc.conf...54M}.
+
+Given the vast amount of data now available, the current hurdle facing
+researchers is how to find any particular data-set.  Users need to know
+which facilities might have useful datasets to advance their research.
+Each facility usually has it own proprietary interface; possibly
+requiring some form authentication.  Users now have to visit multiple
+sites,  navigate inconsistent search forms, and try to remember multiple
+login credentials.
+
+Thanks to the efforts of those involved in the Virtual Observatory
+projects\footnote{ \url{http://ivoa.net}}, this barrier is quickly falling.  Organizations are now making
+data available via common search protocols such as SIAP, SSAP, and TAP and  registries of data providers are making data discovery more
+efficient than ever.
+
+Maybe most importantly, by having common interfaces into these archives,
+developers can now embed these search features directly into their
+analysis applications.  This has allowed users to augment their current
+analysis or initiate entirely new analysis threads using remote data 
+identified and retrieved in 
+their favorite applications native environment.  This seamless connection
+is taking the effort away from the mechanics of finding the data to
+actually analyzing and interpreting the data.
+
+Analysis applications that may have traditionally focused on 
+algorithms are now becoming portals to vast data archives.  Therein is a
+growing problem.  Applications are traditionally used to consuming data, 
+possibly in a variety of formats, and most often from local disk.  However, 
+what an application saves or otherwise exposes to other programs (eg its own
+plug-ins) is often some view of the data expressed in a way such that the
+application can return to some state if the data are restored.  It may not be
+a faithful representation of the original data and thus may not be 
+compatible with other applications in a users work flow.  Because there
+is no file on-disk to refer back to, the data may become trapped in the
+portal application.  This is the ``one hop'' effect:  from the archive
+to the application, but application to application is unregulated.
+
+
+\section{Data Transformations}
+
+When applications load data they typically store it in their own data model.
+This means that only certain keywords or columns are read and stored for
+internal use.  If a program accepts multiple input formats this allows the
+developer to create a single view of the data irrespective of the
+original format on disk.  This view of the data is what the application
+serves its plug-ins or peers.
+
+In this era where applications are now serving as portals to archives this 
+transformation of the data begins to limit the usefulness of the data such
+that it may become unusable to down-stream processes.
+
+The types of data transformations developers should be aware of include:
+
+\begin{itemize}
+
+\item Format:  Not all file formats provide the same capabilities.  
+  Preferentially saving data in one format over another can cause 
+  data loss or can lead to data ambiguity.  For example, going from
+  a VOTable to a FITS table any number of transformations could take place.
+  This includes things like missing units, shortened comments, 
+  and possibly some ad-hoc convention to turn VOTable UCDs into
+  FITS comments.
+  Format is not restricted to files, but can also include data formats within a file.  The classic example in astronomy is whether celestial
+  locations are represented in decimal degrees (pair of real valued numbers)
+  or  whether they are represented in sexagesimal format as one or two strings.
+  Other examples include changing the representation of NULL or missing
+  data (to NaN values or arbitrary sentinel, eg -999).
+
+
+\item Precision:  Going from a binary representation of data to ASCII is 
+  especially dangerous in scientific applications.   While a particular
+data-type may have a well defined precision, the precision the 
+value had when stored is (generally) not well understood. There is a
+tendency in ASCII formats to want to provide uniformly formatted data which may
+lead to data precision issues.  For example a celestial location that ends with ``2'' vs ``2.00'' may represent very different things.  The later may suggest
+an increased precision that exceeds what was original stored.
+
+
+\item Truncation:  One of the most problematic transformations an application
+can do it to simply truncate results.  This may take the form of only saving 
+a certain subset of the rows or columns, or only saving certain pieces
+of meta-data, or simply puring entire blocks of data that the
+application itself finds irrelevant.  The most dangerous is when 
+data are partially truncated in such a way that the user is unaware that
+more data might exist.  Limiting search results to the first N-many
+rows is never a good idea unless the user can be made aware that 
+more data are available.
+
+
+\item Provenance: Where did the data come from? With the increase in the number
+of data providers publishing similar datasets ; it is critical for a user
+to know exactly what the source of the data were and how to reconstruct
+the query to retrieve the data again.  Omitting the history of how the 
+data were located and retrieved made lead to questionable scientific
+results.
+
+\end{itemize}
+
+
+Each of these types of data transforms causes problems for down stream
+developers and ultimately for users. In the next section we discuss a
+particular example of this phenomena and highlight the problems it presents.
+
+
+
+
+
+
+
+\section{Case Study}
+
+
+\articlefigure{I04_f2.eps}{FigCSCView}{CSCView, TOPCAT, and SAOImage ds9 are all SAMP enabled applications and can exchange certain types of information via the hub and then service various requests from peer clients.  Since CSCView can retrieve the references to data products in the Chandra Source Catalog, it can SAMP send that information to ds9, which can then directly retrieve the file (via HTTP).  However, dax, a CIAO ds9 plug-in, may not be able to fully operate on the remotely retrieved data due the way ds9 transforms it.}
+
+
+The Chandra Source Catalog, CSC,  includes source properties and 
+associated data-sets (files) for nearly 100,000 point-like, X-ray sources 
+detected in observations performed during approximately the first 
+seven years of the Chandra mission \citep{2010ApJS..189...37E}. 
+
+
+The primary interface to the Chandra Source Catalog is the CSCView java 
+applet \citep{2011ASPC..442..649V}
+ which allows users to query the 
+catalog for hundreds of source properties and the associated
+ data products (Figure \ref{FigCSCView}).
+Views of the CSC source properties have been 
+exported to other catalog providers, but search access to the data 
+products is limited to the proprietary CSCView interface.  The CSCView 
+applet however does provide a SAMP \citep{2011arXiv1110.0528T} interface and can send and 
+service SAMP requests.
+
+TOPCAT \citep{2005ASPC..347...29T}, another SAMP enable application, perfectly complements CSCView 
+by providing
+plotting and data manipulation capabilities.  With the ability to select
+data points in one application and have that reflected seamlessly in the other,
+the two applications make exploring the CSC easy.  
+
+Completing the triad is SAOImage ds9 \citep{2003ASPC..295..489J}, the widely used astronomical image viewer. 
+It too is SAMP enabled and can participate in a seamless exchange 
+of catalog data between CSCView and TOPCAT.  Sources can be selected in any
+application and will be located spatially in ds9 and in whichever catalog
+parameter space TOPCAT is displaying (eg flux vs. color [hardness ratio]).
+The three tools working together are a powerful combination.  
+
+ This triad is further enhanced by ds9's open architecture.  User can easily 
+extend ds9's 
+functionality by writing analysis plug-ins which can do simple things like provide
+statistics or more complicated analysis tasks like source detection.  dax \citep{2011ASPC..442..629G} 
+is a collection of such analysis tasks that is packaged with CIAO \citep{2006SPIE.6270E..60F},
+the Chandra data analysis system.
+
+
+Eventually, a user will want to move beyond the source properties and 
+needs access to the data products.  CSCView is the only application that
+can make this query.  It can however share the results in the 
+same way as other catalog data using the
+appropriate SAMP message type (MTYPE): image.load.fits and table.load.fits.
+The result is that CSCView can instruct ds9 to directly load a Chandra dataset
+by sending it a URL which ds9 retrieves and consumes.
+
+\articlefigure{I04_f1.eps}{FigOne}{Simplified view of a Chandra dataset.  The primary science product is the event file which contains multiple FITS extensions:  one event table with multiple rows and one or more Good Time Interval (GTI) tables associated with each active CCD.  There are several other auxiliary files that are required to do analysis such as the aspect solution (pointing history), detector mask file defining the active regions, and various other instrument level products that describe the configuration of each detector element.}
+
+
+So far, this all works very well.  However, Chandra data, like all X-ray 
+missions, is different than other wavelengths:  images are not the primary
+science data product.
+A full Chandra  dataset (Figure \ref{FigOne}) includes multiple FITS files. 
+The primary science data product is the event file that contains multiple
+FITS HDUs :  an event list (table) that provides the location, time, and
+energy of each event (ie likely photon) and one or more Good Time Interval (GTI)
+that provides the valid time rages for each CCD.  The ancillary files 
+contain information such as the aspect solution (pointing history) needed
+to map detector locations to sky coordinates, masks to identify valid and
+invalid pixels on the detector, and other instrument specific files that
+provide various bits of information related to the hardware.  Images,
+spectra, and light-curves are extracted by integrating the events along
+the appropriate axis.
+
+
+The ds9 application has it origins in X-ray data analysis 
+and fully supports displaying event lists.  It converts the tabular data into
+an image (a 2D histogram) with the appropriate WCS extracted from the table. 
+It has support for applying arbitrary filters on any columns in the table
+whereby users can generate images in specific energy bands, or for specific 
+time ranges.  It can even bin the table into a 3D data cube and has special
+regions that a user can select to extract projections along the third axis.
+
+The problem is that ds9 ultimately is an imaging application.
+While some  representation of the event file exists in memory, what
+gets saved to disk or exported to its plug-ins is the view of the data 
+currently displayed -- which is a simple FITS image.\footnote{As of ds9 
+version 7.0, users now have the option to save 
+event file data as either an image or a table.  Keywords in the table are 
+preserved but not in the image and GTIs are still dropped.}  The FITS 
+file that is produced omits the
+GTIs; which  were purged from the data stream when the file was read since they do not fit into
+the applications internal data-model.  Additionally most of the 
+header keywords are also dropped since sorting out FITS structural 
+keywords in tables vs. informational keywords is beyond the scope of the application.
+
+This abbreviated and transformed view of the data is then what is 
+presented to its plug-ins.  For many strictly imaging tasks this is entirely 
+sufficient and in fact what the postliminary application requires.  If 
+the task is applying some threshold or making a histogram of the
+pixel values, then just having the pixels is entirely sufficient.
+However, if the application wants to do a source detection and
+requires additional meta data (say exposure time) then the task
+will be presented with an insufficient dataset.
+
+This is very specific example used to illustrate the problem.  The
+types of issues here are not exclusive to any of these applications 
+nor any of the archives.  The point is by adding these kinds of 
+interface developers can benefit their users; but doing so may
+strain their interfaces with other applications.
+
+
+
+
+
+\section{An Old Problem}
+
+This is no way a new problem.  Long before the current set of interfaces were
+established, some individual data centers published their data using their
+own proprietary interfaces:  SIMBAD, NED, and DSS are all excellent examples.
+Applications were able to access these data sets using (mostly) static 
+interfaces and the exact same problems existed.
+
+There are several reasons why this is now becoming a significant problem.
+
+\begin{itemize}
+
+\item Volume: There are more data-sets being made available via standardized searches. This increases the chances of a user finding data relevant to their analysis. 
+\item Variety:  There are more varieties of data being made available.  Initially only catalogs : source locations with some properties, were available.  Now full data-sets including spectra, images, and light-curves, as well as aggregated
+datasets from multiple sources and all energy bands.
+\item Vendors: More organizations are publishing their data via these 
+standard interfaces.  Also more individuals are publishing specialized datasets tied directly 
+to their published work.
+\item APIs: It has become easier for developers to integrate these queries into their applications.  Libraries or at least usable sample code exists to implement these interfaces in a variety of programming environments.
+
+\end{itemize}
+
+All of this leads to increased pressure on developers  from their users to
+ include these interfaces in their applications.    Even in legacy applications, there is a desire to keep up with current trends and despite the 
+complications it imposes on down stream applications, many turn
+of the century applications are trying to wedge this functionality into
+their very file-centric based data models.
+
+
+
+\section{An Old Solution}
+
+To some, the solution to this problem is seemingly extremely simple:  all 
+applications should always retrieve a copy of the original data from the 
+original source.  Not surprisingly, this is most often the solution 
+suggested by the archive curators who benefit from increased traffic. 
+Developers may not encounter some of the problems presented 
+above, but may face a new set of challenges.
+
+
+First is a question of provenance -- where exactly did the data come from?
+A user using ds9 can retrieve a view of the CSC that overlays their field in
+four mouse clicks  (Analysis -$>$ Catalogs -$>$ High Energy -$>$ Chandra Source).
+However, a TOPCAT user who uses the VO menu to search for the CSC will have
+a much harder time.  At the time of this writing a search for
+ ``chandra source catalog'' returned over one hundred catalogs, none of
+which was the CSC.  They were mostly small catalogs of individual fields 
+observed by Chandra.  Only a very well crafted search for ``CSC'' or ``chandra harvard'' was able to identify the correct archive.  However neither ds9
+nor TOPCAT provided sufficient detail to reconstruct the same query using
+the CSCView applet to re-extract the same data.  A user would have to work
+hard to recreate the results that the analysis applications provided.
+
+The next challenge is related to dynamic datasets which may be updated on
+short time scales.  Catalogs of solar flares, gamma ray bursts, asteroids, 
+or even
+possible exo-planets are the kinds of datasets that will substantially
+evolve over time.  This then introduces the idea of a race-condition:  if
+all the applications need to query an archive for the same data, can they do
+so on a time scale faster than the archive is updated?  Probably yes, but 
+possibly no, which means at the least some added consistency checks have to be
+coded.  These may be trivial if the archive only adds records (number of rows
+returned); however, if the archive allows deletions or edits, then ensuring
+consistent dataset is much more involved.  Developers have to build in intimate
+knowledge of how the data are managed to provide their users a reliable system.
+
+A more complicated problem arises when the application allows the user to 
+augment or modify the dataset.  In TOPCAT it is trivial to add additional
+columns to a table.   A user might for example add a source classification,
+or add coordinates in B1950 to allow for cross match with another archive.
+There are possible use cases where the next application will only want the
+original, unabridged, dataset, and other use cases where the modified data is
+required.  This is definitely a situation where simply redirecting
+all applications back to the original source is currently insufficient.
+It has been suggested at some point users should be able to provide
+their edits back to the host archive in a way that they would be
+maintained as any other data.  This comes with many new problems to solve;
+just a few are things such as ensuring integrity, validity, versioning, 
+provenance and citation.
+
+
+Finally is the issue of the user experience.  In this discussion it is relating
+how much effort is expended searching for and managing datasets versus doing 
+data analysis.  The CSCView, TOPCAT, and ds9 triad is amazingly powerful.  Users 
+can very quickly begin to explore the data, identify correlations, and find 
+outliers without having to worry about any files on disk.  Breaking that work
+flow by requiring users to have to save data to disk and have to start
+to manage files greatly inhibits the seamless experience.  It is a difficult
+thing to measure with any normalized metric since applications are so different.
+One could use number of  mouse clicks to perform a task from disk vs from remote service to get an idea of easy an interface is to use.
+
+
+
+\section{Summary}
+
+As more analysis applications begin to take advantage of how
+easy it is to implement search and retrieve functionality, the problems
+presented in this paper will continue to rise.  The intent of this paper
+has been to highlight that while implementing these interface may be
+highly desired, by doing so, the application may be expected to take
+on the added responsibility of being a first-class data provider.  At the 
+very least it is expected to be able to service its own plug-ins 
+in the same way.  This is traditionally beyond the scope analysis tools
+whose focus has been on algorithms and not data services.
+
+The author has a few recommendations
+
+\begin{itemize}
+
+\item  If possible, provide an exact local copy of any data retrieved.
+This may require some cache management and come with its own headaches,
+but this does lessen many of the ``return to sender'' problems discussed
+in section 5.
+
+\item Provide information about how a user can re-create any queries
+or file retrieves.  Provide a log of the URL if possible.
+
+\item Be consistent.  From a user and a developers point of view, 
+there should be no difference in how data are saved or referenced 
+regardless if it was local or remote.
+
+\end{itemize}
+
+Ultimately, there may not be a single solution that works for all applications.
+However, developers should think through some of these points 
+during the design phase of the tools and clearly understand what
+restrictions or limitations it will impose down-stream.
+
+
+
+
+
+
+\acknowledgements{This project is funded by NASA contract NAS8-03060,
+Chandra X-ray Center.}
+
+
+
+
+\bibliography{I04}
+
+\end{document}

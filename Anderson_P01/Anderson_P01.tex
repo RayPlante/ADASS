@@ -1,0 +1,234 @@
+% This is the aspauthor.tex LaTeX file
+% Copyright 2010, Astronomical Society of the Pacific Conference Series
+
+\documentclass[11pt,twoside]{article}
+\usepackage{asp2010}
+
+\resetcounters
+
+\bibliographystyle{asp2010}
+
+\markboth{Anderson, Rosolowsky, Dowler}{P01CyberSKA}
+
+\begin{document}
+
+\title{CyberSKA Radio Imaging Metadata and VO Compliance Engineering}
+\author{K. R. Anderson,$^1$ E. Rosolowsky,$^1$ and P. Dowler$^2$
+\affil{$^1$University of British Columbia, Okanagan, 3333 University Way
+Kelowna, BC}
+\affil{$^2$National Research Council Canada, 1200 Montreal Road
+Building M-58, Ottawa, Ontario}}
+
+\begin{abstract}
+The CyberSKA project have written a specification for the metadata
+encapsulation of radio astronomy data products pursuant to insertion
+into the VO-compliant Common Archive Observation Model (CAOM) database
+hosted by the Canadian Astronomy Data Centre (CADC). This
+specification accommodates radio FITS Image and UV Visibility data, as
+well as pure CASA Tables Imaging and Visibility Measurement Sets. To
+extract and engineer radio metadata, we have authored two software
+packages: metaData (v0.5.0) and mddb (v1.3). Together, these python
+packages can convert all the above stated data format types into
+concise FITS-like header files, engineer the metadata to conform to
+the CAOM data model, and then insert these engineered data into the
+CADC database, which subsequently becomes published through the
+Canadian Virtual Observatory. The metaData and mddb packages have, for
+the first time, published ALMA imaging data on VO services. Our
+ongoing work aims to integrate visibility data from ALMA and the SKA
+into VO services and to enable user-submitted radio data to move
+seamlessly into the Virtual Observatory. 
+\end{abstract}
+
+\section{Introduction}
+The CyberSKA project  (\url{http://cyberska.org/}) is
+developing a Data Query Service (DQS) for users of the web portal. It
+was specified that this service should be compliant with Virtual
+Observatory (VO) protocols in order that CyberSKA datasets are exposed
+through VO services. In a \textit{pro tem} ``proof of concept'' effort,
+CyberSKA project collaborated with CADC in order to leverage extant VO
+services already available at the Centre.
+
+To this end, the authors have developed  specifications and software
+that both encapsulate the necessary metadata associated with datasets
+uploaded to the  CyberSKA Data Management Service (DMS), and then
+engineer that metadata to conform to the CAOM data
+model \citep{dowler_2007}. The engineered data are then inserted into
+the CAOM database. Once in the CAOM database, the data then become
+available through various VO services, such as the Data Discovery Tool. 
+
+\section{The Software}
+Pursuant to the goals outlined above, two (2) software packages have
+been developed to date: metaData, v0.5.0 and mddb, v1.3. As the name
+suggests, the metaData package is resposible for encapsulating
+the metadata of a variety of data formats and types.\footnote{These
+  are data ``types'' in a meta sense, such as ``imaging'' and ``visibility.''}
+Metadata are extracted and encapsulated only and explicitly for FITS
+images, UVFITS data, Casa Tables images, and Casa Tables Visibility
+Measurement Sets. The mddb package is then responsible for configuring
+thusly encapsulated metadata for CAOM database insertion.
+
+\subsection{metaData, v0.5.0}
+The metaData package \citep{and_2011} is arranged in an hierarchy of ``main'' modules
+that provide the classes for determining the ``MIME type'' of the
+previously mentioned data types. Though not strictly MIME, these types
+have been specified by the CyberSKA group in order to explicitly
+identify a dataset type. The metaData mime-typing facility can
+identify the previously mentioned data formats and
+types,\footnote{Future implementations of metaData MimeTyping and
+  Handler classes could potentially accommodate future adopted formats
+  such as HDF5.} and tag a CyberSKA dataset as one of the following:
+\begin{itemize}
+\item ``image/fits-image''
+\item ``image/fits-uvw''
+\item ``image/ms-image''
+\item ``image/ms-uvw''
+\end{itemize}
+Current metaData MimeTyping and Handlers classes are outlined in Table \ref{tab:mods}.
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|l|p{9.0cm}|} 
+    \hline
+    \sc \textbf{Module} & \textbf{Classes} \\
+    \hline
+    fitsMimeTyping & FITSMimeTyping, FITSMimeTypeError(TypeError) \\
+    msMimeTyping   & MSMimeTyping,   MimetypeError(TypeError) \\
+    msHandlers     & MSHandlers,     MSTableValueError(AttributeError) \\
+    fitsHandlers   & FitsHandlers \\
+    casaImageHandlers  & CasaImageHandlers, CasaImageTypeError(TypeError)\\
+    \hline
+  \end{tabular}
+  \caption{metaData Module and Class relationship}
+  \label{tab:mods}
+\end{table}
+
+A set of support modules provide these classes with generalised
+functional utility, shown in Table \ref{tab:subdirs}.
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|l|p{9.0cm}|} 
+    \hline
+    \sc \textbf{Support Directory} & \textbf{Modules} \\
+    \hline
+    convert/ & polarizationConversions, mjdConversions, timeConversions,
+               directionConversions, frequencyConversions \\
+    incl/   &  imageInclusion, tablesInclusion \\
+    utils/  &  genUtils, runUtils \\
+    \hline
+    docs/   &  *.html\\
+    \hline
+  \end{tabular}
+  \caption{metaData subdirectories and support modules}
+  \label{tab:subdirs}
+\end{table}
+
+The modules found in the convert/ and incl/ subdirectories provide a very
+easy and convenient way for users to reorder table selection and output, include, or not, 
+various table fields, and to reorder those fields in the header file by simply rearranging
+the various parameters as needed or desired.
+
+\subsection{mddb, v1.3 (current)}
+\label{sec:mddb}
+The metadata database (mddb) package is structured in much the same
+way as the above described metaData package in that it is a set of classes
+organised around the four basic ``MIME types'' that CyberSKA currently
+supports in the DQS.
+
+There are five (5) main classes, a base class (BaseDbInsert)
+providing the public interface, and four (4) classes that are
+sub-classed off the base class and that implement the
+necessary data engineering methods appropriate to the particular
+``MIME type'' for which the respective classes have been
+developed. These relationships are shown in Table \ref{tab:mddbmods}.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|l|p{8.0cm}|} 
+    \hline
+    \sc \textbf{Module} & \textbf{Classes} \\
+    \hline
+    baseDbInsert & BaseDbInsert \\
+    dbFitsInsert   & DbFitsInsert(BaseDbInsert) \\
+    dbUVFitsInsert& DbUVFitsInsert(BaseDbInsert)\\
+    dbCImageInsert& DbCImageInsert(BaseDbInsert)\\
+    dbMSInsert & DbMSInsert(BaseDbInsert)\\
+    \hline
+  \end{tabular}
+  \caption{mddb, v1.3, Module and Class relationship}
+  \label{tab:mddbmods}
+\end{table}
+
+A set of support modules provide these classes with generalised
+functional utility, as well as data configuration specifications, a
+database environment class, and setup test scripts, and shown in Table \ref{tab:mddbsubs}.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|l|p{8.0cm}|} 
+    \hline
+    \sc \textbf{Support Directory} & \textbf{Modules} \\
+    \hline
+    config/ &  mddb.cfg, mddbEnv \\
+    convert/ & converters, keymaps, mjdConversions \\
+    db/ &  confirmKeys, xDBKeys \\
+    scripts/ &  publicUris, testrun.py \\
+    utils/  & f2cArgs, rUtils \\
+    \hline
+    docs/   &  *.html\\
+    \hline
+ \end{tabular}
+  \caption{mddb, v1.3, Conversion, configuration, and database support}
+  \label{tab:mddbsubs}
+\end{table}
+
+\section{Engineering and Workflow}
+An indicated in \S \ref{sec:mddb}, data engineering is implemented by
+sub-classes that are specific to each dataset type. A good deal of
+engineering is carried out in these private methods, activities that
+primarily comprise evaluating and, if necessary, mitigating
+deprecated, errant, and/or missing metadata. Examples include converting
+\texttt{{\small CDELT}}\textit{i} and \texttt{{\small CROTA}}\textit{i} keywords to a
+\texttt{{\small CD}}\textit{i\_j} matrix as required by the CAOM data model;
+ensuring \texttt{{\small RADESYS}} and \texttt{{\small EQUINOX}} are specified and
+consistent; converting a Casa Image geodetic ``telescope position'' in
+latitude, longitude and height to geocentric measures specified
+by \texttt{{\small OBSGEO-X}}, \texttt{{\small OBSGEO-Y}}, \texttt{{\small OBSGEO-Z}}. The
+CyberSKA project has noted that user supplied metadata can vary widely
+in quality and much of the data engineering so far implemented is
+designed to mitigate these variations to ensure compatibility with the
+CAOM data model.
+
+Combined in serial fashion, the metaData and mddb packages can
+automatically process a given astronomical dataset and make it
+available through VO services. Since these packages process only
+metadata, this workflow is fast and efficient, making data VO
+accessible in a matter of seconds, where much of that time is consumed
+by database interactions. Because metaData creates a textual header
+file, which is FITS-like in style, the mddb package does not require
+access to the original dataset, but only works directly from this
+header file. This feature has proved particularly useful in prototype development.
+
+\section{Conclusion}
+When used in conjunction, the two packages, metaData and mddb, form a
+workflow that is capable of receiving a dataset file in one of several
+formats (FITS image, UVFITS, Casa Image, Visibility Measurement Set),
+extract and encapsulate the dataset's metadata, write an adjudicated
+header file, configure those adjudicated metadata to a form appropriate to the
+CAOM data model, and insert those data into a selected CAOM
+database. When the database is part of a VO services platform, those
+datasets thence become registered and published through the Canadian
+Virtual Observatory and the larger Virtual Astronomical Observatory
+network. The metaData and mddb packages have, for the first time,
+published ALMA imaging data on VO services. Future work aims to
+integrate visibility data from ALMA and the SKA into VO services and
+to enable user-submitted radio data to move seamlessly into the
+Virtual Observatory. 
+
+\acknowledgements This research is funded by a grant from CANARIE to
+the CyberSKA collaboration and a North American ALMA Science Center
+ALMA Development Study. This research used the facilities of the CADC
+operated by the National Research Council of Canada with the support
+of the Canadian Space Agency.
+
+\bibliography{P01}
+
+\end{document}
