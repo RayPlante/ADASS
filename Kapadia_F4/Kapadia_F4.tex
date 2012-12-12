@@ -1,0 +1,87 @@
+% This is the aspauthor.tex LaTeX file
+% Copyright 2010, Astronomical Society of the Pacific Conference Series
+
+\documentclass[11pt,twoside]{article}
+\usepackage{asp2010}
+\usepackage{natbib}
+
+\resetcounters
+
+\bibliographystyle{asp2010}
+
+
+\begin{document}
+
+\title{astrojs -- JavaScript Libraries for Astronomy}
+\author{Amit Kapadia$^1$, Arfon Smith$^1$}
+\affil{$^1$Zooniverse / Adler Planetarium}
+
+\begin{abstract}
+Astronomers mainly use the web for data retrieval. To create visualizations and conduct analyses requires installation of many external packages, often creating a difficult task for the astronomer. An ideal situation would move many of the common tasks to a browser - a homogenous solution for data access, visualization and analyses in one application.
+
+As part of an effort to build research tools around core citizen science experiences, the Zooniverse is building science grade tools for handling astronomical data. As the browser is Zooniverse's medium, JavaScript - the only client-side programming language - becomes ever more relevant for feature-rich web applications. The technology industry is investing large development time in improving JavaScript engines resulting in performance gains that exceed other scripting languages. The science community could benefit from this investment by migrating development of desktop applications to web applications.  Similar to the astropy initiative, \textsc{astrojs} is providing a consolidation of JavaScript libraries for in-browser client-side astronomical data visualization and analyses.
+\end{abstract}
+
+\section{Introduction}
+During the last few years the technology industry has rapidly changed by shifting focus towards JavaScript performance.  The primary reason for the investment stems from how people engage in computing in the current day.  The primary application on a user's computer is the web browser.  With so much time spent in this application, software developers have been migrating development from desktop applications to web applications.  The Zooniverse is in stride with this shift by developing web applications.  During development, JavaScript libraries have been written that may be useful to the larger astronomical community.
+
+\section{Software Development at Zooniverse}
+
+
+The Zooniverse (\url{http://www.zooniverse.org}) is a web-based platform that invites members of the public to participate in real research online. With a focus on those research problems where human intuition or interpretation exceeds the performance of automated methods. The collaboration began in 2007 with a project called Galaxy Zoo \citep{2007AAS...211.9403R} which asked people to provide a morphological classification of nearly a million images taken by the Sloan Digital Sky Survey \citep{2000AJ....120.1579Y}.
+
+While significant research value was realized through the classifications collected in the primary interface, a number of exciting discoveries including Hanny's Voorwerp \citep{2009MNRAS.399..129L} and The Galaxy Zoo Green Peas \citep{2009MNRAS.399.1191C} were made by the citizen science community because of a link provided to the SDSS SkyServer \citep{2002cs........2013S} catalog pages for each object in the site. Tools that provided catalog information about the galaxies combined with a community discussion forum meant that interested members of the Galaxy Zoo community could not only learn more about the astrophysics of an object but also discuss theories and form hypotheses with their peers.
+
+Based upon the success of Galaxy Zoo the Zooniverse software platform was developed and new citizen science project opportunities were sought. To date, more than twenty citizen science projects have been developed by the Zooniverse collaboration. Like Galaxy Zoo, the Zooniverse projects of today follow a similar design of a core analysis task together with a community discussion environment. Unfortunately for may of the projects developed today there is a lack of online research tools such as the SDSS SkyServer available to facilitate user-led research within the community.
+
+This has led to the Zooniverse software group developing a number of tools that expose datasets to the citizen science community. As work has progressed over the last 6 months it has become apparent that a significant fraction of the libraries developed for astrophysics-oriented projects may be of value to the wider astronomical community. With the Zooniverse being a web project, these libraries are mainly written in JavaScript; the only standards compliant client-side programming language for the web.
+
+With the emergence of these JavaScript libraries, Zooniverse is introducing the astrojs project.
+
+\section{JavaScript for Astronomy}
+
+Over the last few years browser vendors have improved performance of JavaScript engines.  JavaScript performance plays a key role in overall browser performance, as such vendors are competing for the fastest engine.  JavaScript is becoming an ever more important language with figures such as Jeff Atwood stating ``any application that can be written in JavaScript, will eventually be written in JavaScript'' \citep{Atwood}.  Many applications are already becoming web applications, many astronomical applications can currently be implemented as web applications.
+
+All modern astronomy archives require an internet connection to transfer data.  Interfaces to these archives exist as web sites where astronomers can directly access data or submit requests for download.  Institutions are developing more elaborate interfaces for in-browser data visualization prior to transferring large volumes.  MAST's Data Discovery Portal is one example of utilizing new web technologies for astronomical archives; however, there is potential for more elaborate visualizations utilizing technologies that are still untouched by the astronomical community.
+
+\section{astrojs libraries}
+
+JavaScript libraries for astronomy are emerging but have not yet been consolidated.  The \textsc{astrojs} (\url{www.astrojs.org}) project is an effort to develop and aggregate libraries so they may be adopted by the larger community for development of astronomical web applications.  To begin this initiative two libraries are under active development that will provide useful for future web applications.
+
+\subsection{fitsjs}
+
+The \textsc{fitsjs} library reads the FITS file format \citep{2010A&A...524A..42P} using JavaScript.  With the latest standards-compliant web technologies, this library reads images, ASCII and binary tables \citep{1995A&AS..113..159C}, compressed images \citep{2012arXiv1201.1336W}, and data cubes.  The library has been engineered to provide header validation and handle multiple header data units.  An API allows developers to easily access metadata in headers and data units.
+
+To efficiently read binary data, the \textsc{fitsjs} library utilizes standards such as the ArrayBuffer, Typed Arrays, and DataView object.  These native JavaScript objects decode the binary portions of FITS files, leaving \textsc{fitsjs} only the task of understanding the structure of the FITS format.
+
+\subsection{wcsjs}
+
+The \textsc{wcsjs} library supports various projections \citep{2002A&A...395.1077C} useful in modern astronomy.  This library is useful when converting between pixel and sky coordinates.
+
+\section{Web Technologies}
+
+The web has rapidly evolved since the early 1990s, with JavaScript developing into a mature and respected language.  With the introduction of HTML5, many new APIs are available.  This section summarizes some of the technologies used in \textsc{astrojs} software development.
+
+\subsection{FileAPI}
+
+The FileAPI \citep{W3CFileAPI} allows applications to access the local filesystem and represent binary files as an ArrayBuffer.  The primary object from the \textsc{fitsjs} library is initialized using an ArrayBuffer representation.
+
+\subsection{XHR}
+
+The XMLHttpRequest \citep{W3CXHR} is frequently used to transfer data to and from web pages asynchronously.  With the introduction of XHR Level 2, requests may now be made for binary data.  The latest revision of the XHR object allows developers to specify the response type as an ArrayBuffer.  This response may then be used to initialize a \textsc{fitsjs} object, allowing FITS images to be transferred asynchronously and interpreted in-browser.
+
+\subsection{DataView}
+
+The DataView \citep{KhronosTypedArray} object provides native support for reading ArrayBuffers in a variety of formats.  This object exposes methods to decode various datatypes such as Int8, Uint8, Int16, Uint16, Int32, Uint32, Float32, and Float64.  These methods may be used for parsing a binary file that does not have native support in browsers, such as a FITS file.
+
+\subsection{Typed Array}
+
+Typed arrays \citep{KhronosTypedArray} are used in conjunction with ArrayBuffers to interpret a chunk of data as a specific type.  For example, if an ArrayBuffer contains binary data representing only unsigned 16 bit integers, the buffer may be used when initializing the Uint16Array typed array.
+
+\subsection{WebGL}
+
+WebGL \citep{KhronosWebGL} is an experimental feature in many browsers, but it is rapidly becoming the de facto method for performant browser based visualizations.  This technology may be used with FITS images to offload computationally expensive image processing tasks to the graphics card.
+
+\bibliography{F4}
+
+\end{document}

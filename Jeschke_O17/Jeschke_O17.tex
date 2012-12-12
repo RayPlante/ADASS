@@ -1,0 +1,184 @@
+% This is the aspauthor.tex LaTeX file
+% Copyright 2010, Astronomical Society of the Pacific Conference Series
+
+\documentclass[11pt,twoside]{article}
+\usepackage{asp2010}
+
+\resetcounters
+
+\bibliographystyle{asp2010}
+
+\markboth{Eric Jeschke, Takeshi Inagaki and Russell Kackley}{Introducing the Ginga FITS Viewer}
+
+\begin{document}
+
+\title{Introducing the Ginga FITS Viewer and Toolkit}
+\author{Eric~Jeschke, Takeshi~Inagaki, and Russell~Kackley}
+\affil{Subaru~Telescope,~National~Astronomical~Observatory~of~Japan}
+
+\begin{abstract}
+We introduce Ginga, a new open-source FITS
+viewer and toolkit based on Python astronomical packages such as pyfits,
+numpy, scipy, matplotlib and pywcs.  For developers, we present a set of
+python classes for viewing FITS files under the modern Gtk and Qt widget
+sets and a more  full-featured viewer that has a plugin architecture.
+We further describe how plugins can be written to extend the viewer with
+many different capabilities.  
+
+The software may be of interest to software developers who are
+looking for a solution for integrating FITS visualization into their
+python programs and end users interested in a new and different FITS
+viewer that is not based on Tcl/Tk widget technology.  The software has
+been released under a BSD license.
+\end{abstract}
+
+\section{Introduction}
+In recent years there has been a rapid uptake of the Python
+programming language in the astronomical community for software
+development and data reduction tasks.
+This has been driven not only by the productivity gains of writing in a
+very high-level object-oriented language, but also by the development of
+several very useful scientific packages for python, including 
+{\tt numpy}, {\tt pyfits} \citep{Barrett99}, {\tt scipy} and 
+{\tt matplotlib} \citep{matplotlib}, all of which let you script high
+performance scientific C routines from Python. 
+Collectively these modules make a very powerful open-source toolkit for the
+processing and analysis of astronomical data.
+
+At Subaru Telescope, the Observation Control System software development
+team has leveraged these tools to develop a second generation
+OCS \citep{Jeschke10B}.  
+Because almost all of the code is in python, we had a need for a python
+FITS file viewing widget.  We have developed a FITS viewing widget that
+can be embedded in python programs using the modern Gtk or Qt widget
+sets.
+Based on this widget we have also developed a more full-featured
+standalone viewer, called \emph{Ginga}\footnote{Ginga means ``galaxy''
+  in Japanese. Acceptible pronounciations for the name of the software
+  include ``Ging-ga'' (best) or ``Jing-ga'' (ok).}, 
+that implements most of its features via a modular plugin system.
+This software has been released under an open-source BSD
+license \citep{Jeschke12}.
+In this paper we will describe the basic capabilities and usage of the
+software and describe briefly the plugin architecture for extending the
+viewer.
+
+\section{A python FITS viewing widget}
+At the core of the Ginga software is a set of object classes that
+implement the viewing widget.  These classes allow the creation of
+a widget that displays a FITS file and supports scaling (zooming),
+panning, cut levels, color and intensity mapping, image transforms and
+plotting of several types of simple line graphics.   
+Figure \ref{sec:coreclasses} illustrates the object-oriented inheritance
+diagram of these classes.
+\label{sec:coreclasses}
+\begin{figure}
+  \begin{center}
+    \begin{tabular}{c}
+      \includegraphics[width=3in]{O17_f1.eps}
+    \end{tabular}
+  \end{center}
+  \caption[example] 
+%% %>>>> use \label inside caption to get Fig. number with \ref{}
+          { \label{fig:onion} 
+            Object oriented design of the core rendering widgets in Ginga.} 
+\end{figure} 
+The base class implements most of the functionality of the viewing
+widget, handling all of the details of the rendering out to a generic
+RGB image array.
+The subclasses are responsible for rendering the RGB array to a
+particular drawing widget in a widget set and for handling user input
+events. 
+Finally, mixin classes \citep{mixins}
+provide the support for specific mapping of events to actions and
+overlaying graphics on the image.
+This architecture allows the widget to be ported fairly easily to new
+platforms, because almost any widget set for any platform has a basic
+drawing widget that can accept RGB data and display it.
+
+For developers interested in a basic FITS display widget for their
+python programs one of these classes may be suitable.
+The Ginga widgets are complementary to, and interoperate with, other
+scientific python packages; images are passed in as {\tt numpy} arrays,
+{\tt pyfits} objects, buffers or loaded from a file.  
+There are several 
+example programs distributed with the package that illustrate how
+to use the widget by itself in either pygtk or pyqt, which are the
+python mappings to the Gtk and Qt widget sets. 
+These two modern widget sets are available for the Linux, Windows and
+Mac OS X platforms (and selected other Unix platforms).
+
+\section{Ginga: a full-featured FITS viewer}
+For end-users, or developers interested in starting with something more
+comprehensive and customizing it, there is the Ginga viewer.  The viewer is
+essentially a highly configurable multi-container with a collection of
+\emph{plugins}--encapsulated modules that perform various operations.
+This provides a viewer with many features similar to the venerable
+skycat \citep{skycat} or DS9 (although not yet as feature complete).
+The viewer can be easily reconfigured to show the plugin Graphical User
+Interfaces (GUIs) in different layouts and arrangements.  
+Figure \ref{fig:ginga} shows an example of the viewer with several
+plugins active. 
+\begin{figure}
+  \begin{center}
+    \begin{tabular}{c}
+      \includegraphics[width=5in]{O17_f2.eps}
+    \end{tabular}
+  \end{center}
+  \caption[example] 
+          { \label{fig:ginga} 
+            Ginga full viewer displaying M33. Plugins for panning, WCS
+            info and stellar evaluation are shown.} 
+\end{figure} 
+
+\subsection{A plugin architecture}
+Almost all of the features Ginga has, outside of those provided by the
+basic display widget, are implemented via the plugin mechanism.
+Ginga comes with a collection of two dozen or so plugins for things
+like preferences, browsing files, stellar evaluation (``pick''), star
+catalog access, pixel values along a line (``cuts''), histograms,
+zoom display, distance measurement, etc.
+
+Plugins follow an Application Programming Interface (API), which allows
+each plugin to both control the viewer and to be managed by the viewer.
+Aside from following the API, users writing custom plugins have the full
+power of the python language at their disposal, allowing a great deal of
+freedom and capability in terms of what can be done.   
+
+\subsection{A workspace-oriented layout}
+Ginga has a flexible panel/workspace layout algorithm that allows a
+lot of customization into the appearance of the program.  The majority
+of the interface is constructed as hierchical series of workspaces.
+A workspace contains either a FITS viewing widget, a plugin GUI, or
+recursively, a nested workspace containing multiple items.
+Several kinds of workspace containers are supported including sliding
+panels, notebook widgets, stack widgets, or fixed subspaces. 
+On some platforms, items can be dynamically moved between workspaces or
+even dragged out onto the desktop, forming a new, detached workspace.
+A couple of tables in the top-level script control the layout and names of
+the workspaces and the mapping of items to those workspaces;
+by modifying these tables the user can customize the viewer layout in a
+myriad of ways, without writing any new code. 
+
+\section{Conclusion}
+We have made the Ginga source code publically available under a BSD
+license, similar to that used by the other open-source scientific python
+modules it relies on. 
+We hope that the software may be useful to other astronomical software
+developers, particularly those using python-based technologies, and end
+users simply interested in trying out the capabilities of a new viewer
+running in a more modern widget set.  The viewer runs on the three major
+PC platforms: Linux, Apple Macintosh and Microsoft Windows, as well as a
+few other Unix platforms that support either the Gtk or Qt widget sets.
+The software, documentation and installation instructions can be found
+at the project web site: \url{http://ejeschke.github.com/ginga}.
+
+\medskip
+\acknowledgements We would like to acknowledge the support and
+encouragement of the Subaru Telescope/NAOJ staff, particularly Hiroshi
+Terada, Daigo Tomono and Akito Tajitsu from the Gen2 OCS advisory
+committee. 
+
+\bibliography{O17}
+
+\end{document}

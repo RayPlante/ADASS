@@ -1,0 +1,63 @@
+% This is the aspauthor.tex LaTeX file
+% Copyright 2010, Astronomical Society of the Pacific Conference Series
+
+\documentclass[11pt,twoside]{article}
+\usepackage{asp2010}
+
+\resetcounters
+
+\bibliographystyle{asp2010}
+
+\markboth{Hack, Dencheva, and Fruchter}{Managing Multi-component WCS Solutions}
+
+\begin{document}
+
+\title{DrizzlePac: Managing Multi-component WCS Solutions for HST Data}
+\author{Warren~J.~Hack, Nadezhda~Dencheva, and Andrew~S.~Fruchter
+\affil{Space Telescope Science Institute, \\3700 San Martin Dr., Baltimore, MD 21218, USA}
+}
+
+\begin{abstract}
+Calibration of the geometric distortion of HST instruments includes up to 3 separate distortion components to be used in conjunction with the WCS information. Managing and applying these separate components in an efficient manner required merging the use of multiple FITS conventions into a single WCS representation, which includes the full distortion model, that gets stored in the FITS header itself. The capabilities of this multi-component WCS already simplify how HST images are aligned and combined by users based on calibrations which have improved accuracy, while headerlets have the potential to allow alignment solutions to be more easily shared within the astronomical community. The logic implemented to combine these FITS conventions are described here. The DrizzlePac Python package now serves as a practical demonstration of how this new logic works with real HST data and shows how this set of tools provides all the pieces necessary for managing and applying these highly accurate, complex WCS representations with minimal effort. 
+\end{abstract}
+
+\section{Introduction}
+Calibration of the distortion of HST images identified 3 separate logical components: detector-based corrections, optical distortions, and non-polynomial corrections. Each of these types of corrections has their own 'natural' representation with the information for these distortion components being stored as separate reference files external to each image. All other calibrations applied to the image finish by updating the image in some manner without further need for the actual reference data itself. Distortion correction remains the lone calibration still requiring external reference files and no simple way to account for the correction short of re-sampling the image; a process which can in many instances have a detrimental effect on the science in the image. This paper describes our solution to integrating the full distortion model directly into each image's FITS header in an efficient, understandable manner.
+
+\section{HST Distortion Calibrations}
+Low order polynomials with only a few coefficients work sufficiently well for describing optical distortions. Pixel-to-pixel measurement of detector characteristics required for detector-based corrections such as column width variations are often only one dimensional in nature.  The remaining corrections often have no simple polynomial representation and require a 2-D correction, which can often be well enough corrected using values averaged over pixel regions rather than a unique measured value for each pixel. Images taken by the HST Advanced Camera for Surveys (ACS) Wide-Field Channel can be corrected to an RMS $\approx 0.05$pixel accuracy using a combination of a $4^{th}$ order polynomial, a single 1-D (4096 pixel) column-width correction, and a 65x33 array of residuals for each chip. These corrections evaluated for each pixel resulted in the currently used DGEOFILE reference file(134Mb) compared to the $<=$100kB required for the sum of all corrections in their native representation. 
+
+
+\section{Current FITS WCS Conventions}
+A few separate FITS conventions and standards already exist for describing individual components of a distortion model in the FITS file. The Simple Imaging Polynomial (SIP)\citep{shupe_2005} convention used by Spitzer provides a simple way to include the coefficients of a polynomial for the distortion in the image header. The SIP convention works well when only a low-order polynomial is required to adequately correct an image. An additional distortion solution convention was proposed by Calabretta, et. al\footnote{Calabretta M. R., Valdes F. G., Greisen E. W., and Allen S. L., 2004,"Representations of distortions in FITS world coordinate systems", [cited 2012 Sept 18], Available from: \url{http://www.atnf.csiro.au/people/mcalabre/WCS/dcs_20040422.pdf}} in the FITS Distortion (FD) paper, formerly known as FITS WCS Paper IV. The FD paper describes how non-polynomial solutions can be specified as look-up tables in a FITS image as separate extensions linked to each science header.  Only one type of distortion can be specified per axis by the FD Paper look-up tables, and the corrections from the FD Paper always get applied in parallel with no support for concatenation of the models.  Separately, these conventions address individual aspects of the multi-component distortion models needed to accurately correct HST data.
+
+\section{Merging FITS Conventions}
+The description of these existing FITS conventions and proposals does not preclude simultaneous use under the caveat of a couple of simple assumptions.  A 'distortion model' refers to a complete set of corrections needed to describe the distortion of a science image, and the first assumption states that only 1 distortion model can be specified in the header at a time. This limits the use of the alternate WCS standard from the FITS WCS Paper I from becoming confused as to which distortion model components belong to the same calibration. The second assumption prevents confusion with the look-up tables by requiring polynomial corrections to be specified using the SIP convention and never through use of the FD Paper keywords and any associated extensions. Finally, should a detector level correction (such as the width corrections of ACS) be required, the final assumption requires that the same detector correction be used for all chips. This assumption prevents overloading of the FD Paper keywords for use with both the detector level corrections and the non-polynomial residuals of a model. 
+
+These assumptions allow for the simultaneous use of the SIP and FD Paper conventions to completely describe the multi-component distortion model of HST images to accuracies approaching 0.01 pixels RMS through a very modest expansion (or reinterpretation) of the FD Paper proposal. The full use of all components result in a model specified using:
+\begin{itemize}
+\item detector correction based on FD Paper look-up table (D2IM correction)
+\item polynomial correction based on SIP keywords (SIP correction)
+\item non-polynomial residuals using FD Paper look-up tables (NPOL correction)
+\end{itemize}
+The order of operation would then follow the computations laid out in Figure \ref{Pipeline}, our modification of the FD Paper figure, where:
+\begin{itemize}
+\item D2IM correction gets applied to original image input coordinates (as per FD Paper)
+\item SIP and NPOL corrections get applied in parallel to the D2IM-corrected input coordinates
+\item SIP and NPOL corrected positions then get summed 
+\item corrected, summed positions then get transformed to the sky using standard WCS transformations
+\end{itemize}
+\articlefigure{O35_f1.eps}{Pipeline}{Order of Computation for Merged FITS WCS Convention}
+
+
+\section{Implementation of the Merged WCS Convention}
+This merged convention allows all 3 components to be specified simultaneously, if needed.  This convention recognizes that not all detectors require all components, so only those required for the image get specified in the header. All distortion components get applied independently of each other anyway and missing components simply get skipped during application of the model. In fact, HST/WFC3 data only uses the SIP component (as of Nov 2012), while HST/WFPC2 images only use the SIP and D2IM corrections with HST/ACS being the only instrument requiring all three components for now. This convention remains entirely compatible with the FITS WCS Paper I standard\citep{greisen_2002}. The alternate WCS usage only applies to the linear WCS keywords such as CRVAL and CRPIX with all alternate linear WCS solutions being based on the same merged distortion model.
+
+These conventions, including use of alternate WCS based on Paper I standards, have been implemented in the PyWCS package, and related STWCS package, under Python. All interpretation of this merged convention gets performed as desired through the use of these packages and form the basis for the image alignment software package DrizzlePac\citep{hack_fc}\footnote{Report \#2012-01 available online at \url{http://stsdas.stsci.edu/tsr}}. Tasks in this package perform coordinate transformations based on this convention, and the image alignment task 'tweakreg' records multiple solutions in the image headers using Paper I standards in conjunction with this merged convention. The STWCS package also provides an interface for writing out all the WCS and the full distortion model (including all components specified in the FITS file) as a separate valid FITS file of its own called a 'headerlet'\citep{hack_hlet}\footnote{Report \#2012-02 available online at \url{http://stsdas.stsci.edu/tsr}}.  This provides the means to see the full distortion model as recorded in the FITS file, while also allowing the full WCS solution with distortion to be applied to another copy of that same image or used for coordinate transformations itself.
+
+\section{Summary}
+This paper describes how several FITS proposals and conventions have been merged together to support the use of multiple distortion model components in a single FITS image.  All HST ACS and WFC3 imaging data retrieved from the HST archive gets processed using this package to update their headers based on this merged convention. Anyone requesting HST images from these cameras will no longer have to rely on external reference files to apply the distortion to coordinates or to correct the image itself. This convention has been implemented as a Python package for general use (namely, PyWCS) despite the fact that it has been developed using HST data, while being used for image alignment in the STWCS and DrizzlePac packages.  The full model can then be extracted from an image as a headerlet as a record of the correction or for use by someone else with the same image.  This results in an environment where the distortion model of an image can be treated as any other calibration, without need for external files, and in an efficient manner which leverages current and proposed FITS conventions to provide a complete accurate distortion model for each image.
+
+\bibliography{O35}
+
+\end{document}

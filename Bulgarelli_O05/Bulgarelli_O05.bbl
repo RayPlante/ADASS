@@ -1,0 +1,25 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\eprint}[2][]{\url{#2}}
+
+\bibitem[{Bulgarelli et~al.(2012)Bulgarelli, Chen, Tavani, Gianotti, Trifoglio,
+  \& Contessi}]{Bulgarelli:2012ds}
+Bulgarelli, A., Chen, A.~W., Tavani, M., Gianotti, F., Trifoglio, M., \&
+  Contessi, T. 2012, A\&A, 540, A79
+
+\bibitem[{Bulgarelli et~al.(2009)Bulgarelli, Trifoglio, Gianotti, Di~Cocco, \&
+  Tavani}]{2009ASPC..411..362B}
+Bulgarelli, A., Trifoglio, M., Gianotti, F., Di~Cocco, G., \& Tavani, M. 2009,
+  in Astronomical Data Analysis Software and Systems XVIII, edited by D.~D.
+  P.~D. D.~A.~Bohlender, 362
+
+\bibitem[{Tavani et~al.(2009)}]{Tavani:2009ht}
+Tavani, M., et~al. 2009, A\&A, 502, 995
+
+\bibitem[{Tavani et~al.(2010)}]{Tavani:ATEL}
+--- 2010, Astronomical Telegram, 2855
+
+\end{thebibliography}

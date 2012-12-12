@@ -1,0 +1,121 @@
+
+\documentclass[11pt,twoside]{article}
+\usepackage{asp2010}
+
+\resetcounters
+
+%\bibliographystyle{asp2010}
+
+\markboth{Sergio~Pascual, M.~Carmen~Eliche-Moral, 
+V\'ictor~Villar et al.}{Software toolkit for MEGARA}
+
+\begin{document}
+
+\title{Software toolkit for MEGARA, the Integral-Field Unit and Multi-Object Spectrograph
+for GTC}
+\author{Sergio~Pascual$^1$, M.~Carmen~Eliche-Moral$^1$, 
+V\'ictor~Villar$^1$, \'Africa~Castillo$^1$, Nicolas~Gruel$^2$, 
+Nicol\'as~Cardiel$^1$, Esperanza~Carrasco$^3$, Jes\'us~Gallego$^1$, 
+Armando~Gil~de~Paz$^1$, F.~M.~S\'anchez-Moreno$^4$
+and J.~M.~V\'ilchez$^5$
+\affil{$^1$Departamento de Astrof\'isica, Universidad Complutense de Madrid, Spain}
+\affil{$^2$Centro de Estudios del Cosmos de Arag\'on, Teruel, Spain}
+\affil{$^3$INAOE, Mexico}
+\affil{$^4$Departamento de Arquitectura y Tecnolog\'ia de Sistemas Inform\'aticos, UPM, Spain}
+\affil{$^5$IAA-CSIC, Spain}
+}
+
+\begin{abstract}
+MEGARA is an optical Integral-Field Unit (IFU) and Multi-Object Spectrograph (MOS) designed for the GTC 10.4m telescope in La Palma. 
+We present here the software tools developed to prepare and process observations taken with MEGARA: the image simulator, the exposure-time calculator and the reduction pipeline.
+\end{abstract}
+
+\section{MEGARA}
+MEGARA: \emph{Multi-Espectr\'ografo en GTC de Alta Resoluci\'on para Astronom\'ia}
+ is an optical Integral-Field Unit (IFU) and Multi-Object Spectrograph (MOS) designed for the GTC 10.4m telescope in La Palma.
+
+MEGARA will be a 3rd generation instrument for GTC and is built by a consortium of research institutions led by the University Complutense of Madrid (UCM, Spain), that also includes the Instituto Nacional de Astrof\'isica, \'Optica y Electr\'onica (INAOE, Mexico), Universidad Polit\'ecnica de Madrid (UPM, Spain) and the Instituto de Astrof\'isica de Andaluc\'ia  (IAA-CSIC, Spain).
+
+Also part of the project are the MEGARA Science Team, that comprises 50 researchers from different GTC-Consortium partner institutions, and a number of participating private companies.  MEGARA had its Preliminary Design Review last March and it is expected to have its Critical Design Review early 2013. First light for MEGARA is estimated to be at the end of 2015.
+
+MEGARA is able to work in the entire optical window (between 3,700-9,800\AA) at resolutions ranging from R(FWHM)$\sim$ 6,800 to 20,000. Two
+IFU bundles are available in MEGARA that can be used with any of the VPH disperser elements on the instrument. These two bundles cover 12.5$\times$11.3 arcsec$^2$ on the sky with spaxel size of 0.62 arcsec (Large Compact
+Bundle; LCB) and 8.5$\times$6.7 arcsec$^2$ with 0.42-arcsec spaxels (Small Compact Bundle; SCB). Regarding its MOS
+capabilities, MEGARA allows simultaneously observing 100 objects in a 3.5$\times$3.5 arcmin$^2$ field of view. 
+
+\subsection{MEGARA subsystems}
+MEGARA comprises two subsystems, located in different foci of the
+telescope. The MEGARA Folded Cassegrain subsystems include all components that collect and conduct the light from
+the Folded-Cass focal plane to the spectrograph on the Nasmyth platform. 
+They main elements in the Folded-Cass focus are the three fiber bundles (SCB, LCB and MOS) and the Fiber MOS that allows to position up to 100 minibundles in a dedicated area of the focal plane.
+
+The spectrograph in MEGARA is a fully refractive optical system. Its first optical element is an exchangeable pseudo-slit. A mechanism will exchange the pseudo-slit in place for the LCB IFU, SCB IFU and MOS modes respectively. A total of 11 VPHs can be simultaneously mounted on the
+VPH wheel, which allows providing full optical coverage at low+mid resolutions (R$\sim$6,800-12,000) or mid+high
+resolutions (R$\sim$12,000-20,000).
+
+\section{MEGARA Science drivers}
+The scientific interests of the MEGARA Science Team
+can be grouped in two categories, the study of Galactic and extragalactic nebulae and the study of
+point sources with intermediate-to-high surface densities. Among the former our interests include the study of Planetary Nebulae, nearby galaxies, and the high-redshift intergalactic medium
+(IGM) and among the latter Galactic open stellar clusters, resolved stellar populations in Local Group galaxies,
+intermediate-redshift dwarf and starburst galaxies, and high-redshift cluster galaxies are the main subject of
+our research activities. 
+
+The MEGARA Science Team encompasses researchers with a broad range of scientific
+interests belonging to institutions of all members of the GTC Consortium (Spain, Mexico and University of
+Florida). This guarantees that, as a facility instrument, MEGARA will also successfully serve to the interests of
+the members of the GTC astronomical community and their collaborators.
+
+What is common to all our scientific interests with the MEGARA Science Team is the need for an intermediate-
+to-high spectral resolution, in the range R = 6,000 - 20,000. In some cases this need is a mere consequence of
+velocity resolution (kinematics) but in many cases is given by the need of reducing line blending, either directly
+when lines from different elements ought to be measured in stars or via a reduction in the degeneracy of the
+properties of composite stellar populations.
+For more information on topics of interests that we as Science Team plan to address with MEGARA the reader is referred to the project webpage\footnote{\url{http://guaix.fis.ucm.es/megara}} and to the documents posted there.
+
+\section{The Data Reduction Pipeline (DRP)}
+The purpose of the DRP is to provide astronomers scientific quality data,  removing instrumental biases, 
+calibrating the images in physical units and providing a estimation of the associated uncertainties.
+
+The DRP is currently under development, with a design lightweight enough to be 
+used in current laptops and workstations. The language of choice is Python. We
+make extensive use of standard Python packages, such as Numpy, Matplotlib and 
+Pyfits, among others. The DRP architecture will be based on 
+pipelines for other GTC instruments developed by our group, such as EMIR or 
+FRIDA. As in the case of those pipelines, the DRP will be released
+under an open source license. The main block of the pipeline is the Recipe. 
+Each observing mode of MEGARA is processed by
+a Recipe. Each of the available Recipes has a set of requirements 
+(numeric parameters and image calibrations) that need to be fulfilled 
+before processing the results of the observation. 
+
+\section{The MEGARA Observing Preparation Software Suite}
+The MOPSS shall provide the tools needed to assist observers to plan their observations in an optimum way. We present here two of its components, the Exposure Time Calculator and the Image Simulator. Both tools are developed using Python, Numpy and Pyfits, among other packages.
+
+\subsection{The Exposure Time Calculator (ETC)}
+
+This tool is intended to provide estimates on the SNRs and limiting magnitudes for a given
+input exposure time and observational setup with GTC/MEGARA. It shall also estimate the required exposure time to achieve a given SNR on a continuum flux distribution or in an emission line. This tool uses Tkinter to create its graphical user interface (Figure~\ref{ref:figetc}).
+
+\articlefigure{P21_ETC_Screenshot.eps}{ref:figetc}{GUI of the MEGARA ETC (version 0.0.5)}
+
+The limiting magnitudes of MEGARA for continuum in point sources in LCB/MOS modes are 23.2, 23.8, and 24.2 magnitudes in the high resolution, mid resolution and low resolution VPHs, for S/N=5 per spaxel in 1 hour of exposure time (Vega magnitudes). The corresponding limiting line fluxes are 
+0.8$\times$10$^{-18}$, 0.6$\times$10$^{-18}$, and 0.5$\times$10$^{-18}$ cgs units in the same conditions at the central wavelength of the VPHs, assuming a flat continuum of V=30 mag. For the SCB mode, the limiting magnitudes under the same conditions are $\sim$0.2 mag brighter, and the limiting fluxes are higher than the values above by 0.1$\times$10$^-18$ cgs.
+
+\subsection{The Image Simulator}
+
+The MEGARA Simulator tool shall create a set of images simulating the output of the
+MEGARA instrument depending on the observational strategy adopted for observing a given input source. 
+
+The simulator creates a sky+object model, including the different noise sources in the resulting sky+object row-stacked spectra (RSS). It creates the corresponding CCD frame accounting for the characteristics of MEGARA, and simulate the effects associated to the observation that are removed through a typical reduction process: bias, flat, geometrical distortion, non-linear  dispersion, cross-talk, cosmetic defects, cosmic rays. It also accounts for the flux distribution of the input source, the instrument configuration, the atmospheric conditions of the run, and the observation strategy used. 
+The left plot in Figure~\ref{ref:figsim} shows all the steps of image simulation. The right panel shows a simulates sky exposure. Notice the
+distortion along the cross-dispersion axis.
+
+\articlefiguretwo{P21_Simulator_scheme.eps}{P21_Simulated_sky.eps}{ref:figsim}{(Left) Steps of image simulation. (Right) Simulated sky exposure.}
+
+\acknowledgements This project is partly funded by the Spanish Ministry of Science and Innovation (MICINN) under project
+AYA2009-10368, by the Madrid Regional Government through the AstroMadrid Project (CAM S2009/ESP-1496) and by the Spanish MICINN 
+under the Consolider-Ingenio 2010 Program grant CSD2006-00070: First Science with the GTC. 
+This work is being done in the framework of the Moncloa Campus of International Excellence (UCM-UPM).
+
+\end{document}
