@@ -1,0 +1,146 @@
+% This is the main LaTeX file -- Please change only the indicated parts.
+% Copyright 2010, Astronomical Society of the Pacific Conference Series
+\documentclass[11pt,twoside]{book}
+
+\usepackage{asp2010}
+% The following makes the PDF links active:
+%\usepackage[ps2pdf,colorlinks=true,bookmarks,backref,pdfauthor={J. Barnes},pdftitle={ASPCS}]{hyperref}
+
+%%% SUBMISSION DATA -- Please input the following information:
+
+% VOLUME AND SLUG INFORMATION
+\aspvolume{**Volume**} % Insert volume number from ASPCS
+\aspcpryear{**Year**} % Insert year received from ASPCS
+\aspvoltitle{Astronomical Data Analysis Software and Systems XXII} % Insert Full Title in Initial Caps
+\aspvolauthor{Douglas N. Friedel, ed.} % Insert Editors -- See next lines
+% Use a serial comma with 3 or more editors with "and" not "&" between last two names.
+% Follow editors' names with comma and "ed." or "eds."
+
+% COPYRIGHT INFORMATION -- Obtained from the ASPCS
+\aspLCCN{**LCCN**}
+\aspISBN{**ISBN**}
+\aspeISBN{**eISBN**}
+
+% HALFTITLE PAGE
+\asphalftitle{ASTRONOMICAL DATA ANALYSIS SOFTWARE AND SYSTEMS XXII} % IN ALL CAPS
+\aspcoverinfo{Cover image description.\\\mbox{}\\Cover image credit.} 
+% In Mixed Case (Initial Caps)
+
+% Editors:  Please be sure to obtain permission from 
+%   the author and from the publisher if previously published.
+% Suggested acknowledgement wording might include the following, 
+%   depending upon the circumstance:
+%
+%   Image/drawing/photo courtesy of individual or organization 
+%     who created the image.
+%   Referenced in this volume, author name, p. xxx.
+%   By the kind permission of publisher, volume number, author and page number.
+%   Copyright held by name and place.
+
+% TITLE PAGE
+\aspmaintitle{ASTRONOMICAL DATA ANALYSIS SOFTWARE AND SYSTEMS XXII} % IN ALL CAPS
+
+% Conference, Meeting, Workshop, Symposium, Colloquium, etc.
+%\aspmtgtype{Proceedings of a **Type of meeting** held in} 
+%   Meeting type could be conference, symposium, etc.
+%\aspmtgvenue{**Where meeting was held**} 
+%   Spell out fully (Institute, City, State, Country)
+%\aspmtgwhen{**When meeting as held**} 
+%   In 7--11 May 2001 format with no commas
+
+% EDITOR INFORMATION -- Please include Department, Institute, City, State, Country in the affiliation
+\aspfirsteditor{Douglas N. Friedel}
+\aspfirstaffil{Department of Astronomy, University of Illinois, Urbana, IL, USA}
+
+%\aspsecondeditor{}
+%\aspsecondaffil{}
+
+%\aspthirdeditor{}
+%\aspthirdaffil{}
+
+%\aspfourtheditor{}
+%\aspfourthaffil{}
+
+%\aspfiftheditor{}
+%\aspfifthaffil{}
+
+
+\prepareindexes
+
+%\proofmodetrue   % For Proofing:  This command writes the indexed words in the margins
+
+%%% ACTUAL DOCUMENT -- The document begins here
+\begin{document}   % The document begins (only one of these commands should be in this book)
+
+%\marginguide % For Proofing:  Use this line to show margin guides, comment out to hide margin guides
+
+% Uncomment next line if page numbers of front matter in TOC 
+% are ragged right.  If needed, change 1.70em to a larger number.
+%\tocnumwidth{1.70em}
+
+%%% FRONT MATTER
+\pagenumbering{roman}   % For the Document:  Roman page numbers for the frontmatter
+\tocinclude{frontmatter/halftitle}
+\tocinclude{frontmatter/halftitle_verso}
+\tocinclude{frontmatter/titlepage}
+\tocinclude{frontmatter/copyrightpage}
+
+%%% MAIN MATTER -- Commands related to formatting the main matter
+\preparemainmatter
+
+%%% PART NAME -- Change this to the section name that you want:  Part or Session
+\asppartname{Part} 
+% If you want the major section to be called Session then change the previous 
+% to the following command: \asppartname{Session}
+
+%\include{dedication}
+
+%%% TABLE OF CONTENTS -- Commands related to formatting the table of contents
+\tableofcontents
+\clearpage
+
+\tocinsertentry[r]{Foreword}{Foreword~Author}{frontmatter/foreword}   % Table of contents entry for foreword
+\tocinsertentry[r]{Preface}{Preface~Author}{frontmatter/preface}   % Table of contents entry for preface
+%\tocinsertentry[r]{Participants}{}{frontmatter/participants}   % Table of contents entry for participants list
+%\tocinsertentry[r]{Conference Photograph}{}{frontmatter/conf_photo}   % Table of contents entry for conference photo
+
+\mainmatter   % Required for formatting
+\parindent=2em
+
+% The following are dependent on the material in the book
+\part{Community Development}
+\part{Advances in Algorithms}
+\part{Enabling Research}
+\part{Large Scale Computing}
+\part{Astronomy Applications for Handheld Devices}
+\part{Data Reduction Pipelines}
+\part{Databases, Metadata, and Catalogs}
+\part{Tools, Libraries, and Toolkits}
+\part{Observatory Specific Software}
+
+%\part{For Authors}
+
+%\tocinsertentry[r]{ASP Author Template}{Sample~Author1, Sample~Author2, and Sample~Author3}{author/aspauthor}
+%\tocinsertentry[r]{Bib\TeX Test}{}{bibtextest/bibtextest}
+
+%\part{For Editors}
+
+%\tocinsertentry[r]{Editor's Final Checklist}{}{editor_checklist/editor_checklist}
+%\tocinsertentry[r]{Bib\TeX Test}{}{bibtextest/bibtextest}
+\bookblankpage % To remove the page number from the back side of the bibtextest
+
+\tocinsertvspace{5.5ex} % Required to add a bit of space before indexes in ToC
+
+\backmatter
+
+%%% INDEXES
+
+%\printnotationlist   % Print the List of Notations by uncommenting this command
+%\printauthorindex   % Print the Author Index by uncommenting this command
+%\printsubjectindex   % Print the Subject Index by uncommenting this command
+%\printobjectindex   % Print the Object Index by uncommenting this command
+%\printspectralindex   % Print the Spectral Index by uncommenting this command
+
+\tocinclude[r]{backmatter/backmatter}
+
+\end{document}   % The document ends (only one of these commands should be in this book)
