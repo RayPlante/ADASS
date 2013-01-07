@@ -1,0 +1,131 @@
+\documentclass[11pt,twoside]{article}  % Leave intact
+\usepackage{asp2010}
+
+\resetcounters
+
+\bibliographystyle{asp2010}
+
+\markboth{Haase et al}{How to transplant a Large Archive}
+
+\begin{document}   % Leave intact
+
+\title{How to transplant a Large Archive}
+\author{Jonas~Haase$^1$, Christophe~Arviset$^2$, Pedro~Osuna$^2$, and Michael~Rosa$^3$}
+\affil{$^1$ESO/ESA, European Southern Observatory, Karl-Schwarzschild Str 2, 85748 Garching, Germany}
+\affil{$^2$ESA-ESAC,Pobox 78, 28691 Villanueva de la Canada, Madrid, Spain}
+\affil{$^3$ESA, c/o European Southern Observatory, Karl-Schwarzschild Str 2, 85748 Garching, Germany}
+
+\begin{abstract}
+During 2011 and 2012 the European Hubble Space Telescope Archive was moved with all its data and services from its old home at ESO near Munich to to its new one at ESA/ESAC\footnote{\url{http://archives.esac.esa.int}} near Madrid . The successful move of the active HST and Hubble Legacy Archives only took slightly more than a year despite a limited amount of preparation beforehand and a minimum of manpower available for the task.
+This talk describes the logistics of the move, lessons learned and the strategies which have been employed to make the Hubble archives easy to maintain, self-contained and easily portable between environments with sufficient storage capacity and ubiquitous grid processing power.
+
+
+\end{abstract}
+
+\section{Background}
+
+The European Hubble Space Telescope Archive facility had been one of the primary formal deliverables of the Space Telescope - European Coordination Facility. The ST-ECF was instituted in 1984 at the European Southern Observatory near Munich as a common project of the European Space Agency (ESA) and ESO and was discontinued by the end of 2010. 
+At the time of the closure of the ST-ECF, there was some uncertainty about the future location of the European archive, but in early 2011 it was decided that the HST archive should be migrated from its original location at ESO to its current destination at ESA/ESAC near Madrid. The goal was to have a working European HST archive at ESAC by 2012 (\cite{2012ASPC..461..677H}). 
+
+\section{Logistics}
+
+
+The decision was made to move the HST archive in its current form to avoid all unnecessary risks.
+Obviously a working astronomical archive is more than a bunch of disks, so one cannot move it  by putting the archive computers  on a moving van and drive them to Spain.
+The local computing environments, support and storage infrastructure are quite different, so not even transferring the data on its own would work very well this way.
+Since the goal was to move the European HST archive without any interruption of service, it was planned to re-establish the entire archive at its new location and switch over when we were sure that everything was in working well there. The ESO HST archive would remain operational and fully maintained in the meantime. 
+The timeline for the move as it happened can be seen below.
+
+\begin{itemize} \itemsep0pt \parskip0pt \parsep0pt
+%\checklistitemize
+\item Preparatory at ESO and ESAC (early 2011) 
+ \begin{itemize} \itemsep0pt \parskip0pt \parsep0pt
+  \item Early analysis and work plan.
+  \item Build of a development and test archive system at ESAC
+  \item Provisioning of new hardware and infrastructure at ESAC
+  \item Adapting HST Cache software  to new infrastructure and processing tests on the ESAC Grid  
+  \end{itemize}
+\item Migration to ESAC (late 2011 to  summer 2012)
+  \begin{itemize} \itemsep0pt \parskip0pt \parsep0pt
+  \item Setup of Sybase servers  
+   \item Enable normal data and meta-data flow from STScI to ESAC
+  \item Transfer of all static data from ESO to ESAC
+  \item Processing of all dynamic data
+  \item Transfer of archive web pages and web applications
+  \end{itemize}
+\item Commissioning phase at ESAC to demonstrate full equivalence in service and capabilities to the ESO HST archive (spring-summer 2012)
+\begin{itemize} \itemsep0pt \parskip0pt \parsep0pt
+\item Testing of subsystems and front end for science users. 
+\item	Testing of all interfaces to STScI Archive and CADC
+\item	Proving stable ops and capability for regular updates.
+\end{itemize} \itemsep0pt \parskip0pt \parsep0pt 
+\item Opening of the European HST Archive at ESAC  (22. June 2012)
+\begin{itemize}
+\item Switchover of all links to the European archive from ESO to ESA
+\item ESAC assumes full responsibility of the European HST Archive and its operation.
+\end{itemize} \itemsep0pt \parskip0pt \parsep0pt
+\item Dismantling of the HST archive at ESO (fall-winter 2012)
+\begin{itemize} \itemsep0pt \parskip0pt \parsep0pt
+\item ESO archive switched off as backup site (september 2012) 
+\item Deletion of data and removal of hardware
+\end{itemize}
+\end{itemize}
+
+
+The lynchpin of all services in the archive is the Sybase database server. It contains all the local housekeeping tables and the searchable metadata of the archive. 
+It is also the recipient of the overall HST housekeeping  and observation metadata which gets replicated from the STScI. Without this content no processing can happen and no data gets served as it contains the release dates of the proprietary data.
+  
+At ESO the Database services were shared with the ground based observatory on a central server. ESAC treats each archive as a separate entity though and all servers and services of an archive are kept in a silo of its own, tended by a dedicated team of developers.
+A completely new database server needed to be established which meant that new hardware had to be purchased and that the necessary Sybase DBA skills needed to be acquired. Both took time: The hardware delivery got delayed and the setup as main database server took longer than needed, partly due to the first authors limited experience as a database administrator.
+
+Adapting the archive management software was comparatively easy. The current backend system for the HST archive, called the HST Cache (\cite{2010ASPC..434..275H}),  had been developed in cooperation with the CADC in the final years of the ST-ECF in an effort to make the HST archive lightweight and easier to maintain in the future. As the Cache software was to be shared and maintained together with the Canadian HST archive, it was designed with portability in mind. Differences in local environment were encapsulated in the code and are defined in a set of configuration items. Effectively this meant that a new plugin had to be written to adapt to the storage infrastructure used at ESAC and that minor changes were required to interface with the grid at ESAC. 
+
+
+With the archive management infrastructure and sufficient storage capacity in place it was possible to copy and ingest the data from the ESO HST archive.
+The current size of the HST archive exceeds 17 million files and a volume of 70TB (gzip compressed). 
+It was not necessary to transfer the vast bulk (80\%) of the data though, as all datasets from the newer instruments\footnote{ACS,COS,NICMOS,STIS,WFPC2,WFC3} and previews for all data could be recreated from scratch by running the data through production steps in the Cache system. 
+
+In addition to taking care of the housekeeping, the Cache system is an envelope around the HST archive data production pipelines. It contains a number of software agents that ensure that all Hubble Space Telescope products are locally available for rapid data retrieval and are in the best possible state at all times.  
+The Cache includes mechanisms to discover new datasets to insert and also automatically triggers processing of datasets which are missing or benefit from updates.
+It automatically produces raw and calibrated fits files, preview images and extracts metadata.
+
+All science data for the newer HST instruments was reproduced on the ESAC grid in this fashion. 
+Running the ca 3.8 million processing jobs took around 7 weeks, much faster than expected. This was mainly due to the fact that the storage system used at ESAC has a a much higher I/O throughput than systems previously used.
+
+After that initial production period the archive went into maintenance mode and would automatically re-trigger processing of datasets which would be touched by changes in reference files of pipeline software just like the active HST archive at ESO did at the same time.
+
+Transferred over the network were all the static data in the archive, that
+is, basic telescope downlink data, reference
+files and the High Level Science Products, such as the Hubble Legacy
+Archive (HLA).
+The  Cache system contains functions for semi-automated exchange of files between paired sites, taking care of the archiving and consistency checking. In day-to-day operation, the European HST is paired with the Canadian archive, but for the initial seeding of the new archive  it was pointing to the old European site, which made direct comparisons of the holdings easy. 
+Network speeds were quite sufficient to ensure a timely transfer of all static data. Up to twenty data retrieval threads were run at the same time without noticeable drain on network resources at ESO or ESAC. This made it a lot less cumbersome and more secure than shipping of physical disks with data, which would have involved a lot of manual interaction.
+
+Archive consistency was  ensured by running 
+database checks against remote paired archives at ESO and CADC 
+and by running regression tests against the STScI and CADC archive output.
+Regression tests are also run against earlier versions of the same dataset whenever any of the pipeline software changed. When no significant changes are found, all data from instruments which are affected by the software changes will typically be re-processed. This will expose any bugs which have been introduced into the chain, most often for little used instrument modes or other special cases.
+Constantly  running this feedback loop of new software and reference files, processing of all active instruments and discovery and reporting of errors 
+results in a complete and consistent set of HST data. 
+
+In late spring 2012 all web services and static webpages were transferred to the new location, which took slightly longer than expected due to the large amount of dependencies in the front-end software that had to be reestablished and the slow work of migrating web content.
+
+However, on the 22 of June the European HST was officially moved to ESAC and can from now on be accessed from its new URL: 
+
+ \url{http://hst.esac.esa.int}.
+
+\section{Lessons Learned}
+
+\begin{description} \itemsep0pt 
+\item[ Hardware procurement takes time.] Ordering servers etc. should happen as soon as the requirements have been identified.
+\item[ Make sure the right skill set is at hand.] Experience is something you have after you need it and gaining experience in areas like database administration and system tuning takes time. Treasure your local specialists.
+\item[ Flexible, lightweight and comprehensive archive software is a lifesaver] It can be well worth the initial investment to rewrite your old grown systems from time to time. It makes maintenance and changes of infrastructure a lot less painful.
+\item[Automated synchronisation and re-ingestion ] of archive files built into the system are a huge time saver. 
+\item[A closed loop] from introduction of new software and reference files, reprocessing of all data and discovery of resulting errors ensure complete and consistent archive holdings at all times.
+\item[Document dependencies!] Rediscovering dependencies on software libraries, firewall rules, web server setup etc. on a system grown over the years takes a long time, documenting as they happen is a good idea. 
+\end{description}
+
+
+
+\bibliography{O016}
+\end{document}  % Leave intact

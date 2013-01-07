@@ -1,0 +1,139 @@
+\documentclass[11pt, twoside]{article}
+
+\usepackage{asp2010}
+
+\bibliographystyle{asp2010}
+\resetcounters
+
+\markboth{Nicolas KAMENNOFF, Sebastien FOUCAUD, Sebastien REYBIER}{Development of an Astrophysical Specific Language for Big Data Computation}
+
+\begin{document}
+
+	\title{Development of an Astrophysical Specific Language for Big Data Computation}
+	\author{Nicolas KAMENNOFF$^1$, Sebastien FOUCAUD$^2$, and Sebastien REYBIER$^3$}
+	\affil{$^1$ACSEL / Epitech, 14 rue Voltaire 94270 Le Kremlin-Bicêtre, FRANCE}
+	\affil{$^2$National Taiwan Normal University, Department of Earth Sciences, 88~Tingzhou~Road, Sec. 4, Wenshan district, Taipei 11677, Taiwan}
+	\affil{$^3$Software and Mind Innovation, 5 allée de la musique, 95210 Saint-Gratien, FRANCE}
+
+	\begin{abstract}
+		This paper presents general issues emphasized by the new era of Extreme Intensive Data Computation.
+		We have analysed and spotted the first three major problems ; Resource optimization, Heterogeneous Software Ecosystem and Data Transfer.
+		From this point we praise for a middleware solution offering a very modular and maintainable system for data analysis.
+		As computations must be design and described by specialists in astronomy, we aim at defining a friendly specific programming language.
+		Thus research we be able to configure and express their request in a manner abstracted from computer science specific parts.
+		By this way we expected substancial benefits in computing capabilities in data analysis.
+	\end{abstract}
+
+	\section{Context}
+		Astrophysics faces data issues.
+		Resources available to gather them overpass resources dedicated to their analysis.
+		Incoming observatories such as the LSST and SKA will not help to lessen this problem.
+		But it is a challenge that is also addressed to Information Technology field as, considering such amount of public data, issue encountered by astrophysics is one step beyond.
+		Along setting up a new VO in Taiwan (TWEA-DC), we aim at designing an open-source, distributed solution to enhance data analysis capabilities.
+
+	\section{Selected Issues}
+		\label{BLINK_ISSUES}
+		Data analysis issue as multiple facets, thus we start by presenting the ones we consider enabling the most benefit.
+		These problems can be divided into 3 freehand classes ; Resource usage, heterogeneous software ecosystem and data transfer.
+		
+		\subsection{Resource usage}
+			A vast majority of software were (and still are) developed considering that will increase indefinitely.
+			Thus, since twenty years, very few software developers really focus on optimization.
+			Indeed, many focuses on tools, methods and languages that enable to develop quickly new software and tools.
+			Alas, as we are facing a deluge of data, computation resources does not follow the growth of our needs.
+			~~\\
+			Plus, hardware is evolving. due to electro-migration and sub-threshold conduction phenomenons.
+			For a decade now these problems, kept manufacturers from increasing speed of modern processors.
+			So they turn in multiplying processing units, which leads us into the nowadays era of parallel computing, with multi-core and multi-processors CPUs, GPGPUs, APUs and so on...
+			This generalized hardware modification requires an other way of thinking software and new tricky traps.
+			In fact most of currently used software, in every field, does not use all resources available from the computer, or worst, use them badly.
+			\\
+			Creating efficient software, even using high quality framework, is a non trivial activity that requires skills, training a lots of time.
+			As lots of people (from different science including software developers themselves) create parts of their software, most do not have skills or knowledge on low level layers (CPU cache, unfitted containers and data structures, unfortunate habits) and does not exploit all computing resources.
+
+		\subsection{Heterogeneous software ecosystem}
+			Many data analysis software are available for different mainstream tasks, lots of them are standalone services.
+			As many tools are used, a computation often request more than one of them, letting researchers creating scripts, when they do not need to create complete parts of the analysis system.
+			\\
+			The more different software with unsuited communication system possibilities (using files or wordy protocols) you use the more it reduces drastically performances.
+			File are the worst case, as hard drives lower performances in a analysis tools chains, and performance hunting need to consider them as inconsiderate bottle-necks whenever it is applicable.
+
+		\subsection{Data transfer}
+			Virtual Observatories are used to store public data. In this actual configuration people you want to access them needs create their requests using the DAL and gather them on the local storage.
+			So for each computation, data needs to download them, which results in a overhead during the computation, which can severely decrease analysis time consumption.
+			Depending on the local Internet download speed, the VO upload capabilities and usage, manipulating vast amount of data represents a major issue, especially for small research laboratories.
+			\\
+			Thus, waiting for data may quickly become one of the major time consuming task in a computation, which is regrettable.
+
+	\section{State of the Art}
+		Some projects already tries to confront this issue. We have mainly find the SAMP protocol from the IVOA and the FASE project.
+		
+		\subsection{SAMP}
+			SAMP, which stands for Simple Application Messaging Protocol, reflected by the Application Group of Interest from the IVOA consortium.
+			It defines a messaging protocol recommended for being handled by astronomical softwares in order to reduce overhead due to the interoperability between the different analysis tools and file transfer.
+			\\
+			You can access to the detailed presentation from (\cite{Taylor}). The IVOA currently recognised that an attempt to build a monolithic tool is not a rational solution. SAMP then defines how applications should be able to collaborate and share their data.
+			This method is directly related to a part of the data transfer and heterogeneous environment issues discussed above.
+			However, this system does not handle data localization nor interfere with optimization of resource usage from each software.
+			Indeed, as IVOA advocate for an interaction of various software, development specific issues are not addressed. 
+			
+		\subsection{FASE}
+			FASE (\cite{Granet}), stands for Future Astronomical Software Environment.
+			It defines packaging requirements enabling analysis softwares to run onto the OPTICON (Optical-Infrared Co-ordination Network for Astronomy) funded by the european FP7 program (\cite{Fase}).
+			This project aims to enable software to be executed on remote computational resources.
+			\\
+			The presentation of this in (\cite{Grosbol}) emphasize the accessibility to legacy software as well as its capability in enabling user scripting routines.
+			This project relies on the SAMP protocol.
+			In the author knowledge, FASE is still actually a prototype designed to show the feasibility of such a solution.
+
+	\section{Toward a Domain Specific Language}
+		Working toward an unified ecosystem for astrophysical data analysis is mandatory.
+		The SAMP and FASE projects presented above only address parts of the main issues in emphasized in section \ref{BLINK_ISSUES}.
+		If we acknowledge that a monolithic software solution is non-sense, we think that a modular distributed middleware is a valuable solution.
+		Considering the lack of resources available to develop sustainable features and softwares in the field, it is crucial to have a way to share and to maintain the most common parts.
+		Indeed, lots of computations needs the same parts of algorithms, data structures.
+		\\
+		But we also advocate that astronomers should not have to worry about IT technical stuff and programming low level layers.
+		That why we praise for an Domain Specific Language for astronomical data analysis.
+
+		\subsection{Using every resources available}
+			As hardware improvements are reaching a physical and financial problem, it is important to use as best as possible resources we have.
+			If tools and framework able to create easily programs that runs on multi-core CPUs, GPGPUs and APUs.
+			But as we already told, do it in an efficient way can be quite tricky.
+			A framework like what we are working on should be able to select between variations of a single algorithms specialized on different hardware.
+
+		\subsection{Strong Scheduling to create efficient computation pipelines}
+			Resources available can be distant or already used by another computation.
+			One of the major part of the project is to define a strong scheduling system.
+			Such a system will be able to gather resources dynamically, to select them for a specific request based on various characteristics ; Distance from the data, Computation and Memory capabilities, Availability, Reliability and so on...
+			\\
+			As we intend to offer an easy to install system, we have to design a strong scheduling service able to learn and monitor its resources ; Using graph learning, graph mining and decision machine learning.
+			Such a system would also be able to run simulation test.
+			Then on a second part, we are looking for data mining and input categorization that will enable this scheduling service to efficiently choose how to compute request considering either the request and the data to compute.
+
+		\subsection{DSPL for strong modularity and good performances}
+			Dynamic Software Product Line (DSPL) is a new interest in Computer Science \cite{DSPL}.
+			This is a rising paradigm that focus on software adaptation capabilities to runtime instead of forging it during the compilation.
+			This could allow to change a running software to fit the new computation needs and still reaching near optimal performances.
+			\\
+			This way, we can create and adapt computation pipelines on-the-fly which will fulfil users requests as fast as possible.
+		
+		\subsection{In Memory Processing}
+			Input and Output latency is an other disabling bottleneck. For example, getting, storing and updating information on a hard drive.
+			Getting a uniform and strongly scheduled pipelines to complete requested computations will allow us to ensure a maximum of in-memory computation.
+			Random Access Memory (RAM) indeed have performances far more efficient.
+			Thus we can abstract how to apply and fine tuning thus methodology from scientists in other disciplines.
+			
+		\subsection{Next steps and expected roadmap}
+			We are currently work on the first tools, an HTM Quadtree algorithm of CPU, GPGPU and APU architectures as part as a cross-matching service we hope to provide through the TWEA-DC during Spring 2013.
+			Concurrently we are designing the standalone service to set on computation resources and the basic features of the scheduling service.
+			We are also leading a Space Partitioning Survey on GPGPU with American Micro Device (AMD) which should be released next summer.
+			\\
+			As this project aims to design a new simplified programming language for the astronomical research area, it requires a close collaboration between astronomers and IT specialists.
+			We need to start discussing as soon as possible about the DSL specification, format and important first features.
+			A dedicated website and its community tools should be released by the end of the year.
+			We invite you to check as we will publish informations on the standard mailing lists soon.
+
+\bibliography{O18.bib}
+
+\end{document}

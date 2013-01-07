@@ -1,0 +1,111 @@
+\documentclass[11pt,twoside]{article}
+\usepackage{asp2010}
+
+\resetcounters
+
+\bibliographystyle{asp2010}
+%\url{http://cxc.cfa.harvard.edu/}
+ 
+\markboth{Kavelaars}{Outer Solar System Surveys.}
+
+\begin{document}
+
+\title{The Outer Solar System Origins Survey: VO and Software Perspective.}
+\author{JJ Kavelaars$^1$}
+\affil{$^1$Herzberg Institute of Astrophysics, National Research Council of Canada, 5071 West Saanich Road, Victoria  B V8N 4Z1}
+
+\begin{abstract}
+There has been a substantial increase in the number of operating and planned ground (Catalina Sky Survey, Space Watch, SDSS, Canada-France Ecliptic Plane Survey, PanStarrs, SkyMapper, LSST, etc.) and space (eg. NEOSSAT, Euclid) based surveys searching for objects within the solar system. These surveys must attempt to maximize their detection of sources that move through the images and tracking those objects until a firm orbit can be determined, while minimizing the reporting of false positives. These sorts of surveys have also lead to a growing industry of moving object search interfaces at the archive level (such as the CADC's Solar System Object Search). In this presentation I will review the general science cases for moving object surveys (from Kuiper belt to Oort Cloud Objects) and the various innovative (and brute force) algorithms and computing systems that have been developed to crack the moving object detection problem.
+\end{abstract}
+
+\section{The Science}
+Minor planets provide tracers of planetary system formation and evolution. 
+These bodies range from nearly unprocessed material that represents the dust, condensed from the protocolar Nebula to fully differentiated bodies. 
+Much of the material in the asteroid belt appears to be collisional fragments from larger bodies, providing insights into the processes of differentiation.  
+Collisions between asteroids today can result in the appearance of short lived 'cometary' objects, providing laboratories for the direct examination of collisional processing.
+The collisional fragments can evolve, via non-gravitational forces, onto gravitationally unstable orbits and appear as Near Earth Objects, linking the local (Earth) impact hazard to remote collisions in the asteroid belt.
+In the Kuiper belt, the larger objects (down to 10s of km in size) follow a size distribution that indicates these bodies have suffered little collisional evolution. 
+The asteroids and Kuiper belt objects appear on orbits that clearly indicate a long history of gravitation interactions with the major planets of the solar system.
+Cataloguing and studying the minor body belts of the solar system will provide insights into planet formation and evolution.
+
+
+The Trans-Neptunian Objects (TNOs) provides a window into the ancient processes that sculpted the outer solar system.  
+Surveys of the this region to the solar system focus on accumulating catalogues of object orbits and photometric properties.  
+These catalogues constrain questions surrounding ancient, proto-planetary, evolution of the giant planets of the solar system.  
+Surveys such the Deep Ecliptic Survey (DES, KPNO),  Canada France Ecliptic Plane Survey (CFEPS, CFHT), the Palomar Distant Solar System Survey (PDSSS, QUEST)  the  Outer Solar System Origins Survey (OSSOS, CFHT),  and, in some years, the Euclid Space Telescope, provide samples of resonant, scattering, distant and classical TNOs for the purpose of determining the history of giant planet migration in the outer solar system.
+These surveys need to be conducted in ways that minimize detection biases while keeping careful track of the detection, and tracking, characteristics so that any remaining biases in the survey can be modelled out. 
+Due to the faintness of these targets, their discovery and tracking often requires pooling of resources from multiple facilities coupled with careful and sometime computationally intensive analysis.
+
+The proximity of the asteroid and NEO populations make them excellent targets for detailed observation.
+Surveys such as Pan-Starrs, the Catalina Sky Survey, Siding Spring Survey, Space Watch, LINEAR (etc.) provide nearly complete sky coverage looking out against Earth impactors, these surveys are now nearly complete for objects larger than about 1km in diameter.  
+The NEOSSat project, scheduled to launch in December 2012 will provide access to NEOs in interior orbits and those with high impact probability.  
+These surveys are also key to finding a NEO rendezvous target for human exploration. 
+The WISE spacecraft has been able to observe these populations providing extraordinarily complete catalogues of surface property/composition information. 
+Connecting the asteroid and NEO populations to meteors and meteorites provides ground truth, linking ground based reflected light and radar observations to laboratory measurements.
+The wide range of available observational techniques available require extensive interlinking between different catalogues and collections.
+
+
+\section{The OSSOS: an moving source survey.}
+
+The OSSOS is a CFHT Large Program using the CFHT MegaPrime camera and will acquire (starting in February 2013) repeated imaging of 160 square degrees of sky.  
+Each field will be observed approximately 20 times over a two year period with an individual exposure depth limit of $r_{50} \sim 24.5$.  
+The field locations  of the survey are optimized to make this survey highly sensitive to objects in mean-motion resonance with Neptune by focusing on those regions of the sky where such objects have their closest approach to the Sun.   
+OSSOS will detect and track more than 1000 TNOs over the four years of the survey with tracking (followup) observations for Kuiper belt sources included as part of the survey observing plan.
+
+The work flow for discovery of moving sources is straightforward.  
+Multiple observations of a field are compared and sources that moving from one location to the other are located. 
+For OSSOS the analysis workflow for this process is described in \citep{2004MNRAS.347..471P}. 
+Observations acquired at CFHT are sent, at the end of each observing night, via e-transfer to the Canadian Astronomy Data Centre (CADC).   
+An RSS service, provided by CADC via their 'Advanced Search' infrastructure, alerts an analysis pipeline to the arrival of the new observations.  
+This feed then triggers a CADC TAP query on the CFHT imaging collection aggregating information on the newly arrived observations, searching for imaging sequences appropriate for analysis.  
+When new sequences of observations appropriate for searching are found, links to those observations in the CADC archive of CFHT observations are made in the project VOSpace filesystem \citep{2012ASPC..461..367K}.
+An RSS feed running on the VOSpace will then trigger a the submission of a processing on the CANFAR \citep{2009ASPC..411..185G} computing cluster.   
+The CANFAR configuration contains a VM that is maintained by the data analysis team and contains the most current release of the OSSOS Image processing and object search software stack.
+Tracking the efficiency of detection of sources is key and so artificial sources are injected into the imaging at the earliest stage after photometric and astrometric calibration of the images. 
+After observations have been searched for moving sources, a human operator  is notified and a visual confirmation of the detections, including artificial sources, is conducted.  
+The operator is presented with the cutouts of the original images centred around the detected objects, as well as cutouts around previously known moving sources as reported by the IMCCS Skybot \citep{2006ASPC..351..367B} service.
+Sources  confirmed by the operator, and not part of the artificial source list, are recorded as the discovery catalogue.  
+If the sources is previously then previous observations are retrieved from the Minor Planet Centre catalogue.
+The final list of confirmed and linked discoveries is then stored in a SQLite database which can be accessed by the project team via a web service interface. 
+
+%%% Astrometric Solution ***
+Precise astrometric calibration is critical component to orbit prediction.
+The all sky catalogues such as the USNO and 2MASS provide excellent sky coverage.
+Due to proper motion effects and centroid uncertainties their accuracy  is limited to approximately 0.2''.
+The intrinsic precision introduced by these catalogues can be seen in the RMS scatter in the moving source object fits. 
+By constructing an internal catalogue, rooted on 2MASS, from observations of a grid of short exposures covering the search field of interest the RMS scatter of fitted orbits is reduced by a factor of 10.
+These lower uncertainties allow more rapid (essentially proportional to the reduce RMS scatter in the fit) determination of precise orbital elements.
+The astrometric reference catalog is constructed using photometric observations, allowing internal photometric as well as astrometric calibration.
+We anticipate storing the internal catalog is stored in a User Space TAP service provide by the CADC, implementation is TBD. 
+Better astronomy leads to faster results!
+
+
+A key to moving objects surveys is to have an observing sequence that samples the orbital arc sufficiently to enable orbit determination.
+Short ares, of a few hours to days, are sufficient for object detection and provide some discrimination of distance to the source but leave orbital parameter such as semi-major axis and eccentricity degenerate. 
+Longer arcs, of months, are nominally acceptable for nearer sources, such as the asteroid and NEO population, but are still only sufficient to provide provisional values for TNOs.
+To slow moving outer solar system bodies observations, and asteroids close to resonant boundaries, require tracking observations over multiple oppositions.  
+Outer solar system object in the mean motion resonance can require observations over several oppositions are needed to provide precise measurements of the resonant orbital angles.  
+For a survey to provide high precision orbits whose distributions can be accurately interpreted requires commitment to followup observations.  
+OSSOS commits five times more telescope time to tracking source than to discovery observations. 
+
+The Solar System Object Search \citep[SSOS][]{2012PASP..124..579G} tool in the CADC provides a mechanism to discover observations of a solar system object based on orbit, or input ephemeris. 
+We use  SSOS to find external (to OSSOS)  and internal observations of our discovery catalog observations.
+SSOS also harvests meta-data from the CADC TAP service,  including followup observations from the  OSSOS, this tool is how appropriate observations for tracking are located.
+When a new moving sources is reported by the detection pipeline a RSS feed on the VOSpace storage alerts the tracking pipeline.
+The tracking pipeline executes a query on the SSOS tool, runs source extraction on the images returned by the query and the conducts trial links between the detected sources and the newly detected sources. 
+The tracking tool also, periodically, queries the SSOS service to determine if new observations have been added or if improved orbits allow new observations to be found.
+Given the large number sources that will be discovered by OSSOS, and the need for well understood selection criterion, a substantively automated system is required.
+
+\section{Conclusion}
+
+Moving object surveys make use of a considerable number of modern software/system techniques.
+These tools enable efficient and precise consistent analysis of survey observations. 
+The OSSOS uses  imaging for the CFHT MegaPrime camera, the 2MASS and SDSS catalog services, SkyBot moving sources service and the SSOS tool in a  cloud computing and storage environment provided by CANFAR.
+The OSSOS science goals are being enable by the services of the VO and open source science computing.
+
+
+\acknowledgements 
+
+\bibliography{I07}
+
+\end{document}
