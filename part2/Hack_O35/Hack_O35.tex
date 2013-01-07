@@ -58,6 +58,6 @@ These conventions, including use of alternate WCS based on Paper I standards, ha
 \section{Summary}
 This paper describes how several FITS proposals and conventions have been merged together to support the use of multiple distortion model components in a single FITS image.  All HST ACS and WFC3 imaging data retrieved from the HST archive gets processed using this package to update their headers based on this merged convention. Anyone requesting HST images from these cameras will no longer have to rely on external reference files to apply the distortion to coordinates or to correct the image itself. This convention has been implemented as a Python package for general use (namely, PyWCS) despite the fact that it has been developed using HST data, while being used for image alignment in the STWCS and DrizzlePac packages.  The full model can then be extracted from an image as a headerlet as a record of the correction or for use by someone else with the same image.  This results in an environment where the distortion model of an image can be treated as any other calibration, without need for external files, and in an efficient manner which leverages current and proposed FITS conventions to provide a complete accurate distortion model for each image.
 
-\bibliography{O35}
+\bibliography{../../editor}
 
 \end{document}
