@@ -1,0 +1,202 @@
+% This is the aspauthor.tex LaTeX file
+% Copyright 2010, Astronomical Society of the Pacific Conference Series
+
+\documentclass[11pt,twoside]{article}
+\usepackage{asp2010}
+
+\resetcounters
+
+\newcommand{\ac}{A\&C}
+
+\bibliographystyle{asp2010}
+
+\markboth{Mann et al.: (The editors of \em{Astronomy and Computing})}{Astronomy and Computing }
+
+\begin{document}
+
+\title{Astronomy and Computing: a new journal for the astronomical computing community}
+\author{
+%Sample~Author1$^1$, Sample~Author2$^2$, and Sample~Author3$^3$
+%\affil{$^1$Institution Full Address for Author1}
+%\affil{$^2$Institution Full Address for Author2}
+%\affil{$^3$Institution Full Address for Author3}
+%
+Robert~G.~Mann$^1$, Alberto~Accomazzi$^2$, Tam{\'a}s Budav{\'a}ri$^3$, Christopher Fluke$^4$, Norman Gray$^5$, William O'Mullane$^6$, Andreas Wicenec$^7$, Michael Wise$^8$\\
+\centering{(The editors of {\em Astronomy and Computing\/})}
+\affil{$^1$Institute for Astronomy, University of Edinburgh, Royal Observatory, Blackford Hill, Edinburgh, EH9 3HJ, UK}
+\affil{$^2$Harvard-Smithsonian Center for Astrophysics, 60 Garden Street, Cambridge, MA 02138, USA}
+\affil{$^3$Department of Physics and Astronomy, The Johns Hopkins University, 3400 North Charles Street, Baltimore, MD 21218, USA}
+\affil{$^4$Centre for Astrophysics and Supercomputing, Swinburne University of Technology, 1 Alfred Street, Hawthorn, 3122, Australia}
+\affil{$^5$School of Physics and Astronomy, University of Glasgow, Glasgow, G12 8QQ, UK}
+\affil{$^6$European Space Agency,
+European Space Astronomy Centre,
+E-28691 Villanueva de la Ca\~nada, Madrid, Spain}
+\affil{$^7$International Centre for Radio Astronomy Research, University of Western Australia, 35 Stirling Highway, Crawley, WA 6009, Australia}
+\affil{$^8$ASTRON (Netherlands Institute for Radio Astronomy), P.O. Box 2, 7990 AA Dwingeloo, The Netherlands}
+}
+
+\begin{abstract}
+We introduce {\em Astronomy and Computing\/} (\ac), a new, peer-reviewed journal for the expanding community of people whose work focuses on the application of computer science and information technology within astronomy, rather than on astronomical research {\em per se\/}. \ac\ arose from a BoF discussion at the ADASS XX conference in Boston, and from the ADASS community will come many of the people who will write, referee and read the papers published in \ac. In this paper,\footnote{A longer version of this material can be found in the editorial from the inaugural issue of \ac, available from \url{http://arxiv.org/abs/1210.8030}.} we outline the aims and scope of \ac, together with a summary of the types of paper we envisage it publishing and the criteria that will be used to referee them, and we invite the ADASS community to help us develop these in more detail and to shape a journal that serves the astronomical computing community well.
+
+\end{abstract}
+
+\section{Introduction: from ADASS BoF to journal}
+
+ADASS attendees do not need to be told that computing is an increasingly important part of astronomy, nor that its importance is not adequately reflected within the astronomical literature. In an attempt to address the latter situation, the publications BoF at the Boston ADASS in 2010 included a session to discuss whether there was a need for a journal for the astronomical computing community. 
+As input to that discussion, two of the present authors sent a set of abstracts from the previous year's ADASS conference to the editors of several {\em a priori\/} likely journals and asked each whether they would fall within scope for their journal. The responses \citep[summarised by][]{graymann} varied slightly between the main astronomical journals that hold most weight for this community, but the key finding from this exercise was that, unsurprisingly, these journals view technical computational material as a means to an end -- the justification of a scientific result -- rather than an end in itself. 
+
+This result was borne out by personal experiences expressed in the BoF, where a number of people noted that they tended to publish mainly/only in the ADASS proceedings, because of the difficulty of finding getting technical computational papers published anywhere else. 
+\cite{graymann} presented three main reasons why the community should no longer make do
+ with such a publication regime, centred on the unrefereed
+proceedings of an annual conference: (i)~a conference presents a
+single submission deadline per year, forcing authors to publish when
+the opportunity arises, not when the status of their project merits
+it; (ii)~peer review can provide a quality threshold, and the
+existence of guidelines will lead authors to justify and elaborate
+their arguments to a greater degree, producing more comprehensive
+papers; and (iii)~a journal~-- and especially a predominantly online
+journal~-- will not have the space constraints that bedevil conference
+proceedings, and so will allow authors to give their material the
+detail it requires, and set it properly into its broad context of
+previous work in a way impossible in a brief conference
+report.
+
+The BoF concluded that there was a need for an astronomical computing journal -- by a show of hands, a strong majority of those present indicated that they would submit to, referee for and read such a journal, should one exist -- but there was an equally strong conclusion that the community lacked the resources needed to establish such a journal. Some time after the BoF, its organisers (NG and RGM) were approached by Elsevier, starting a long series of discussions which has resulted in the launch of a new journal, {\em Astronomy and Computing,\footnote{\ac\ website: \url{ http://www.elsevier.com/locate/ascom}} \/} with an Editorial Board comprising the authors of this paper, and a Science Advisory Board that features a number of senior figures from the astronomical computing community.\footnote{See \url{http://www.journals.elsevier.com/astronomy-and-computing/editorial-board/}} 
+
+In what follows we outline the aims and scope of \ac\ and the types of paper that we imagine it will publish. The new journal is, however, intended to serve the requirements of the astronomical computing community, and we strongly encourage the ADASS community to engage actively with the \ac\ board members to help ensure that it does meet those needs in an effective manner. 
+
+\section{Aims and Scope}
+
+As the journal's web page  says, {\em "\ac\ will focus on the broad area between
+astronomy, computer science and information technology. The journal
+aims to publish the work of scientists and (software) engineers in all
+aspects of astronomical computing."\/} The web page also includes the following list of example topics:
+\begin{itemize}
+\setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+
+\item Scientific software engineering
+
+\item Computational infrastructure
+
+\item Computational techniques used for astrophysical simulations
+
+\item Visualization
+
+\item Data management, archives, and virtual observatory
+
+\item Data analysis, data mining and statistics
+
+ \item Data processing pipeline and automated systems
+
+\item  Semantics, data citation and data preservation
+
+
+\end{itemize}
+
+This list is illustrative only: the defining feature of an \ac\ paper will be that it focuses on computation in support of astronomy, not on the astronomical results obtained using computation. 
+The detailed definition of this identity and shape will emerge in the first years of the
+journal's existence, and we anticipate having more back-and-forth
+during that period between authors, reviewers and editors than is usual in an
+established journal, as we collectively work out the ideal structure
+and content of an article in this area, and collectively identify what
+is and what is not in scope for the field.
+
+
+
+\section{Types of article}
+\label{types}
+
+Perhaps the best way of describing the journal's large scope is to
+outline the range of articles that we anticipate accepting for publication,
+and what we believe to be necessary or distinctive about them.  We
+can identify at least the following broad categories, without necessarily being
+committed to this set indefinitely.
+
+The most typical \textbf{research (or standard) articles} will describe an
+innovative piece of work in the area, whether this
+is a distinct project~-- a new algorithm, or system, or approach, or
+application~-- or a major change in an established system, such as the
+restructuring of an existing pipeline.  We expect to see a broad range
+of articles in this category, but there are some particular species we
+can identify from the outset.
+
+One of these cases will be the \textbf{software release
+articles}.   While a new major release of a piece of software, or a
+library, will be a natural point at which to consider an \ac\ article,
+it is not simply the increment of the version number that will
+warrant publication, but perhaps the intellectual contributions of a
+new algorithm, or the educative experience of a new software
+engineering process, or novel technology. While \ac\ will be a natural home for a `code
+paper', it will not act as a repository for sigificant bodies of code itself: code snippets may
+be included in papers, and short pieces of code submitted as supplementary material for the online edition of the journal, but  we anticipate that a software release that is
+worth an \ac\ article will be one that is also worth being professionally packaged and
+released at a stable URL, preferably with the source being additionally
+available in a public code repository (and we will suggest some suitable
+repositories in the author instructions).  
+
+Similarly,  \ac\ will be a natural home for
+\textbf{data release articles}, provided that these have significant technical content.  
+The journal's scope gives the authors of such an
+article the space to be as technically detailed as they
+could want in their description of the development and delivery of a
+new dataset, and might be a natural counterpart to a simultaneous
+astronomy article in another journal,  concentrating on 
+science results.
+
+We encourage the community to contribute \textbf{notes on practice}.  These
+will be accounts of `lessons learned' in the course of trying, and either
+succeeding or failing with, some technology or apparently promising
+approach. They are likely to describe the first,
+or at least an early, application of a technology to a problem in
+astronomy, or an application at a scale or in a fashion that represents
+a significant commitment of intellectual energy.  It should
+be irrelevant whether the application of that technology succeeded or
+failed: in either case, the project should be analysed in enough
+detail, and at such a level of abstraction, that it would allow a reader to
+understand \emph{why} the project succeeded or failed, and to be able
+to use the information to predict with some confidence whether a
+similar planned project would be likely to succeed
+or fail in its turn. We expect those would most typically be technical
+reasons, but the social, administrative or technical context is 
+important as well: a particular innovation may fail simply because it was
+applied in the wrong context, while it may succeed elsewhere.
+
+Such a paper is arguably a type of \textbf{review article}.  As well as the
+obvious analogues of review articles from other disciplines, we
+imagine we will see similar, broadly pedagogical, accounts of
+technologies applied to astronomical problems.  We will also consider 
+\textbf{white papers}, describing the
+`state of the nation' in some respect, or plans for the future.  These must be authoritative and well-grounded in
+expertise, and will only be accepted in response to an invitation from
+the editorial board; the same goes for review articles, and we encourage authors
+interested in writing one of either of these article types to contact an appropriate
+editor to discuss the scope and approach of their proposed paper. All other types
+of paper will be accepted as unsolicited contributions, although the editors are
+always available to discuss possible papers with authors. 
+
+As a form rather than a category, we will also introduce the
+\textbf{target article}, which is familiar in some other academic
+disciplines but not well known in the physical sciences. From time to time -- possibly
+only once or twice a year -- the editors will identify that a submitted paper 
+provides one side to an argument that is underway within the community, and will,
+with the authors' permission, make the paper a {\em target article\/}. They will then solicit 
+substantial commentaries on it (of perhaps one or two pages in length) and then 
+publish in a single package the original article, its commentaries, and a final summary
+from the target article's authors, thereby presenting a broader coverage of the topic
+than would have resulted from the original paper alone.  
+
+Finally, we expect to publish occasional \textbf{special issues}, which may collect together
+papers resulting from a specific conference, relating to a particular major project, marking some 
+substantial milestone or event, or which, through some other connection, comprise a coherent whole 
+that is greater than the sum of its parts.  
+%As above, we look forward to proposals from the community.
+
+
+
+\acknowledgements We thank Jos{\'e} Stoop, the Publisher for Radiation and Space at Elsevier, for her work in turning \ac\ from an idea into a journal.
+
+\bibliography{O22}
+
+\end{document}
