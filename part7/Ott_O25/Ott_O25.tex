@@ -6,7 +6,7 @@
 
 \resetcounters
 
-%\bibliographystyle{asp2010}
+\bibliographystyle{asp2010}
 
 \markboth{Ott, S.}{Herschel Data Processing Development}
 
@@ -28,14 +28,14 @@ We will summarise the lessons learned during those ten years of Herschel data pr
 \end{abstract}
 
 \section{Introduction}
-The Herschel Space Observatory, the fourth cornerstone mission in the ESA science program, was launched 14th of May 2009. With a 3.5~m telescope, it is the astronomical space telescope with the largest mirror ever launched. Herschel's three instruments (HIFI, PACS, and SPIRE) perform photometry and spectroscopy in the 55 - 671~micron range, previously unexplored ranges of the electromagnetic spectrum. Opening a new window to the universe Herschel delivers top-quality science for the astronomical community since the start of the routine phase in October 2009 (Pilbratt, 2010).
+The Herschel Space Observatory, the fourth cornerstone mission in the ESA science program, was launched 14th of May 2009. With a 3.5~m telescope, it is the astronomical space telescope with the largest mirror ever launched. Herschel's three instruments (HIFI, PACS, and SPIRE) perform photometry and spectroscopy in the 55 - 671~micron range, previously unexplored ranges of the electromagnetic spectrum. Opening a new window to the universe Herschel delivers top-quality science for the astronomical community since the start of the routine phase in October 2009 \citep{Pilbratt10}.
 
-In the original plans for the Herschel (at this time FIRST) science ground segment the FIRST Integrated Network and Data Archive System (FINDAS) was considered to be the heart of the whole ground segment (Bauer et al., 1998). FINDAS, later to be transformed into the Herschel Common Science System (HCSS, Riedinger, 2009), was expected to provide astronomers with raw data and a assortment of software tools to carry out data reduction. No scientific meaningful ‘data products’ were to be generated and delivered. Following the realisation that in order to increase the scientific return of an observatory mission a data analysis system and scientifically useful products must be provided to the astronomical community additional resources were made available to implement a freely distributable data processing system. The goal was to provide a single `cradle to grave' data analysis system which supports the needs of both the project team and the general astronomical community starting from early instrument level tests, covering pre-launch system operational verification tests, check-out and performance verification phase, operations, post operations and finishing with the population of the Herschel legacy archive.
+In the original plans for the Herschel (at this time FIRST) science ground segment the FIRST Integrated Network and Data Archive System (FINDAS) was considered to be the heart of the whole ground segment \citep{bauer98}. FINDAS, later to be transformed into the Herschel Common Science System \citep[HCSS]{Riedinger09}, was expected to provide astronomers with raw data and a assortment of software tools to carry out data reduction. No scientific meaningful ‘data products’ were to be generated and delivered. Following the realisation that in order to increase the scientific return of an observatory mission a data analysis system and scientifically useful products must be provided to the astronomical community additional resources were made available to implement a freely distributable data processing system. The goal was to provide a single `cradle to grave' data analysis system which supports the needs of both the project team and the general astronomical community starting from early instrument level tests, covering pre-launch system operational verification tests, check-out and performance verification phase, operations, post operations and finishing with the population of the Herschel legacy archive.
 
 The Herschel Data Processing system is a major project with over 200~contributors distributed all over the globe. With 3.4~million lines of code (MLoC) (2.5~MLoC in the main branch, and 0.9~MLoC for unit tests) the code comprises 75~\% of the complete HCSS. The remaining 25\% is mainly code to support the Versant database and uplink.
 
 \section{The original plans -- what went well}
-The Herschel Science Centre, the HIFI, PACS and SPIRE Instrument Control Centres (ICCs) and NHSC jointly manage and contribute to the Herschel Data Processing System (Ott, 2010). Delivery based contracts were awarded to the Instrument Control Centres to provide software to generate scientific useful data products and data visualisation and reduction tools.
+The Herschel Science Centre, the HIFI, PACS and SPIRE Instrument Control Centres (ICCs) and NHSC jointly manage and contribute to the Herschel Data Processing System \citep{ott10}. Delivery based contracts were awarded to the Instrument Control Centres to provide software to generate scientific useful data products and data visualisation and reduction tools.
 
 The Herschel data processing development followed HCSS' concept of smooth transition between the various project phases and an iterative and incremental (agile) development cycle. The data processing development management team was supported by a system architecture group (for technical advice), a users' group (for user feedback) and several Configuration Control Boards (CCBs) steering the day-to-day development.
 
@@ -95,18 +95,6 @@ As management also needs to ensure compliance with non-functional requirements l
 
 \acknowledgements The author would like to thank all dedicated contributors to the Herschel Data Processing System who worked on calibration, coding, documentation, management, management support, pipeline operations, quality assurance, quality control, testing and tutoring (http://herschel.esac.esa.int/Acknowledgements\_files/sheet004.htm). The success of the Herschel Data Processing System is your success.
 
-%\bibliography{aspauthor}
-\begin{references}
-
-\reference Bauer, O.H., Estaria, P., King, K.J.\ et al. 1998, Proc.\ of SPIE, 3349, 312
-
-\reference  Riedinger, J.R. 2009, ESA Bulletin 139, 14
-
-\reference Pilbratt, G.L., Riedinger, J.R., Passvogel, T. et al.\
-2010, A\&A, 518, L1
-
-\reference Ott, S.\ 2010, ASP Conference Series, 434, 139
-\end{references}
-
+\bibliography{../../editor}
 
 \end{document}
