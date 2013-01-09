@@ -1,33 +1,25 @@
-\documentclass[11pt, twoside]{article}
-\usepackage{asp2010}
-
-\usepackage{color}
-\usepackage{amsfonts}
-\usepackage{graphicx}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Scott J. Badenhorst, Sarah Blyth and Michelle M. Kuttel}{Acceleration of automated HI source extraction.}
+\markboth{Badenhorst, Blyth, and Kuttel}{Acceleration of automated HI source extraction.}
 
-\begin{document}
- %
 
-\title{Acceleration of automated HI source extraction} 
+\title{Acceleration of Automated HI Source Extraction} 
 
 \author{Scott~J.~Badenhorst, Sarah~Blyth, and Michelle~M.~Kuttel
 \affil{Computer Science Department, University of Cape Town, South Africa}}
 
+\aindex{Badenhorst, S. J.}
+\aindex{Blyth, S.}
+\aindex{Kuttel, M. M.}
 
 \begin{abstract}
 We aim to enable fast automated extraction of neutral hydrogen (HI)  sources from large survey data sets. 
 This requires both handling the large files ($>$5 TB) to be produced by next-generation interferometers and acceleration of  the source extraction algorithm. 
 We develop an efficient multithreaded implementation of the A'Trous wavelet reconstruction algorithm, which we evaluate against the serial implementation in the DUCHAMP package.  We also evaluate three memory management libraries (Mmap, Boost and Stxxl) that enable processing of data files too large to fit into main memory, to establish which provides the best performance. 
 \end{abstract}
-
-
-
 
 \section{Introduction}
 
@@ -45,8 +37,6 @@ A solution  is to use memory management libraries, such as Mmap\citep{mmap2012},
 that simulate contiguous memory swop space, but dynamically allocate space on disk.
 Memory management libraries also attempt to amortise slow disk access with read-ahead heuristics to prefault pages into memory in parallel with computation.
 
-
-
 \section{Methods}
 
 We used OpenMP to parallelise the  A'Trous wavelet reconstruction, both with and without separable filtering.  Within the DUCHAMP software, filters are built up from 1D components and are hence inherently separable.  Implementation of separable filtering was constrained to the biggest filter in DUCHAMP: the  5x5x5 B3-Spline.
@@ -57,8 +47,6 @@ a separate data structure to prevent overwrites as the filters overlap.  All  3D
 The majority of the data sets used for testing comprise high resolution HI observations of nearby galaxies obtained from the THINGS survey \citep{Walter2008}.
 In addition, six synthesized observations were generated and populated with white noise to provide additional data points for evaluation, including the three largest data sets. As run-time is dependent on numerous variables ---  data set volume, the number of scales convolved  and the level of smoothing required ---
 we compared the average time of  individual components of the wavelet reconstruction algorithm, rather than the total time.  Runs were performed on a quad-core Intel i7-2600 with 8GB RAM.
-
-
 
 Three popular memory management libraries were evaluated on Ubuntu 11.04: Mmap, Boost \citep{Gaz2012} and the Stxxl \citep{Dementiev2005}.
 MMap is a low level system call for memory mapping, allowing for simple memory management.
@@ -72,15 +60,13 @@ For a linear access pattern, the OS is requested to aggressively draw pages into
 The three implemented memory management libraries were timed for sequential and random memory access as well as their performance when coupled to the filter convolution process.  This assessment  was repeated for all dataset sizes, reaching a maximum dataset size of 3GB (18GB heap space required). 
 
 
-
- 
 \section{Results and Discussion}
   
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.385]{O01_f1}
-  \includegraphics[scale=0.385]{O01_f2}
-  \caption{Convolution component of A'Trous Wavelet reconstruction.  (a) Time for a single sequential filter pass (averaged over all scales).  (b) Parallel speeds-ups relative to our own single CPU version achieved for standard 3D (MP) and separable (SF) filtering.} %(c) Time break down for the separable filtering algorithm (sequential). (d) Run times for various memory access patterns coupled with memory management libraries. }
+  \includegraphics[scale=0.385]{part2/Badenhorst_O01/O01_f1}
+  \includegraphics[scale=0.385]{part2/Badenhorst_O01/O01_f2}
+  \caption{Convolution component of A'Trous Wavelet reconstruction.  (a) Time for a single sequential filter pass (averaged over all scales).  (b) Parallel speeds-ups relative to our own single CPU version achieved for standard 3D (MP) and separable (SF) filtering.}
   \label{fig:H2}
 \end{figure}
 
@@ -88,8 +74,8 @@ The three implemented memory management libraries were timed for sequential and 
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[scale=0.55]{O01_f3}
-  \caption{Run-times of the various memory access patterns and  memory management library combinations.} %Shown are random access (quick select method), linear access (the updating of coefficients after a filter pass) and the wavelet reconstruction filter convolution. }
+  \includegraphics[scale=0.55]{part2/Badenhorst_O01/O01_f3}
+  \caption{Run-times of the various memory access patterns and  memory management library combinations.} 
   \label{fig:H3}
 \end{figure}
 
@@ -98,12 +84,11 @@ Our sequential implementation outperforms the original DUCHAMP algorithm for all
 
 Separable filtering (green line) achieves a 3x speed-up relative to our 3D filtering implementation  through improved memory access. 
 For all sequential implementations, data sets between  120 and 240 million voxels in size run faster than expected. This effect is likely the results of
-larger data sets benefiting from caching effects, until  the point that system memory becomes saturated, whereupon paging to disk decreases performance.   %Hmmm,
+larger data sets benefiting from caching effects, until  the point that system memory becomes saturated, whereupon paging to disk decreases performance.
 
 Multithreading  of the 3D filter convolution  with OpenMP (Fig\ref{fig:H2}B) shows close to ideal speed up across a range of data sets:
 on a quad-core CPU, the 2 and 4 thread implementations achieve 1.9x and 3.5x respectively.  The 8-thread implementation shows a 4.2x speedup, a 20\% increase over 4-threads due to  Intel's hyper-threading technology which simulates 8 logical cores. 
 Multi-core parallelism in conjunction with separable filtering (Fig\ref{fig:H2}B) shows more significant speed up, with the 4 and 8-thread implementations approaching 5.7x and 7.6x. 
-
 
 There is large disparity between the Mmap and Boost memory management libraries (Fig\ref{fig:H3}): the Boost library performs  1.3 - 2x slower than Mmap, indicating higher overheads for a random page faults.   The Stxxl library (not shown) was 4-6x slower than Boost and Mmap in our tests.
 For small data sets, all libraries are a order of magnitude slower than our sequential implementation (which can only run on smaller data sets due to heap size limits) as overheads are associated with
@@ -120,8 +105,4 @@ We have demonstrated that multi-core CPU parallelism with OpenMP and reduction i
 for the filter convolution component of the A'Trous wavelet reconstruction algorithm. Additionally, preliminary investigation demonstrated
 that standard disk access is to slow for high performance astronomical computing even with the aid of memory management: faster disks or parallel access is required.  Future work will revist memory management coupled with external memory solutions capable of saturating the IO bus.
 
-\bibliography{../../editor}
-
-\end{document}
-
-
+\bibliography{editor}

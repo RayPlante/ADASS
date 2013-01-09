@@ -1,31 +1,20 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-
-\usepackage{color}
-\usepackage{amsfonts}
-
-\usepackage{graphicx}
-
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Richard J. Baxter, Patrick Marais, and Michelle M. Kuttel}{GPU-based Acceleration of PSV Calculations}
+\markboth{Baxter, Marais, and Kuttel}{GPU-based Acceleration of PSV Calculations}
 
-\begin{document}
- %
 
-\newcommand\vecc[1]{\vec{#1}}
 
 \title{GPU-based Acceleration of Radio Interferometry Point Source
 Visibility Calculations in the MEQtrees Framework} 
 
 \author{Richard~J.~Baxter, Patrick~Marais, and Michelle~M.~Kuttel
 \affil{Computer Science Department, University of Cape Town, South Africa}}
+\aindex{Baxter, R. J.}
+\aindex{Marais, P.}
+\aindex{Kuttel, M. M.}
 
 \begin{abstract}
   
@@ -97,12 +86,12 @@ robust and general equation based on \emph{Jones matricies}
 \citep{Smirnov2011}. RIME calculates the signal $V_{pq}$ that two
 interferometer antennae, $p$ and $q$, will measure over period of time ($t_0,
 t_1$)  and  frequency range $(\nu_0, \nu_1)$, given a number of simulated
-sources, $\vecc{S}$, as:
+sources, $\vec{S}$, as:
 
 \begin{equation}
-V_{pq} = \sum_s^{\vecc{S}}
+V_{pq} = \sum_s^{\vec{S}}
 \mbox{sinc}\frac{\Delta\Psi}{2}\mbox{sinc}\frac{\Delta\Phi}{2}
-B\exp\left({-2\pi i\frac{\nu}{c}(\vecc{u}_{tpq}\vecc\sigma_s)}\right)
+B\exp\left({-2\pi i\frac{\nu}{c}(\vec{u}_{tpq}\vec\sigma_s)}\right)
 \label{eq:RIME}
 \end{equation}
 where
@@ -113,9 +102,9 @@ $\Delta\Psi = \mbox{arg }V_{pq}(t_1,\nu_m) - \mbox{arg
 $\mbox{and } t_m = (t_0 + t_1)/2, \nu_m = (\nu_0 + \nu_1)/2 $
 
 Here $\mbox{arg}$ denotes the complex argument or complex angle,
-$\vecc{u}_{tpq}$ is the relative distance between $p$ and $q$ at time $t$,
+$\vec{u}_{tpq}$ is the relative distance between $p$ and $q$ at time $t$,
 $B_s$ is the polarised cross-correlated intensity of source $s$ and
-$\vecc\sigma_s$ is the spherical location of source $s$. $\Delta\Psi$ and
+$\vec\sigma_s$ is the spherical location of source $s$. $\Delta\Psi$ and
 $\Delta\Phi$ are smearing factors accounting for measurements over a
 \emph{range} of time and frequency rather than at a single point and single
 frequency value.\citep{Smirnov2011, Taylor1999}. Our principle
@@ -200,8 +189,8 @@ GeForce GTX470.
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale = 0.25]{O02_f1}
-\includegraphics[scale = 0.30]{O02_f2}
+\includegraphics[scale = 0.25]{part2/Baxter_O02/O02_f1}
+\includegraphics[scale = 0.30]{part2/Baxter_O02/O02_f2}
 \end{center}
 
 \caption{ Left:~The data cube is reduced over the source dimension into a 2D
@@ -252,7 +241,4 @@ effects and RFI interference models, the CUDA PSV could become a useful tool
 for fast point source visibility calculations.
 
 
-
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

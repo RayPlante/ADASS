@@ -1,21 +1,14 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Cardiel, Jim\'{e}nez-Esteban, Alacid, Solano, and Aberasturi}{TESELA:
-blank fields for astronomical observations}
+\markboth{Cardiel et al.}{TESELA: Blank Fields for Astronomical Observations}
 
-\begin{document}
 
 \title{Searching for Deeper Blank Fields in the sky with TESELA}
-\author{N.~Cardiel$^1$, F.M.~Jim\'{e}nez-Esteban$^{2,3,4}$,
-A.~Cabrera-Lavers$^{5,6}$ and J.M.~Alacid$^{2,3}$
+\author{N.~Cardiel,$^1$ F.M.~Jim\'{e}nez-Esteban,$^{2,3,4}$
+A.~Cabrera-Lavers,$^{5,6}$ and J.~M.~Alacid$^{2,3}$
 \affil{$^1$Departamento de Astrof\'{\i}sica y CC.\ de la Atm\'{o}sfera,
 Facultad de CC.\ F\'{\i}sicas, Avenida Complutense s/n, E-28040 Madrid, Spain}
 \affil{$^2$Centro de Astrobiolog\'{\i}a (INTA-CSIC), Departamento de
@@ -28,6 +21,11 @@ Engineering, Avenida del Valle~34, E-28003 Madrid, Spain}
 Tenerife, Spain}
 \affil{$^6$GTC Project, E-38205 La Laguna, Tenerife, Spain}
 }
+
+\aindex{Cardiel, N.}
+\aindex{Jim\'{e}nez-Esteban, F. M.}
+\aindex{Cabrera-Lavers, A.}
+\aindex{Alacid, J. M.}
 
 \begin{abstract}
 TESELA is a Virtual Observatory tool which provides a simple interface that
@@ -52,7 +50,6 @@ available through the TESELA interface which, in addition, provides galactic
 extinction information from the NASA/IPAC Infrared Science Archive. 
 \end{abstract}
 
-%------------------------------------------------------------------------------
 \section{Previous work}
 
 In \citet[][hereafter paper~I]{2011MNRAS.417.3061C} \citep[see also
@@ -66,7 +63,6 @@ stars in the sky, and is complete up to magnitude $V=11.5$~mag
 Observatory tool that provides a simple interface that allows the user to
 retrieve the list of blank fields avaiable near a given position in the sky.
 
-%------------------------------------------------------------------------------
 \section{Recent improvements}
 
 More recently \citep[][hereafter paper~II]{2012arXiv1209.4861J} we have
@@ -93,7 +89,7 @@ which for many years has been in use at the Isaac Newton Group of Telescopes.
 
 \begin{figure}
 \centerline{%
-\includegraphics[angle=-90,width=0.90\textwidth]{P08_f1.eps}}
+\includegraphics[angle=-90,width=0.90\textwidth]{part2/Cardiel_P08/P08_f1.eps}}
 \caption{Comparison of two images taken with OSIRIS+GTC. They are \mbox{2-s
 exposure} time images observed with the Sloan $r$ filter, exhibiting a
 background level of$~\sim 30\,000$~ADUs, of a deep blank field from our
@@ -108,7 +104,7 @@ visible in the Azzaro's field).}
 
 \begin{figure}
 \centerline{%
-\includegraphics[angle=-90,width=1.00\textwidth]{P08_f2.eps}}
+\includegraphics[angle=-90,width=1.00\textwidth]{part2/Cardiel_P08/P08_f2.eps}}
 \caption{Distribution in the celestial sphere, using galactic coordinates, of
 the deep blank fields with $m_{\mbox{\scriptsize th}}$ 15, 16, 17, and 18 mag 
 (upper-left, upper-right, lower-left, and lower-right panel, respectively).}
@@ -116,7 +112,6 @@ the deep blank fields with $m_{\mbox{\scriptsize th}}$ 15, 16, 17, and 18 mag
 \end{figure}
 
 
-%------------------------------------------------------------------------------
 \section{The procedure to determine Deep Blank Fields}
 
 Given the huge number of stars in the USNO-B Catalogue, in this work we have
@@ -146,7 +141,6 @@ all the deep blank fields with $m_{\mbox{\scriptsize th}}=18$~mag in order to
 confirm their validity before transferring them to the operation staff of the
 Gran Telescopio Canarias.
 
-%------------------------------------------------------------------------------
 \section{Using the Catalogue}
 
 The new Catalogue is accessible through TESELA, the Virtual Observatory tool
@@ -164,7 +158,6 @@ extinction parameters determined from The Galactic Dust Reddening and
 Extinction utility of the NASA/IPAC Infrared Science Archive, making use of the
 data from \citet{1998ApJ...500..525S}.
 
-%------------------------------------------------------------------------------
 \acknowledgements This work was partially funded by the Spanish MICINN under
 the Consolider-Ingenio 2010 Program grant CSD2006-00070: First Science with the
 GTC. This work was also supported by the Spanish Programa Nacional de
@@ -179,7 +172,5 @@ Science Archive, which is operated by the Jet Propulsion Laboratory, California
 Institute of Technology, under contract with the National Aeronautics and Space
 Administration.
 
-%------------------------------------------------------------------------------
-\bibliography{../../editor}
+\bibliography{editor}
 
-\end{document}

@@ -1,19 +1,16 @@
-% This is the O7.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 \bibliographystyle{asp2010}
-\markboth{Seo-Won Chang and Yong-Ik Byun}{Seo-Won Chang and Yong-Ik Byun}
+\markboth{Chang and Byun}{Improvement of Time-Series Photometry}
 
-\begin{document}
 
-\title{Improvement of Time-Series Photometry based on Multi-Aperture
-Indexing and Spatiotemporal de-trending}
+\title{Improvement of Time-Series Photometry Based on Multi-Aperture
+Indexing and Spatiotemporal De-trending}
 \author{Seo-Won Chang and Yong-Ik Byun}
 \affil{Department of Astronomy and University Observatory, Yonsei University, Seoul, Korea}
+
+\aindex{Chang, S-W.}
+\aindex{Byun, Y-I.}
 
 \begin{abstract}
 High precision time-series photometry is often very difficult with ground-based surveys of large field of view.  Occasional failures of photometry due to contaminations, non-uniform cloud passages, and subtle PSF variations across the field are the major causes.  We developed a new photometry algorithm based on multi-aperture measurements and indexed aperture correction followed by spatio-temporal de-trending process.  This turns out to be a powerful method to improve overall photometric accuracy without the need to throw out many outlying data points.  The performance of our new method is demonstrated with MMT survey of M37 and HAT-South survey data.  The de-trending alone is also a very useful tool in removing systematics from light curves, as we demonstrate with a subset of light curves from LINEAR database.  Our method removes serious systematic variations that are shared by light curves of nearby stars, while true variabilities are preserved.  This greatly improves the usefulness of archived light curve data.
@@ -40,7 +37,7 @@ We explain the concept of multi-aperture indexing and how it works with simple e
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[scale=0.45]{O07_f1.eps}
+\includegraphics[scale=0.45]{part2/Chang_O07/O07_f1.eps}
 \caption{Example of multi-aperture indexing method for a star with a passing asteroid.  Differential magnitudes between apertures (solid line) are compared with mean trends for stars of similar brightness (dotted lines), and the difference is indexed.  When there is a signature of contamination (case $c$), different apertures and aperture correction term are automatically applied.}
 \end{center}
 \label{Fig1}
@@ -61,7 +58,7 @@ In order to reduce temporal systematics in time-series photometry, we use the PD
 
 \begin{figure}[!t]
 \begin{center}
-\includegraphics[scale=0.42]{O07_f2.eps}
+\includegraphics[scale=0.42]{part2/Chang_O07/O07_f2.eps}
 \caption{Examples of archival or traditionally processed light curves (black) and de-trended light curves (red) for MMT/Megacam, HAT-South, and LINEAR data, respectively.  The last panel exhibits the light curve folded by 0.5228 days (RRab type star).}
 \end{center}
 \label{Fig2}
@@ -73,6 +70,4 @@ In summary, there is a room to further improve the quality of the astronomical a
 
 \acknowledgements We thank the MMT/M37 survey and HAT-South research teams for the kind provision of raw image data.  The LINEAR data was gratefully taken from the on-line database SkyDOT.  This research was supported by Basic Science Research Program through the National Research Foundation of Korea (NRF) funded by the Ministry of Education, Science and Technology (2012R1A1A2006924).
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

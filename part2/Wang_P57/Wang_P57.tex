@@ -1,23 +1,19 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Wang \& Brunner}{Quantifying Systematic Effects}
-
-\begin{document}
+\markboth{Wang and Brunner}{Quantifying Systematic Effects}
 
 \title{Quantifying Systematic Effects on Galaxy Clustering}
-\author{Y.~Wang$^1$, and R.~J.~Brunner$^1$ \\
-\affil{$^1$Department of Astronomy, University of Illinois}}
+\author{Y.~Wang and R.~J.~Brunner \\
+\affil{Department of Astronomy, University of Illinois}}
+
+\aindex{Wang, Y.}
+\aindex{Brunner, R. J.}
 
 \begin{abstract}
-We present techniques for quantifying the effects of observation systematic effects on galaxy clustering measurements from large photometric surveys. These techniques can leverage both pixelized and point-based systematics and can be quickly calculated for large data volumes and as a function of observational tiling and Galactic coordinates. The actual measurements are performed via a correlation function either in pixel-space or real-space. As a demonstration, we present a measurement of the systematic effects of seeing, extinction, and stellar density on the SDSS DR7 photometric galaxy clustering signal. %We conclude with a discussion of how this work can be extended to future surveys such as the DES and LSST.
+We present techniques for quantifying the effects of observation systematic effects on galaxy clustering measurements from large photometric surveys. These techniques can leverage both pixelized and point-based systematics and can be quickly calculated for large data volumes and as a function of observational tiling and Galactic coordinates. The actual measurements are performed via a correlation function either in pixel-space or real-space. As a demonstration, we present a measurement of the systematic effects of seeing, extinction, and stellar density on the SDSS DR7 photometric galaxy clustering signal.
 \end{abstract}
 
 
@@ -28,21 +24,11 @@ Galaxy clustering is generally measured by either the two-point correlation func
 \section{Systematic Effects}
 A number of different systematic effects can bias measurements of the clustering of galaxies. First, there are several, purely observational effects, such as the impact of atmospheric turbulence on our measurements, which is quantified in the seeing, and the sky brightness, which will change throughout an observation and impact magnitude measurements. A second type of systematic effect comes from our lack of knowledge of the distribution of gas and dust in our Galaxy. This material obscures and reddens extragalactic sources, and while we can estimate this impact, there is a limit in our detailed understudying of its spatial distribution. Finally, we have another systematic that relates to our ability to cleanly distinguish stars from galaxies, which is dependent on both observational effects like seeing, but also in the quality of the software used to process the data, particularly in crowded, low Galactic latitude fields where source blending becomes significant. In the rest of this paper, we will focus on measuring and mitigating the effect of seeing, extinction, and stellar mis-classification on galaxy clustering measurements.
 
-%
-%The measurement of the galaxy clustering is now feasible by using data from the large data surveys that provide millions of galaxies within a major portion of sky.
-%
-%However, at large scales, the accuracy of clustering measurement could be influenced by the incorrect internal system calibrations or external contaminations. Previous studies~\citep{Scr, Ross11} show that the clustering amplitude due to the possible systematics (stars, Galactic extinction, seeing) is about at scale 1$^\circ$, and those samples contains 1 to 2 million galaxies. Therefore, a thorough systematic study of the newly published large data set (contains tens millions of selected galaxies) is necessary to determine the potential contaminants that could cause extra fluctuations in the galaxy clustering.
-%
-%As a demonstration of our systematic measurement, we use galaxy catalog from Sloan Digital Sky Survey Data Release Seven to test on the correlations of it to the possible contaminants mentioned above.
-%
 \section{Methodology}
 
 The basic idea behind our approach is to directly measure either the clustering signal of a particular systematic, \textit{i.e.}, an autocorrelation of the systematic, or its impact on the galaxy clustering signal, \textit{i.e.}, a cross-correlation~\cite[see, \textit{e.g.},][]{Scranton02}. To quantify stellar contamination, we can simply use the stars themselves in place of galaxies and measure the stellar auto-correlation or the star-galaxy cross-correlation function in the same manner as we do for the galaxy clustering measurement itself. On the other hand, some systematics are measured at discrete intervals, such as seeing, which is assumed to not vary significantly over either a pointed observation or a short time period for a drift scan observation. Another example is the Galactic extinction, which is only characterized only to a finite angular scale of approximately 6\arcmin. In either of these two cases, we have to adopt an alternative approach where we measure the clustering signal by using a pixelized representation of the particular systematic or the galaxies themselves.
 
-%\subsection{Pixelization}\label{pixelization}
 For discrete systematics, there are two pixelization schemes that we explored. The first, SDSSPix, was developed by Tegmark, Xu, and Scranton and works in the native SDSS $\lambda/\eta$ coordinates~\citep{Stoughton02}. SDSSPix creates a specialized, pseudo-rectangular, approximately equal-area pixels across the sphere. The second pixelization scheme, HEALPix~\citep{Gorski05} creates twelve equal-area curvilinearly base-patches, from which pixels are generated to higher resolutions with either a RING or NESTED numbering scheme. The results demonstrated in this paper make use of a modified SDSSPix scheme~\citep{Ross06}, due to its natural alignment with the SDSS observational data.
-
-%\subsection{Cross-Correlation Measurements}
 
 To constrain the effect of a particular systematic, we measure the cross-correlation function between galaxies and a systematic as a function of the systematic value (\textit{e.g.}, seeing or extinction). We cut our galaxy sample to those observational areas that are minimally affected by the systematic (\textit{e.g.}, by only keeping areas with seeing less than some value). For a discrete systematic, we need to use pixelized galaxy counts and systematic values, of course the pixel size must be smaller than the scale of the systematic. In this approach, we determine the seeing, the extinction, and the number of galaxies and stars for each pixel in the survey footprint. We next calculate the over/under density for each pixel $i$ for both galaxies and all systematics:
 \begin{equation}
@@ -56,7 +42,7 @@ By using these quantities, we can estimate the angular, pixelized cross-correlat
 \end{equation}
 If the distance between $i$ and $j$ are within the given angular bin, $\Theta_{ij}$ is equal to one, otherwise it is zero. On the other hand, we can also estimate a traditional point-to-point cross-correlation for the stars and galaxies, which can be more easily compared to the galaxy-galaxy auto-correlation function.
 
-\articlefigurefour{DR7_17to21seetest.eps}{DR7_17to21redtest.eps}{DR7_starGalCross.eps}{DR7_crossall.eps}{crossall}
+\articlefigurefour{part2/Wang_P57/DR7_17to21seetest.eps}{part2/Wang_P57/DR7_17to21redtest.eps}{part2/Wang_P57/DR7_starGalCross.eps}{part2/Wang_P57/DR7_crossall.eps}{crossall}
 {Systematic testing for galaxies with  with  $17 < r \le 21$ from the SDSS DR7. Top left: The galaxy-seeing cross-correlation functions cut to different seeing values. Top right: The galaxy-reddening cross-correlation functions cut to different extinction values. Bottom left: The galaxy-star cross-correlation functions for galaxies and foreground stars. Bottom right: The cross-correlation functions for these three systematics with galaxies compared to the galaxy auto-correlation function.}
 
 \section{Application}
@@ -68,6 +54,4 @@ The last systematic we examine in this paper is the effect of stellar contaminat
 
 In the bottom right panel of Figure~\ref{crossall}, we compare the cross-correlation functions of these systematics with galaxies to the galaxy auto-correlation function. This plot shows that for scales less than a few degrees, the intrinsic galaxy clustering signal greatly exceeds the contaminating effect of any systematic we have tested. For additional information on these techniques, see~\cite{Scranton02, Ross11, Wang13}. Finally, we note that the techniques described in this paper are developed independent of a specific survey. Thus for other wide-field optical surveys such as the Dark Energy Survey and the Large Synoptic Survey Telescope, we will quantify and mitigate the effects of systematics effects by adopting the tests presented in this paper.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

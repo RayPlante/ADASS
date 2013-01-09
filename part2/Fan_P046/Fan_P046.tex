@@ -1,21 +1,16 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
 
-\documentclass[11pt,twoside]{article}
-\usepackage{amsmath}
-\usepackage{asp2010}
 \resetcounters
-%\bibliographystyle{asp2010}
 
-\usepackage{threeparttable}
-\markboth{Dongwei Fan and Tam\'as Budav\'ari}{Efficient Catalog Matching with Dropout Identification}
+\markboth{Fan and Budav\'ari}{Efficient Catalog Matching with Dropout Identification}
 
-\begin{document}
 
 \title{Efficient Catalog Matching with Dropout Identification}
-\author{Dongwei Fan$^{1,2}$ and Tam\'as Budav\'ari$^2$}
+\author{Dongwei~Fan$^{1,2}$ and Tam\'as~Budav\'ari$^2$}
 \affil{$^1$National Astronomical Observatories, Chinese Academy of Sciences}
 \affil{$^2$Department of Physics and Astronomy, The Johns Hopkins University}
+
+\aindex{Fan, D.}
+\aindex{Budav\'ari, T.}
 
 \begin{abstract}
 Base on the Zones Algorithm, we introduced a new catalog matching method which involves the sky coverage of catalogs. It benefits the matching between the catalogs with little overlapping area. Objects which were not inside the intersection area would be skipped to accelerate the matching. Moreover, the new method leads to a fast way to detect dropouts, i.e., the missing components that are in the observed regions of the sphere but did not reach the detection limit. These often provide invaluable insight into the spectral energy distribution of matched sources but rarely available in traditional associations.
@@ -34,7 +29,7 @@ ZoneID=\lfloor{\frac{\delta + 90^\circ}{h}}\rfloor
 
 \begin{figure}
 \begin{center}
-\plottwo{P046_f2.eps}{P046_f3.eps}
+\plottwo{part2/Fan_P046/P046_f2.eps}{part2/Fan_P046/P046_f3.eps}
 \caption{{Left figure shows how to use intervals to imitate a hexagon on the sphere. In each zone that the sky coverage overlapped, the interval is a little larger than the sky coverage.}{Showdow in the right figure demonstrates how to use intervals to imitate the intersection of two footprints.}\label{P046_f2}}
 \end{center}
 \end{figure}
@@ -78,7 +73,7 @@ crossmatching & 00:06:48& 00:05:25\\
 
 \begin{figure}
 \begin{center}
-\plottwo{P046_f4.eps}{P046_f5.eps}
+\plottwo{part2/Fan_P046/P046_f4.eps}{part2/Fan_P046/P046_f5.eps}
 \caption{{The left figure shows the new method's time consumption trends with area. When intersection area reduce, time consumption of cross matching goes down too.} {The right figure plots the performance of GR3 AIS catalog dropout identification. When intersection area goes down, time consumption of dropout identification also goes down.}\label{P046_f4}}
 \end{center}
 \end{figure}
@@ -86,6 +81,5 @@ crossmatching & 00:06:48& 00:05:25\\
 \section{Conclusion}
 With the footprint information of catalog, we built a new method on the Zones Algorithm to constraint crossmatching only in catalogs' overlapping area. Benefited by omitting the objects which were outside the intersection region, the crossmatching got a speedup. In order to get the intersection of two footprints, we approximate footprint by intervals of pre-divided zones. This process consumes lots of time, but only have to do once. The advantage is significant; the intervals intersection is much simpler and faster than the directly intersection calculation between footprints. Bases on this new method, the footprint intersection intervals and matched objects could be applied to rapidly identify dropout objects.
 
-\bibliographystyle{asp2010}	% (uses file "plain.bst")
-\bibliography{../../editor}		% expects file "myrefs.bib"
-\end{document}
+\bibliographystyle{asp2010}
+\bibliography{editor}

@@ -1,8 +1,3 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
@@ -10,12 +5,13 @@
 
 \markboth{Feng and Brunner}{Probabilistic Galaxy Classification}
 
-\begin{document}
-
 \title{New Probabilistic Galaxy Classification in Large Photometric Surveys}
 \author{Feng Liang$^1$ and Robert J. Brunner$^2$
 \affil{$^1$Department of Statistics, University of Illinois}
 \affil{$^2$Department of Astronomy, University of Illinois}}
+
+\aindex{Liang, F.}
+\aindex{Brunner, R. J.}
 
 \begin{abstract}
 A number of different projects have or soon will map the sky in part to better constrain the cosmological parameters driving the evolution of our Universe. One of the most important and least quantified steps in this process is the task of efficiently identifying galaxies within these large data sets. Generally, simple parameter cuts have been used, for example the SDSS cut on the difference between a PSF and model magnitude in the r-band. While this approach can be efficiently implemented and is easy to understand, it has been shown to be ineffective at brighter magnitudes than originally suspected. Thus, we are applying powerful statistical techniques such as support vector machine and non-parametric bayesian clustering to this challenge with the goal of developing a probabilistic galaxy classification that can be reliably extended to fainter magnitudes, thereby increasing the precision of future cosmological measurements.
@@ -27,28 +23,9 @@ While our goal is to develop new star/galaxy classification techniques for the d
 
 In the left panel of Figure~\ref{sdsssg}, we present the normalized, two-dimensional histogram of the distribution of $r$-band PSF magnitude versus the $r$-band concentration index for sources in the SDSS that were obtained in good observing conditions (the quality of observations can strongly affects the concentration measure). In this image, the official SDSS classification of 0.145 is shown in the magenta dashed line. To the left of this line is the stellar distribution, which is quite concentrated at bright magnitudes (smaller values of the PSF magnitude). To the right are the galaxies, which are more spread out since galaxies are more extended. 
 
-\articlefiguretwo{good-data-class.eps}{good-data-slice.eps}{sdsssgo}{\textit{Left:} The concentration-magnitude diagram showing the official SDSS classification line in magenta, with sources to the left being classified as stars, while sources to the right are  classified as galaxies. \textit{Right:} The concentration density plots for objects with $r \in [19.5, 20.0]$ and $r \in [21.0, 21.5]$, showing how the different mixtures vary with magnitude.\label{sdsssg}}
-
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=3.5in]{good-data-class.pdf}
-%\end{center}
-%\caption{Concentration-magnitude diagram for regions of good observing conditions. The dashed line is the official SDSS classification line, where the left is classified as stars and the right is classified as galaxies.}
-%\end{figure}
+\articlefiguretwo{part2/Liang_P55/good-data-class.eps}{part2/Liang_P55/good-data-slice.eps}{sdsssgo}{\textit{Left:} The concentration-magnitude diagram showing the official SDSS classification line in magenta, with sources to the left being classified as stars, while sources to the right are  classified as galaxies. \textit{Right:} The concentration density plots for objects with $r \in [19.5, 20.0]$ and $r \in [21.0, 21.5]$, showing how the different mixtures vary with magnitude.\label{sdsssg}}
 
 At fainter magnitudes, where the light measures are lower signal-to-noise, the two distributions begin to merge, complicating the classification. This is more clearly shown in the right panel of Figure~\ref{sdsssg}, where we have taken a slice through the two-dimensional histogram shown in the left panel of  Figure~\ref{sdsssg}, and plotted the distribution of all sources in two PSF magnitude ranges against concentration index. For the brighter sources, there are clearly two distributions. However, at fainter magnitudes, the two distributions are less cleanly separated and even show mixing beyond what might be expected simply from being lower signal-to-noise data. This reinforces the need for a more robust, probabilistic classification approach.
-
-%\begin{figure}
-%\begin{center}
-%\includegraphics[width=3.5in]{good-data-slice.pdf}
-%\end{center}
-%\caption{Concentration density plots for objects with $r \in [19.5, 20.0]$ and $r \in [21.0, 21.5]$.}
-%\end{figure}
-
-%\section{Data}
-%briefly describe SDSS data. Its location. why SDSS? What does SDSS use? Stripe 82 truth data for classification
-
-%For figure, could show something about S/G being a problem in SDSS, or something from the work I have done with an undergrad on fitting a mixture model to the SDSS technique.
 
 \section{A New Probabilistic Classification}
 
@@ -94,11 +71,4 @@ To finish up the Bayesian hierarchical model, we can add priors on other paramet
 \[ J (Q) = \int Q(\Theta) \log \frac{P(\Theta \mid X_{1:n}) P(X_{1:n})}{Q(\Theta)} d \Theta. \]
 If we divide the parameter into blocks, $(\Theta_1, \dots, \Theta_l)$, and approximate the posterior by $ Q(\Theta) = Q_1(\Theta_1) \times  \dots \times Q_l(\Theta_l)$; we can apply a coordinate-decent algorithm to sequentially solve $Q_1, \dots, Q_l$.
 
-%\acknowledgements
-
-%Any thanks to funding agencies.
-
-\bibliography{../../editor}
-
-
-\end{document}
+\bibliography{editor}
