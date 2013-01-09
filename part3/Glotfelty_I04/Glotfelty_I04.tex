@@ -1,20 +1,15 @@
-% This is the aspauthor.tex LaTeX file 
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article} 
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Kenny J. Glotfelty}{One Hop: In The Right Direction}
+\markboth{Glotfelty}{One Hop: In The Right Direction}
 
-\begin{document}
 
 \title{One Hop: In The Right Direction} \author{Kenny J. Glotfelty}
 \affil{Smithsonian Astrophysical Observatory, 60 Garden Street, Cambridge, MA 01238, USA}
 
+\aindex{Glotfelty, K. J.}
 \begin{abstract}
 
 Accelerated by the ease of access to data triggered by growing archive
@@ -45,8 +40,6 @@ in general, insufficient.
 
 
 \end{abstract}
-
-
 
 \section{Introduction}
 
@@ -188,7 +181,7 @@ particular example of this phenomena and highlight the problems it presents.
 \section{Case Study}
 
 
-\articlefigure{I04_f2.eps}{FigCSCView}{CSCView, TOPCAT, and SAOImage ds9 are all SAMP enabled applications and can exchange certain types of information via the hub and then service various requests from peer clients.  Since CSCView can retrieve the references to data products in the Chandra Source Catalog, it can SAMP send that information to ds9, which can then directly retrieve the file (via HTTP).  However, dax, a CIAO ds9 plug-in, may not be able to fully operate on the remotely retrieved data due the way ds9 transforms it.}
+\articlefigure{part3/Glotfelty_I04/I04_f2.eps}{FigCSCView}{CSCView, TOPCAT, and SAOImage ds9 are all SAMP enabled applications and can exchange certain types of information via the hub and then service various requests from peer clients.  Since CSCView can retrieve the references to data products in the Chandra Source Catalog, it can SAMP send that information to ds9, which can then directly retrieve the file (via HTTP).  However, dax, a CIAO ds9 plug-in, may not be able to fully operate on the remotely retrieved data due the way ds9 transforms it.}
 
 
 The Chandra Source Catalog, CSC,  includes source properties and 
@@ -237,7 +230,7 @@ appropriate SAMP message type (MTYPE): image.load.fits and table.load.fits.
 The result is that CSCView can instruct ds9 to directly load a Chandra dataset
 by sending it a URL which ds9 retrieves and consumes.
 
-\articlefigure{I04_f1.eps}{FigOne}{Simplified view of a Chandra dataset.  The primary science product is the event file which contains multiple FITS extensions:  one event table with multiple rows and one or more Good Time Interval (GTI) tables associated with each active CCD.  There are several other auxiliary files that are required to do analysis such as the aspect solution (pointing history), detector mask file defining the active regions, and various other instrument level products that describe the configuration of each detector element.}
+\articlefigure{part3/Glotfelty_I04/I04_f1.eps}{FigOne}{Simplified view of a Chandra dataset.  The primary science product is the event file which contains multiple FITS extensions:  one event table with multiple rows and one or more Good Time Interval (GTI) tables associated with each active CCD.  There are several other auxiliary files that are required to do analysis such as the aspect solution (pointing history), detector mask file defining the active regions, and various other instrument level products that describe the configuration of each detector element.}
 
 
 So far, this all works very well.  However, Chandra data, like all X-ray 
@@ -423,17 +416,8 @@ However, developers should think through some of these points
 during the design phase of the tools and clearly understand what
 restrictions or limitations it will impose down-stream.
 
-
-
-
-
-
 \acknowledgements{This project is funded by NASA contract NAS8-03060,
 Chandra X-ray Center.}
 
 
-
-
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}
