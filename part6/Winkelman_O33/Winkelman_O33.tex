@@ -1,21 +1,14 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
-%\bibliographystyle{asp2010}
-
-\markboth{Author1, Author2, and Author3}{Author's Final Checklist}
-
-\begin{document}
+\markboth{Winkelman and Rots}{An Observation-Centric View of the Chandra Data Archive}
 
 \title{An Observation-Centric View of the Chandra Data Archive}
-\author{Sherry Winkelman$^1$ and Arnold Rots$^1$}
-\affil{$^1$Smithsonian Astrophysical Observatory}
+\author{Sherry Winkelman and Arnold Rots}
+\affil{Smithsonian Astrophysical Observatory}
 
+\aindex{Winkelman, S.}
+\aindex{Rots, A.}
 
 \begin{abstract}
 The Chandra Data Archive is more than Chandra data. It also includes proposal abstracts, observation parameters and a bibliography.  In addition, there are logs and databases which record user interactions with archive.  It's the data which tie these seemingly disparate snapshots of the archive together.  By examining the interdependence between the various facets of the archive we can better visualize how our data is being utilized within the astronomical community and perhaps discover new or improved ways to serve the science needs of the community.
@@ -29,7 +22,7 @@ The Chandra Data Archive\footnote{\url{http://cxc.harvard.edu/cda/}} (CDA) plays
 \label{sec:Time2FirstDownload}
 
 \begin{figure}[top]
-\plotone[height=1.75in]{./O33_f1.eps}
+\plotone[height=1.75in]{part6/Winkelman_O33/O33_f1.eps}
 \caption[FirstDownload] 
   { \label{fig:FirstDownload}
 The plot on the left shows the total percentage of observations downloaded for the first time.  The purple curves are public data which had a proprietary period of: $\leq 6$ months in light purple; 12 months in medium purple; and no proprietary time in dark purple. The green curves are proprietary data with a proprietary period of 12 months in light green and $\leq 6$ months in dark green.  The plot on the right shows that the release of some data is anticipated by the astronomical community.  The symbols represent downloads during the first week of being public in blue squares; the second week of being public in orange diamonds; the third week of being public in yellow triangles; and the fourth week of being public in green triangles.
@@ -45,7 +38,7 @@ This result has led us to explore providing a subscription service announcing im
 \section{Downloads and Aggregates}
 
 \begin{figure}[here]
-\plotone[height=3.25in]{./O33_f2.eps}
+\plotone[height=3.25in]{part6/Winkelman_O33/O33_f2.eps}
 \caption[DownloadsVsPubs]
  { \label{fig:DownloadsVsPubs}
 These scatter diagrams show the number of downloads versus the number of publications for public Chandra data.  The top plot highlights the Chandra Deep Fields, the C-Cosmos Survey, and a variety of long observing sequences which were observed in 2-4 chunks of time and released as a group.  The bottom plot focuses on the long observing sequences highlighted in the top plot. }
@@ -58,7 +51,7 @@ The top diagram in Figure~\ref{fig:DownloadsVsPubs} clearly demonstrates the suc
 \section{Descriptive Data Profiles}
 
 \begin{figure}[here]
-\plotone[height=1.5in]{./O33_f3.eps}
+\plotone[height=1.5in]{part6/Winkelman_O33/O33_f3.eps}
 \caption[WordCloud]
  { \label{fig:WordCloud}
 Word cloud composed of the proposal keywords assigned by PI and the keywords in papers linked to an observation of Abell 1835.
@@ -79,7 +72,3 @@ In summary, taking an observation-centric view of an archive reveals new trendin
 
 \acknowledgements 
 This work is supported by NASA contract NAS8-03060.
-
-%\bibliography{O33.bib}
-
-\end{document}

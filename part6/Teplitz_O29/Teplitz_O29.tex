@@ -1,8 +1,3 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
@@ -10,11 +5,13 @@
 
 \markboth{Teplitz et al.}{IRSA Expansion}
 
-\begin{document}
-
 \title{Enhancing Science Return During the Rapid Expansion of IRSA}
-\author{H. I. Teplitz, S. Groom, W. Roby, and the IRSA Team
+\author{H.~I.~Teplitz, S.~Groom, W.~Roby, and the IRSA Team
 \affil{Infrared Processing and Analysis Center, Caltech, Pasadena, CA 91105, USA}}
+
+\aindex{Teplitz, H. I.}
+\aindex{Groom, S.}
+\aindex{Roby, W.}
 
 \begin{abstract}
   The NASA/IPAC Infrared Science Archive is undergoing a rapid
@@ -43,15 +40,15 @@ mission holdings, through image and catalog search tools.
 
 IRSA is currently undergoing a major expansion —- the largest in our
 history -— from holdings dominated by the Infrared Astronomical Satellite
-(IRAS; \citep{neugebauer84}) and the Two Micron All Sky Survey
-(2MASS; \citep{skrutskie06}) to a much broader
+\citep[IRAS]{neugebauer84} and the Two Micron All Sky Survey
+\citep[2MASS]{skrutskie06} to a much broader
 portfolio. Recent additions include:
 
 \begin{itemize}
 
 \item The Heritage Archive of the Spitzer Space Telescope (SHA; \citep{werner04}): the first time a
   Great Observatory archive has transitioned to long-term curation; 
-\item The Wide-Field Infrared Survey Explorer (WISE; \citep{wright10}): NASA’s mid-IR all-sky survey, destined to
+\item The Wide-Field Infrared Survey Explorer \citep[WISE]{wright10}: NASA’s mid-IR all-sky survey, destined to
   join IRAS and 2MASS as a benchmark of IR astronomy; 
 \item NASA's Planck Archive, with an emphasis on foreground research
   -- Planck \citet{planck11} has spatial resolution, sensitivity and coverage
@@ -69,15 +66,12 @@ many holdings, we will increase functionality and lower the cost of
 the services. This rapid expansion gives us the opportunity to greatly
 increase the science return of our services and datasets.
 
-
-
-
 \section{The Rapid Expansion}
 
 \begin{figure}[t]
 
 \centering
-\includegraphics*[height=2in,scale=0.6]{O29_f1.eps}
+\includegraphics*[height=2in,scale=0.6]{part6/Teplitz_O29/O29_f1.eps}
 \caption{The expansion of IRSA holdings by year.  Shaded  bars for
   2012 onward are projected volume based on current projection.}
 
@@ -114,7 +108,7 @@ support questions grow, as the easy ones have already been answered.
 \begin{figure}[t]
 
 \centering
-\includegraphics*[height=2in,scale=0.6]{O29_f2.eps}
+\includegraphics*[height=2in,scale=0.6]{part6/Teplitz_O29/O29_f2.eps}
 \caption{Schematic of IRSA's software infrastructure. We keep a clean 
 separation of the search and presentation layers, and we utilize a
 configurable interface (``Firefly''; see Roby et al. in this volume).}
@@ -169,7 +163,7 @@ deciphering faint sources.
 \begin{figure}[t]
 
 \centering
-\includegraphics*[height=2in,scale=0.6]{O29_f3.eps}
+\includegraphics*[height=2in,scale=0.6]{part6/Teplitz_O29/O29_f3.eps}
 \caption{Screen capture of IRSA's Finder Chart tool, version 2.0 beta,
 which allow cross-comparison of images from multiple data sets.}
 
@@ -209,6 +203,4 @@ to reach almost 700 TB in holdings by 2014.  IRSA enables rich and
 diverse science, with applications across all the strategic areas of
 NASA astrophysics.  
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

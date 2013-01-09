@@ -1,18 +1,17 @@
-\documentclass[11pt,twoside]{article}
-\usepackage{hyperref}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Graham Bell, Tim~Jenness, and A.~Agarwal}{Crab: a dashboard system for monitoring archiving tasks}
+\markboth{Bell, Jenness, and Agarwal}{Crab: A Dashboard System for Monitoring Archiving Tasks}
 
-\begin{document}
-
-\title{Crab: a dashboard system for monitoring archiving tasks}
+\title{Crab: A Dashboard System for Monitoring Archiving Tasks}
 \author{Graham~Bell, Tim~Jenness, and A.~Agarwal
 \affil{Joint~Astronomy~Centre, 660~N.~A`oh\={o}k\={u}~Place, Hilo, HI, 96720, U.S.A.}}
+
+\aindex{Bell, G.}
+\aindex{Jenness, T.}
+\aindex{Agarwal, A.}
 
 \begin{abstract}
 In order to make the large number of cron jobs
@@ -60,7 +59,7 @@ to be imported so that the system can detect when a job has been missed.
 
 \subsection{Overview}
 
-\articlefigure[scale=0.75]{P04_f1}{fig:arch}{
+\articlefigure[scale=0.75]{part6/Bell_P04/P04_f1}{fig:arch}{
 Diagram showing the architecture  of the Crab system.
 The lower section shows the Crab server:
 the notification and monitor tasks run as Python threads
@@ -234,7 +233,7 @@ Crontab & Comments \\
 \end{center}
 \end{table}
 
-\articlefigure[width=4in]{P04_f2}{fig:screenshot}{
+\articlefigure[width=4in]{part6/Bell_P04/P04_f2}{fig:screenshot}{
 Screenshot of the Crab dashboard page.
 Various events have been triggered
 to demonstrate a range of statuses.
@@ -265,6 +264,4 @@ and the Perl client library
 (\texttt{WWW::Crab::Client})
 can be downloaded from CPAN.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

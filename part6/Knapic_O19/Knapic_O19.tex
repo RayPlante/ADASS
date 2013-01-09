@@ -1,22 +1,16 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-\usepackage{graphicx}
 
 \resetcounters
 
-%\bibliographystyle{asp2010}
 
-\markboth{Knapic, Molinaro, and Smareglia}{}
-
-\begin{document}
+\markboth{Knapic, Molinaro, and Smareglia}{Full tolerant Archiving System}
 
 \title{Full tolerant Archiving System}
-\author{Cristina Knapic$^1$, Marco Molinaro$^1$, and Riccardo Smareglia$^1$
+\author{Cristina~Knapic, Marco~Molinaro, and Riccardo~Smareglia
 \affil{$^1$INAF Astronomical Observatory of Trieste, Italy}}
 
+\aindex{Knapic, C.}
+\aindex{Molinaro, M.}
+\aindex{Smareglia, R.}
 
 \begin{abstract}
 The archiving system at the Italian center for Astronomical Archives (IA2) manages
@@ -117,7 +111,7 @@ from a pipeline analyzer tool) and stored in a dedicated database
 or an XML schema. The advantages and disadvantages of the two methods are
 summarized in Fig. 1.
 
-\articlefigure[]{db_xml.eps}{fig:dbvsxml}{Advanteges and disadvantages of usin
+\articlefigure[]{part6/Knapic_O19/db_xml.eps}{fig:dbvsxml}{Advanteges and disadvantages of using
 database or XML schema to store data and data flux models informations}
 
 The database solution seems to be more flexible to keep up with model content
@@ -137,7 +131,7 @@ been used, how to store metadata into the database. Also, the association betwee
 DBMS and data, the policy on data dissemination, ownerships, aliases and so on belong
 to the second table.
 
-\articlefigure[]{framework.eps}{fig:framework}{Framework Interfaces rappresentation and interactions}
+\articlefigure[]{part6/Knapic_O19/framework.eps}{fig:framework}{Framework Interfaces rappresentation and interactions}
 
 Metadata archiviation may involve different DBMS and rely on different geographical sites.
 The DbCreator is a tool under development that maps metadata keys from new files reading
@@ -153,6 +147,3 @@ manipolate, publish or flush data over the system in a transparent way.
 A CORBA based framework is a useful tool to hide the complexity of the whole Archiving system; several frameworks are mature and well suited to this development . The proposed approach is a complete redesign of the Archiving system, challenging and time consuming, but can dramatically improve the confidence on the whole archiving system.
 
 \acknowledgements The authors would like to thank L. Pivetta for useful conversations and hints, A. Micol, F. Stoehr , P. DiMarcantonio and R. Cirami for suggestions and documentation. Special thanks to F. Pasian for hints and encouragement.
-
-
-\end{document}

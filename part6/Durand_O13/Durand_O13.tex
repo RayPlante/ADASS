@@ -1,23 +1,20 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Fernique et al.}{HEALPix based cross-correlation in Astronomy}
+\markboth{Fernique et al.}{HEALPix Based Cross-Correlation in Astronomy}
 
-\begin{document}
-
-\title{HEALPix based cross-correlation in Astronomy}
-\author{Pierre Fernique$^1$,\ Daniel Durand$^2$,\ Thomas Boch$^1$, \ Ana\"is Oberto$^1$, \ Fran\c{c}ois-Xavier Pineau$^1$
+\title{HEALPix Based Cross-Correlation in Astronomy}
+\author{Pierre~Fernique,$^1$ Daniel~Durand,$^2$ Thomas~Boch,$^1$ Ana\"is Oberto,$^1$ and Fran\c{c}ois-Xavier Pineau$^1$
 \affil{$^1$Centre de Donn{\'e}es de Strasbourg, Strasbourg, France}
 \affil{$^2$Herzberg Institute of Astrophysics, National Research Council, Canada}}
 
-
+\aindex{Fernique, P.}
+\aindex{Durand, D.}
+\aindex{Boch, T.}
+\aindex{Oberto, A.}
+\aindex{Pineau, F.-X.}
 
 \begin{abstract}
 We are presenting our work on a cross correlation system based on
@@ -63,13 +60,13 @@ As an example, the MOC file of an image from the scuba (JCMT) survey
 will only consist of the lowest resolution cells at the
 border since the inner part will content only the few cells
 at the lowest resolution, thus the MOC file is quite small.
-See Fig. \ref{Fig1}.
+See Fig. \ref{DurFig1}.
 For example, the MOC file for all the HST images for filter F555 is only 180 Kbytes! As the operations on MOC are very fast (a few milliseconds), what is usually done with the MOC files is using some logic
 operators in order to create a ``resultant'' MOC files which
 content the footprint of the answer. For example let's take
 two series of observations, A and B, and a catalogue
 C. The MOC operator could then perform operations like for objects in C which have z $>$ 2.0, give me all the areas of the sky observed by A and B.
-\articlefigure{O013_f2.eps}{Fig1}{Scuba I images showing MOC superposed.}
+\articlefigure{part6/Durand_O13/O013_f2.eps}{DurFig1}{Scuba I images showing MOC superposed.}
 The MOC encoding method has been described in an IVOA document and a java library is available and already implemented in the well known VO tools Aladin  \url{http://aladin.u-strasbg.fr} and TOPCAT  \url{http://www.star.bris.ac.uk/~mbt/topcat/}
 
 \subsection{Data access}
@@ -78,9 +75,9 @@ To support this, the CDS has re-indexed using HEALPix a large number of survey c
 
 
 \section{Use cases}
-We studied a few use cases mostly to show the entire processes which could be used in: create MOCs from various data sets (Simbad,VizieR tables, pixel surveys like HST, SDSS, XMM); find all the Quasars in CFHTLS, not yet observed by SLOAN for with we have both an XMM and an HST observations; find all HST infrared observations which coincide with bright NOMAD sources (see Fig. \ref{Fig2}).
+We studied a few use cases mostly to show the entire processes which could be used in: create MOCs from various data sets (Simbad,VizieR tables, pixel surveys like HST, SDSS, XMM); find all the Quasars in CFHTLS, not yet observed by SLOAN for with we have both an XMM and an HST observations; find all HST infrared observations which coincide with bright NOMAD sources (see Fig. \ref{DurFig2}).
 
-\articlefigure{O013_f3.eps}{Fig2}{HST image list and NOMAD sources inside a specific MOC (HST F606W)}
+\articlefigure{part6/Durand_O13/O013_f3.eps}{DurFig2}{HST image list and NOMAD sources inside a specific MOC (HST F606W)}
 
 \section{What's next}
 
@@ -100,6 +97,4 @@ providing a great reduction in the number of service queries required.
 The MOC usage offers the opportunity to provide
 this coverage information in a uniform way. The MOC could be stored centrally or locally.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

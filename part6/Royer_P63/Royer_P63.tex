@@ -1,20 +1,20 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \markboth{Royer et al.}{The GIRAFFE Archive : 1D and 3D spectra}
 
-\begin{document}
 
 \title{The GIRAFFE Archive: 1D and 3D spectra}
-\author{Royer~F.$^1$, J\'egouzo~I.$^1$, Tajahmady~F.$^1$, Normand~J.$^2$, and Chilingarian~I.$^3$
+\author{F.~Royer,$^1$ I.~J\'egouzo,$^1$ F.~Tajahmady,$^1$ J.~Normand,$^2$ and I.~Chilingarian$^3$
 \affil{$^1$GEPI -- Observatoire de Paris}
 \affil{$^2$VO Paris Data Center -- Observatoire de Paris}
 \affil{$^3$Harvard-Smithsonian Center for Astrophysics}}
+
+\aindex{Royer, F.}
+\aindex{J\'egouzo, I.}
+\aindex{Tajahmady, F.}
+\aindex{Normand, J.}
+\aindex{Chilingarian, I.}
 
 \begin{abstract}
  The GIRAFFE Archive (\url{http://giraffe-archive.obspm.fr}) contains the reduced spectra observed with the intermediate and high resolution multi-fiber spectrograph installed at VLT/UT2 (ESO). In its multi-object configuration and the different integral field unit configurations, GIRAFFE produces 1D spectra and 3D spectra.
@@ -31,7 +31,7 @@ Figure\,\ref{camembert} shows how these data are distributed among the different
 
 \begin{figure}[!ht]
 \begin{center}
-    \includegraphics[angle=-90,width=0.65\textwidth]{P63_f1.eps}
+    \includegraphics[angle=-90,width=0.65\textwidth]{part6/Royer_P63/P63_f1.eps}
 \end{center}
 \caption{Current status of the content of the GIRAFFE Archive in the different observing modes (Medusa, Argus and IFU). The full pie chart is a statistical view of the SCIENCE data observed between March 2003 and December 2010 (11\,414 frames). The colored pieces correspond to the reduced fraction of the data, available in the GIRAFFE Archive. White pieces represent the fraction that is not reduced yet.
 }
@@ -49,14 +49,13 @@ In the Archive, 1D spectra are associated to targets and correspond to the physi
 \section{3D spectra}
 
 Multi-fibers observations with the GIRAFFE spectrograph gives 3D spectroscopic data, i.e. spectra for different spatial positions, contiguous or not. These data can be explored in the following ways:
-%% Full reduced observations are available in the VO with the GIRAFFE 3D SSA which offers these data in the ``native'' format (direct output from the reduction pipeline). They can also be retrieved from the web interface, as ``Field''  data products. When possible, the reconstructed spatial image can be displayed for integrated field observations (IFU and ARGUS).
 \paragraph{Visualization} The spectral dimension of a 3D datacube cannot be visualized on the web interface, but when available, the reconstructed spatial image can be displayed for integrated field observations (Fig.\,\ref{thumbnails}).
 \paragraph{Virtual Observatory} Full reduced observations are available in the VO with the GIRAFFE 3D SSA service which offers these data in the ``native'' FITS format (direct output from the ESO reduction pipeline, \url{ftp://ftp.eso.org/pub/dfs/pipelines/giraffe/giraf-manual-2.9.pdf}),
 \paragraph{Download} The same ``native'' FITS files can be downloaded (one-by-one or multiple) from the web interface, as ``Field'' data products. For IFU and Argus data, a reconstructed datacube (3D FITS image) can also be downloaded in the ``Field''  data product section. The full set of pipeline science products for a given observation can be downloaded as a tar file, together with the reduction log file. 
 
 \begin{figure}[!ht]
 \begin{center}
-    \includegraphics[width=0.6\textwidth]{P63_f2.eps}
+    \includegraphics[width=0.6\textwidth]{part6/Royer_P63/P63_f2.eps}
 \end{center}
 \caption{Sample of spatial thumbnails for 3D data, scaled to the same spatial scale. Are shown four examples of IFU data (4$\times$6 micro-lens arrays covering 2\arcsec$\times$3\arcsec\ on the sky), and two examples of Argus observations (22$\times$14 arrays) one for each spatial scale:  0\farcs 52 (1:1) and 0\farcs 3 per micro-lens (1:1.67). The 1\arcsec$\times$1\arcsec\ spatial scale is also indicated by an open square.}
 \label{thumbnails}
@@ -66,7 +65,7 @@ Multi-fibers observations with the GIRAFFE spectrograph gives 3D spectroscopic d
 The VO-Paris Euro3D client is developed by \citet{Chn_08} to deal with 3D spectroscopic datasets. Through interactions using SAMP between Aladin and VOSpec, it offers selection and visualization capabilities, spatially and spectrally (Fig\,\ref{aladin}). The input are Euro3D (e.g.  output format of the MMT/Magellan Infrared Spectrograph data reduction pipeline) and ``native'' GIRAFFE formats. 
 \begin{figure}[!ht]
 \begin{center}
-    \includegraphics[width=\textwidth]{P63_f3.eps}
+    \includegraphics[width=\textwidth]{part6/Royer_P63/P63_f3.eps}
 \end{center}
 \caption{Screenshots of the interaction between Aladin and VOSpec using the VO-Paris Euro3D client \citep{Chn_08} with an observation of the diffuse nebula NGC~6357 in Argus mode. The Argus array if overplotted to an image from the HST in Aladin (\textbf{a}). The VO-Paris Euro3D client (\textbf{c}) allows a navigation in the array and the display of the corresponding spectrum in VOSpec (\textbf{b}).}
 \label{aladin}
@@ -75,6 +74,4 @@ The VO-Paris Euro3D client is developed by \citet{Chn_08} to deal with 3D spectr
 
 \bibliographystyle{asp2010}
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}
