@@ -1,20 +1,18 @@
 
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-
 \resetcounters
 
 \bibliographystyle{asp2010}
 
 \markboth{Lubow and Budavari}{Hubble Source Catalog}
 
-\begin{document}
-
 \title{Hubble Source Catalog}
-\author{Stephen Lubow$^1$, Tamas Budavari$^2$
+\author{Stephen~Lubow$^1$ and Tamas~Budavari$^2$
 \affil{$^1$Space Telescope Science Institute, 3700 San Martin Drive, Baltimore MD 21218}
 \affil{$^2$Department of Physics and Astronomy, Johns Hopkins University, Baltimore MD 21218}
 }
+
+\aindex{Lubow, S.}
+\aindex{Budavari, T.}
 
 \begin{abstract}
 We have created an initial catalog of objects observed by the WFPC2 and ACS instruments on the Hubble Space Telescope (HST). The catalog is based on observations taken on more than 6000 visits (telescope pointings) of ACS/WFC and more than 25000 visits of WFPC2. The catalog is obtained by cross matching by position in the sky all Hubble Legacy Archive (HLA) Source Extractor source lists for these instruments. The source lists describe properties of source detections within a visit. The calculations are performed on a SQL Server database system. First we collect overlapping images into groups, e.g., Eta Car, and determine nearby (approximately matching) pairs of sources from different images within each group. We then apply a novel algorithm for improving the cross matching of pairs of sources by adjusting the astrometry of the images. Next, we combine pairwise matches into maximal sets of possible multi-source matches. 
@@ -79,7 +77,7 @@ to all images within the group, we apply the corrections  to all
 sources in the group. This process of correcting the astrometry of all sources in the group
 is iterated multiple (currently 50) times.
 In carrying out these corrections, not all image pairs are considered. After carrying out
-half the iterations, a certain threshold on pairwise separations %(currently 0.1 arc-sec) 
+half the iterations, a certain threshold on pairwise separations 
 is applied
 to eliminate false pairs. Only pairs that satisfy that threshold are considered in  subsequent
 iterations of the astrometric correction process.
@@ -90,7 +88,7 @@ sets of sources match together. That is, we are determining which sources descri
 the same astronomical object, across visits, filters, images, and detectors. 
 This determination is an inherently statistical decision.
 To carry out this process, we first determine a new list of source pairs, based on 
-the updated astrometry, subject to a cutoff threshold. %that is currently set to 0.1 arc-sec. 
+the updated astrometry, subject to a cutoff threshold. 
 We then apply 
 a friends-of-friends algorithm to construct maximal sets of matching objects.
 These maximal sets can sometimes produce chains whose endpoints
@@ -141,11 +139,6 @@ images.
 Typically, the improvements are greater than a factor of 3 reduction in relative positional errors across overlapping
 images.
 In some cases, an order of magnitude improvement was made.
-%There are a few major factors that limit the number of images that can be corrected.
-%First, about 20\% of these images did not have source lists, likely due to problems with the images
-%themselves. About 40\% of the images with source lists were not astrometrically corrected.
-%In addition, about 60\% of these images without corrections did not overlap with other images and therefore
-%could could be corrected. 
 In some other cases, images could not be corrected because
 the image offsets were larger than was assumed in our current tool or did not have enough sources in common 
 with another image. We have started experimenting
@@ -178,7 +171,7 @@ in the HST performance.
 
 \begin{figure}
 \centering
-\includegraphics[width=6.0cm]{O21_1.eps}
+\includegraphics[width=6.0cm]{part8/Lubow_O21/O21_1.eps}
 \caption{Aperture magnitude in filter F850LP for ACS/WFC 
 as a function of time in days since Jan. 1 , 1990 for a HSC match that contains 
 the distant ($Z> 1$) supernova Thames.}
@@ -187,7 +180,4 @@ the distant ($Z> 1$) supernova Thames.}
 
 \acknowledgements We acknowledge support from NASA AISRP grant NNX09AK62.
 
-\bibliography{../../editor}
-
-
-\end{document}
+\bibliography{editor}

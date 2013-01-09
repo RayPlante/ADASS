@@ -1,8 +1,3 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
@@ -10,11 +5,13 @@
 
 \markboth{Dencheva, Hack, and Fruchter}{Headerlets}
 
-\begin{document}
-
 \title{Headerlets: Share HST Astrometric Solutions Without The Data}
-\author{Nadia~Dencheva, Warren~Hack, and Andrew~Fruchter}
-\affil{Space Telescope Science Institutee, 3700 San Martin Dr., Baltimore, MD 21210}
+\author{Nadia~Dencheva, Warren~Hack, and Andrew~Fruchter
+\affil{Space Telescope Science Institute, 3700 San Martin Dr., Baltimore, MD 21210}}
+
+\aindex{Dencheva, N.}
+\aindex{Hack, W.}
+\aindex{Fruchter, A.}
 
 \begin{abstract}
 File format for storing astrometric metadata of images is presented. 
@@ -73,7 +70,7 @@ file and a headerlet derived from it is shown in Figure 1.
 The SIPWCS extension along with all WCSDVARR and the D2IMARR extensions fully describe the WCS of each chip.
 
 \begin{figure}[!h]
-\plotone{P11_f1.eps}
+\plotone{part8/Dencheva_P11/P11_f1.eps}
 \caption{File structure of an ACS/WFC science file (160 MB) and the corresponding headerlet (100 KB); Colors: green - headerlet; blue - WCS for chip 1; red - WCS for chip 2}
 \end{figure}
 
@@ -149,8 +146,6 @@ them available to the community through a searchable tool.
 
 \acknowledgements The support for saving FITS files as extensions to other FITS files in PyFITS was implemented by Erik Bray.
 
-\bibliography{../../editor} 
-
 \footnote{STScI technical reports are located at \url{http://stsdas.stsci.edu/tsr}}
 
-\end{document}
+\bibliography{editor} 

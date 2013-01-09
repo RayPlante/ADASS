@@ -1,24 +1,28 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-\usepackage{graphicx}
-
-
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Moins, et al}{ESO Catalogue Facility design and performance}
+\markboth{Moins et al.}{ESO Catalogue Facility Design and Performance}
 
-\begin{document}
+\title{ESO Catalogue Facility Design and Performance}
+\author{C.~Moins, J.~Retzlaff, M.~Arnaboldi, S.~Zampieri, N.~Delmotte, V.~Forch\'{i}, M.~Klein~Gebbinck, J.~Lockhart, A.~Micol, I.~Vera~Sequeiros, T.~Bierwirth, M.~Peron, M.~Romaniello, and D.~Suchar
+\affil{European Southern Observatory}}
 
-\title{ESO Catalogue Facility design and performance}
-\author{C. Moins$^1$, J. Retzlaff$^1$, M. Arnaboldi$^1$, S. Zampieri$^1$, N. Delmotte$^1$, V. Forch\'{i}$^1$,
- M. Klein Gebbinck$^1$, J. Lockhart$^1$, A. Micol$^1$, I. Vera Sequeiros$^1$, T. Bierwirth$^1$, M. Peron$^1$, M. Romaniello$^1$, D. Suchar$^1$
-\affil{$^1$European Southern Observatory}}
+\aindex{Moins, C.}
+\aindex{Retzlaff, J.}
+\aindex{Arnaboldi, M.}
+\aindex{Zampieri, S.}
+\aindex{Delmotte, N.}
+\aindex{Forch\'{i}, V.}
+\aindex{Gebbinck, M. K.}
+\aindex{Lockhart, J.}
+\aindex{Micol, A.}
+\aindex{Sequeiros, I. V.}
+\aindex{Bierwirth, T.}
+\aindex{Peron, M.}
+\aindex{Romaniello, M.}
+\aindex{Suchar, D.}
 
 \begin{abstract}
 The ESO Phase 3 Catalogue Facility provides investigators with the possibility to ingest catalogues resulting from ESO public surveys and large programs and to query and download their content according to positional and non-positional criteria. It relies on a chain of tools that covers the complete workflow from  submission to validation and ingestion into the ESO archive and catalogue repository and a web application to browse and query catalogues.
@@ -32,7 +36,7 @@ The catalogue facility covers the complete workflow from catalogue submission to
 \setlength\fboxsep{1pt}
 \setlength\fboxrule{1pt}
 \fbox{
-\includegraphics [scale=0.7]{P64_1.eps}
+\includegraphics [scale=0.7]{part8/Moins_P64/P64_1.eps}
 }
 \begin{figure}[h]
 \caption{Catalogue workflow from submission to web based search}
@@ -55,7 +59,7 @@ based on the \textit{Hierarchical Triangular Mesh} (HTM) algorithm. HTM divides 
 Upon ingestion, the HTM index corresponding to the coordinates of each object is computed and inserted in a dedicated column of the catalogue table, together with the cartesian coordinates of the corresponding unit vectors. The HTM column is indexed in Sybase IQ with an \textit{High Group Index} optimized for high cardinality data. At query time, the spatial constraint (cone or box search) provided by the archive user is converted to a set of HTM index ranges covering the specified region. To avoid creating too many ranges, which could negatively affect the query performance, the Spherical Toolkit merges neighbouring intervals, introducing an overshoot which is well visible in Figure 2. Therefore we need to complement the HTM condition with the exact geometrical constraint based on the \textit{dot product} in cartesian coordinates to get a more accurate result: the dot product condition for a cone search is $\vec{p}\cdot\vec{c}>cos(\alpha)$, where $\vec{c}$ is the unit vector pointing at the search center, $\vec{p}$ the unit vector of the catalogue objects we are looking for and $\alpha$ denotes the maximum angular distance from the target position, i.e. the radius. The box search requires four dot product conditions, one for each side of the box. The figure below represents the result of a cone search with and without dot product condition:\\
 
 \begin {center}
-\includegraphics  [scale=0.8]{P64_2}
+\includegraphics  [scale=0.8]{part8/Moins_P64/P64_2}
 \begin{figure} [h]
 \caption{cone search with and without dot product}
 \end{figure}
@@ -99,6 +103,4 @@ Radius & Average number of rows & Average Time (sec) & Non-spatial constraint \\
 \section{Conclusion}
 The ESO Catalogue Facility provides a reliable and flexible environment that allows a quick ingestion and publication of catalogues. The combination of a Sybase IQ data warehouse, spatial indexing and optimized indexes allows to reach a very good level of performance when querying catalogues, which guarantees a smooth user experience. The Query Interface offers a user friendly access to ESO catalogues that facilitates their scientific exploitation.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}
