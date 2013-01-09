@@ -1,10 +1,5 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
 
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-\usepackage{graphicx}
-\usepackage{wrapfig}
+%\usepackage{wrapfig}
 
 \resetcounters
 
@@ -12,12 +7,15 @@
 
 \markboth{Warner et al.}{Redefining the Data Pipeline Using GPUs}
 
-\begin{document}
-
 \title{Redefining the Data Pipeline Using GPUs}
-\author{C. Warner$^1$, S. S. Eikenberry $^1$, A. H. Gonzalez $^1$, and C. Packham $^2$
+\author{C.~Warner,$^1$ S.~S.~Eikenberry,$^1$ A.~H.~Gonzalez,$^1$ and C.~Packham$^2$
 \affil{$^1$University of Florida, Gainesville, FL}
 \affil{$^2$University of Texas at San Antonio}}
+
+\aindex{Warner, C.}
+\aindex{Eikenberry, S. S.}
+\aindex{Gonzalez, A. H.}
+\aindex{Packham, C.}
 
 \begin{abstract}
 There are two major challenges facing the next generation of data processing pipelines: 1) handling an ever increasing volume of data as array sizes continue to increase and 2) the desire to process data in near real-time to maximize observing efficiency by providing rapid feedback on data quality.  Combining the power of modern graphics processing units (GPUs), relational database management systems (RDBMSs), and extensible markup language (XML) to re-imagine traditional data pipelines will allow us to meet these challenges.
@@ -28,8 +26,6 @@ However, there are still many bottlenecks inherent in the design of traditional 
 
 We present a model for a next-generation data pipeline that has the flexibility to process data in near real-time at the observatory as well as to automatically process huge archives of past data by using a simple XML configuration file.  XML is ideal for describing both the dataset and the processes that will be applied to the data.  Meta-data for the datasets would be stored using an RDBMS (such as mysql or PostgreSQL) which could be easily and rapidly queried and file I/O would be kept at a minimum.  We believe this redefined data pipeline will be able to process data at the telescope, concurrent with continuing observations, thus maximizing precious observing time and optimizing the observational process in general.  We also believe that using this design, it is possible to obtain a speed gain of a factor of 30-40 over traditional data pipelines when processing large archives of data.
 \end{abstract}
-
-\vspace{-10pt}
 
 \section{Introduction}
 As we move into the era of Giant Segmented Mirror Telescopes (GSMTs)
@@ -55,7 +51,6 @@ C-API, resulting in overall speed gains of a factor of 8-15 compared to
 traditional CPU-based implementations of data pipelines (Table 1).
 
 \begin{table}[!ht]
-\vspace{-10pt}
 \caption{GPU-optimized speed gains}
 \smallskip
 \begin{center}
@@ -77,7 +72,6 @@ Flamingos-II longslit spectroscopy & 98 & $3181.8s$ & $242.4s$ & $13.1$\\
 \end{tabular}
 }
 \end{center}
-\vspace{-15pt}
 \end{table}
 
 However, implementation of these GPU-optimized algorithms reveals many
@@ -97,10 +91,8 @@ in little endian format, it is necessary to perform an additional byte-swap
 operation every time data is written to or read from disk. 
 
 \begin{figure}[!ht]
-\includegraphics{O31_f1.eps}
-\vspace{-25pt}
+\includegraphics{part4/Warner_O31/O31_f1.eps}
 \caption{File I/O is negligible compared to computation time on CPU for 3$^{rd}$ order and higher linearity corrections but dominates GPU computation time!}
-\vspace{-20pt}
 \end{figure}
 
 We present a new, flexible data pipeline model that combines GPU-optimized  
@@ -149,14 +141,14 @@ data is then copied back to host memory).  Master calibration frames are
 created once and then stored in memory and reused.
 
 \begin{figure}[!ht]
-\includegraphics{O31_f2.eps}
-\vspace{-10pt}
+\includegraphics{part4/Warner_O31/O31_f2.eps}
+
 \caption{Flow chart of recursive logic.  Master calibration frames are created
 once when they are first requested and then stored in memory and reused.
 All processes are applied to each frame in memory, with as many as possible
 performed at once on the GPU, minimizing both file I/O and memory copying to and
 from the GPU. }
-\vspace{-10pt}
+
 \end{figure}
 
 
@@ -192,5 +184,3 @@ resources, money, and precious observing time.  We also believe that when
 applied to large archives of data, this design will make it possible to
 achieve a speed gain of as much as a factor of 30-40 over traditional
 CPU-based data pipelines. 
-
-\end{document}

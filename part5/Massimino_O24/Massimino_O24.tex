@@ -1,23 +1,27 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-\bibliographystyle{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
 \markboth{Massimino et al.}{Learning Astrophysics through Mobile Gaming}
- 
-\begin{document}
+
 
 \title{Learning Astrophysics through Mobile Gaming}
-\author{Massimino P.$^1$, Costa A.$^1$, Becciani U.$^1$, Krokos M.$^2$,Bandieramonte M.$^1$,Petta C.$^3$,Pistagna C.$^1$,Riggi S.$^1$,Sciacca E.$^1$,Vitello F.$^1$
+\author{P.~Massimino,$^1$ A.~Costa,$^1$ U.~Becciani,$^1$ M.~Krokos,$^2$ M.~Bandieramonte,$^1$ C.~Petta,$^3$ C.~Pistagna,$^1$ S.~Riggi,$^1$ E.~Sciacca,$^1$ and F.~Vitello$^1$
 \affil{$^1$Astrophysical Observatory of Catania, Italy}
 \affil{$^2$University of Portsmouth, U.K.}
 \affil{$^3$University of Catania, Italy}}
+
+\aindex{Massimino, P.}
+\aindex{Costa, A.}
+\aindex{Becciani, U.}
+\aindex{Krokos, M.}
+\aindex{Bandieramonte, M.}
+\aindex{Petta, C.}
+\aindex{Pistagna, C.}
+\aindex{Riggi, S.}
+\aindex{Sciacca, E.}
+\aindex{Vitello, F.}
 
 \begin{abstract}
 SpaceMission is a mobile application (iOS) offering hands-on experience of astrophysical concepts using scientific simulations. The application is based on VisIVO which is a suite of software tools for visual discovery through 3D views generated from astrophysical datasets.
@@ -36,15 +40,12 @@ The size of the package is about 400MB.
 
 \section{The aim of the game}
 The goal is to find four regions of interest inside the cosmological simulation:  elliptical galaxy, elliptical galaxy at the center of a galaxies cluster,  formation of elliptical galaxy, spiral galaxy. During investigation players are provided with tools to create movies of their explorations. Such movies are rendered by exploiting (in a seamless way) high-performance computational infrastructures, e.g. desktop grids or remotely connected web grids.\par
-%\includegraphics[scale=0.5]{path}
 
 \section{The graphic interface}
-%\begin{wrapfigure}{l}{3cm}% "placement and width parameter for the width of the image space.
-%\includegraphics[scale=0.25]{firstscreen}
-%\end{wrapfigure}
+
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.4]{P024_f1}
+\includegraphics[scale=0.4]{part5/Massimino_O24/P024_f1}
 \caption{The main 5 screens of the app}
 \end{figure}
 Once a player discovers an object, a real image (taken from the Earth or by HST) and scientific information are displayed on the screen e.g. about its structure and evolution. Moreover a dynamic evolution can be shown, starting from the beginning of the simulation (redshift = 50), i.e. from immediately after the big-bang to the present day.\par
@@ -63,12 +64,9 @@ The typical operational scenario is to first select frames to be part of the pla
 In the \emph{Movies} screen there are all generated movies, of each  is shown the first frame.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.9]{P024_f2}
+\includegraphics[scale=0.9]{part5/Massimino_O24/P024_f2}
 \caption{Select frames during journey in the cosmos}
 \end{figure}
-
-
-%\includegraphics[scale=0.4]{flow}
 
 \section{Computational resources}
 The required computational resources depend on the underlying hardware specification of the server. As an example, the rendering time to generate a film based on 6 player-selected frames may last up to 45 minutes. The reason is that all in-between frames are generated directly from the original cosmological simulation dataset to obtain very high quality movies.\par
@@ -79,7 +77,7 @@ The current version of the application utilizes 192MB for displaying 1 million b
 Figure 3 shows the data flow of the application.\par
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.9]{P024_f3}
+\includegraphics[scale=0.9]{part5/Massimino_O24/P024_f3}
 \caption{Data flow}
 \end{figure}
 
@@ -94,10 +92,3 @@ Recently, the application is also being developed for Windows and MAC platforms.
 The sponsors of the application are the Astrophysical Observatory of Catania (Italy), the Intech Science Centre and Planetarium, Winchester  (U.K.) and the University of Portsmouth (U.K.)
 
 \acknowledgements The research leading to these results has received funding from the European Union Seventh Framework Programme (FP7/2007-2013) under grant agreement no 283481 (SCI-BUS).
-
-%\nocite{*}
-%\bibliographystyle{plain}
-\bibliography{../../editor}
-
-\end{document}
-

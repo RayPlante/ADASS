@@ -1,8 +1,3 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
@@ -10,13 +5,20 @@
 
 \markboth{ Berriman et al.} {A Tale Of 160 Scientists, Three Applications, A Workshop and A Cloud}
 
-\begin{document}
-
-\title{A Tale Of 160 Scientists, Three Applications, A Workshop and A Cloud}
-\author{G. Bruce Berriman$^1$, Carolyn Brinkworth$^1$, Dawn Gelino$^1$, Dennis K. Wittman$^1$, Ewa Deelman$^2$, Gideon Juve$^2$, Mats Rynge$^2$, Jamie Kinney$^3$
+\title{A Tale Of 160 Scientists, Three Applications, A Workshop, and A Cloud}
+\author{G.~Bruce~Berriman,$^1$ Carolyn~Brinkworth,$^1$ Dawn~Gelino,$^1$ Dennis~K.~Wittman,$^1$ Ewa~Deelman,$^2$ Gideon~Juve,$^2$ Mats~Rynge,$^2$ and Jamie~Kinney$^3$
 \affil{$^1$NASA Exoplanet Science Institute, California Institute of Technology, Pasadena CA 91125, USA}
 \affil{$^2$ USC Information Sciences Institute, 4676 Admiralty Way, Marina del Rey, CA 90292, USA}
 \affil{$^3$ Amazon Web Services, 1918 8th Ave, Seattle, WA 98101, USA}}
+
+\aindex{Berriman, B. G.}
+\aindex{Brinkworth, C.}
+\aindex{Gelino, D.}
+\aindex{Wittman, D. K.}
+\aindex{Deelman, E.}
+\aindex{Juve, G.}
+\aindex{Rynge, M.}
+\aindex{Kinney, J.}
 
 \begin{abstract}
 The NASA Exoplanet Science Institute (NExScI) hosts the annual Sagan Workshops, thematic meetings aimed at introducing researchers to the latest tools and methodologies in exoplanet research. The theme of the Summer 2012 workshop, held from July 23 to July 27 at Caltech, was to explore the use of exoplanet light curves to study planetary system architectures and atmospheres. A major part of the workshop was to use hands-on sessions to instruct attendees in the use of three open source tools for the analysis of light curves, especially from the Kepler mission. Each hands-on session involved the 160 attendees using their laptops to follow step-by-step tutorials given by experts. 
@@ -37,7 +39,7 @@ The NASA Exoplanet Science Center (NExScI) hosts the Sagan Workshops, which are 
 The Sagan Workshop took advantage of the EC2's capabilities to support Virtual Machines (VMs) that can be customized to meet local needs, then replicated, and then released on completion of the jobs. Fig. 1 shows the system architecture developed to support the Sagan Workshop. Participants logged into one of 20 tutorial servers via a Virtual Network Connection (VNC). The Amazon Elastic Block Storage (EBS) system and the Network File System (NFS) were used to share common datasets and user home directories across all virtual machines. An IDL license server at IPAC received license request through an ssh tunnel. The following list describes the architecture component by component and the rationale for the design choices.
 
 
-\articlefigure {O03_f1.eps}{Fig 1}{Hardware architecture to support the Sagan Workshop}
+\articlefigure {part4/Berriman_O03/O03_f1.eps}{Fig 1}{Hardware architecture to support the Sagan Workshop}
 
 \begin{itemize}
 
@@ -107,7 +109,3 @@ These may be summarized as follows:
 \end{itemize}
 
 \acknowledgements The Sagan Workshop was funded as part of the Sagan Program through NASA's Exoplanet Exploration Program. We thank Amazon Web Services for the award of a generous Educational Gran. ED, GJ and MR acknowledge support through NSF OCI-0943725. The VAO is jointly funded by NSF and NASA, and is being managed by the VAO, LLC, a non-profit 501(c)(3) organization registered in the District of Columbia and a collaborative effort of the Association of Universities for Research in Astronomy (AURA) and the Associated Universities, Inc. (AUI). We thank Dr. Peter Plavchan for suggesting we examine VNC.
-
-%\bibliography{aspauthor}
-
-\end{document}

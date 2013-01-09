@@ -1,25 +1,24 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Gheller, Rivi, Krokos, Dolag and Reinecke}{CUDA-Splotch: GPU visualization of Astrophysical data}
-
-\begin{document}
+\markboth{Gheller, Rivi, Krokos, Dolag, and Reinecke}{CUDA-Splotch: GPU Visualization of Astrophysical Data}
 
 \title{CUDA-Splotch: GPU visualization of astrophysical data}
-\author{Claudio Gheller$^1$, Marzia Rivi$^2$, Mel Krokos$^3$, Klaus Dolag$^4$ and Martin Reinecke$^5$
+\author{Claudio~Gheller,$^1$ Marzia~Rivi,$^2$ Mel~Krokos,$^3$ Klaus~Dolag,$^4$ and Martin~Reinecke$^5$
 \affil{$^1$CSCS-ETH, Via Trevano 131, 6900 Lugano, Switzerland}
 \affil{$^2$CINECA, Via Magnanelli 6/3, Casalecchio di Reno, Italy}
 \affil{$^3$University of Portsmouth, Winston Churcill Av., Portsmouth PO1 2UP, UK}
 \affil{$^4$University Observatory Munich, Scheinerstr. 1, D-81679 Muenchen, Germany}
 \affil{$^5$Max Planck Institute for Astrophysics, Karl-Schwarzschild-Str. 1, 85748 Garching, Germany}
 }
+
+\aindex{Gheller, C.}
+\aindex{Rivi, M.}
+\aindex{Krokos, M.}
+\aindex{Dolag, K.}
+\aindex{Reinecke, M.}
 
 \begin{abstract}
 
@@ -104,7 +103,7 @@ to the GPU work by using the CUDA asynchronous execution paradigm.
 
 \begin{figure}
 \centering
-\includegraphics[scale=1.0]{P013-1.eps}
+\includegraphics[scale=1.0]{part4/Gheller_P013/P013-1.eps}
 \caption{Splotch visualization of a simulated region of space at redshift z=0, 
 showing a large cosmic structure connecting four massive galaxy clusters. 
 Hot plasma is visualized in colors ranging from brown to light blue, 
@@ -141,13 +140,11 @@ is still performed efficiently on the GPU.
 
 \begin{figure}
 \centering
-\includegraphics[scale=1.0]{P013-2.eps}
+\includegraphics[scale=1.0]{part4/Gheller_P013/P013-2.eps}
 \caption{Comparison of GPU and CPU performance at different average radii $R_s$: the black line shows the GPU
 computing time per particle. Blue lines show the CPU performance starting from 16 cores (light blue)
 to one core (dark blue).}
 \label{fig:gpucpu}
 \end{figure}
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

@@ -1,19 +1,26 @@
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-\usepackage{graphicx}
+
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{A. Costa et Al.}{VisIVO}
-
-\begin{document}
+\markboth{Costa et al.}{VisIVO}
 
 \title{VisIVO: A Web-Based, Workflow-Enabled Gateway for Astrophysical Visualization}
-\author{Costa A.$^1$, Bandieramonte M.$^2$, Becciani U.$^1$, Krokos M.$^3$, Massimino P.$^1$, Petta C.$^2$, Pistagna C.$^1$, Riggi S.$^1$, Sciacca E.$^1$, Vitello F.$^1$}
+\author{A.~Costa,$^1$ M.~Bandieramonte,$^2$ U.~Becciani,$^1$ M.~Krokos,$^3$ P.~Massimino,$^1$ C.~Petta,$^2$ C.~Pistagna,$^1$ S.~Riggi,$^1$ E.~Sciacca,$^1$ and F.~Vitello$^1$}
 \affil{$^1$INAF Astrophysical Observatory of Catania, Italy}
 \affil{$^2$University of Catania, Italy}
 \affil{$^3$University of Portsmouth, U.K.}
+
+\aindex{Costa, A.}
+\aindex{Bandieramonte, M.}
+\aindex{Becciani, U.}
+\aindex{Krokos, M.}
+\aindex{Massimino, P.}
+\aindex{Petta, C.}
+\aindex{Pistagna, C.}
+\aindex{Riggi, S.}
+\aindex{Sciacca, E.}
+\aindex{Vitello, F.}
 
 \begin{abstract}
 We present a web-based and workflow-enabled framework called VisIVO Gateway that allows integration of large-scale multidimensional datasets together with applications for visualization and exploration on Distributed Computing Infrastructures (DCIs).
@@ -27,7 +34,7 @@ Nowadays science gateways allow an increasing number of scientists from differen
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=1\textwidth]{O08_f1.eps} 
+\includegraphics[width=1\textwidth]{part5/Costa_O08/O08_f1.eps} 
 \caption{Data Management Facility (left) and FITS Importer (right).}\label{fg1}
 \end{center}
 \end{figure}
@@ -37,7 +44,7 @@ A VisIVO workflow is a directed acyclic graph where nodes represent \emph{jobs} 
 
 \begin{figure}
 \begin{center}
-\includegraphics[width=0.7\textwidth]{O08_f2.eps}
+\includegraphics[width=0.7\textwidth]{part5/Costa_O08/O08_f2.eps}
 \caption{Illustration of Data Base Schema Employed in VisIVO Science Gateway.}
 \label{fg2}
 \end{center}
@@ -51,9 +58,9 @@ The data-model determines the structure of user data allowing creation of a virt
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.2\textwidth]{O08_f3.eps}
-    \includegraphics[width=0.2\textwidth]{O08_f4.eps}
-    \includegraphics[width=0.2\textwidth]{O08_f5.eps}
+    \includegraphics[width=0.2\textwidth]{part5/Costa_O08/O08_f3.eps}
+    \includegraphics[width=0.2\textwidth]{part5/Costa_O08/O08_f4.eps}
+    \includegraphics[width=0.2\textwidth]{part5/Costa_O08/O08_f5.eps}
     \caption{VisIVO Mobile Screenshots (from left to right) for Login, Remote Importing and Images Visualization.}
 \label{fig:visivomobile}
 \end{figure}
@@ -65,6 +72,4 @@ Research in modern astrophysics is facing a data avalanche represented by expone
 
 \acknowledgements The research leading to these results has received funding from the European Union Seventh Framework Programme (FP7/2007-2013) under grant agreement no 283481 (SCI-BUS).
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

@@ -1,8 +1,3 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
@@ -10,14 +5,17 @@
 
 \markboth{Farivar, Brunner, Santucci, and Campbell}{Cloud-Based Survey Processing}
 
-\begin{document}
-
-\title{Cloud based processing of large photometric surveys}
-\author{Reza Farivar$^1$, Robert J. Brunner$^2$, Robert Santucci$^3$, and Roy Campbell$^4$
+\title{Cloud Based Processing of Large Photometric Surveys}
+\author{Reza~Farivar,$^1$ Robert~J.~Brunner,$^2$ Robert~Santucci,$^3$ and Roy~Campbell$^4$
 \affil{$^1$Department of Electrical and Computer Engineering, University of Illinois}
 \affil{$^2$Department of Astronomy, University of Illinois}
 \affil{$^3$Department of Physics, University of Illinois}
 \affil{$^4$Department of Computer Science, University of Illinois}}
+
+\aindex{Farivar, R.}
+\aindex{Brunner, R. J.}
+\aindex{Santucci, R.}
+\aindex{Campbell, R.}
 
 \begin{abstract}
 
@@ -39,8 +37,7 @@ Third, a cloud system could support alternative data processing pipelines that m
 \begin{figure}[t!]
 	\vspace{0.1in}
 	\centering
-	\includegraphics[height=5.0in, angle=90]{Diagram}
-	%\vspace{-1.4in}
+	\includegraphics[height=5.0in, angle=90]{part4/Farivar_O12/Diagram.eps}
 	\caption{Block diagram of the cloud-based work flow, which includes two separate MapReduce jobs: download image  and  process image.}
 	\label{bdiagram}
 \end{figure}
@@ -57,8 +54,7 @@ In this phase, we download the files for a specific SDSS stripe and processing r
 \begin{figure}[h!]
 	\vspace{0in}
 	\centering
-	\includegraphics[height=2.5in, angle=90]{javaGui}
-	%\vspace{-1.4in}
+	\includegraphics[height=2.5in, angle=90]{part4/Farivar_O12/javaGui.eps}
 	\caption{The GUI interface for selecting a stripe, run, and CCD camera column.}
 	\label{gui}
 \end{figure}
@@ -99,6 +95,4 @@ The second phase (\textit{e.g.}, creating meta-files) took between 3--6 seconds.
 
 In this paper, we presented a cloud-based workflow for re-processing a sky survey image data, in particular by using Sextractor and the calibrated SDSS image data. Our experiments demonstrate the computational feasibility of this approach, while at the same time highlighting the challenges that remain, for example, how to merge the keys from the same source identified at different locations in the five different SDSS images. As we continue to work on this problem, we expect to identify an optimal method for compensating for such minor discrepancies without either over or under-compensating.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

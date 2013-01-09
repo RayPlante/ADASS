@@ -1,27 +1,18 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
 
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 \bibliographystyle{asp2010}
 
 \resetcounters
 
-\usepackage{amssymb} %TODO: Remove added by Chris
-\usepackage{hyperref} %links citations %TODO: Remove added by Chris
 
-\usepackage{graphicx}
-\usepackage{caption}
-\usepackage{subcaption}
+\markboth{Laidler and Kuttel}{Detection of Binary Pulsars}
 
-%\markboth{Author1, Author2, and Author3}{Author's Final Checklist}
 
-\begin{document}
-
-\title{Detection of  binary pulsars with GPU-accelerated sinusoidal Hough transformations.}
-\author{Christopher~Laidler, Michelle M. Kuttel
+\title{Detection of Binary Pulsars with GPU-Accelerated Sinusoidal Hough Transformations}
+\author{Christopher~Laidler and Michelle~M.~Kuttel
 \affil{Department of Computer Science, University of Cape Town, South Africa}
 }
+\aindex{Laidler, C.}
+\aindex{Kuttel, M.}
 
 \begin{abstract}
 Analysis of relativistic binary pulsars is currently the best means by which to test theories of gravity in strong gravitational fields.
@@ -106,14 +97,14 @@ All tests were performed on hypercube HS's tiles and run on an Intel Quad Core i
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \hspace{-3.2em}
-    \includegraphics[scale=1.1]{O20_f1} 
+    \includegraphics[scale=1.1]{part4/Laidler_O20/O20_f1} 
     \caption{Comparison of transformation speeds for the serial implementation (CPU) and four kernels (GPU1-4) on a  128x128x128x128 HS centered on $a=250 Hz \ b=0.5 Hz \ c=0.000196 \ d=1.445$ }  
     \label{speed}
   \end{subfigure}
   ~
   \begin{subfigure}[b]{0.45\textwidth}
     \centering
-    \includegraphics[scale=1.1]{O20_f2}
+    \includegraphics[scale=1.1]{part4/Laidler_O20/O20_f2}
     \caption{The effects of tile size and amplitude parameter on transformation speed, for tiles centered on $a=250 Hz \ c=0.000196 \ d=1.445$ and a rage of $b$ values.}
     \label{speed2}
   \end{subfigure}
@@ -145,6 +136,4 @@ As a general rule, it is best to use as large a tile size as possible.
 With GPU implementations, best results are obtained with the use of SM to store complex calculations and intelligent loop ordering to allow selection of applicable input pixels.
 In future work, we will discuss the power of these transforms for automated blind searching of binary pulsars.  
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}
