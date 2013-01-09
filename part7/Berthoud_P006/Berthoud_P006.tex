@@ -1,37 +1,15 @@
-%*****************************************************************
-%
-% HAWC Web Viewer Tool
-%
-% Marc Berthoud - University of Chicago
-%
-%*****************************************************************
-
-% NOTES
-% latex paper.tex, bibtex paper, latex paper.tex, latex paper.tex
-% dvips -Ppdf paper.dvi ps2pdf14 paper.ps
-
-
-%****** Setup ******
-
-%*** ASP Stuff
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Marc Berthoud}{HAWC quicklook and data reduction}
+\markboth{Berthoud}{HAWC Quicklook and Data Reduction}
 
-%*** My Stuff
-
-%****** Text ******
-
-\begin{document}
-
-\title{Online data reduction and quicklook tool for HAWC}
-\author{Marc G. Berthoud
+\title{Online Data Reduction and Quicklook Tool for HAWC}
+\author{Marc~G.~Berthoud
 \affil{Yerkes Observatory, University of Chicago}}
+
+\aindex{Berthoud, M.}
 
 \begin{abstract}
 The High-resolution Airborne Wide-band Camera (HAWC) is the facility
@@ -94,8 +72,7 @@ libraries. All parts of the software write log files upon execution
 and can be customized using configuration files.
 
 \begin{figure}
-%\includegraphics[bb=1.0in 1.0in 3.0in 3.0in width=1.0\textwidth]{web_view.eps}
-\plotone{P006_f1.eps}
+\plotone{part7/Berthoud_P006/P006_f1.eps}
 
 \caption{HAWC in-flight data reduction software architecture: The data
   flows from left to right. The IRC software controls the instrument
@@ -127,12 +104,12 @@ requirements, including the sequencing of pipe steps.
 \begin{figure}[!ht]
 \begin{minipage}{\textwidth}
 \leavevmode \centering
-\raisebox{-0.5\height}{\includegraphics[width=0.3\textwidth]{P006_f2a.eps}}
+\raisebox{-0.5\height}{\includegraphics[width=0.3\textwidth]{part7/Berthoud_P006/P006_f2a.eps}}
 \hfil
 \hfil
-\raisebox{-0.5\height}{\includegraphics[width=0.3\textwidth]{P006_f2b.eps}}
+\raisebox{-0.5\height}{\includegraphics[width=0.3\textwidth]{part7/Berthoud_P006/P006_f2b.eps}}
 \hfil
-\raisebox{-0.5\height}{\includegraphics[width=0.3\textwidth]{P006_f2c.eps}}
+\raisebox{-0.5\height}{\includegraphics[width=0.3\textwidth]{part7/Berthoud_P006/P006_f2c.eps}}
 \end{minipage}
 
 \caption{Architecture and processing sequence of the DRP core: The
@@ -150,7 +127,6 @@ requirements, including the sequencing of pipe steps.
 \label{fig_core}
 \end{figure}
 
-%The architecture and processing sequence of the HAWC DRP is
 The HAWC DRP core package is
 based on the FORCAST pipeline developed by Luke Keller, Alfred Lee
 and the author.
@@ -173,7 +149,7 @@ sends new raw files through a Pipe Line object, which is configured
 to store all intermediate and final data products as FITS files.
 
 \begin{figure}[!ht]
-\plotone{P006_f3.eps}
+\plotone{part7/Berthoud_P006/P006_f3.eps}
 
 \caption{Screenshots of the HAWC web viewer: The shot on the left
   shows the data window. The user selects observation, file, and pipe
@@ -214,6 +190,4 @@ analysis tools for the requirements of polarized observations.
 \acknowledgements This work has been supported by NASA though the
 SOFIA observatory. Special thanks to the HAWC team for ideas and support.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

@@ -1,16 +1,9 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Ott, S.}{Herschel Data Processing Development}
-
-\begin{document}
+\markboth{Ott}{Herschel Data Processing Development}
 
 \title{Herschel Data Processing Development -- 10 years after}
 \author{Stephan Ott}
@@ -18,11 +11,12 @@
 Agency\altaffilmark{1}}
 \altaffiltext{1}{Herschel is an ESA space observatory with science instruments provided by European-led Principal Investigator consortia and with important participation from NASA.}
 
+\aindex{Ott, S.}
 
 \begin{abstract}
-The Herschel Space Observatory, the fourth cornerstone mission in the ESA science program, was launched on the 14th of May 2009. As a cryogenic mission Herschel’s operational lifetime is consumable-limited by its supply of liquid helium, estimated to be depleted by March 2013. Afterwards the mission will start a 4.75~year long post-operations phase.
+The Herschel Space Observatory, the fourth cornerstone mission in the ESA science program, was launched on the 14th of May 2009. As a cryogenic mission Herschel's operational lifetime is consumable-limited by its supply of liquid helium, estimated to be depleted by March 2013. Afterwards the mission will start a 4.75~year long post-operations phase.
 
-Originally it was considered sufficient to provide astronomers with raw data and software tools to carry out a basic data reduction, and no ‘data products’ were to be generated and delivered. Following the realisation that the expectations of the astronomical community on the deliverables of an observatory mission evolved it was agreed to implement a single `cradle to grave' data analysis system supporting the needs of all users for the whole project cycle.
+Originally it was considered sufficient to provide astronomers with raw data and software tools to carry out a basic data reduction, and no "data products" were to be generated and delivered. Following the realisation that the expectations of the astronomical community on the deliverables of an observatory mission evolved it was agreed to implement a single `cradle to grave' data analysis system supporting the needs of all users for the whole project cycle.
 
 We will summarise the lessons learned during those ten years of Herschel data processing development, address the main challenges of this major software development project, reflect on what went well, what needed to be adapted and our open points.
 \end{abstract}
@@ -44,31 +38,15 @@ The decision to combine data retrieval, pipeline execution and interactive tools
 Three years before launch we conducted our first end-to-end test, set up to verify that the data processing system is capable of processing raw telemetry into products, and ingest them into the Herschel Science Archive. While at this first campaign pipelines had to be simulated by interactive processing it set the scene for the following seven, increasingly realistic, campaigns which ensured we were ready for operations. Five months before launch we had our first data processing workshop paving the way to the Herschel First Science Highlights conference held only seven months after launch where an unprecedented number of more than 200~science papers was presented.
 
 
-% sonar
-
-% multi-threading
-
-% different quality of developers
-
-% plug-ins
-
-
 \section{During the 10~years of development and operations -- what was adapted}
 
 After the data processing development started in earnest it became obvious that the existing HCSS infrastructure could not meet the demands of a major distributed software development project. The home grown software problem reporting system did not provide sufficient functionality and needed to be replaced with a professional issue and project tracking software. The original build system compiled all deliveries together once a day. This led to serious problems to integrate all deliveries that had piled up and now failed to compile. Major efforts were needed to disentangle all incompatibility issues to get a successful build. Therefore a Continuous Integration Build (CIB) was put into place in which a build and unit test cycle is triggered each time a new software delivery is made, and failed deliveries are quarantined. The CIB was also instrumental to re-unite the various HCSS flavours developed by the three ICCs back into one common system, and to provide the base for a user installer. To increase the depths of testing we added an integration tester that runs parts of the system test, whole pipelines and user scripts three times a day.
 
 As time progressed we embraced new technologies like TWiki, WebEx, support to plug-ins and integrated access to the Virtual Observatory and to data in the Herschel Science Archive. Most of the time we remembered that we need to be task, not interest driven, to avoid spending a lot of resources in minor but interesting looking areas.
 
-On the organisational side it was realised that we lacked a dedicated Data Processing scientist with the role to channel users' experiences and requirements into constructive feedback to steer further development. We realised the need to increase the contact with our customers by offering direct feedback channels on code and documentation, and transforming the ``developer only'' Common Science Development Team meetings to HIPE Fora where user representatives are explicitly encouraged to attend. Equally essential was the employment of a professional technical author. Beyond significantly increasing the quality and consistency of the documentation a technical author is aware of the state-of-the art of documentation which led us to the use of video tutorials, social media and instant feedback. The employment of a schedule engineer to help management with spreadsheets, Gantt charts and to prepare progress reports was helpful, too.
+On the organizational side it was realized that we lacked a dedicated Data Processing scientist with the role to channel users' experiences and requirements into constructive feedback to steer further development. We realized the need to increase the contact with our customers by offering direct feedback channels on code and documentation, and transforming the ``developer only'' Common Science Development Team meetings to HIPE Fora where user representatives are explicitly encouraged to attend. Equally essential was the employment of a professional technical author. Beyond significantly increasing the quality and consistency of the documentation a technical author is aware of the state-of-the art of documentation which led us to the use of video tutorials, social media and instant feedback. The employment of a schedule engineer to help management with spreadsheets, Gantt charts and to prepare progress reports was helpful, too.
 
 As management also needs to ensure compliance with non-functional requirements like maintainability, stability, adaptability and responsiveness software quality assurance plays a major role in any big software project, with a competent quality assurance engineer recommending process improvements. For the HCSS this was e.g.\ the introduction of a patching procedure for the operational track,  the introduction of the system CCB charged to monitor the transition from a development version to a tested system and the core CCB which is in charge of the overall configuration control of the science ground segment.
-
-
-% cost of data processing is nothing compared to the cost of the whole mission.
-% But good quality of product %and tools will make the difference between
-% a mission loved or despised by the astronomical community.
-% Money saving: Understanding data early will ensure you don't observe
-% with an inadequate mode (1 Mio Euro /day)
 
 \section{Reflecting 10~years of development -- what should have been adapted}
 
@@ -85,7 +63,7 @@ As management also needs to ensure compliance with non-functional requirements l
 \begin{description}
 \item {\bf Development environment:} Should we have a mandatory development environment for all developers? What level of training should be requested?
 \item {\bf Distribution of resources:} Given a fixed level of resources how to balance best the resources for testing with the resources for development?
-\item {\bf Evolution:} How to handle deprecations, replacements and standardisation for a system that evolves over a decade as much needed improvements will break existing functionality?
+\item {\bf Evolution:} How to handle deprecations, replacements and standardization for a system that evolves over a decade as much needed improvements will break existing functionality?
 \item {\bf Planning:} What is the appropriate level of detail for requirements documentation and work package descriptions? How much forward planning -- both in duration as in detail -- can be performed and maintained without spending major efforts into the pure maintenance of plans?
 \item {\bf Frequency of releases:} What is the right compromise to balance validation efforts vs.\ users' expectation to have the latest and greatest functionality available in a tested release? How to balance the weariness of the community getting too frequent releases vs.\ the productivity boost close to a deadline?
 \item {\bf Involvement and recognition (gamification):} How to involve the users' community for voluntary contributions and testing? Also within the project how can we reward our most active and willing contributors?
@@ -95,6 +73,4 @@ As management also needs to ensure compliance with non-functional requirements l
 
 \acknowledgements The author would like to thank all dedicated contributors to the Herschel Data Processing System who worked on calibration, coding, documentation, management, management support, pipeline operations, quality assurance, quality control, testing and tutoring (http://herschel.esac.esa.int/Acknowledgements\_files/sheet004.htm). The success of the Herschel Data Processing System is your success.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

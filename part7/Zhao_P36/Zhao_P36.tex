@@ -1,20 +1,15 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Jun-Hui Zhao}{Miriad for SMA Data Reduction}
-
-\begin{document}
+\markboth{Zhao}{Miriad for SMA Data Reduction}
 
 \title{Miriad for SMA Data Reduction}
-\author{Jun-Hui Zhao
+\author{Jun-Hui~Zhao
 \affil{Harvard-Smithsonian CfA, MS 78, 60 Garden Street., Cambridge, MA02138 }}
+
+\aindex{Zhao, J.-H.}
 
 \begin{abstract}
 Multichannel image reconstruction, image analysis, and display ({\it Miriad}) 
@@ -32,10 +27,10 @@ project between the Smithsonian
 Astrophysical Observatory and the Academia Sinica Institute of Astronomy
 and Astrophysics and is funded by the Smithsonian Institution and the
 Academia Sinica.} is an 8-element radio interferometer located atop Mauna Kea 
-in Hawaii. Operating at frequencies from 180 GHz to 700 GHz, the 6m dishes 
+in Hawaii. Operating at frequencies from 180~GHz to 700~GHz, the 6m dishes 
 may be arranged into configurations with baselines upto 509m, producing a 
 synthesized beam of sub-arcsec. Each element can observe with two receivers 
-simultaneously, with 2 GHz bandwidth each. The digital correlator backend 
+simultaneously, with 2~GHz bandwidth each. The digital correlator backend 
 allows flexible allocation of thousands of spectral channels to each receiver.
 
 \section{Miriad for SMA Data Reduction}
@@ -44,22 +39,22 @@ and has been adopted by the SMA for data reduction.\footnote{http://www.cfa.harv
 for the specifications required by the SMA. Specific codes for handling 
 the SMA data have been developed and are supported. {\it Miriad} now can be 
 used for the reduction of continuum and spectral line observations from 
-loading of the SMA archival data  through to the image analysis. The SMA 
+loading of the SMA archival data  through to the image analysis. The SMA 
 features have particular emphasis on aspects of interest to users of the 
 SMA. We support the off-line software including software tools used for 
 calibration and analysis of the SMA data observed at submillimeter 
 wavelengths. The newly developed codes are (will be) placed under 
 {\it Miriad} CVS system (./miriad$_{-}$cvs/src/prog/sma) 
-which is managed by the CARMA group. 
+which is managed by the CARMA group.
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.5, angle = 0]{f1a.eps}
-\includegraphics[scale=0.5, angle = 0]{f1b.eps}
+\includegraphics[scale=0.5, angle = 0]{part7/Zhao_P36/f1a.eps}
+\includegraphics[scale=0.5, angle = 0]{part7/Zhao_P36/f1b.eps}
 \end{figure}
 \begin{figure}
 \centering
-\includegraphics[scale=0.5, angle = 0]{f1c.eps}
+\includegraphics[scale=0.5, angle = 0]{part7/Zhao_P36/f1c.eps}
 \caption{A flow chart of handling SMA data in {\it Miriad}.
 {\it Left column} shows the major steps of the data reduction
 procedure. {\it Middle column} lists the {\it Miriad} tasks used in
@@ -73,14 +68,14 @@ process.}
 \centering
 \begin{minipage}{20pc}
 \centering
-\includegraphics[height=0.137\textheight,angle=-90]{f2a.ps}
-\includegraphics[height=0.155\textheight,angle=-90]{f2c.ps}
+\includegraphics[height=0.137\textheight,angle=-90]{part7/Zhao_P36/f2a.ps}
+\includegraphics[height=0.155\textheight,angle=-90]{part7/Zhao_P36/f2c.ps}
 \end{minipage}
 \vspace{0pc}
 \begin{minipage}{20pc}
 \centering
-\includegraphics[height=0.155\textheight,angle=-90]{f2b.ps}
-\includegraphics[height=0.137\textheight,angle=-90]{f2d.ps}
+\includegraphics[height=0.155\textheight,angle=-90]{part7/Zhao_P36/f2b.ps}
+\includegraphics[height=0.137\textheight,angle=-90]{part7/Zhao_P36/f2d.ps}
 \end{minipage}
 \caption{The result plots produced from one of the example scripts 
 based on SMA observations of DM Tau.
@@ -149,6 +144,4 @@ team and {\it Miriad} developers. JHZ is grateful to Mel Wright, Peter
 Teuben \& Bob Sault for their contributions in supporting SMA data reduction 
 with {\it Miriad}. 
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

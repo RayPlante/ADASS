@@ -1,20 +1,16 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Joe Masters and Jim Braatz}{A Spectral Pipeline for the Green Bank Telescope}
-
-\begin{document}
+\markboth{Masters and Braatz}{A Spectral Pipeline for the Green Bank Telescope}
 
 \title{A Spectral Pipeline for the Green Bank Telescope}
-\author{Joe~Masters$^1$ and Jim~Braatz$^1$
-\affil{$^1$NRAO Headquarters, 520 Edgemont Rd, Charlottesville, VA 22903-2475}}
+\author{Joe~Masters and Jim~Braatz
+\affil{NRAO Headquarters, 520 Edgemont Rd, Charlottesville, VA 22903-2475}}
+
+\aindex{Masters, J.}
+\aindex{Braatz, J.}
 
 \begin{abstract}
 Recently, history Green Bank Telescope (GBT) data was made available to the user community through the National Radio Astronomy Observatory (NRAO) data archive service.  In support of this archive, and to offer quick access to GBT data, NRAO has instituted the GBT Pipeline Project to provide reduced spectra from public GBT datasets to the user community.
@@ -32,7 +28,7 @@ Most extragalactic HI spectra are affected by RFI at some level.  The ``before a
 
 \begin{figure}[ht!]
 \centering%
-\includegraphics[width=5in]{P66_f1}
+\includegraphics[width=5in]{part7/Masters_P66/P66_f1}
 \caption{RFI excision of three exmample spectra.  Plots on the left are before RFI exicsion and plots on the right are the removal of bad component spectra and/or bad channels.}
 \label{fig:RFIfigure}
 \end{figure}
@@ -44,7 +40,7 @@ Like RFI exicsion, the best methods for baseline subtraction will take some expe
 \begin{itemize}
 \item a selectable baseline fitting range (i.e. channels, velocity)
 \item a tunable order of polynomial for fit
-\item a choice of sinusoidal or fourier fitting
+\item a choice of sinusoidal or Fourier fitting
 \end{itemize}
 
 \subsection{Data Grouping and Selection}
@@ -93,6 +89,4 @@ Likewise for data product retrieval.  Initally the data produced by the pipeline
 
 \acknowledgements We would like to thank the National Science Foundation for funding this work.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}
