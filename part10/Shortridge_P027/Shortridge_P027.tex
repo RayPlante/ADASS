@@ -1,19 +1,21 @@
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Shortridge, Farrell, Vuong, Birchall, and Heald}{The Software System for the AAO's HERMES Spectrograph}
-
-\begin{document}
+\markboth{Shortridge et al.}{The Software System for the AAO's HERMES Spectrograph}
 
 \hyphenation{AAO-mega}
 
 \title{The Software System for the AAO's HERMES Spectrograph}
-\author{Keith Shortridge, Tony Farrell, Minh Vuong, Michael Birchall, and Ron Heald
+\author{Keith~Shortridge, Tony~Farrell, Minh~Vuong, Michael~Birchall, and Ron~Heald
 \affil{Australian Astronomical Observatory, PO Box 915, North Ryde, NSW 1670, Australia}}
+
+\aindex{Shortridge, K.}
+\aindex{Farrell, T.}
+\aindex{Vuong, M.}
+\aindex{Birchall, M.}
+\aindex{Heald, R.}
 
 \begin{abstract}
 The AAO's HERMES spectrograph will start operation in 2013. Its primary project will be a Galactic Archaeology survey that aims to reconstruct the early history of our Galaxy through precise measurements of the chemical abundances of one million stars. This paper describes some of the software aspects of the HERMES project: how it has evolved from the earlier AAO 2dF system, the extensive use of simulation for testing, the overall observing system, and the data reduction pipeline.
@@ -52,7 +54,7 @@ The existing 2dF/AAOmega observing software has been evolving continuously since
 The overall structure of the HERMES observing system is shown in Figure 1. Real-time DRAMA tasks, such as those that control the robot fibre positioner or read out the CCD detectors \citep{AAO2_2004},  run on VxWorks CPUs in VME chassis. The remainder run on Linux or Solaris systems (although Solaris is slowly being phased out). Most development is now done on OS X systems, using simulator tasks to emulate the hardware.
 
 \begin{figure}
-\plotone{P027_f1.eps}
+\plotone{part10/Shortridge_P027/P027_f1.eps}
 \caption{The 2dF observing system, running in HERMES mode.}
 \end{figure}
 
@@ -84,7 +86,4 @@ The data simulator combines the optical design of the spectrograph with spectra 
 
 Changes to the 2dFdr algorithms for HERMES have included: using polynomials derived from the data simulator as the basis for locating the spectra in the image; an improved optimal extraction algorithm to extract the individual fibre spectra \citep{OptExt_2010}; sky subtraction based on Principal Components Analysis (PCA) \citep{PCA_2010}; and improved wavelength calibration using an algorithm based on Whale Shark identification \citep{Sharks_2005}.
 
-\bibliography{../../editor}
-
-\end{document}
-
+\bibliography{editor}

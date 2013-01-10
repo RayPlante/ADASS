@@ -1,5 +1,3 @@
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
@@ -7,13 +5,14 @@
 
 \markboth{Dowell}{LWA1 Software}
 
-\begin{document}
 \title{Software and Computing at LWA1}
 \author{
-Jayce Dowell$^1$ on behalf of the LWA Collaboration$^2$
+Jayce~Dowell$^1$ on behalf of the LWA Collaboration$^2$
 \affil{$^1$University of New Mexico, Department of Physics and Astronomy, 1919 Lomas Blvd NE,  Albuquerque, NM 87131}
 \affil{$^2$\url{http://lwa.unm.edu/}}
 }
+
+\aindex{Dowell, J.}
 
 \begin{abstract}
 The first station of the Long Wavelength Array, LWA1, is a new low frequency radio telescope currently operating in New Mexico, USA.  The primary data products delivered by the telescope consist of raw voltage time series data.  As such, the data have large volumes with a high degree of flexibility.  The LWA Software Library (LSL) is designed to process these data and provides a variety of signal processing functions that are not generally available.  LSL also serves as the software available on the LWA1 User's Computing Facility, a six node cluster available to LWA1 observers for data reduction.
@@ -33,12 +32,12 @@ A variety of functions are included within the analysis routines to allow observ
 Figures \ref{P42_fig:sky} and \ref{P42_fig:psr} demonstrate the flexibility of LSL through two different data processing approaches.  Figure \ref{P42_fig:sky} demonstrates interferometry and shows an all-sky image created using the \\{\tt lsl.correlator.fx.FXMaster()} software correlator function, using data from the transient buffer mode.  A single dish-style beam former detection of the pulsar B1919+21 is shown in Figure \ref{P42_fig:psr}.  In this case, the {\tt lsl.misc.dedispersion.coherent()} function is used to apply coherent dedispersion to the time series data before channelization and folding.
 
 \begin{figure}
-	\plotone{P42_f1}
+	\plotone{part10/Dowell_P42/P42_f1}
 	\caption{\label{P42_fig:sky}37--38 MHz Stokes I image of the sky visible to LWA1 created using the LSL software correlator and data from the LWA1 transient buffer.  The image is a composite of 96 snapshots of 61 ms each and clearly shows the Galactic plane as well as Cas A and Cyg A.}
 \end{figure}
 
 \begin{figure}
-	\plotone{P42_f2}
+	\plotone{part10/Dowell_P42/P42_f2}
 	\caption{\label{P42_fig:psr}Detection of pulsar B1919+21 from $\sim$800 seconds of data at 60 MHz taken with a bandwidth of approximately 4 MHz.  The data where dedispersed using the LSL coherent dedispersion routine and then folded at the pulsar's period.}
 \end{figure}
 
@@ -56,7 +55,4 @@ The LWA1 User's Computing Facility is designed to help alleviate the data transf
 
 \acknowledgments Construction of the LWA has been supported by the Office of Naval Research under Contract N00014-07-C-0147.  Support for operations and continuing development of the LWA1 is provided by the National Science Foundation under grant AST-1139974 of the University Radio Observatory program.
 
-\bibliography{../../editor}
-
-\end{document}
-
+\bibliography{editor}

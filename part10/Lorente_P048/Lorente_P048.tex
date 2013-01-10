@@ -1,16 +1,9 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
 \markboth{Lorente, Farrell and Goodwin}{SAMI Automated Plug Plate Configuration}
-
-\begin{document}
 
 \title{SAMI Automated Plug Plate Configuration}
 
@@ -19,12 +12,15 @@
 North Ryde NSW 1670, Australia}
 }
 
+\aindex{Lorente, N. P. F.}
+\aindex{Farrell, T.}
+\aindex{Goodwin, M.}
+
 \begin{abstract} The Sydney-AAO Multi-object Integral field
   spectrograph (SAMI) is a prototype wide-field system at the
   Anglo-Australian Telescope (AAT) which uses a plug-plate to mount
   its $13 \times 61$-core imaging fibre bundles (hexabundles) in the
   optical path at the telescope's prime focus.
-%
   In this paper we describe the process of determining the positions
   of the plug-plate holes, where plates contain three or more stacked
   observation configurations. The process, which up until now has
@@ -70,7 +66,6 @@ blank-sky positions are allocated to each field with the additional
 constraint that only 26 sky holes are to be drilled in the plate, so
 the sky positions for each of the 3 fields must map to the same
 physical holes (see Figure~\ref{p048_FigStackedFields}).
-%
 Configuration of the calibration plate holes is simpler, as there are
 no sky positions to find which are common to all fields, but star
 plates contain a greater number of stacked fields with one common
@@ -79,7 +74,7 @@ astrometric distortion model and fine rotation alignment.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.7\linewidth]{stackedFullPlate3dWithLabels.eps}
+\includegraphics[width=0.7\linewidth]{part10/Lorente_P048/stackedFullPlate3dWithLabels.eps}
 \caption {Representation of a science plate composed of three fields. The target
 positions are unique to a given field, whereas the sky positions are
 valid for each of the three field but use a single common hole on the plate.}
@@ -87,7 +82,6 @@ valid for each of the three field but use a single common hole on the plate.}
 \end{figure}
 
 \noindent The steps involved in configuring a plate are as follows:
-%
 \begin{enumerate}
 \item {\bf Field Creation:} From a target catalogue and a catalogue of
   suitable calibration and guide stars, a database of candidate
@@ -96,7 +90,6 @@ valid for each of the three field but use a single common hole on the plate.}
   connector assembly, the position of the guide camera and the need to
   physically place and remove connectors between one observation and
   the next. \newline 
-%
 - Separation between a target and the guide star: $7.6$\ arcmin
 $<$~separation $<0.5$~degrees\\
 - Separation between two targets in the same field $> 3.8$\ arcmin
@@ -124,7 +117,7 @@ $<$~separation $<0.5$~degrees\\
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.7\linewidth]{plateWithGrid3WithLabels.eps}
+\includegraphics[width=0.7\linewidth]{part10/Lorente_P048/plateWithGrid3WithLabels.eps}
 \caption {Finding suitable positions for sky fibres to ensure
   uniform coverage over the plate. This example shows the invalid
   (i.e. occupied) grid cells as gray and the order in which the sky
@@ -163,19 +156,9 @@ $<$~separation $<0.5$~degrees\\
 4) There are no bright stars or extended galaxies sufficiently
   close to a target position so as to pose a contamination risk.
 
-
-% \begin{enumerate}
-% \item The target position is within the field-of-view of the fibre
-%   hexabundle and that both of these coincide with the DSS galaxy.
-% \item The field-of-view of the sky fibres is empty, as expected.
-% \item The distribution of sky fibres is uniform across the plate.  
-% \item There are no bright stars or extended galaxies sufficiently
-%   close to a target position so as to pose a contamination risk.
-% \end{enumerate}
-
 \begin{figure}[ht]
 \centering
-\includegraphics[width=0.73\linewidth]{aladinView.eps}
+\includegraphics[width=0.73\linewidth]{part10/Lorente_P048/aladinView.eps}
 \caption{Aladin screenshot showing SAMI's $1^\circ$ field-of-view (white),
   guide camera (red), hexabundle (yellow)
   and sky fibre (blue) positions, superimposed on a DSS image.}
@@ -209,6 +192,4 @@ subsequently finer configuration cycles until a satisfactory plate
 configuration is achieved.
 
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

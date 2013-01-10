@@ -1,22 +1,18 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Oscar Perez, Juan C. Vallejo, and Ruben F. Perez}{Oscar Perez, Juan C. Vallejo, and Ruben F. Perez}
+\markboth{Perez, Vallejo, and Perez}{Migrating an In-Operation Space Observatory Data Processing Chain}
 
-\begin{document}
-
-\title{Migrating an in-operation space observatory data processing chain towards a SOA oriented architecture, and the benefits for other space missions}
-\author{Oscar Perez$^1$, Juan C. Vallejo$^1$, and Ruben F. Perez$^1$
-\affil{$^1$GMV Aerospace and Defence, Isaac Newton 11, Tres Cantos, Madrid, Spain}
+\title{Migrating an In-Operation Space Observatory Data Processing Chain Towards a SOA Oriented Architecture, and the Benefits for Other Space Missions}
+\author{Oscar Perez, Juan C. Vallejo, and Ruben F. Perez
+\affil{GMV Aerospace and Defence, Isaac Newton 11, Tres Cantos, Madrid, Spain}
 }
+
+\aindex{Perez, O.}
+\aindex{Vallejo, J.}
+\aindex{Perez, R. F.}
 
 \begin{abstract}
 XMM-Newton Science Control System is currently under a migration exercise  aiming 
@@ -43,7 +39,7 @@ commands sequences which will be later sent to the Mission Operations Center (MO
 Initial design imposed an isolation between both chains, which constrained the operability of the XSCS as a whole. 
 \begin{figure}[h]
 \centering
-\includegraphics[width=80 mm]{P022_f1.eps}
+\includegraphics[width=80 mm]{part10/Perez_P022/P022_f1.eps}
 \caption{The current XMM-Newton Science Control System (XSCS) architecture}
 \label{fig:1}
 \end{figure}
@@ -60,9 +56,8 @@ The general idea of SOA is to drive software to a high flexibility, scalability,
 Figure 2 depicts the main services envisaged in the scope of the prototype as aligned with the services taxonomy that can be found in the literature \cite{soa2}.
 \begin{figure}[h]
 \centering
-\includegraphics[width=80 mm]{P022_f2.eps}
+\includegraphics[width=80 mm]{part10/Perez_P022/P022_f2.eps}
 \caption{Service Oriented Architecture}
-\label{fig2}
 \end{figure}
 The middleware represent the way to distribute the data between the different application services of the platform. In many cases, the information is exchanged through pieces (e.g. messages for the case of Message Oriented Middleware) that may be sent to a subject so the subscribed services can receive this information from other services. The implementation of the SOA will be performed from the existing three-tier application architecture. The data access layer represents the very old core of the XSCS, where new handlers and interfaces have been implemented accord to the new business logic which is implemented into the current business layer. The business layer is also enhanced for bridging with the new XSCS presentation layer, where the logic of the services is implemented reusing the infrastructure of existing remote web Proposal Handler facilities. Here is where the most of the service implementation is to take place, as the middleware located here can talk both with the operational side of the processing and monitoring systems, and as the same time, is able to communicate with external entities, being XSCS or non-XSCS based.
 This is indeed the most relevant aspect of the architecture, as it will offer processing services to non-XSCS external user-driven systems. Thanks to those improvements, the presentation layer will be updated with operational XSCS uplink and downlink (science monitor) systems. But also non-XSCS systems, some of them developed by other SOC parts will manage a broad and updated communication with the core legacy systems. Initial prototyped services are discovery of new observations L1 products availability and requests for operational archive data. Additional services in the uplink side are status monitoring of observations and remote execution of observation edition facilities. Data flow monitoring tools are common for uplink and downlink. 
@@ -73,9 +68,9 @@ consideration, mainly Earth Observations missions, which have similar processing
 associated different policies for distribution among the centers involved in the whole data processing flow, where different studies have been performed by GMV \cite{RubenPerez1}.
 \begin{figure}[h]
 \centering
-\includegraphics[width=80 mm]{P022_f3.eps}
+\includegraphics[width=80 mm]{part10/Perez_P022/P022_f3.eps}
 \caption{Cloud Processing and Storage in a non centralized environment}
-\label{fig3}
+
 \end{figure}
 Different architectures can be deployed to deal with all the data
 produced by all the missions. In particular, SOA is a perfect architecture to integrate very different systems and perfectly compatible with Cloud in order to maximize extensibility and optimization of computational resources. The architectures being tested are addressed to check two main factors: If current technologies cover the gap between what is required in terms of
@@ -101,6 +96,4 @@ final user wants to use the platform to run their processing algorithms to check
 final products improve with their assumptions, but also wants to run the applications
 provided by the client to analyze the data.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

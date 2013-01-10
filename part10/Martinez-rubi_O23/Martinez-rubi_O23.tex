@@ -1,22 +1,25 @@
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
-%\bibliographystyle{asp2010}
-
-%\markboth{Martinez-Rubi, Veligatla, de Bruyn, Lampropoulos, Offringa, Jelic, Yatawatta, Koopmans and Zaroubi}{LEDDB: LOFAR Epoch of Reionization Diagnostic Database}
 \markboth{Martinez-Rubi et al.}{LEDDB: LOFAR Epoch of Reionization Diagnostic Database}
 
-\begin{document}
-
 \title{LEDDB: LOFAR Epoch of Reionization Diagnostic Database}
-\author{O. Martinez-Rubi$^1$, V. K. Veligatla$^1$, A. G. de Bruyn$^{1,2}$, P. Lampropoulos$^2$, A. R. Offringa$^1$,  V. Jelic$^{1,2}$, S. Yatawatta$^2$, L. V. E. Koopmans$^1$, and S. Zaroubi$^1$
+\author{O.~Martinez-Rubi,$^1$ V.~K.~Veligatla,$^1$ A.~G.~de~Bruyn,$^{1,2}$ P.~Lampropoulos,$^2$ A.~R.~Offringa,$^1$ V.~Jelic,$^{1,2}$ S.~Yatawatta,$^2$ L.~V.~E.~Koopmans,$^1$ and S.~Zaroubi$^1$
 \affil{$1$ Kapteyn Astronomical Institute, University of Groningen, \\
 PO Box 800, 9700 AV Groningen, the Netherlands\\
 $2$ ASTRON, the Netherlands Institute for Radio Astronomy, \\
 PO Box 2, 7990 AA Dwingeloo, the Netherlands}
 }
+
+\aindex{Martinez-Rubi, O.}
+\aindex{Veligatla, V. K.}
+\aindex{de~Bruyn, A. G.}
+\aindex{Lampropoulos, P.}
+\aindex{Offringa, A. R.}
+\aindex{Jelic, V.}
+\aindex{Yatawatta, S.}
+\aindex{Koopmans, L. V. E.}
+\aindex{Zaroubi, S.}
 
 \begin{abstract}
 One of the key science projects of the Low-Frequency Array (LOFAR) is the detection of the cosmological signal coming from the Epoch of Reionization (EoR). Here we present the LOFAR EoR Diagnostic Database (LEDDB) that is used in the storage, management, processing and analysis of the LOFAR EoR observations. It stores referencing information of the observations and diagnostic parameters extracted from their calibration. This stored data is used to ease the pipeline processing, monitor the performance of the telescope and visualize the diagnostic parameters which facilitates the analysis of the several contamination effects on the signals. It is implemented with PostgreSQL and accessed through the psycopg2 python module. We have developed a very flexible query engine, which is used by a web user interface to access the database, and a very extensive set of tools for the visualization of the diagnostic parameters through all their multiple dimensions.
@@ -42,7 +45,7 @@ The data from the stations is sent to the Central Processing Facility (CEP) loca
 The LEDDB is implemented with PostgreSQL and accessed through a python interface provided by the psycopg2 module. It is part of a research project with still evolving requirements, so one of the key points of the design was to make it flexible enough to meet new requirements such as the addition of new diagnostic parameters. The content of the database is categorized under three different blocks: the referencing information, the diagnostic data and the meta-data. In figure \ref{fig:leddber} we show the Entity-Relationship diagram of the database with its blocks, the tables involved and their relationships.
 \begin{figure}[!ht]
   \centering
-    \includegraphics[scale=0.077]{O23_f1.eps} 
+    \includegraphics[scale=0.077]{part10/Martinez-rubi_O23/O23_f1.eps} 
   \caption{Entity-Relationship diagram of the LEDDB. Only table names and key columns are shown.}
   \label{fig:leddber}
 \end{figure}
@@ -59,7 +62,7 @@ The LEDDB can generate a \textit{RefFile} or a \textit{DiagFile}. A \textit{RefF
 The diagnostic data can have multiple dimensions: Time, frequency, baseline (interferometer), station, polarization correlations and other ones depending on the situation. In general they are complex numbers. We provide plotting and animation tools implemented with matplotlib to analyse such multi-dimensional data. In figure \ref{fig:gain} we show an example of one of the produced plots.
 \begin{figure}[!ht]
   \centering
-    \includegraphics[scale=0.19]{O23_f2.eps} 
+    \includegraphics[scale=0.19]{part10/Martinez-rubi_O23/O23_f2.eps} 
   \caption{Gain as a function of time of one of the polarization auto-correlations of two different stations at 138 MHz for the observation L60639 (Elais field). Note the phase difference between a core station (CS001HBA0) and a remote station (RS508HBA), mainly caused by the ionosphere.}
   \label{fig:gain}
 \end{figure}
@@ -70,7 +73,7 @@ The query engine is a python API which provides fast and flexible access to the 
 We use a python based web server (cherrypy) to interface with the query engine. The client-side user interface (UI) in the web page is implemented with JQueryUI framework. In figure \ref{fig:webui} we show a snapshot of the web UI.
 \begin{figure}[!ht]
   \centering
-    \includegraphics[scale=0.24]{O23_f3.eps} 
+    \includegraphics[scale=0.24]{part10/Martinez-rubi_O23/O23_f3.eps} 
   \caption{Snapshot of the web UI. Each tab in the UI represents a primary table in the database.}
   \label{fig:webui}
 \end{figure}
@@ -85,6 +88,3 @@ The UI allows the user to create both \textit{RefFiles} and \textit{DiagFiles}. 
 We will focus on minimizing the access times while the database is growing and improving the tools to analyse the diagnostic parameters. Possibly new diagnostic parameters will added. There is also a plan to migrate the database to a new server specially designed for its purpose. 
 
 \acknowledgements We are indebted to Eite Tiesinga for his assistance in all the matters related to the LOFAR EoR cluster. We also thank the rest of the LOFAR EoR group core members for their contribution. \newline (\textit{www.astro.rug.nl/eor/people/core-members}).
-
-
-\end{document}

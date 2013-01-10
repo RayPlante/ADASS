@@ -1,25 +1,17 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
 
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-\usepackage{graphicx}
-\usepackage{floatrow}
+%\usepackage{floatrow}
 \resetcounters
 
-\usepackage[compact]{titlesec}
-\titlespacing{\section}{0pt}{2ex}{1ex}
-\titlespacing{\subsection}{0pt}{1ex}{0ex}
-\titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
+\markboth{Young et al.}{FRIAA}
 
-\markboth{Young, M.D., Gopu, A.,  Hayashi, S, and Cox, J.A.}{}
+\title{FRIAA: A FRamework for web-based Interactive Astronomy Analysis using AMQP messaging}
+\author{Michael~D.~Young,$^1$ Arvind~Gopu,$^1$ Soichi~Hayashi,$^1$ Jeffrey~A.~Cox$^2$
+\affil{Indiana University, [2709$^1$, 2719$^2$] E. 10th St, Bloomington IN 47408}}
 
-\begin{document}
-
-\title{%%TODO: Better name
-FRIAA: A FRamework for web-based Interactive Astronomy Analysis using AMQP messaging}
-\author{Michael D. Young$^1$, Arvind Gopu$^1$, Soichi Hayashi$^1$, Jeffrey A. Cox$^2$}
-\affil{Indiana University, [2709$^1$, 2719$^2$] E. 10th St, Bloomington IN 47408}
+\aindex{Young, M. D.}
+\aindex{Gopu, A.}
+\aindex{Hayashi, S.}
+\aindex{Cox, J. A.}
 
 \begin{abstract}
 
@@ -63,7 +55,7 @@ FRIAA.  These nodes have a 6-core Intel Xeon 2.40GHz CPU (E5645), 48GB of memory
 \label{section:workflow}
 
 \begin{figure}
-\includegraphics[width=0.5\textwidth]{O15_f1.eps}
+\includegraphics[width=0.5\textwidth]{part10/Young_O15/O15_f1.eps}
 \caption{Schematic of user-initiated analysis workflow within the ODI-PPA system.  Dashed lines indicate messages passed through the AMQP Server. See Section \ref{section:workflow} for more information.}
 \label{fig:workflow}
 \end{figure}
@@ -74,7 +66,7 @@ Numerical identifiers in this section refer to markers shown in Fig \ref{fig:wor
 \label{section:sextractor}
 
 \begin{figure}[ht]
-\includegraphics[width=0.5\textwidth]{O15_f2.eps}
+\includegraphics[width=0.5\textwidth]{part10/Young_O15/O15_f2.eps}
 \caption{Interface to the SExtractor tool within the Portal's Image Explorer (Section \ref{section:portal}), showing a sampling of user-configurable parameters.}
 \label{fig:sextractor}
 \end{figure}
@@ -84,7 +76,7 @@ The SExtractor tool is designed to identify and quantify sources within astronom
 Here we compare the processing times from identical runs of SExtractor: one running through the workflow as described in Section \ref{section:workflow} within ODI-PPA; The other running on a typical desktop workstation (Intel Core 2 Duo 3.0GHz E6850 CPU, 8GB RAM). The example image we are using for the following test is a crowded-field image of M15 observed on ODI, totaling 3.05GB in size. We used the latest stable version (2.8.6) of SExtractor and default parameters, on both platforms.
 
 \begin{figure}[ht]
-\includegraphics[width=0.75\textwidth]{O15_f3.eps}
+\includegraphics[width=0.75\textwidth]{part10/Young_O15/O15_f3.eps}
 \caption{SExtractor processing time on ODI-PPA vs. Desktop Workstation}
 \label{fig:sex_run}
 \end{figure}
@@ -100,9 +92,6 @@ Our future plans include enhanced scalability via automation of spawning of addi
  
 \acknowledgements 
 This material is based upon work supported by the National Science Foundation under Grant No. CNS-0723054.  
-%%need this for quarry
 
 \bibliographystyle{asp2010}
-\bibliography{../../editor}  
-
-\end{document}
+\bibliography{editor}  

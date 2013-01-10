@@ -1,20 +1,15 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside,hyphens]{article} %Added hyphens so the nickballastronomer URL linebreaks correctly
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Nicholas M. Ball}{CANFAR+Skytree}
-
-\begin{document}
+\markboth{Ball}{CANFAR+Skytree Focus Demo}
 
 \title{CANFAR+Skytree: A Cloud Computing and Data Mining System for Astronomy}
-\author{Nicholas M. Ball$^1$
-\affil{$^1$National Research Council Canada, 5071 West Saanich Road, Victoria, BC V9E 2E7}}
+\author{Nicholas~M.~Ball
+\affil{National Research Council Canada, 5071 West Saanich Road, Victoria, BC V9E 2E7}}
+
+\aindex{Ball, N.}
 
 \begin{abstract}
 This is a companion Focus Demonstration article to the CANFAR+Skytree poster (\citeauthor{ball:adass12poster} \citeyear{ball:adass12poster}, this volume), demonstrating the usage of the Skytree machine learning software on the Canadian Advanced Network for Astronomical Research (CANFAR) cloud computing system. CANFAR+Skytree is the world's first cloud computing system for data mining in astronomy.
@@ -62,7 +57,7 @@ We then run {\tt allkn}:
 The program is invoked via the {\tt skytree-server} executable, the algorithm name (in this case {\tt allkn}), and passed arguments as appropriate to the algorithm. In this case, the input file, {\tt references\_in}, the number of neighbors to find, 1, and the neighbor distances and file positions as output. The typical appearance of this run in the terminal is shown in Figure \ref{Fig: Terminal}. Each algorithm is fully documented if invoked with the {\tt --help} argument.
 
 \begin{figure}
-\plotone{F5_terminal.ps}
+\plotone{part11/Ball_F5/F5_terminal.ps}
 \caption{Typical Skytree invocation on the terminal, showing the {\tt allkn} run detailed in the text. \label{Fig: Terminal}}
 \end{figure}
 
@@ -124,43 +119,6 @@ Skytree is invoked on the command line or a script as part of one's analysis. Ru
 
 CANFAR+Skytree represents world's first cloud computing system for data mining in astronomy, and is open for use by any interested member of the astronomical community. For further details on usage, see the poster paper (\citeauthor{ball:adass12poster} \citeyear{ball:adass12poster}, this volume), or visit the CANFAR+Skytree website at \url{https://sites.google.com/site/\-nickballastronomer}.
 
-% \subsection{The Author Checklist}
-% The following checklist should be followed when writing a submission to a conference proceedings to be published by the ASP.
-
-% \begin{itemize}
-% \checklistitemize
-% \item Article is within page limitations set by editor. 
-% \item Paper compiles properly without errors or warnings.
-% \item No fundamental modifications to the basic template are present, including special definitions, special macros, packages, \verb"\vspace" commands, font adjustments, etc. %(§ 3.3, p. 10)
-% \item Commented-out text has been removed. %(§ 3.3, p. 10,11)
-% \item Author and shortened title running heads are proper for the paper and shortened so page number is within the margin. %(§ 3.1, p. 4)
-% \item Paper checked for general questions of format and style, including, but not limited to, the following:
-% \begin{itemize}
-%   \item capitalization, layout, and length of running heads, titles  and \\sections/subsections;  % (§ 3.1, p. 4) (§ 3.2, p. 5) (§ 3.3, p. 8)
-%   \item page numbers within margin; % (§ 3.1, p. 4)
-%   \item author names spelled correctly and full postal addresses given; % (§ 3.2, p. 5-6)
-%   \item abstracts; % (§ 3.2, p. 7);
-%   \item all margins---left, right, top and bottom; % (§3.1, p. 4; §3.2, p. 5; §3.3, p. 9; §3.6, p. 21);
-%   \item standard font size and no Type 3 fonts; %(§ 3.3, pp. 10-11; § 3.6, p. 23; § 4.2, p. 25);
-%   \item spacing; % (§ 3.3, pp. 9-10);
-%   \item section headings. % (§ 3.3; p. 8).
-% \end{itemize}
-% \item All tables are correctly positioned within margins, are properly formatted, and are referred to in the text.  %(§ 3.5, pp. 16-20)
-% \item All figures are correctly positioned within margins, are minimum 300 dpi resolution, not too dark or too light, do not contain embedded fonts, and are referred to in the text.  All labeling or text will be legible with 10\% reduction.  Questionable images printed, checked and replaced if necessary.  Figures do not cover text or running heads, and proper permissions have been granted and acknowledged.  %(§ 3.6, pp. 21-24)
-% \item All acknowledgments and discussions are in proper format.  % (pp. 11-12, p. 20)
-% \item If there are acknowledgments at the end of the article, ensure that the author has used
-% the \verb"\acknowledgments" command and not the commands
-% \\ \verb"\begin{Acknowledgments}", \verb"\end{Acknowledgments}".
-% Acknowledgments should only be used for thanking institutions,
-% groups, and individuals who have directly contributed to the work.
-% \item All references quoted in the text are listed in the bibliography; all items in the bibliography have been referred to in the text.  % (§ 4, pp. 24-28)
-% \item All bibliography entries are in the proper format, using one of the referencing styles given. Each of the references is bibliographically complete, including full names of authors, editors, publishers, place of publication, page numbers, years, etc. % (§§ 4.2-4.3, pp. 25-28)
-% \item A complete Bib\TeX\ file is ready to submit to the editor.
-% \item References to preprints replaced with publication information when possible.
-% \end{itemize}
-
 \acknowledgements This research used the facilities of the Canadian Astronomy Data Centre, operated by the National Research Council of Canada with the support of the Canadian Space Agency. Funding for CANFAR was provided by CANARIE via the Network Enabled Platforms Supporting Virtual Organisations program. The author thanks D. Schade, A. Gray and M. Hack for their contributions to this work.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

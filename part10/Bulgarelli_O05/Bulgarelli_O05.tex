@@ -1,38 +1,21 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-
-
-
-\def \degmark{^\circ}
-\def \ergsec{\hbox{erg s$^{-1}$}}
-\def \ergcmsec{\hbox{erg cm$^{-2}$ s$^{-1}$}}
-\def \phcmsec{\hbox{photons cm$^{-2}$ s$^{-1}$}}
-\def \ferg {erg cm$^{-2}$ s$^{-1}$}
-\def \arcmin {\hbox{$^\prime$}}
-\def \arcsec {\hbox{$^{\prime\prime}$}}
-\def \chisq {$\chi ^{2}$}
-\def \rchisq {$\chi_{\nu} ^{2}$}
-\def \gray {$\gamma$-ray }
-\def \enmev {$E > 100 \: MeV$}
 
 \resetcounters
 
+\markboth{Bulgarelli et al.}{AGILE-GRID Science Alert Monitoring System }
 
-
-\markboth{Bulgarelli, A.}{AGILE-GRID science alert monitoring system }
-
-\begin{document}
-
-\title{AGILE/GRID science alert monitoring system: the workflow and the Crab flare case}
-\author{A.\ Bulgarelli\altaffilmark{1}, M.\ Trifoglio\altaffilmark{1}, F.\ Gianotti\altaffilmark{1}, 
-M. \ Tavani\altaffilmark{2}, V. Conforti\altaffilmark{1}, N. Parmiggiani\altaffilmark{3}}
-
+\title{AGILE/GRID Science Alert Monitoring System: The Workflow and the Crab Flare Case}
+\author{A.~Bulgarelli,$^1$ M.~Trifoglio,$^1$ F.~Gianotti,$^1$ 
+M.~Tavani,$^2$ V.~Conforti,$^1$ and N.~Parmiggiani$^3$
 \affil{$^1$National Institute for Astrophysics - IASF Bologna, Italy}
 \affil{$^2$National Institute for Astrophysics - IAPS Roma, Italy}
-\affil{$^3$University of Modena and Reggio Emilia}
+\affil{$^3$University of Modena and Reggio Emilia}}
+
+\aindex{Bulgarelli, A.}
+\aindex{Trifoglio, M.}
+\aindex{Gianotti, F.}
+\aindex{Tavani, M.}
+\aindex{Conforti, V.}
+\aindex{Parmiggiani, N.}
 
 \begin{abstract}
 During the first five years of the AGILE mission we have observed many gamma-ray transients of Galactic and extra-Galactic origin. A fast reaction to unexpected transient events is a crucial part of the AGILE monitoring program, because the follow-up of astrophysical transients is a key point for this space mission. We present the workflow and the software developed by the AGILE Team to perform the automatic analysis  for the detection of gamma-ray transients. In addition, an App for iPhone will be released enabling the  Team to access the monitoring system through mobile phone. In September 2010 the science alert monitoring system presented in this paper has recorded a transient phenomena from the Crab Nebula, generating an automated alert sent via email and SMS two hours after the end of an AGILE satellite orbit, i.e. two hours after the Crab flare itself: for this discovery AGILE won the 2012 Bruno Rossi prize. The design of this alert system is maximized to reach the maximum speed, and in this as in many other cases AGILE has demonstrated that the reaction speed of the monitoring system is crucial for the scientific return of the mission. 
@@ -68,7 +51,7 @@ The search for $\gamma$-ray transients (Galactic and extragalactic)
       about 96'.
         
       From 2009 Nov the AGILE $\gamma$-ray observations of the sky are operated  with the
-          satellite operating in Òspinning modeÓ (the satellite axis sweeps an entire circle in the
+          satellite operating in "spinning mode" (the satellite axis sweeps an entire circle in the
           sky in approximately 7 min) with a typical
           accumulating pattern (see Fig. \ref{fig_fov}).            
                     
@@ -79,7 +62,7 @@ The orbital characteristics, the large FOV and the operating modes has a great i
                    
 \begin{figure}[t]
 \epsscale{0.93}
-\plotone{O.05_1c.eps}
+\plotone{part10/Bulgarelli_O05/O.05_1c.eps}
 \caption{An example of a two-days counts map of AGILE-GRID showing the entire sky in spinning mode in 2012 Oct. The science monitoring system analyze the entire sky for each orbit, taking into account the regions with low exposure level.} \label{fig_fov}
 \end{figure}
 
@@ -140,7 +123,8 @@ In addition an iPhone iOS App has been developed by AGILE Team at INAF/IASF Bolo
       
 \section{The Crab flare case}
 
-In this case a maximum likelihood analysis determines that the Crab has a persistent flux ofF = $(2.2 +/- 0.1) \cdot 10^{-6} \; ph \; cm^{-2} \; s^{-1}$ for $E > 100$ MeV at a significance of sqrt(TS) = 30.0 with data from 2007 Jul - 2009 Oct, taking into account the diffuse gamma-ray background with Galactic and isotropic components, and is obtained considering all nearby sources with a fixed flux. Fig. \ref{fig_crab} reports the sliding light curve of the  2010 Sep Crab flare as seen by AGILE science monitoring system running at INAF/IASF Bologna. 
+In this case a maximum likelihood analysis determines that the Crab has a persistent flux of
+F = $(2.2 +/- 0.1) \cdot 10^{-6} \; ph \; cm^{-2} \; s^{-1}$ for $E > 100$ MeV at a significance of sqrt(TS) = 30.0 with data from 2007 Jul - 2009 Oct, taking into account the diffuse gamma-ray background with Galactic and isotropic components, and is obtained considering all nearby sources with a fixed flux. Fig. \ref{fig_crab} reports the sliding light curve of the  2010 Sep Crab flare as seen by AGILE science monitoring system running at INAF/IASF Bologna. 
 The first alert  from Crab with a flux level that exceed $1-\sigma$ mean flux level (1.a in Figure) was received at 2010/09/20 02:04:04 UTC (the yellow arrow 1.b in Figure report the alert generation). The Crab nebula reaches its maximum flux in AGILE data (see 2.a in Figure)
       between 2010/09/19 01:54:43 UTC and 2010/09/20 23:47:51
       in the continuous integration procedure with two days integration
@@ -153,7 +137,7 @@ The first alert  from Crab with a flux level that exceed $1-\sigma$ mean flux le
 
 \begin{figure}[t]
 \epsscale{0.93}
-\plotone{O.05_2.eps}
+\plotone{part10/Bulgarelli_O05/O.05_2.eps}
 \caption{The 1.5 hours sliding light curve (2-days integration time) of the September 2010 Crab flare as seen by AGILE science monitoring system. Errors are $1-\sigma$, and time is given in MJD. The yellow lines    show the average Crab flux and the $3-\sigma$ uncertainty range. 1.a and 1.b (in orange) are respectively the detected flux and the time of the alert generation by science monitoring system when Crab nebula reaches a flux level that exceed $1-\sigma$ the mean flux level; 2.a and 2.b (in red) are related to the reached maximum flux level. The green arrow indicate when the Astronomical Telegram was posted.} \label{fig_crab}
 \end{figure}
 
@@ -182,8 +166,4 @@ of Astrophysics (INAF) and the Italian Institute of Nuclear
 Physics (INFN). 
 
 \bibliographystyle{asp2010}
-\bibliography{../../editor}
-
-
-
-\end{document}
+\bibliography{editor}
