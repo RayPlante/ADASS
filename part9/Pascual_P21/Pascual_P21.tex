@@ -1,22 +1,14 @@
 
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-
 \resetcounters
 
-%\bibliographystyle{asp2010}
+\markboth{Pascual et al.}{Software Toolkit for MEGARA}
 
-\markboth{Sergio~Pascual, M.~Carmen~Eliche-Moral, 
-V\'ictor~Villar et al.}{Software toolkit for MEGARA}
-
-\begin{document}
-
-\title{Software toolkit for MEGARA, the Integral-Field Unit and Multi-Object Spectrograph
+\title{Software Toolkit for MEGARA, the Integral-Field Unit and Multi-Object Spectrograph
 for GTC}
-\author{Sergio~Pascual$^1$, M.~Carmen~Eliche-Moral$^1$, 
-V\'ictor~Villar$^1$, \'Africa~Castillo$^1$, Nicolas~Gruel$^2$, 
-Nicol\'as~Cardiel$^1$, Esperanza~Carrasco$^3$, Jes\'us~Gallego$^1$, 
-Armando~Gil~de~Paz$^1$, F.~M.~S\'anchez-Moreno$^4$
+\author{Sergio~Pascual,$^1$ M.~Carmen~Eliche-Moral,$^1$ 
+V\'ictor~Villar,$^1$ \'Africa~Castillo,$^1$ Nicolas~Gruel,$^2$ 
+Nicol\'as~Cardiel,$^1$ Esperanza~Carrasco,$^3$ Jes\'us~Gallego,$^1$ 
+Armando~Gil~de~Paz,$^1$ F.~M.~S\'anchez-Moreno,$^4$
 and J.~M.~V\'ilchez$^5$
 \affil{$^1$Departamento de Astrof\'isica, Universidad Complutense de Madrid, Spain}
 \affil{$^2$Centro de Estudios del Cosmos de Arag\'on, Teruel, Spain}
@@ -24,6 +16,18 @@ and J.~M.~V\'ilchez$^5$
 \affil{$^4$Departamento de Arquitectura y Tecnolog\'ia de Sistemas Inform\'aticos, UPM, Spain}
 \affil{$^5$IAA-CSIC, Spain}
 }
+
+\aindex{Pascual, S.}
+\aindex{Eliche-Moral, M. C.}
+\aindex{Villar, V.}
+\aindex{Castillo, A.}
+\aindex{Gruel, N.}
+\aindex{Cardiel, N.}
+\aindex{Carrasco, E.}
+\aindex{Gallego, J.}
+\aindex{de~Paz, A. G.}
+\aindex{S\'anchez-Moreno, F. M.}
+\aindex{V\'ilchez, J. M.}
 
 \begin{abstract}
 MEGARA is an optical Integral-Field Unit (IFU) and Multi-Object Spectrograph (MOS) designed for the GTC 10.4m telescope in La Palma. 
@@ -97,7 +101,7 @@ The MOPSS shall provide the tools needed to assist observers to plan their obser
 This tool is intended to provide estimates on the SNRs and limiting magnitudes for a given
 input exposure time and observational setup with GTC/MEGARA. It shall also estimate the required exposure time to achieve a given SNR on a continuum flux distribution or in an emission line. This tool uses Tkinter to create its graphical user interface (Figure~\ref{ref:figetc}).
 
-\articlefigure{P21_ETC_Screenshot.eps}{ref:figetc}{GUI of the MEGARA ETC (version 0.0.5)}
+\articlefigure{part9/Pascual_P21/P21_ETC_Screenshot.eps}{ref:figetc}{GUI of the MEGARA ETC (version 0.0.5)}
 
 The limiting magnitudes of MEGARA for continuum in point sources in LCB/MOS modes are 23.2, 23.8, and 24.2 magnitudes in the high resolution, mid resolution and low resolution VPHs, for S/N=5 per spaxel in 1 hour of exposure time (Vega magnitudes). The corresponding limiting line fluxes are 
 0.8$\times$10$^{-18}$, 0.6$\times$10$^{-18}$, and 0.5$\times$10$^{-18}$ cgs units in the same conditions at the central wavelength of the VPHs, assuming a flat continuum of V=30 mag. For the SCB mode, the limiting magnitudes under the same conditions are $\sim$0.2 mag brighter, and the limiting fluxes are higher than the values above by 0.1$\times$10$^-18$ cgs.
@@ -111,11 +115,9 @@ The simulator creates a sky+object model, including the different noise sources 
 The left plot in Figure~\ref{ref:figsim} shows all the steps of image simulation. The right panel shows a simulates sky exposure. Notice the
 distortion along the cross-dispersion axis.
 
-\articlefiguretwo{P21_Simulator_scheme.eps}{P21_Simulated_sky.eps}{ref:figsim}{(Left) Steps of image simulation. (Right) Simulated sky exposure.}
+\articlefiguretwo{part9/Pascual_P21/P21_Simulator_scheme.eps}{part9/Pascual_P21/P21_Simulated_sky.eps}{ref:figsim}{(Left) Steps of image simulation. (Right) Simulated sky exposure.}
 
 \acknowledgements This project is partly funded by the Spanish Ministry of Science and Innovation (MICINN) under project
 AYA2009-10368, by the Madrid Regional Government through the AstroMadrid Project (CAM S2009/ESP-1496) and by the Spanish MICINN 
 under the Consolider-Ingenio 2010 Program grant CSD2006-00070: First Science with the GTC. 
 This work is being done in the framework of the Moncloa Campus of International Excellence (UCM-UPM).
-
-\end{document}

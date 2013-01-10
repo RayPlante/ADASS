@@ -1,25 +1,22 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
-\aspcpryear{2012}
-\aspvolume{TBD}
-\aspvoltitle{ADASS XXII}
-\aspvolauthor{Friedel, D. and Plante, R.}
+
 \bibliographystyle{asp2010}
 
-\markboth{C. Barache et al.}{VO-compatible Architecture for managing and processing images of moving celestial bodies}
+\markboth{Barache et al.}{VO-Compatible Architecture for Images}
 
-\begin{document}
-
-\title{VO-compatible Architecture for managing and processing images of moving celestial bodies : Application to the Gaia-GBOT project}
-\author{C. Barache$^1$, S. Bouquillon$^1$, T. Carlucci$^1$, F. Taris$^1$, L. Michel$^2$, M. Altmann$^1$ $^3$\\
+\title{VO-Compatible Architecture for Managing and Processing Images of Moving Celestial Bodies : Application to the Gaia-GBOT Project}
+\author{C.~Barache,$^1$ S.~Bouquillon,$^1$ T.~Carlucci,$^1$ F.~Taris,$^1$ L.~Michel,$^2$ and M. Altmann$^{1,3}$
 \affil{$^1$Observatoire de Paris / SyRTE / France}
 \affil{$^2$Observatoire de Strasbourg / France}
 \affil{$^3$Zentrum f\"{u}r Astronomie der Universit\"{a}t Heidelberg / ARI / Germany}}
+
+\aindex{Barache, C.}
+\aindex{Bouquillon, S.}
+\aindex{Carlucci, T.}
+\aindex{Taris, F.}
+\aindex{Michel, L.}
+\aindex{Altmann, M}
 
 \begin{abstract}
 The Ground Based Optical Tracking (GBOT) group is a part of the “Data Processing and Analysis Consortium”, the large consortium of over 400 scientists from many European countries, charged with the scientific conduction of the Gaia mission by ESA. The GBOT group is in charge of the optical part of tracking of the Gaia satellite. This optical tracking is necessary to allow the Gaia mission to fully reach its goal in terms of astrometry precision level.  These observations will be done daily, during 5 years of the mission, with the use of optical CCD frames taken by a small network of 1-2m class telescopes located all over the world. The requirements for the accuracy on the satellite position determination, with respect of the stars in the field of view, are 20 mas. 
@@ -43,7 +40,7 @@ There are four differents tools useful for GBOT reduction :
 
 
 \section{The GBOT REDUCTION PIPELINE }
-%This pipeline is mainly written in GNU Fortran 95 and provide results in VOTable format supported by VO protocols (Bouquillon et al., 2012).
+
 This pipeline is mainly written in GNU Fortran 95 and provide results in VOTable format supported by VO protocols (~\cite{Bouquillon_2012}).
 The pipeline is divided into seven main parts.
 The Input are sets of Fits-Images of tracked targets and their Ephemeris.
@@ -69,7 +66,7 @@ reduction parameters and results for a “night” in a same file.
 
 
 \section{The GBOT DATABASE}
-%This Database is built with the help of the SAADA freeware (an Astronomical Database Generator under gpl license and VO‑compatible, Michel L., 2012)
+
 This Database is built with the help of the SAADA freeware (an Astronomical Database Generator under gpl license and VO‑compatible, ~\cite{Michel_2011})
 After a basic validation process, all the new data useful for the GBOT project are inserted into this Database. These data are of three kinds:
 
@@ -122,7 +119,7 @@ For the GBOT Database : \\
 
 \begin{figure}[ht]
 \epsscale{0.25}
-\plotone{P03.fig2.eps}
+\plotone{part9/Barache_P03/P03.fig2.eps}
 \caption{GBOT Database with SAADA Web Interface} \label{P03-fig-1}
 \end{figure}
 
@@ -132,6 +129,4 @@ For the GBOT Database : \\
 We thank VO Paris Data Centre and CDS de Strasbourg for their technical and financial support.
 
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

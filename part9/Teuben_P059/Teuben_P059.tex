@@ -1,44 +1,23 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
 
-
-
-% \newcommand{\etal{{\it et. al}}}
-\newcommand{\etal}{{\it et. al}}
-
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-
-\usepackage{savesym}
-\savesymbol{iint}
-\savesymbol{iiint}
-\savesymbol{iiiint}
-\savesymbol{idotsint}
-\usepackage{amsmath}
-\restoresymbol{TXF}{iint}
-\restoresymbol{TXF}{iiint}
-\restoresymbol{TXF}{iiiint}
-\restoresymbol{TXF}{idotsint}
 \resetcounters
 
-\bibliographystyle{asp2010}
-
-\markboth{Teuben, Ip, Mundy and Varshney}{Science Mining and Characterization of ALMA Large Data Cubes}
-
-
-\begin{document}
+\markboth{Teuben et al.}{Science Mining and Characterization of ALMA Large Data Cubes}
 
 \title{Science Mining and Characterization of ALMA Large Data Cubes}
-\author{Peter Teuben$^1$, Cheuk Yiu Ip$^2$, Lee Mundy$^1$, and Amitabh Varshney$^2$
+\author{Peter~Teuben,$^1$ Cheuk~Yiu~Ip,$^2$ Lee~Mundy,$^1$ and Amitabh~Varshney$^2$
 \affil{$^1$Astronomy Department, University of Maryland, College Park}
 \affil{$^2$Institute for Advanced Computer Studies, University of Maryland, College Park}}
+
+\aindex{Teuben, P.}
+\aindex{Ip, C. Y.}
+\aindex{Mundy, L.}
+\aindex{Varshney, A.}
 
 \begin{abstract}
 
 We are using Multilevel Segmentation of the Intensity-Gradient
 Histograms and Description Vectors to show unique ways to visualize
-and analyse complex structures in large ALMA data cubes. In particular
+and analyze complex structures in large ALMA data cubes. In particular
 higher dimensional data cubes with many spectral lines are a challenge
 both algorithmically and visually. In this poster we show some examples
 of both theoretical and observational data cubes and how novel
@@ -68,7 +47,7 @@ velocity datacubes}
 
 A saliency map shows which part of an image is likely to attract the
 most attention of the low-level human visual system.
-Itti~\etal~\cite{itti98:_model_of_salien_based_visual} have proposed a
+Itti~{\it et al.}~\cite{itti98:_model_of_salien_based_visual} have proposed a
 computational model of visual saliency by using multiscale image
 processing.  Multiscale image processing techniques analyze an image
 at different scales to simulate the retinal receptive fields.  Their
@@ -116,13 +95,6 @@ computed by decomposing the covariance matrix of the pixels locations.
 We can use these parameters along with saliency measures at different
 scales to index each of these segments.
 
-\section{testing}
-
-
-this is for testing, not to be included in final version.
-
-
-
 \section{The Template}
 To fill in this template, make sure that you read and follow the ASPCS Instructions for Authors and Editors available for download online.  Hints and tips for including graphics, tables, citations, and other formatting helps are available there.
 
@@ -161,9 +133,5 @@ groups, and individuals who have directly contributed to the work.
 \item References to preprints replaced with publication information when possible.
 \end{itemize}
 
-
-\acknowledgements The ASP would like to the thank the dedicated researchers that are publishing with the ASP.
-
-\bibliography{../../editor}
-
-\end{document}
+\bibliographystyle{asp2010}
+\bibliography{editor}

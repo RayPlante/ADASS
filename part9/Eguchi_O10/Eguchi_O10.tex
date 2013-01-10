@@ -1,20 +1,21 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{S.~Eguchi et al.}{Web and Desktop Applications for ALMA}
-
-\begin{document}
+\markboth{Eguchi et al.}{Web and Desktop Applications for ALMA}
 
 \title{Prototype Implementation of Web and Desktop Applications for ALMA Science Verification Data and the Lessons Learned}
-\author{Satoshi~Eguchi$^1$, Wataru~Kawasaki$^1$, Yuji~Shirasaki$^1$, Yutaka~Komiya$^1$, George~Kosugi$^1$, Masatoshi~Ohishi$^1$, and Yoshihiko~Mizumoto$^1$
-\affil{$^1$National Astronomical Observatory of Japan, 2-21-1, Osawa, Mitaka, Tokyo, 181-8588 Japan}}
+\author{Satoshi~Eguchi, Wataru~Kawasaki, Yuji~Shirasaki, Yutaka~Komiya, George~Kosugi, Masatoshi~Ohishi, and Yoshihiko~Mizumoto
+\affil{National Astronomical Observatory of Japan, 2-21-1, Osawa, Mitaka, Tokyo, 181-8588 Japan}}
+
+\aindex{Eguchi, S.}
+\aindex{Kawasaki, W.}
+\aindex{Shirasaki, Y.}
+\aindex{Komiya, Y.}
+\aindex{Kosugi, G.}
+\aindex{Ohishi, M.}
+\aindex{Mizumoto, Y.}
 
 \begin{abstract}
 ALMA is estimated to generate TB scale data during only one observation; astronomers manage to identify which part of the data they are really interested in.
@@ -59,7 +60,7 @@ By a combination of binning and cut-out, we can reduce network traffic drastical
 
 \begin{figure}
 	\epsscale{0.85}
-	\plotone{O10_f1.eps}
+	\plotone{part9/Eguchi_O10/O10_f1.eps}
 	\caption{A perspective of the system. There are two web and one desktop applications.
 	\label{O10_f1}}
 \end{figure}
@@ -94,7 +95,7 @@ The user can iterate this process if he/she wants.
 
 \begin{figure}
 	\epsscale{0.85}
-	\plotone{O10_f2.eps}
+	\plotone{part9/Eguchi_O10/O10_f2.eps}
 	\caption{{\bf Left:} a screen shot of ALMAWebQL. With the web application, one can change resolutions,
 	viewing position, and zoom on a web browser.
 	{\bf Right:} the relation between fits file size and processing time. Blue filled circles, red
@@ -143,7 +144,7 @@ cube container might be a solution.
 
 \begin{figure}[tbh]
 	\begin{center}
-		\includegraphics[keepaspectratio,width=0.54\hsize,clip]{O10_f3.eps}
+		\includegraphics[keepaspectratio,width=0.54\hsize,clip]{part9/Eguchi_O10/O10_f3.eps}
 	\end{center}
 	\caption{A schematic block diagram of ALMAWebQL. The application consists of
 	a user client written in JavaScript and an application server written in Java. Any user actions
@@ -165,10 +166,4 @@ to perform detailed quick look.
 However, network traffic is still a bottleneck towards a production release,
 and a more intelligent file server is required.
 
-
-
-%%\acknowledgements The ASP would like to the thank the dedicated researchers that are publishing with the ASP.
-
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

@@ -1,34 +1,28 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
 
-\documentclass[11pt,twoside]{article}
-
-\usepackage{asp2010}
-
-%\setlength{\textfloatsep}{2pt}
-%\setlength{\floatsep}{8pt}
 \resetcounters
 
 %\bibliographystyle{asp2010}
 
-\markboth{Yihan Song, Ali Luo, and Yongheng Zhao}{A New Python Library --- PydasLib}
-
-\begin{document}
+\markboth{Song, Luo, and Zhao}{A New Python Library --- PydasLib}
 
 \title{A New Python Library for Spectroscopic Analysis with MIDAS Style}
-\author{Yihan Song$^{1,2}$, Ali Luo$^{1,2}$, and Yongheng Zhao$^{1,2}$
+\author{Yihan~Song,$^{1,2}$ Ali~Luo,$^{1,2}$ and Yongheng~Zhao$^{1,2}$
 \affil{$^1$Key Laboratory of Optical Astronomy, Nationsal Astronomical obervatories, Chinese Academy of Sciences, 20A Datun Road, Chaoyang District, Beijing, 100012, China}
 \affil{$^2$National Astronomical Observatories, Chinese Academy of Sciences,20A Datun Road, Chaoyang District, Beijing, 100012, China}
 }
 
+\aindex{Song, Y.}
+\aindex{Luo, A.}
+\aindex{Zhao, Y.}
+
 \begin{abstract}
-The ESO MIDAS is a system for astronomiers to analyze data and many 
-astronomiers are using that. Python is a high level script language and 
-there are many applications in astronomyical data process. 
+The ESO MIDAS is a system for astronomers to analyze data and many 
+astronomers are using that. Python is a high level script language and 
+there are many applications in astronomical data process. 
 We release a new python library which realize some MIDAS commands in python.
 People can use it to write a MIDAS style python code. We call it PydasLib.
 It is a python library based on ESO MIDAS functions, which is 
-easily used by astronomiers who is familiar with the useage of MIDAS.
+easily used by astronomers who is familiar with the usage of MIDAS.
 \end{abstract}
 
 	  \section{Introduction}
@@ -37,7 +31,7 @@ More and more researchers use python to realize their algorithm and ideas for
 astronomical data processing. 
 
 MIDAS is an outstanding programming language in astronomy. It is created and 
-maintained by by European Organisation for Astronomical Research in the 
+maintained by by European Organization for Astronomical Research in the 
 Southern Hemisphere (ESO). 
 There are a lot of good codes written in MIDAS and there are a lot of people 
 use it for years.
@@ -51,16 +45,6 @@ Our work here can help two kinds of people:
 they are familiar with.
 \end{itemize}
 
-%            \vfill
-%           \begin{block}{Abstract}
-%The ESO MIDAS is a system for astronomiers to analyze data and many 
-%astronomiers are used to that. Python is a high level script language and 
-%there are many applications in astronomyical data process. 
-%A new Python library is built based on ESO MIDAS functions, which is 
-%easily used by astronomiers who is familiar with the useage of MIDAS. This 
-%library helps people to migrate there favorate MIDAS code to python code.
-% 
-%           \end{block}
 
           \section{MIDAS and Python}
 \subsection{ESO MIDAS}
@@ -103,15 +87,6 @@ PyMidas is a a product of ESO project named Sampo since 2005. It is
 an interface for python call MIDAS programs. Because the precondition of 
 using PyMidas is that MIDAS should be installed, it is hard to use under
 different operation system.
-%Because of python's advantage, ESO has started a project named Sampo since 2005. 
-%The first sub-project of Sampo is PyMidas. It provides an interface from 
-%Python scripting language to the ESO-MIDAS astronomical data processing 
-%system. It allows a user to exploit both the rich legacy of MIDAS software 
-%and the power of Python scripting in a unified interactive environment. When 
-%you run a PyMidas program including some MIDAS commands, the PyMidas will 
-%call MIDAS which runs in the background. That means you can not execute a 
-%PyMidas code without MIDAS system, and some limits of MIDAS will be introduced 
-%to PyMidas.
 
           \section{PydasLib --- Our work}
 In PydasLib, we fulfill dozens of MIDAS commands in python. 
@@ -177,13 +152,6 @@ writeDescriptor & write/descriptor\\
 \hline 
 \hline
 \end{tabular}
-%% Any table notes must follow the \end{tabular} command.
-%\tablenotetext{a}{Sample footnote for table~\ref{tbl-2} that was
-%generated with the \LaTeX\ table environment}
-%\tablenotetext{b}{Yet another sample footnote for table~\ref{tbl-2}}
-%\tablenotetext{c}{Another sample footnote for table~\ref{tbl-2}}
-%\tablecomments{We can also attach a long-ish paragraph of explanatory
-%material to a table.}
 \end{center}
 \end{table}
 
@@ -204,16 +172,9 @@ valid\_row & return a list of valid rows of the table\\
 \hline
 \hline
 \end{tabular}
-%% Any table notes must follow the \end{tabular} command.
-%\tablenotetext{a}{Sample footnote for table~\ref{tbl-2} that was
-%generated with the \LaTeX\ table environment}
-%\tablenotetext{b}{Yet another sample footnote for table~\ref{tbl-2}}
-%\tablenotetext{c}{Another sample footnote for table~\ref{tbl-2}}
-%\tablecomments{We can also attach a long-ish paragraph of explanatory
-%material to a table.}
 \end{center}
 \end{table}
-          \section{Example }%--- A part of a simple code using PydasLib}
+          \section{Example }
 Table \ref{code} shows a short example. The example uses PydasLib to read a Sloan fits file, to make a convolution with gaussion profile and to extract H$\alpha$ emission line. Finally, the example save the plotted figures(Figure:\ref{fig}) into files.
 
 \begin{table}[!hb]
@@ -242,12 +203,11 @@ lineno & code\\
 \begin{center}
 \caption{Figures of the example}
 \label{fig}
-\includegraphics[width=1.\textwidth, height=.2\textheight]{spectra}\\
+\includegraphics[width=1.\textwidth, height=.2\textheight]{part9/Song_P65/spectra}\\
 
-\vskip-2pt
-\includegraphics[width=.46\textwidth]{part}
-\includegraphics[width=.46\textwidth]{halpha}\\
-The top one is the whole spectrum. Left bottom one is the spectrum after convolution by a gaussion kernel.Right bottom one is 
+\includegraphics[width=.46\textwidth]{part9/Song_P65/part}
+\includegraphics[width=.46\textwidth]{part9/Song_P65/halpha}\\
+The top one is the whole spectrum. Left bottom one is the spectrum after convolution by a Gaussian kernel. Right bottom one is 
 H$\alpha$ emission line.
 \end{center}
 \end{figure}
@@ -257,8 +217,3 @@ the ESO MIDAS. Using this library, people who are used to the gramma of the MIDA
 can keep their customs and enjoy the powful python. This library is for spectra
 analysis. Because this is the first version of the library, not all the functions 
 and commands of MIDAS are included. In the future, the library will be better.
-
-\acknowledgements The ASP would like to the thank the dedicated researchers that are publishing with the ASP.
-
-
-\end{document}

@@ -1,22 +1,22 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
-\markboth{Shuping, et~al.}{Overview of the SOFIA Data Cycle System}
+\markboth{Shuping et~al.}{Overview of the SOFIA Data Cycle System}
 
-\begin{document}
-
-\title{Overview of the SOFIA Data Cycle System:  An integrated set of tools and services for the SOFIA General Investigator}
-\author{R.~Y. Shuping$^{1,2}$,William D. Vacca$^2$, Lan Lin$^2$, Li Sun$^2$, \& Robert Krzaczek$^3$
+\title{Overview of the SOFIA Data Cycle System:  An Integrated Set of Tools and Services for the SOFIA General Investigator}
+\author{R.~Y.~Shuping,$^{1,2}$ William~D.~Vacca,$^2$ Lan~Lin,$^2$ Li~Sun,$^2$ and Robert Krzaczek$^3$
 \affil{$^1$Space Science Inst., 4750 Walnut St., Suite 250, Boulder, CO  80301}
 \affil{$^2$USRA-SOFIA, NASA Ames Research Center, N-232, Moffett Field, CA  94035-0001}
 \affil{$^3$Carlson Center for Imaging Science, Rochester Inst. of Technology, 54 Lomb Memorial Dr.,
 Rochester, NY 15623}
 }
+
+\aindex{Shuping, R. Y.}
+\aindex{Vacca, W. D.}
+\aindex{Lin, L.}
+\aindex{Sun, L.}
+\aindex{Krzaczek, R.}
+
 
 \begin{abstract}
 The Stratospheric Observatory for Infrared Astronomy (SOFIA) is an airborne astronomical observatory comprised of a 2.5 meter infrared telescope mounted in the aft section of a Boeing 747SP aircraft that flies at operational altitudes between 37,000 and 45,00 feet, above 99\% of atmospheric water vapor. During routine operations, a host of instruments will be available to the astronomical community including cameras and spectrographs in the near- to far-IR; a sub-mm heterodyne receiver; and an high-speed occultation imager. One of the challenges for SOFIA (and all observatories in general) is providing a uniform set of tools that enable the non-expert General Investigator (GI) to propose, plan, and obtain observations using a variety of very different instruments in an easy and seamless manner. The SOFIA Data Cycle System (DCS) is an integrated set of services and user tools for the SOFIA Science and Mission Operations GI Program designed to address this challenge. Program activities supported by the DCS include:  
@@ -33,7 +33,7 @@ In this poster paper we present an overview of the DCS concepts, architecture, a
 
 The Data Cycle System (DCS) is designed primarily to support Science and Mission Operations activities associated with the General Investigator (GI) program for SOFIA. In general, observatory data flow is cyclic in nature (see Fig.~\ref{fig:DCS}).  The GI first develops and submits a proposal to the SOFIA Science Center (SSC) as part of the Phase~I planning process. Once his or her proposal is approved, the GI creates and updates Astronomical Observation Requests (AORs) during the Phase~II planning process. These AORs are then used in both flight planning and to generate scripts for on-aircraft execution with a facility Science Instrument (SI). After the AORs are completed in-flight, the resulting data are archived at the SSC and processed to produce higher-level data products which are then served back to the original GI via a simple user-interface---thus completing the cycle begun by the original proposal and perhaps driving new proposals. In addition, these data products are also made available to the astronomical community for archival research (after an initial proprietary period).  The goal of the DCS is to maximize the scientific productivity and efficiency of the observatory by providing a suite of easy-to-use tools and infrastructure that are integrated with each other as well as other applications at each step in the data cycle, and to provide a central ``hub'' for science and mission data at the SSC.
 
-\articlefigure[scale=0.4]{DataCycle.eps}{fig:DCS}{SOFIA GI Program Data Cycle, showing the top-level processes and data flow to support GIs using the observatory. }
+\articlefigure[scale=0.4]{part9/Shuping_P50/DataCycle.eps}{fig:DCS}{SOFIA GI Program Data Cycle, showing the top-level processes and data flow to support GIs using the observatory. }
 
 
 \section{DCS Tools and Services}
@@ -76,7 +76,7 @@ The DCS user tools are supported by a set of application, database, and filesyst
 \end{description}
 
 
-\articlefigure[scale=0.33]{DCS_Arch.eps}{fig:DCS_Arch}{High-level architectural diagram for the SOFIA Data Cycle System showing major system components.}
+\articlefigure[scale=0.33]{part9/Shuping_P50/DCS_Arch.eps}{fig:DCS_Arch}{High-level architectural diagram for the SOFIA Data Cycle System showing major system components.}
 
 
 
@@ -123,8 +123,6 @@ J.~Milburn,
 Sean Colgan,
 and David Goorvitch.
 
-\bibliographystyle{asp2010.bst}
+\bibliographystyle{asp2010}
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

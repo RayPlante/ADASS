@@ -1,20 +1,16 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-\usepackage{natbib}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-
-\begin{document}
+\markboth{Kapadia and Smith}{astrojs}
 
 \title{astrojs -- JavaScript Libraries for Astronomy}
-\author{Amit Kapadia$^1$, Arfon Smith$^1$}
-\affil{$^1$Zooniverse / Adler Planetarium}
+\author{Amit Kapadia and Arfon Smith
+\affil{Zooniverse / Adler Planetarium}}
+
+\aindex{Kapadia, A.}
+\aindex{Smith, A.}
 
 \begin{abstract}
 Astronomers mainly use the web for data retrieval. To create visualizations and conduct analyses requires installation of many external packages, often creating a difficult task for the astronomer. An ideal situation would move many of the common tasks to a browser - a homogenous solution for data access, visualization and analyses in one application.
@@ -82,6 +78,4 @@ Typed arrays \citep{KhronosTypedArray} are used in conjunction with ArrayBuffers
 
 WebGL \citep{KhronosWebGL} is an experimental feature in many browsers, but it is rapidly becoming the de facto method for performant browser based visualizations.  This technology may be used with FITS images to offload computationally expensive image processing tasks to the graphics card.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

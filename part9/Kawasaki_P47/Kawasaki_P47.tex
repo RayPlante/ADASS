@@ -1,22 +1,22 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{graphicx}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Kawasaki, Eguchi, Shirasaki, Komiya, Kosugi, Ohishi, and Mizumoto}{Vissage: an ALMA-VO Desktop Application}
+\markboth{Kawasaki et al.}{Vissage: An ALMA-VO Desktop Application}
 
-\begin{document}
+\title{Vissage: An ALMA-VO Desktop Application}
+\author{Wataru~Kawasaki, Satoshi~Eguchi, Yuji~Shirasaki, Yutaka~Komiya, George~Kosugi, Masatoshi~Ohishi, 
+and Yoshihiko~Mizumoto
+\affil{National Astronomical Observatory of Japan, 2-21-1 Osawa, Mitaka, Tokyo, 181-8588, Japan}}
 
-\title{Vissage: an ALMA-VO Desktop Application}
-\author{Wataru~Kawasaki$^1$, Satoshi~Eguchi$^1$, Yuji~Shirasaki$^1$, Yutaka~Komiya$^1$, George~Kosugi$^1$, Masatoshi~Ohishi$^1$, 
-and Yoshihiko~Mizumoto$^1$
-\affil{$^1$National Astronomical Observatory of Japan, 2-21-1 Osawa, Mitaka, Tokyo, 181-8588, Japan}}
+\aindex{Kawasaki, W.}
+\aindex{Eguchi, S.}
+\aindex{Shirasaki, Y.}
+\aindex{Komiya, Y.}
+\aindex{Kosugi, G.}
+\aindex{Ohishi, M.}
+\aindex{Mizumoto, Y.}
 
 \begin{abstract}
 Vissage is a FITS browser primarily targetting FITS data cubes obtained from 
@@ -109,13 +109,13 @@ data cube. Currently available functions include:
     \end{itemize}
 \end{itemize}
 
-You can see how Vissage works in Figures \ref{fig1} and \ref{fig2}. 
+You can see how Vissage works in Figures \ref{Kfig1} and \ref{Kfig2}. 
 
 \begin{figure}[tb]
   \centering
-  \includegraphics[width=12cm]{P047_f1.eps}
+  \includegraphics[width=12cm]{part9/Kawasaki_P47/P047_f1.eps}
   \caption{Showing ALMA images in a single Vissage window. The top left, bottom left and the bottom right images are integrated intensity maps with different colorset. The top middle image is the same object as the top left one but is a mean velocity (1st moment) map. The top right is a channel map.}
-  \label{fig1}
+  \label{Kfig1}
 \end{figure}
 
 \section{Future Plans}
@@ -155,11 +155,9 @@ in astronomy in the future.
 
 \begin{figure}[tb]
   \centering
-  \includegraphics[width=12cm]{P047_f2.eps}
+  \includegraphics[width=12cm]{part9/Kawasaki_P47/P047_f2.eps}
   \caption{Sample including P-V diagram. The middle image is an integrated intensity (0th moment) map of M100 with a P-V cut overlayed as a red area. The right images are P-V diagram of M100 together with a rotated original image. The top left, middle left and bottom left images are 0th, 1st and 2nd moment maps of the same object, respectively.}
-  \label{fig2}
+  \label{Kfig2}
 \end{figure}
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

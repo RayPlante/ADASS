@@ -1,8 +1,3 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
@@ -10,14 +5,19 @@
 
 \markboth{Laurino et al.}{Extending Iris: The VAO SED Analysis Tool}
 
-\begin{document}
-
 \title{Extending Iris: The VAO SED Analysis Tool}
-\author{Omar~Laurino,$^{1\star}$ Ivo~Busko,$^2$ Mark~Cresitello-Dittmar,$^1$ Raffaele~D'Abrusco,$^1$ Stephen~Doe,$^1$ Janet~Evans,$^1$ and Olga Pevunova$^3$
+\author{Omar~Laurino,$^{1}$ Ivo~Busko,$^2$ Mark~Cresitello-Dittmar,$^1$ Raffaele~D'Abrusco,$^1$ Stephen~Doe,$^1$ Janet~Evans,$^1$ and Olga~Pevunova$^3$
 \affil{$^1$Smithsonian Astrophysical Observatory, 60 Garden St., Cambridge, MA~02138,~USA}
 \affil{$^2$Space Telescope Science Institute, 3700 San Martin Drive, Baltimore, MD~21218,~USA}
-\affil{$^3$Infrared Processing and Analysis Center, 770 South Wilson Avenue Pasadena, CA~91125,~USA}
-\affil{$^\star$olaurino@head.cfa.harvard.edu}}
+\affil{$^3$Infrared Processing and Analysis Center, 770 South Wilson Avenue Pasadena, CA~91125,~USA}}
+
+\aindex{Laurino, O.}
+\aindex{Busko, I.}
+\aindex{Cresitello-Dittmar, M.}
+\aindex{D'Abrusco, R.}
+\aindex{Doe, S.}
+\aindex{Evans, J.}
+\aindex{Pevunova, O.}
 
 \begin{abstract}
 Iris is a tool developed by the Virtual Astronomical Observatory (VAO) for building and analyzing Spectral Energy Distributions (SEDs). Iris was designed to be extensible, so that new components and models can be developed by third parties and then included at runtime. Iris can be extended in different ways: new file readers allow users to integrate data in custom formats into Iris SEDs; new models can be fitted to the data, in the form of template libraries for template fitting, data tables and arbitrary Python functions. The interoperability-centered design of Iris and the Virtual Observatory standards and protocols can enable new science functionalities involving SED data.
@@ -100,6 +100,4 @@ More complex plugins can implement several integrated components contributing co
 Support for the development of Iris is provided by the Virtual Astronomical Observatory Cooperative Agreement AST0834235 with the National Science Foundation. Individual components have also been supported by the National Aeronautics and Space Administration (NASA) through the Chandra X-ray Center, which is operated by the Smithsonian Astrophysical Observatory for and on behalf of NASA under contract NAS8-03060,  and by the Space Telescope Science Institute, which is operated by the Association of Universities for Research in Astronomy, Inc., under NASA contract NAS5-26555. This research has made use of the NASA/IPAC Extragalactic Database which is operated by the Jet Propulsion Laboratory, California Institute of Technology, under contract with the NASA.
 
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

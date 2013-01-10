@@ -1,24 +1,21 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
-\usepackage{enumitem}
-\usepackage{graphicx}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Smareglia, Knapic, Molinaro, Young and Valenti}{PESSTO@IA2}
+\markboth{Smareglia et al.}{PESSTO@IA2}
 
-\begin{document}
-
-\title{Harmonize pipeline and archiving system: PESSTO@IA2 use case}
-\author{Riccardo Smareglia$^1$, Cristina Knapic$^1$, Marco Molinaro$^1$, David Young$^2$ and Stefano Valenti$^3$
+\title{Harmonize Pipeline and Archiving Aystem: PESSTO@IA2 Use Case}
+\author{Riccardo~Smareglia,$^1$ Cristina~Knapic,$^1$ Marco~Molinaro,$^1$ David~Young,$^2$ and Stefano Valenti$^3$
 \affil{$^1$INAF Astronomical Observatory of Trieste, Italy}
 \affil{$^2$Queen's University, Belfast, Northern Ireland, UK}
 \affil{$^3$INAF Astronomical Observatory of Padova, Italy}}
+
+\aindex{Smareglia, R.}
+\aindex{Knapic, C.}
+\aindex{Molinaro, M.}
+\aindex{Young, D.}
+\aindex{Valenti, S.}
 
 \begin{abstract}
 Italian Astronomical Archives Center (IA2) is a research infrastructure project that aims at coordinating different national and international initiatives to improve the quality of astrophysical data services. IA2 is now also involved in the PESSTO (Public ESO Spectroscopic Survey of Transient Objects) collaboration, developing a complete archiving system to store calibrated post processed data (including sensitive intermediate products), a user interface to access private data and Virtual Observatory (VO) compliant web services to access public fast reduction data via VO tools. The archive system shall rely on the PESSTO Marshall to provide file data and its associated metadata output by the PESSTO data-reduction pipeline. To harmonize the object repository, data handling and archiving system, new tools are under development. These systems must have a strong cross-interaction without increasing the complexities of any single task, in order to improve the performances of the whole system and must have a sturdy logic in order to perform all operations in coordination with the other PESSTO tools. MySQL Replication technology and triggers are used for the synchronization of new data in an efficient, fault tolerant manner. A general purpose library is under development to manage data starting from raw observations to final calibrated ones, open to overriding of different sources, formats, management fields, storing and publications policies. Configurations for all the system are stored on a dedicated schema (no configuration files), but can be easily updated by a planned Archiving System Configuration Interface (ASCI). 
@@ -53,9 +50,9 @@ To design the archive at IA2 a set of constraints have been used:
 		\end{itemize}
 	\item the pipeline insert into FITS products headers informations on products type, relations and references.
 \end{itemize}
-These constraints formed the basis for modelling the archive database (see Fig. \ref{fig:dbpipeline}).\\
+These constraints formed the basis for modeling the archive database (see Fig. \ref{fig:dbpipeline}).\\
 Each pipeline product , final or intermediate, contains a FITS header coded keyword that defines the file type and its role in the data flux model. This key is decoded by a "model descriptor" present in a relational database (MySQL). All useful metadata for PESSTO use case are coded in a "data model" table, captured from FITS header and inserted in the appropriate database tables. Those tables are related each other in order to guarantee information consistency and references between raw data, intermediate, final and ancillary products. Files are appropriately stored in a highly available storage.
-\articlefigure[]{P028_f1.eps}{fig:dbpipeline}{PESSTO data survey files, incoming from observation through the Marshall, are ingested according to the pipeline structure into a relational MySQL database while FITS metadata is stored in a set of observational and technical DB tables. Relationships exists also to raw data files (available from ESO archives). The main exposed section of the relational DB are the final objects (scientific data) output of the pipeline processing.}
+\articlefigure[]{part9/Smareglia_P28/P028_f1.eps}{fig:dbpipeline}{PESSTO data survey files, incoming from observation through the Marshall, are ingested according to the pipeline structure into a relational MySQL database while FITS metadata is stored in a set of observational and technical DB tables. Relationships exists also to raw data files (available from ESO archives). The main exposed section of the relational DB are the final objects (scientific data) output of the pipeline processing.}
 
 \section{IA2 \& Marshall interaction}\label{ia2marshall}
 
@@ -97,6 +94,4 @@ In this optic, IA2 has the role of consolidated distributed archiving system sup
 
 From the VO point of view the deployed resources will be improved taking advantage of the Marshall and IA2 interaction, however an authentication mechanism for VO resources is under a study phase, to free the users from the proprietary data issue currently limiting the VO world.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

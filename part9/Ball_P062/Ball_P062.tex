@@ -1,20 +1,15 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Nicholas M. Ball}{CANFAR+Skytree}
-
-\begin{document}
+\markboth{Ball}{CANFAR+Skytree}
 
 \title{CANFAR+Skytree: A Cloud Computing and Data Mining System for Astronomy}
-\author{Nicholas M. Ball$^1$
-\affil{$^1$National Research Council Canada, 5071 West Saanich Road, Victoria, BC V9E 2E7}}
+\author{Nicholas~M.~Ball
+\affil{National Research Council Canada, 5071 West Saanich Road, Victoria, BC V9E 2E7}}
+
+\aindex{Ball, N.}
 
 \begin{abstract}
 To-date, computing systems have allowed either sophisticated analysis of small datasets, as exemplified by most astronomy software, or simple analysis of large datasets, such as database queries. At the Canadian Astronomy Data Centre, we have combined our cloud computing system, the Canadian Advanced Network for Astronomical Research (CANFAR), with the world's most advanced machine learning software, Skytree, to create the world's first cloud computing system for data mining in astronomy.
@@ -37,7 +32,7 @@ The Canadian Advanced Network for Astronomical Research (CANFAR;\footnote{\url{h
 Skytree is the world's most advanced machine learning software. It acts as a machine learning server to allow advanced data mining on large data (Figure \ref{Fig: Skytree}), e.g., within one's data processing pipeline, or more specialized science project. Skytree's A. Gray also heads the FASTlab\footnote{\url{http://www.fast-lab.org}} group at the Georgia Institute of Technology. The group holds several records for the fastest implementation of well-known machine learning algorithms. Algorithms that otherwise scale as, e.g., $N^2$, for $N$ objects, are implemented to scale linearly, without loss of accuracy. While each specific use case will remain science-driven, the underlying tools are not dataset-specific. Thus, the installation of Skytree on the CADC infrastructure makes possible the practical use of these algorithms by astronomers who are not data mining specialists. The software's quality and robustness renders it suitable for publication-quality research.
 
 \begin{figure}
-\plotfiddle{P062_skytree.ps}{7cm}{0}{40}{40}{-125}{0}
+\plotfiddle{part9/Ball_P062/P062_skytree.ps}{7cm}{0}{40}{40}{-125}{0}
 \caption{Skytree allows both advanced analytics, and its application to large data. This fills a vacant parameter space that is essential for future astronomical data analysis. \label{Fig: Skytree}}
 \end{figure}
 
@@ -46,7 +41,7 @@ Skytree is the world's most advanced machine learning software. It acts as a mac
 Skytree claims to make fundamental machine learning algorithms scalable. We have tested these claims on the CANFAR+Skytree system, and have verified that it scales to the largest current surveys, and beyond to upcoming datasets. To do this, we analyze large astronomical catalogs. An example benchmark scaling is shown in Figure \ref{Fig: runtime}.
 
 \begin{figure}
-\plotfiddle{P062_runtime.ps}{7cm}{0}{50}{50}{-155}{0}
+\plotfiddle{part9/Ball_P062/P062_runtime.ps}{7cm}{0}{50}{50}{-155}{0}
 \caption{Typical performance benchmarks. Linear runtime scaling with dataset size: Skytree's {\tt allkn} has computed the 5 nearest neighbors of each dataset point. A na\"{\i}ve implementation would be quadratic, and the best fit line would have a slope of order 2, not 1. Runtime error bars are less than the size of the points on the plot, with the exception of the 0.2 and 0.5 fractions, for which they are not yet computed. These two utilize CANFAR nodes with 256G memory. \label{Fig: runtime}}
 \end{figure}
 
@@ -60,6 +55,4 @@ CANFAR+Skytree represents world's first cloud computing system for data mining i
 
 \acknowledgements This research used the facilities of the Canadian Astronomy Data Centre, operated by the National Research Council of Canada with the support of the Canadian Space Agency. Funding for CANFAR was provided by CANARIE via the Network Enabled Platforms Supporting Virtual Organisations program. The author thanks D. Schade, A. Gray and M. Hack for their contributions to this work.
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

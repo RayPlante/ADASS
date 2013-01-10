@@ -1,18 +1,15 @@
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
-%\url{http://cxc.cfa.harvard.edu/}
  
-\markboth{Kavelaars}{Outer Solar System Surveys.}
+\markboth{Kavelaars}{Outer Solar System Surveys}
 
-\begin{document}
+\title{The Outer Solar System Origins Survey: VO and Software Perspective}
+\author{JJ Kavelaars}
+\affil{Herzberg Institute of Astrophysics, National Research Council of Canada, 5071 West Saanich Road, Victoria  B V8N 4Z1}
 
-\title{The Outer Solar System Origins Survey: VO and Software Perspective.}
-\author{JJ Kavelaars$^1$}
-\affil{$^1$Herzberg Institute of Astrophysics, National Research Council of Canada, 5071 West Saanich Road, Victoria  B V8N 4Z1}
+\aindex{Kavelaars, JJ}
 
 \begin{abstract}
 There has been a substantial increase in the number of operating and planned ground (Catalina Sky Survey, Space Watch, SDSS, Canada-France Ecliptic Plane Survey, PanStarrs, SkyMapper, LSST, etc.) and space (eg. NEOSSAT, Euclid) based surveys searching for objects within the solar system. These surveys must attempt to maximize their detection of sources that move through the images and tracking those objects until a firm orbit can be determined, while minimizing the reporting of false positives. These sorts of surveys have also lead to a growing industry of moving object search interfaces at the archive level (such as the CADC's Solar System Object Search). In this presentation I will review the general science cases for moving object surveys (from Kuiper belt to Oort Cloud Objects) and the various innovative (and brute force) algorithms and computing systems that have been developed to crack the moving object detection problem.
@@ -68,7 +65,7 @@ Sources  confirmed by the operator, and not part of the artificial source list, 
 If the sources is previously then previous observations are retrieved from the Minor Planet Centre catalogue.
 The final list of confirmed and linked discoveries is then stored in a SQLite database which can be accessed by the project team via a web service interface. 
 
-%%% Astrometric Solution ***
+
 Precise astrometric calibration is critical component to orbit prediction.
 The all sky catalogues such as the USNO and 2MASS provide excellent sky coverage.
 Due to proper motion effects and centroid uncertainties their accuracy  is limited to approximately 0.2''.
@@ -103,9 +100,4 @@ These tools enable efficient and precise consistent analysis of survey observati
 The OSSOS uses  imaging for the CFHT MegaPrime camera, the 2MASS and SDSS catalog services, SkyBot moving sources service and the SSOS tool in a  cloud computing and storage environment provided by CANFAR.
 The OSSOS science goals are being enable by the services of the VO and open source science computing.
 
-
-\acknowledgements 
-
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}

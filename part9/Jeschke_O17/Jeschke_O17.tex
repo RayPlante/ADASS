@@ -1,20 +1,17 @@
-% This is the aspauthor.tex LaTeX file
-% Copyright 2010, Astronomical Society of the Pacific Conference Series
-
-\documentclass[11pt,twoside]{article}
-\usepackage{asp2010}
 
 \resetcounters
 
 \bibliographystyle{asp2010}
 
-\markboth{Eric Jeschke, Takeshi Inagaki and Russell Kackley}{Introducing the Ginga FITS Viewer}
-
-\begin{document}
+\markboth{Jeschke, Inagaki, and Kackley}{Introducing the Ginga FITS Viewer}
 
 \title{Introducing the Ginga FITS Viewer and Toolkit}
-\author{Eric~Jeschke, Takeshi~Inagaki, and Russell~Kackley}
-\affil{Subaru~Telescope,~National~Astronomical~Observatory~of~Japan}
+\author{Eric~Jeschke, Takeshi~Inagaki, and Russell~Kackley
+\affil{Subaru~Telescope,~National~Astronomical~Observatory~of~Japan}}
+
+\aindex{Jeschke, E.}
+\aindex{Inagaki, T.}
+\aindex{Kackley, R.}
 
 \begin{abstract}
 We introduce Ginga, a new open-source FITS
@@ -75,11 +72,10 @@ diagram of these classes.
 \begin{figure}
   \begin{center}
     \begin{tabular}{c}
-      \includegraphics[width=3in]{O17_f1.eps}
+      \includegraphics[width=3in]{part9/Jeschke_O17/O17_f1.eps}
     \end{tabular}
   \end{center}
   \caption[example] 
-%% %>>>> use \label inside caption to get Fig. number with \ref{}
           { \label{fig:onion} 
             Object oriented design of the core rendering widgets in Ginga.} 
 \end{figure} 
@@ -122,7 +118,7 @@ plugins active.
 \begin{figure}
   \begin{center}
     \begin{tabular}{c}
-      \includegraphics[width=5in]{O17_f2.eps}
+      \includegraphics[width=5in]{part9/Jeschke_O17/O17_f2.eps}
     \end{tabular}
   \end{center}
   \caption[example] 
@@ -173,12 +169,9 @@ few other Unix platforms that support either the Gtk or Qt widget sets.
 The software, documentation and installation instructions can be found
 at the project web site: \url{http://ejeschke.github.com/ginga}.
 
-\medskip
 \acknowledgements We would like to acknowledge the support and
 encouragement of the Subaru Telescope/NAOJ staff, particularly Hiroshi
 Terada, Daigo Tomono and Akito Tajitsu from the Gen2 OCS advisory
 committee. 
 
-\bibliography{../../editor}
-
-\end{document}
+\bibliography{editor}
