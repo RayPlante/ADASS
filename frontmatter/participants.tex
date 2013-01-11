@@ -1,0 +1,28 @@
+% This is the participants.tex LaTeX file -- ASP Conference Proceedings style attendee list.
+% Copyright 2010, Astronomical Society of the Pacific Conference Series
+\markboth{Participants}{Participants}
+\pagestyle{myheadings}
+
+% Format information for each attendee according to \attendee macro.
+%
+%    \attendee{NAME}{EMAIL}{AFFIL}{ADDRESS}
+
+\makeatletter
+\makeatother
+
+{
+\parindent 0pt
+\parskip .8ex
+\columnsep .6in
+
+\thispagestyle{plain}
+\section*{\Large\bfseries Participants}
+\thispagestyle{plain}
+%%\raggedright
+\begin{flushleft}
+\input{frontmatter/participants.att}
+\end{flushleft}
+\parindent 2em
+}
+% Uncomment the following if needed to remove running head on the blank page following the participants list.
+%\bookblankpage
