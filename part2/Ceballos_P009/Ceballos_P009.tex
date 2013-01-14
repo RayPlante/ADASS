@@ -3,7 +3,7 @@
 
 \bibliographystyle{asp2010}
 
-\markboth{Ceballos et al.}{Data Flow design for TES}
+\markboth{Ceballos et al.}{Data Flow Design for TES}
 
 \title{Data Flow Design for Event Detection and Qualification 
 in TES X-Ray Detectors}
@@ -54,7 +54,7 @@ create the library of template pulses that will be finally used to precisely det
 
 \begin{figure}
 \centering
-\includegraphics[angle=90,width=1.25\textwidth]{part2/Ceballos_P009/P009_f1.eps} 
+\includegraphics[angle=90,width=\textwidth]{part2/Ceballos_P009/P009_f1.eps} 
 \caption{Processing Data Flow: Pulse Detection (in blue boxes) and Pulse Qualification (in salmon boxes)}
 \label{dataflow}
 \end{figure}
@@ -82,7 +82,7 @@ The event detection is done through an iterative process with the following step
  \item \textbf{Adjusted derivative} \citep{Boyce_1999}: the first derivative of the detected pulses (using the template pulses) is subtracted from the incoming signal, thus 
  giving prominence to the small pulses previously masked. This is an iterative process, until no further peaks increase the pulse counting.
  The arriving time of the detected photons is saved at this stage. 
- \item \textbf{Data discriminator}: the pulses, with their energy estimation, enters then into the Data Discriminator module to grade their quality. For 
+ \item \textbf{Data discriminator}: the pulses, with their energy estimation, enters then into the data discriminator module to grade their quality. For 
  the \textit{calibration road}, the firstly detected pulses (with their estimated energy) enter directly into the data discriminator to populate the
  calibration library as template pulses if they are qualified as High Quality pulses.
 \end{itemize}
