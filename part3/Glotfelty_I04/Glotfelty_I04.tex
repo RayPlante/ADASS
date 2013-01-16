@@ -11,7 +11,6 @@
 
 \aindex{Glotfelty, K. J.}
 \begin{abstract}
-
 Accelerated by the ease of access to data triggered by growing archive
 registries and common search protocols, many more application than
 before are now directly interfacing with archives.  Gone and going are
@@ -24,10 +23,10 @@ themselves now local data service providers for other local applications.
 
 The problem is that often data that are retrieve remotely are directly
 cast into the applications internal data model -- likely altering
-the data in the process.  Content may be added (eg new columns),
+the data in the process.  Content may be added (e.g. new columns),
 nonessential information (to the current application) may be purged,
-provenance altered, or content directly modified (eg WCS conventions).
-This then possibly insufficient or incompatible view of the  data is then
+provenance altered, or content directly modified (e.g. WCS conventions).
+This possibly insufficient or incompatible view of the  data is then
 what is presented to postliminary tools in the work-flow. The remote
 data have in essence become trapped in the application that retrieved
 it from the remote service.
@@ -37,12 +36,9 @@ it imposes on application developers.  We will showcase a current
 example of this problem and discuss why a "return to source" model
 of sending all applications back to the original remote source is,
 in general, insufficient.
-
-
 \end{abstract}
 
 \section{Introduction}
-
 
 The FITS format standard was first published in 
 1981 \citep{1981A&AS...44..363W}.  Its eventual
@@ -68,7 +64,7 @@ and as of January 2011, all NSF proposals are required to include a "Data
 Management Plan"\footnote{ \url{http://www.nsf.gov/bfa/dias/policy/dmp.jsp}}
  that reinforces the importance of on-line data access.
 There are even efforts underway to catalog, publish and curate some of
-the archival data stored on physical media, eg digitizing the Harvard
+the archival data stored on physical media, e.g. digitizing the Harvard
 College Observatory astronomical glass plate stacks \citep{2006vopc.conf...54M}.
 
 Given the vast amount of data now available, the current hurdle facing
@@ -97,7 +93,7 @@ Analysis applications that may have traditionally focused on
 algorithms are now becoming portals to vast data archives.  Therein is a
 growing problem.  Applications are traditionally used to consuming data, 
 possibly in a variety of formats, and most often from local disk.  However, 
-what an application saves or otherwise exposes to other programs (eg its own
+what an application saves or otherwise exposes to other programs (e.g. its own
 plug-ins) is often some view of the data expressed in a way such that the
 application can return to some state if the data are restored.  It may not be
 a faithful representation of the original data and thus may not be 
@@ -135,7 +131,7 @@ The types of data transformations developers should be aware of include:
   locations are represented in decimal degrees (pair of real valued numbers)
   or  whether they are represented in sexagesimal format as one or two strings.
   Other examples include changing the representation of NULL or missing
-  data (to NaN values or arbitrary sentinel, eg -999).
+  data (to NaN values or arbitrary sentinel, e.g. -999).
 
 
 \item Precision:  Going from a binary representation of data to ASCII is 
@@ -150,7 +146,7 @@ an increased precision that exceeds what was original stored.
 \item Truncation:  One of the most problematic transformations an application
 can do it to simply truncate results.  This may take the form of only saving 
 a certain subset of the rows or columns, or only saving certain pieces
-of meta-data, or simply puring entire blocks of data that the
+of meta-data, or simply pruning entire blocks of data that the
 application itself finds irrelevant.  The most dangerous is when 
 data are partially truncated in such a way that the user is unaware that
 more data might exist.  Limiting search results to the first N-many
@@ -159,10 +155,10 @@ more data are available.
 
 
 \item Provenance: Where did the data come from? With the increase in the number
-of data providers publishing similar datasets ; it is critical for a user
+of data providers publishing similar datasets; it is critical for a user
 to know exactly what the source of the data were and how to reconstruct
 the query to retrieve the data again.  Omitting the history of how the 
-data were located and retrieved made lead to questionable scientific
+data were located and retrieved may lead to questionable scientific
 results.
 
 \end{itemize}
@@ -172,14 +168,7 @@ Each of these types of data transforms causes problems for down stream
 developers and ultimately for users. In the next section we discuss a
 particular example of this phenomena and highlight the problems it presents.
 
-
-
-
-
-
-
 \section{Case Study}
-
 
 \articlefigure{part3/Glotfelty_I04/I04_f2.eps}{FigCSCView}{CSCView, TOPCAT, and SAOImage ds9 are all SAMP enabled applications and can exchange certain types of information via the hub and then service various requests from peer clients.  Since CSCView can retrieve the references to data products in the Chandra Source Catalog, it can SAMP send that information to ds9, which can then directly retrieve the file (via HTTP).  However, dax, a CIAO ds9 plug-in, may not be able to fully operate on the remotely retrieved data due the way ds9 transforms it.}
 
@@ -211,7 +200,7 @@ Completing the triad is SAOImage ds9 \citep{2003ASPC..295..489J}, the widely use
 It too is SAMP enabled and can participate in a seamless exchange 
 of catalog data between CSCView and TOPCAT.  Sources can be selected in any
 application and will be located spatially in ds9 and in whichever catalog
-parameter space TOPCAT is displaying (eg flux vs. color [hardness ratio]).
+parameter space TOPCAT is displaying (e.g. flux vs. color [hardness ratio]).
 The three tools working together are a powerful combination.  
 
  This triad is further enhanced by ds9's open architecture.  User can easily 
@@ -238,7 +227,7 @@ missions, is different than other wavelengths:  images are not the primary
 science data product.
 A full Chandra  dataset (Figure \ref{FigOne}) includes multiple FITS files. 
 The primary science data product is the event file that contains multiple
-FITS HDUs :  an event list (table) that provides the location, time, and
+FITS HDUs:  an event list (table) that provides the location, time, and
 energy of each event (ie likely photon) and one or more Good Time Interval (GTI)
 that provides the valid time rages for each CCD.  The ancillary files 
 contain information such as the aspect solution (pointing history) needed
@@ -247,7 +236,6 @@ invalid pixels on the detector, and other instrument specific files that
 provide various bits of information related to the hardware.  Images,
 spectra, and light-curves are extracted by integrating the events along
 the appropriate axis.
-
 
 The ds9 application has it origins in X-ray data analysis 
 and fully supports displaying event lists.  It converts the tabular data into
@@ -285,10 +273,6 @@ nor any of the archives.  The point is by adding these kinds of
 interface developers can benefit their users; but doing so may
 strain their interfaces with other applications.
 
-
-
-
-
 \section{An Old Problem}
 
 This is no way a new problem.  Long before the current set of interfaces were
@@ -302,7 +286,7 @@ There are several reasons why this is now becoming a significant problem.
 \begin{itemize}
 
 \item Volume: There are more data-sets being made available via standardized searches. This increases the chances of a user finding data relevant to their analysis. 
-\item Variety:  There are more varieties of data being made available.  Initially only catalogs : source locations with some properties, were available.  Now full data-sets including spectra, images, and light-curves, as well as aggregated
+\item Variety:  There are more varieties of data being made available.  Initially only catalogs: source locations with some properties, were available.  Now full data-sets including spectra, images, and light-curves, as well as aggregated
 datasets from multiple sources and all energy bands.
 \item Vendors: More organizations are publishing their data via these 
 standard interfaces.  Also more individuals are publishing specialized datasets tied directly 

@@ -4,8 +4,6 @@
 
 \markboth{Carrasco Kind and Brunner}{Implementing Probabilistic Photometric Redshifts}
 
-
-
 \title{Implementing Probabilistic Photometric Redshifts}
 \author{Matias Carrasco Kind and Robert J. Brunner
 \affil{Department of  Astronomy, University of Illinois, Urbana, IL 61820 USA}}
@@ -18,7 +16,7 @@ Photometric redshifts have become more important with the growth of large imagin
 \end{abstract}
 
 \section{Introduction}
-Photometric redshift (hereafter photo-$z$) estimation techniques have become crucial for modern, multi-band digital surveys. And this need for fast and accurate photo-$z$ estimation is becoming even more important for current and future large photometric surveys like the Dark Energy Survey (DES) and the Large Synoptic Survey Telescope (LSST), which are probing galaxies that are often too faint to be spectroscopically observed. 
+Photometric redshift (hereafter photo-$z$) estimation techniques have become crucial for modern, multi-band digital surveys. This need for fast and accurate photo-$z$ estimation is becoming even more important for current and future large photometric surveys like the Dark Energy Survey (DES) and the Large Synoptic Survey Telescope (LSST), which are probing galaxies that are often too faint to be spectroscopically observed. 
 
 There are currently several different approaches for computing photometric redshifts~\citep[see, \textit{ e.g.},][for an updated comparison of current photometric redshift methods and public codes]{Hildebrandt2010,Abdalla2011} that depend partly on the object of interest as well as the accuracy required. Very few techniques are specifically designed to scale to several hundred million galaxies, and those that do generally only provide a single photo-$z$ estimate with a corresponding error. Most of these techniques are either template fitting based~\citep[\textit{e.g.,}][]{Benitez2000} or empirical training codes~\citep[\textit{e.g.,}][]{Carrasco2013}. Currently, no published technique combines two different methods in a self-consistent, probabilistic manner to provide accurate redshift probability density functions (PDFs).
 
@@ -31,13 +29,13 @@ Our algorithm consists of three distinct steps. First, we use a template fitting
 
 By applying Bayes theorem, we can write the probability of a galaxy having redshift $z$ given its $n$ photometric magnitudes $m_i$ as:
 \begin{equation}\label{bayes}
-p(z|m_1,...,m_n) \propto \sum_T p(z,T|m_1,...,m_n)p(m_1,...,m_n|z,T)
+p(z|m_1,...,m_n) \propto \sum_T p(z,T|m_1,...,m_n)p(m_1,...,m_n|z,T),
 \end{equation}
 where the sum is for all spectral types $T$. The term $p(m_1,...,m_n|z,T)$ on the right hand side is the likelihood, which is obtained by using a set of templates, while the term $p(z,T|m_1,...,m_n)$ is the prior, which provides extra information for the Bayesian inference. 
 
 By using available training data and RNBC, we have developed a new method to compute the individual galaxy priors:
 \begin{equation}\label{prior}
- p(z,T|m_1,...,m_n) \propto p(z)p(T|z)\prod_{i=1}^{n} p(m_i|z,T)
+ p(z,T|m_1,...,m_n) \propto p(z)p(T|z)\prod_{i=1}^{n} p(m_i|z,T),
 \end{equation}
 where $p(z)$ and $p(T|z)$ are computed from the training set and the term $p(m_i|z,T)$ is computed assuming a normal distribution with mean and variance computed from the training set. Priors are built by aggregating the results of several hundred bootstrap samples. We use a random subset of magnitudes in each bootstrap, similar to the construction of a random forest~\citep{Breiman2001}. The left panel of Figure~\ref{method}  demonstrates how a prior can improve the estimation of a redshift PDF. In this case, if no prior is used, a misclassification will occur without warning as the original likelihood gives a smooth and well peaked PDF at the wrong redshift for the wrong type (\textit{i.e.}, Spiral).
 

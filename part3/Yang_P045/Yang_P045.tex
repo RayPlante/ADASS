@@ -24,15 +24,15 @@ In a previous study \citet{Kuhlen:2008kr}, the whole sky map of dark matter anni
 	\left\{\begin{aligned}
 		N\frac{m_i\rho_i}{4\pi d_i^2} \exp\left(-\frac{3}2\frac{\delta\theta^2}{r_\theta^2}\right)\mathrm{d}\Omega  &\  & \delta\theta \le r_\theta \\
 		0	&\   & \delta\theta > r_\theta\
-	\end{aligned}\right.
+	\end{aligned}\right. ,
 \end{equation}
-, where $\delta\theta$ is the angular distance from $(\theta, \phi)$ to the particle’s angular position; $r_\theta$ is the angular radius of the particle; $\rho_i, m_i, d_i$ are the density, mass and distance of the i-th particle. With the help of HEALPIX \citep{Gorski:2005ku}, each particle's contribution is calculated and weighted distributed in a certain pixel disk, as described by Equation (\ref{fluxeq}). While calculating the pixel disc is an extremely inefficient process. Even though it's embarrassingly parallel to run each particle in a single GPU thread, the direct CUDA version of the CPU code is even slower. The reason is that the pixel distribution of each particle is highly varied (each particle has average 68 pixels on its HEALPIX disk, but with standard deviation of 115, and there are even 20k more particles has pixels larger than 10k). Sorting the particles based on the angular radius could largely reduce the threads skew, however the optimal CUDA code needs 1 hr more to run (GPU: GTX 480), compare to the C++ code, which requires above 7 hrs (~3 GHz CPU). 
+where $\delta\theta$ is the angular distance from $(\theta, \phi)$ to the particle's angular position; $r_\theta$ is the angular radius of the particle; and $\rho_i, m_i, d_i$ are the density, mass and distance of the i-th particle. With the help of HEALPIX \citep{Gorski:2005ku}, each particle's contribution is calculated and weight distributed in a certain pixel disk, as described by Equation~(\ref{fluxeq}). Calculating the pixel disc is an extremely inefficient process. Even though it's easy to parallelize and to run each particle in a single GPU thread, the direct CUDA version of the CPU code is even slower. The reason is that the pixel distribution of each particle is highly varied (each particle has an average of 68 pixels on its HEALPIX disk, but with a standard deviation of 115, and there are more than 20k particles having more than 10k pixels). Sorting the particles based on the angular radius could largely reduce the threads skew, however the optimal CUDA code needs 1 hr more to run (GPU: GTX 480), compare to the C++ code, which requires about 7 hrs (~3 GHz CPU). 
 
-In this paper, we propose a new method which could largely increase the speed. Since high inefficiency of querying HEALPIX pixel disks, we used stereographic projection (STR) instead. In \S 1, we introduces the method we used; \S 2 shows the comparasion between the new result and old result; \S 3 introduces some potential usage of the new method.
+In this paper, we propose a new method which could largely increase the speed. Due to the high inefficiency of querying HEALPIX pixel disks, we used stereographic projection (STR) instead. In \S 1, we introduce the method we used; \S 2 shows the comparison between the new result and old result; \S 3 introduces some potential usage of the new method.
 
 
 \section{GPU Based STR Projection (GSP) Method}
-STR projection projects a circle on the sphere to a circle on the projection plane, whereas the center is projected to an off-center point. Hence the Gaussian profile of a particle's flux has been projected to a stretched Gaussian (see Fig-\ref{figstr}). 
+STR projection projects a circle on the sphere to a circle on the projection plane, whereas the center is projected to an off-center point. Hence the Gaussian profile of a particle's flux has been projected to a stretched Gaussian (see Fig~\ref{figstr}). 
 
 \begin{figure}[htb]
 \begin{center}
@@ -41,7 +41,7 @@ STR projection projects a circle on the sphere to a circle on the projection pla
 \end{center}
 \end{figure}
 
-With STR, we use OpenGL's Point Sprite feature to render the stretched Gaussians to squared billboards and add them together on the projection plane. STR projection has a singular point at the north pole. In order to reduce distortion around the polar, we divided the  sphere into 2 hemispheres. The south hemisphere uses the north pole as the projection point and vise versa. The result is shown on (Fig-\ref{figsky}).
+With STR, we use OpenGL's Point Sprite feature to render the stretched Gaussians to squared billboards and add them together on the projection plane. STR projection has a singular point at the north pole. In order to reduce distortion around the pole, we divided the  sphere into 2 hemispheres. The south hemisphere uses the north pole as the projection point and vise versa. The result is shown on (Fig~\ref{figsky}).
 
 \begin{figure}[htb]
 \begin{center}
@@ -51,7 +51,7 @@ With STR, we use OpenGL's Point Sprite feature to render the stretched Gaussians
 \end{figure}
 
 \section{Comparasion}
-Both projection and GPU rendering could apply additional errors. In oder to verify the result, we converted our result back to the HEALPIX map. As shown in (Fig-\ref{figcmp}), panel (a) shows the map of the original method, panel (b) shows the result of the GSP method. Their difference is shown in panel (c). The bright peaks appear in identical positions as the original method. Some errors is shown on very bright peaks, it may due to the float point error of GPUs. The largest error is shown on the joint of the North and South sphere. We argue that, with good awareness of these, the physics is not changed and hence the error is negligible. 
+Both projection and GPU rendering could add additional errors. In order to verify the result, we converted our result back to the HEALPIX map. As shown in (Fig~\ref{figcmp}), panel (a) shows the map of the original method, panel (b) shows the result of the GSP method. Their difference is shown in panel (c). The bright peaks appear in identical positions as the original method. Some errors is shown on very bright peaks, it may due to the float point error of GPUs. The largest error is shown on the joint of the North and South sphere. We argue that, with good awareness of these, the physics is not changed and hence the error is negligible. 
 
 \begin{figure}[htb]
 \begin{center}
@@ -60,22 +60,22 @@ Both projection and GPU rendering could apply additional errors. In oder to veri
 \end{center}
 \end{figure}
 
-Compare to the original HEALPIX (c++/idl version) method (with NSIDE = 512), which runs nearly for 7 hrs to complete the computation on an Intel(R) Xeon(R) CPU X7350 2.93GHz CPU. For revised CUDA code, running on a NVIDIA GTX 480 GPU, it still costs 1 hr. However, with our method, running on the same GPU, the time consumed is only about 24 seconds (with resolution $512\times512\times2$ pixels). Use a analytical normalization method, the time consuming could be reduced to $~12$ seconds. Moreover, increasing resolution will only turns out a linearly increasing on the consuming time, e.g., with resolution $1024\times1024\times2$ pixels, the time cost for the analytical method is about 20 seconds (all the above measurements do not contains the I/O time). 
+The original HEALPIX (c++/idl version) method (with NSIDE = 512), which runs for nearly 7 hrs to complete the computation on an Intel(R) Xeon(R) CPU X7350 2.93GHz CPU. For revised CUDA code, running on a NVIDIA GTX 480 GPU, it still takes 1 hr. However, with our method, running on the same GPU, the time consumed is only about 24 seconds (with resolution $512\times512\times2$ pixels). Using an analytical normalization method, the time consuming could be reduced to $~12$ seconds. Moreover, increasing resolution only turns out to have a linear increase in the consumed time, e.g., with resolution $1024\times1024\times2$ pixels, the time cost for the analytical method is about 20 seconds (all the above measurements do not contain the I/O time). 
 
 \begin{figure}[htb]
 \begin{center}
  \includegraphics[width=110mm]{part3/Yang_P045/P045_f4}
-\caption{Fig-4: GSP Method Works as Virtual Observatory. Left panel simulates observing at the Galaxy center on earth with a view angle of 78 degree (each pixel is about 9 arcmin, similar to Fermi-LAT’s observation). Right panel is the radial profile of the signal distribution, restoring \citet{Kuhlen:2008kr}'s Fig-4.  \label{figapp}}
+\caption{Fig~4: GSP Method Works as Virtual Observatory. Left panel simulates observing at the Galaxy center on earth with a view angle of 78 degree (each pixel is about 9 arcmin, similar to Fermi-LAT’s observation). Right panel is the radial profile of the signal distribution, restoring \citet{Kuhlen:2008kr}'s Fig~4.  \label{figapp}}
 \end{center}
 \end{figure}
 
 \section{Potential Application}
-Our method is universal to any dark matter simulation, it could tremendously increase the analysis speed when a simulation is computed out. In addition to generate an all-sky map, it could also work as a virtual observatory. As shown on Fig-\ref{figapp} (left panel), by specifying a view angle, and only project a single sphere, we simulates an Gamma-Ray observation (without convolving with a PSF). The resolution used here is about $9$ arcmin/pixel, similar to Fermi-LAT's angular resolution. Fig-\ref{figapp} (right panel) is angular distribution of the Gamma-ray, restoring \citet{Kuhlen:2008kr}'s Fig-4. 
+Our method is universal to any dark matter simulation, it could tremendously increase the analysis speed when a simulation is computed. In addition to generating an all-sky map, it could also work as a virtual observatory. As shown on Fig~\ref{figapp} (left panel), by specifying a view angle, and only project a single sphere, we simulate a Gamma-Ray observation (without convolving with a PSF). The resolution used here is about $9$ arcmin/pixel, similar to Fermi-LAT's angular resolution. Fig~\ref{figapp} (right panel) is angular distribution of the Gamma-ray, restoring \citet{Kuhlen:2008kr}'s Fig~4. 
 
 \section{Conclusion}
-STR projection fits very well to visualize the dark matter annihilation signal. With small error caused by the GPU rendering and re-projection, the speedup GSP gains is remarkable. Compared to the previous code, GSP is about 1000 more times faster. Our method could be used as a preview of any Dark Matter simulation before being formally analyzed. If require high precision, we still recommend the previous HEALPIX method. However, in a speed/time prefer situation, our method is definitely a good choice. 
+STR projection works very well to visualize the dark matter annihilation signal. With small error caused by the GPU rendering and re-projection, the speedup GSP gains is remarkable. Compared to the previous code, GSP is about 1000 times faster. Our method could be used as a preview of any Dark Matter simulation before being formally analyzed. If high precision is required, we still recommend the previous HEALPIX method. However, in a speed/time preferred situation, our method is definitely a good choice. 
 
-\acknowledgements LY would like to thank Tam$\mathrm{\acute{a}}$s Budav$\mathrm{\acute{a}}$ri for suggestion, discussions and help. LY would like to thank Tam$\mathrm{\acute{a}}$s Szalay, Kai Buerger and several other people for the help on GPU programming. LY would like to thank Mattias Lee for the help on operating system and discussions. 
+\acknowledgements LY would like to thank Tam$\mathrm{\acute{a}}$s Budav$\mathrm{\acute{a}}$ri for suggestions, discussions, and help. LY would like to thank Tam$\mathrm{\acute{a}}$s Szalay, Kai Buerger and several other people for the help on GPU programming. LY would like to thank Mattias Lee for the help with the operating system and discussions. 
 
 \bibliographystyle{asp2010}
 \bibliography{editor}
