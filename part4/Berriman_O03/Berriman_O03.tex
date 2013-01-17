@@ -1,11 +1,9 @@
 
 \resetcounters
 
-%\bibliographystyle{asp2010]
+\markboth{ Berriman et al.} {A Tale Of 160 Scientists, Three Applications, a Workshop, and a Cloud}
 
-\markboth{ Berriman et al.} {A Tale Of 160 Scientists, Three Applications, A Workshop and A Cloud}
-
-\title{A Tale Of 160 Scientists, Three Applications, A Workshop, and A Cloud}
+\title{A Tale Of 160 Scientists, Three Applications, a Workshop, and a Cloud}
 \author{G.~Bruce~Berriman,$^1$ Carolyn~Brinkworth,$^1$ Dawn~Gelino,$^1$ Dennis~K.~Wittman,$^1$ Ewa~Deelman,$^2$ Gideon~Juve,$^2$ Mats~Rynge,$^2$ and Jamie~Kinney$^3$
 \affil{$^1$NASA Exoplanet Science Institute, California Institute of Technology, Pasadena CA 91125, USA}
 \affil{$^2$ USC Information Sciences Institute, 4676 Admiralty Way, Marina del Rey, CA 90292, USA}
@@ -32,7 +30,7 @@ We will describe the mechanisms for handling security, failovers, and licensing 
 \end {abstract}
 
 \section{Introduction}
-The NASA Exoplanet Science Center (NExScI) hosts the Sagan Workshops, which are annual themed conferences aimed at introducing the latest techiques in exoplanet astronomy to young researchers. The workshops emphasize interaction with data, and include hands-on sessions where participants use their laptops to follow step-by-step tutorials given by experts.  The 2012 workshop had the theme "Working With Exoplanet Light Curves," and posed special challenges for the conference organizers because the  three applications chosen for the tutorials run on different platforms, and because over 160 persons attended,  the largest attendance to date. One of the applications, PyKE, is a suite of Python tools designed to reduce and analyze Kepler light curves; it is called from the command line or from a GUI in PyRAF. The Transit Analysis Package (TAP) uses Markov Chain Monte Carlo (MCMC) techniques to fit light curves in the Interactive Data Language (IDL) environment, and Systemic Console analyzes Transit Timing Variations (TTV) with IDL and Java-based GUIs to confirm and detect exoplanets from timing variations in light curve fitting.  Rather than attempt to run these diverse applications on the inevitable wide range of environments on attendees' laptops, the conference organizers, in consulation with the Virtual Astronomical Observatory, chose instead to run the applications on the Amazon Elastic Cloud 2 (EC2). This paper summarizes the system architecture, the Amazon resources consumed, and lessons learned and best practices.
+The NASA Exoplanet Science Center (NExScI) hosts the Sagan Workshops, which are annual themed conferences aimed at introducing the latest techniques in exoplanet astronomy to young researchers. The workshops emphasize interaction with data, and include hands-on sessions where participants use their laptops to follow step-by-step tutorials given by experts.  The 2012 workshop had the theme "Working With Exoplanet Light Curves," and posed special challenges for the conference organizers because the  three applications chosen for the tutorials run on different platforms, and because over 160 persons attended,  the largest attendance to date. One of the applications, PyKE, is a suite of Python tools designed to reduce and analyze Kepler light curves; it is called from the command line or from a GUI in PyRAF. The Transit Analysis Package (TAP) uses Markov Chain Monte Carlo (MCMC) techniques to fit light curves in the Interactive Data Language (IDL) environment, and Systemic Console analyzes Transit Timing Variations (TTV) with IDL and Java-based GUIs to confirm and detect exoplanets from timing variations in light curve fitting.  Rather than attempt to run these diverse applications on the inevitable wide range of environments on attendees' laptops, the conference organizers, in consultation with the Virtual Astronomical Observatory, chose instead to run the applications on the Amazon Elastic Cloud 2 (EC2). This paper summarizes the system architecture, the Amazon resources consumed, and lessons learned and best practices.
 
 \section{The System Architecture}
 
@@ -62,7 +60,7 @@ Server performance was benchmarked with 8 users, but the servers were in fact ab
 A Virtual Network Computing (VNC) server provided remote desktop logins to the tutorial servers. VNC is similar to the X Window system, but sends compressed images instead of drawing commands and proved more responsive than X in our tests. Each tutorial server ran one VNC server that supported up to 30 connections.  Screen resolution set to 1024x768 to balance usability and performance. In practice,  the workshop used TigerVNC as the server and RealVNC as the client.
 \item
 The tutorial servers were connected via an ssh tunnel to an IDL license server at IPAC. 
-IDL VM sessions think the license server is on localhost, and the license server thinks IDL is inside IPAC's network. We used autossh to ensurethe tunnel was re-established if disconnected
+IDL VM sessions think the license server is on localhost, and the license server thinks IDL is inside IPAC's network. We used autossh to ensure the tunnel was re-established if disconnected
 \item
 The Amazon AWS Security Rules limited access only to the VNC, SSH and IDL ports, and only from the Caltech and IPAC subnets  used to support the workshop.
 \end{itemize}
@@ -108,4 +106,4 @@ These may be summarized as follows:
 \item Give yourself plenty of time to solve problems. In our case, we needed to assure the IDL vendor that licenses would not persist on the cloud, and we needed to understand the poor performance of X for remote access to the cloud.
 \end{itemize}
 
-\acknowledgements The Sagan Workshop was funded as part of the Sagan Program through NASA's Exoplanet Exploration Program. We thank Amazon Web Services for the award of a generous Educational Gran. ED, GJ and MR acknowledge support through NSF OCI-0943725. The VAO is jointly funded by NSF and NASA, and is being managed by the VAO, LLC, a non-profit 501(c)(3) organization registered in the District of Columbia and a collaborative effort of the Association of Universities for Research in Astronomy (AURA) and the Associated Universities, Inc. (AUI). We thank Dr. Peter Plavchan for suggesting we examine VNC.
+\acknowledgements The Sagan Workshop was funded as part of the Sagan Program through NASA's Exoplanet Exploration Program. We thank Amazon Web Services for the award of a generous Educational Grant. ED, GJ and MR acknowledge support through NSF OCI-0943725. The VAO is jointly funded by NSF and NASA, and is being managed by the VAO, LLC, a non-profit 501(c)(3) organization registered in the District of Columbia and a collaborative effort of the Association of Universities for Research in Astronomy (AURA) and the Associated Universities, Inc. (AUI). We thank Dr. Peter Plavchan for suggesting we examine VNC.
