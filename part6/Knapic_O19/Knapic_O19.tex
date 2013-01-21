@@ -2,11 +2,11 @@
 \resetcounters
 
 
-\markboth{Knapic, Molinaro, and Smareglia}{Full tolerant Archiving System}
+\markboth{Knapic, Molinaro, and Smareglia}{Full Tolerant Archiving System}
 
-\title{Full tolerant Archiving System}
+\title{Full Tolerant Archiving System}
 \author{Cristina~Knapic, Marco~Molinaro, and Riccardo~Smareglia
-\affil{$^1$INAF Astronomical Observatory of Trieste, Italy}}
+\affil{INAF Astronomical Observatory of Trieste, Italy}}
 
 \aindex{Knapic, C.}
 \aindex{Molinaro, M.}
@@ -14,24 +14,22 @@
 
 \begin{abstract}
 The archiving system at the Italian center for Astronomical Archives (IA2) manages
-data from external sources like telescopes, observatories or surveys and handles
-them in order to guarantee preservation, dissemination and reliability, in most
+data from external sources like telescopes, observatories, or surveys and handles
+them in order to guarantee preservation, dissemination, and reliability, in most
 cases in a Virtual Observatory (VO) compliant manner. A metadata model dynamic
 constructor and a data archive manager are new concepts aimed at automatizing the
 management of different astronomical data sources in a fault tolerant environment.
 The goal is a full tolerant archiving system, nevertheless complicated by the presence
-of various and time changing data models, file formats (FITS, HDF5, ROOT, PDS, etc..)
-\footnote{Flexible Image Transport System (FITS), Hierarchical Data Format (HDF), Planetary Data System (PDS)}
-and metadata content, even inside the same project. To avoid this
+of various and time changing data models, file formats (FITS, HDF5, ROOT, PDS, etc.)\footnote{Flexible Image Transport System (FITS), Hierarchical Data Format (HDF), Planetary Data System (PDS)} and metadata content, even inside the same project. To avoid this
 unpleasant scenario a novel approach is proposed in order to guarantee data ingestion,
-backward compatibility and information preservation.
+backward compatibility, and information preservation.
 \end{abstract}
 
-\section{Introduction: issues and contraints}
-The IA2 infrastructure manages raw data and storage facility principally
-for LBT, TNG and Asiago Observatories; the request to archive and storage
+\section{Introduction: Issues and Constraints}
+The Italian center for Astronomical Archives (IA2) infrastructure manages raw data and storage facilities principally
+for LBT, TNG and Asiago Observatories; the request to archive and store
 calibrated data for European Surveys is a recent request. The evolution of
-data formats and the management of calibrated data emphasized the need of
+data formats and the management of calibrated data emphasizes the need for
 new tools and lead to a revision of the software architecture towards more
 flexible solutions.
 
@@ -39,27 +37,27 @@ flexible solutions.
 The main issues/desiderata may be summarized as follows:
 \begin{itemize}
 \item metadata change in content, format type, and header completeness whereas
-they should be stable;
+they should be stable
 \item data and metadata may use different formats than FITS; more in detail, 
 other formats (ASCII or PH) may be used for calibrated data in addition of FITS
-files, astronomical data can be stored in HDF5, PDS, ROOT and other formats;
-last but not least, the FITS standard evolves;
-\item difficult software reutilization between different purpose surveys;
+files, astronomical data can be stored in HDF5, PDS, ROOT and other formats
+last but not least, the FITS standard evolves
+\item difficult software reutilization between different purpose surveys
 \item data type, although may affect the choice of database, should not affect
-the software or the system architecture;
-\item effective scalability is a key feature;
+the software or the system architecture
+\item effective scalability is a key feature
 \item the data pipeline should access the database and the storage in a
-transparent way, independently on their location;
-\item the data policy and the version of the pipeline should be defined in a revisable way;
-\item the archives may be geographically distributed in several sites (e.g. LBT).
+transparent way, independent of their location
+\item the data policy and the version of the pipeline should be defined in a reversible way
+\item the archives may be geographically distributed in several sites (e.g. LBT)
 \end{itemize}
 
 \section{Constraints}
 The proposed architecture should implement and natively support some new desirable features:
 \begin{itemize}
-  \item distributed systems;
-  \item different programming languages;
-  \item objects deployment shouldn't affect the archiving system performances.
+  \item distributed systems
+  \item different programming languages
+  \item objects deployment shouldn't affect the archiving system performances
 \end{itemize}
 The Object Request Broker (ORB) architecture, that allows interoperation between
 distributed and multilanguage objects, and the Component Container paradigm allow
@@ -70,38 +68,38 @@ Some application use cases are presented and the features related to the
 Archiving system discussed.
 \begin{itemize}
   \item raw data distribution; the critical aspects are data flushing towards
-  several geographically distributed sites and data consistency;  
-  \item calibrated and reduced data; all relations between raw, intermediate
-  and final products are stored in the header in both hierarchical and mixed way;
+  several geographically distributed sites and data consistency
+  \item calibrated and reduced data; all relations between raw, intermediate,
+  and final products are stored in the header in both hierarchical and mixed ways;
   consistency is guaranteed by pipeline developers but not guaranteed between
-  several pipeline versions; 
-  \item real-time processing of large amount of data; thus, more than one archiving
+  several pipeline versions
+  \item real-time processing of large amounts of data; thus, more than one archiving
   system may be needed to keep up with the different data types: raw data,
-  several level intermediate products, science-ready data products, VO publishing
-  data products;
+  several level intermediate products, science-ready data products, and VO publishing
+  data products
 \end{itemize}
-In additon, archive managers need to be aware of all external information
-availabile in the project proposals, i.e. policy of publication, private
-data management, access permissions rules etc. 
+In addition, archive managers need to be aware of all external information
+available in the project proposals, i.e. policy of publication, private
+data management, access permissions rules, etc. 
 
-\section{Templates, models and modules}
+\section{Templates, Models, and Modules}
 IA2 is intended to be a gateway between observing facilities and user science,
-allowing the latter to easily extract the needed informations at every level.
+allowing the latter to easily extract the needed information at every level.
 Centralizing the information on how the different topics should work, storing
-on a database and using it to make an archive system container are essential
+in a database, and using it to make an archive system container are essential
 steps to manage and control the data flux.
 
 \subsection{Modules}
-Four main modules actually have a big role in this schema: data modelization,
-metadata ingestion, data storage, metadata and data retrieval.
-The Archiving system could be considered as a container of different components
+Four main modules have a big role in this schema: data modelization,
+metadata ingestion, data storage, or metadata and data retrieval.
+The Archiving system could be considered to be a container of different components
 that interact with each other. Some components may also be containers of smaller
-components. Each container is in charge of coordinate the relations and references
-between components, i.e. message exchange, component behaviour and actions on
-files and on storages. The top level container is the Archiving System Coordinator
-(ASC) which will contain such component as File Identifier and Notifier, Data
-Modelization (DbCreator and DataFlux), Project Manager (PM). The PM interacts
-directly with data and data flux models in order to sort the informations and
+components. Each container is in charge of coordinating the relations and references
+between components, i.e. message exchange, component behaviour, and actions on
+files and storage. The top level container is the Archiving System Coordinator
+(ASC) which will contain such components as the File Identifier and Notifier, Data
+Modelization (DbCreator and DataFlux), and Project Manager (PM). The PM interacts
+directly with data and data flux models in order to sort the information and
 forward it to the proper destination. Other components will be the  Metadata
 Inserter, File Archiver, VO Publisher, Policy Manager, Pipeline User and Updater.
 The ASC is in charge of coordinating the actions depending on data and data flux
@@ -109,41 +107,41 @@ models, checking allowed or denied actions as well. Data and data flux models sh
 be created dynamically from data and, possibly, from small configuration files (or
 from a pipeline analyzer tool) and stored in a dedicated database
 or an XML schema. The advantages and disadvantages of the two methods are
-summarized in Fig. 1.
+summarized in Figure~1.
 
-\articlefigure[]{part6/Knapic_O19/db_xml.eps}{fig:dbvsxml}{Advanteges and disadvantages of using
-database or XML schema to store data and data flux models informations}
+\articlefigure[]{part6/Knapic_O19/db_xml.eps}{fig:dbvsxml}{Advanteges and disadvantages of using a
+database or XML schema to store data and data flux model information.}
 
 The database solution seems to be more flexible to keep up with model content
 evolution and easily tunable; also allows to avoid the additional conversion
 of the XML schema into the database schema.
 
-\subsection{Data and  Data Flux models}
+\subsection{Data and  Data Flux Models}
 The centralization of information is a key point for the correct configuration of
-all the actors involved in the Archiving System. Job parameters have to be astracted
-from code developement, and stored in a dedicated database using two tables for Data
-Model and Data Flux Model informations respectively. The first describes type and
+all the actors involved in the Archiving System. Job parameters have to be abstracted
+from code development, and stored in a dedicated database using two tables for Data
+Model and Data Flux Model information respectively. The first describes the type and
 format of the data that have to be ingested in the Archive, which libraries to use,
 technical information on metadata types, hierarchical structures, references to other
 files, etc. The second describes how relations between files work, where and when data
-should be stored and flushed, how it shoud be ingested, which pipeline version has
-been used, how to store metadata into the database. Also, the association between
+should be stored and flushed, how it should be ingested, which pipeline version has
+been used, and how to store metadata in the database. Also, the association between
 DBMS and data, the policy on data dissemination, ownerships, aliases and so on belong
 to the second table.
 
-\articlefigure[]{part6/Knapic_O19/framework.eps}{fig:framework}{Framework Interfaces rappresentation and interactions}
+\articlefigure[]{part6/Knapic_O19/framework.eps}{fig:framework}{Framework Interfaces representation and interactions.}
 
-Metadata archiviation may involve different DBMS and rely on different geographical sites.
+Metadata archiving may involve different DBMS's and rely on different geographical sites.
 The DbCreator is a tool under development that maps metadata keys from new files reading
 all metadata available in the data file header and assigning the correct type, structure,
-descriptors (UCDS for the VO). Those informations are stored as part of the Data Model schema
-A graphical user interface (DataFlux) helps the administrators to correcly configure the
+and descriptors (UCDS for the VO). These information are stored as part of the Data Model schema.
+A graphical user interface (DataFlux) helps the administrators to correctly configure the
 data flux schema in agreement with a pipeline analyzer tool. The Project Manager that
-manages all the informations stored into the database and
-coordinates all the subsystems that are in charge of inserting metadata in DB, store,
-manipolate, publish or flush data over the system in a transparent way.
+manages all the information stored in the database and
+coordinates all the subsystems that are in charge of inserting metadata in the DB, store,
+manipulate, publish, or flush data over the system in a transparent way.
 
-\subsection{Conclusions}
-A CORBA based framework is a useful tool to hide the complexity of the whole Archiving system; several frameworks are mature and well suited to this development . The proposed approach is a complete redesign of the Archiving system, challenging and time consuming, but can dramatically improve the confidence on the whole archiving system.
+\subsection{Conclusion}
+A CORBA based framework is a useful tool to hide the complexity of the whole Archiving system; several frameworks are mature and well suited to this development . The proposed approach is a complete redesign of the Archiving system, which is challenging and time consuming, but can dramatically improve the confidence in the whole archiving system.
 
 \acknowledgements The authors would like to thank L. Pivetta for useful conversations and hints, A. Micol, F. Stoehr , P. DiMarcantonio and R. Cirami for suggestions and documentation. Special thanks to F. Pasian for hints and encouragement.

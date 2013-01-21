@@ -25,70 +25,69 @@ We are presenting our work on a cross correlation system based on
         of this system is the creation of the HEALPix indexes grouped
         hierarchically and organized in a special format file called MOC
         (see \url{http://ivoa.net/Documents/Notes/MOC}) developed by the CDS. Using the MOC files,
-         the cross correlation between images and or catalogs is reduced to searches only in meaning areas. Under the condition that the
-        survey data base also uses internally an HEALPix positional index,
+         the cross correlation between images and or catalogues is reduced to searches only in meaningful areas. Under the condition that the
+        survey database also internally uses a HEALPix positional index,
         the search result comes back almost immediately (typically a few
         seconds).
-        We have started building the index for some surveys, catalogs (VizieR
-        catalogs, Simbad, ...) and some pointed mode archives (like HST at
+        We have started building the index for some surveys, catalogues (VizieR
+        catalogues, Simbad, etc.) and some pointed mode archives (like HST at
         CADC) and are developing an elementary library to support basic operations
         on any input MOC files. The usage of the MOC files is starting to
-        be used though the VO community as a general indexing method and
+        be used throughout the VO community as a general indexing method and
         tools such as Aladin and TOPCAT are starting to
         make use of them.
-
 \end{abstract}
 
-\section{Selecting a sky index}
-In this paper, we are presenting a very efficient method for answering questions like: find all HST images on which there is an observation of a radio quiet quasar;\ find regions of the sky which have been observed both by HST(optical), SCUBA(mm) and XMM(X-rays);\ do my lists objects have been already observed by Spitzer; \ retrieve all 2MASS observations mapping my set of images. 
-The key to answer these questions is to able to perform fast comparison of sky coverage between series of observations or measurements. If we can easily generate spatial footprints from observations (either catalogs or pixel surveys), operate basic operations such as equality test, intersection, union, subtraction and complement on these footprints, we will then have a solution for all these problems. Presently, most spatial searches on astronomical databases are based on simple
-cone queries, i.e. RA and Dec with a searching radius. We need to do more and manipulates not only circles but complex areas on the sphere.
+\section{Selecting a Sky Index}
+In this paper, we are presenting a very efficient method for answering questions like: find all HST images on which there is an observation of a radio quiet quasar; find regions of the sky which have been observed both by HST(optical), SCUBA(mm), and XMM(X-rays); have my listed objects been already observed by Spitzer; or retrieve all 2MASS observations mapping my set of images. 
+The key to answering these questions is to able to perform fast comparison of sky coverage between a series of observations or measurements. If we can easily generate spatial footprints from observations (either catalogues or pixel surveys) and operate basic operations such as an equality test, intersection, union, subtraction, and complement on these footprints, we will then have a solution for all these problems. Presently, most spatial searches on astronomical databases are based on simple
+cone queries, i.e. RA and Dec with a search radius. We need to do more and manipulate not only circles but complex areas on the sphere.
 The determination of a specific area on the celestial sphere is a classical geometric issue.
-The basic method consists in defining an area as the union of basic shapes
-(polygons, circles, ...) on the sphere (along great and small circles) implemented by STC (\cite{STC}). This method is simple but has one main disadvantage: there is no canonical form to describe a specific area, so comparison is difficult, often complex, and usually slow. We believe that a unique spatial index system is required if one want to use the data from multiple sources covering vast number of collections. Fast methods are generally based on regular partitioning of the sphere (the sky) in regular cells with sizes adapted to the resolution of the input data and compare the ``presence'' or ``absence'' of sources (catalogs) or illumination (pixel data) in these cells.
+The basic method consists of defining an area as the union of basic shapes
+(polygons, circles, etc.) on the sphere (along great and small circles) implemented by STC \citep{STC}. This method is simple but has one main disadvantage: there is no canonical form to describe a specific area, so comparison is difficult, often complex, and usually slow. We believe that a unique spatial index system is required if one wants to use the data from multiple sources, covering a vast number of collections. Fast methods are generally based on regular partitioning of the sphere (the sky) in regular cells with sizes adapted to the resolution of the input data and compare the ``presence'' or ``absence'' of sources (catalogues) or illumination (pixel data) in these cells.
 This process called tessellation is a well known mathematical tool designed to deal with spherical information.
 The three main ones used in astronomy are: the Hierarchical Triangular Mesh \cite{HTM} (HTM),
-the Hierarchical Equal Area isoLatitude Pixelization \cite{Healpix} (HEALPix) and the Q3C \cite{quadtreee}. Even if these systems are similar, they are not compatible. So for keeping fast operations (intersection, union, ...), we need to choose one of them. We have selected HEALPix as the tessellation system of choice. The reasons of our choice has been fully described in  \cite{Fernique}. In resume, the main argument to select the HEALPix tessellation scheme is to be able to get cells covering equal area. The computation time is also a constant for a given cell/level which is not the case with HTM. Also, the algorithm is quite simple and is already implemented in a number of languages and adopted for multiple missions  (WMAP, PLANCK, GAIA).
+the Hierarchical Equal Area isoLatitude Pixelization \citep{Healpix} (HEALPix) and the Q3C \citep{quadtreee}. Even though these systems are similar, they are not compatible. So for keeping operations fast (intersection, union, etc.), we need to choose one of them. We have selected HEALPix as the tessellation system of choice. The reasons of our choice has been fully described in  \citep{Fernique}. In short, the main argument to select the HEALPix tessellation scheme is to be able to get cells covering equal area. The computation time is also a constant for a given cell/level which is not the case with HTM. Also, the algorithm is quite simple and is already implemented in a number of languages and adopted for multiple missions  (WMAP, PLANCK, GAIA).
 
 
-\section{Using the sky index}
-After selecting HEALPix as the tessellation of choice, we derived from it four products: a multi-resolution visualization method, density maps (HEALPix map), coverage maps (MOC), and data access. The visualization system and density maps have been described in previous papers \cite{Fernique}, let's therefore discuss the MOC and data access.
+\section{Using the Sky Index}
+After selecting HEALPix as the tessellation of choice, we derived from it four products: a multi-resolution visualization method, density maps (HEALPix map), coverage maps (MOC), and data access. The visualization system and density maps have been described in previous papers \citep{Fernique}, we will therefore discuss the MOC and data access.
 
-\subsection{The Multi-Order Coverage maps or MOC files}
-A MOC can be considered as a generic tool which can be used for various purposes. MOC files are HEALPix cells number packaged in a file for a given survey/catalogue in a FITS or ASCII file. The numbers are grouped recursively the valid contiguous cell in a hierarchical way. This provides a simple and useful method of describing any sky area. 
+\subsection{The Multi-Order Coverage Maps or MOC Files}
+A MOC can be considered as a generic tool which can be used for various purposes. MOC files are HEALPix cell numbers packaged in a file for a given survey/catalogue in a FITS or ASCII file. The numbers are grouped recursively with the valid contiguous cell in a hierarchical way. This provides a simple and useful method of describing any sky area. 
 As an example, the MOC file of an image from the scuba (JCMT) survey
 will only consist of the lowest resolution cells at the
-border since the inner part will content only the few cells
-at the lowest resolution, thus the MOC file is quite small.
-See Fig. \ref{DurFig1}.
+border since the inner part will contain only the few cells
+at the lowest resolution, thus the MOC file is quite small 
+(see Figure~\ref{DurFig1}).
 For example, the MOC file for all the HST images for filter F555 is only 180 Kbytes! As the operations on MOC are very fast (a few milliseconds), what is usually done with the MOC files is using some logic
-operators in order to create a ``resultant'' MOC files which
-content the footprint of the answer. For example let's take
+operators in order to create a ``resultant'' MOC file which
+contains the footprint of the answer. For example let's take
 two series of observations, A and B, and a catalogue
-C. The MOC operator could then perform operations like for objects in C which have z $>$ 2.0, give me all the areas of the sky observed by A and B.
+C. The MOC operator could then perform operations on objects in C which have $z >$ 2.0 or "give me all the areas of the sky observed by A and B".
 \articlefigure{part6/Durand_O13/O013_f2.eps}{DurFig1}{Scuba I images showing MOC superposed.}
-The MOC encoding method has been described in an IVOA document and a java library is available and already implemented in the well known VO tools Aladin  \url{http://aladin.u-strasbg.fr} and TOPCAT  \url{http://www.star.bris.ac.uk/~mbt/topcat/}
+The MOC encoding method has been described in an IVOA document and a Java library is available and already implemented in the well known VO tools Aladin (\url{http://aladin.u-strasbg.fr}) and TOPCAT (\url{http://www.star.bris.ac.uk/~mbt/topcat/}).
 
-\subsection{Data access}
-A MOC file itself does not retain the list of original files or sources, it is describing, it is just a coverage descriptor. But under the condition that original data providers have built their data base index using the same HEALPix mechanism, access to original data becomes extremely efficient: each cell of MOC correspond to one index cell of the data base. 
-To support this, the CDS has re-indexed using HEALPix a large number of survey catalogs and provides a new service called "query by MOC" which is able to return all sources from one dedicated catalog inside a MOC. Similarly, the CADC have been re-indexed all HST images using the HEALPix library and generated not only the MOCs of these observations, but the list of input which was used to produce the MOC. This allows the user to get back the original images links at any moment while performing MOC operations.
+\subsection{Data Access}
+A MOC file itself does not retain the list of original files or sources it is describing, it is just a coverage descriptor. But under the condition that the original data providers have built their database index using the same HEALPix mechanism, access to original data becomes extremely efficient: each cell of MOC correspond to one index cell of the data base. 
+To support this, the CDS has re-indexed, using HEALPix, a large number of survey catalogues and provides a new service called "query by MOC" which is able to return all sources from one dedicated catalogue inside a MOC. Similarly, the CADC has been re-indexing all HST images using the HEALPix library and generated not only the MOCs of these observations, but the list of input which was used to produce the MOC. This allows the user to get back the original image links at any moment while performing MOC operations.
 
 
-\section{Use cases}
-We studied a few use cases mostly to show the entire processes which could be used in: create MOCs from various data sets (Simbad,VizieR tables, pixel surveys like HST, SDSS, XMM); find all the Quasars in CFHTLS, not yet observed by SLOAN for with we have both an XMM and an HST observations; find all HST infrared observations which coincide with bright NOMAD sources (see Fig. \ref{DurFig2}).
+\section{Use Cases}
+We studied a few use cases mostly to show the entirety of the processes which could be used to: create MOCs from various data sets (Simbad, VizieR tables, pixel surveys like HST, SDSS, XMM); find all the Quasars in CFHTLS, not yet observed by SLOAN for with we have both an XMM and an HST observations; or find all HST infrared observations which coincide with bright NOMAD sources (see Figure~\ref{DurFig2}).
 
 \articlefigure{part6/Durand_O13/O013_f3.eps}{DurFig2}{HST image list and NOMAD sources inside a specific MOC (HST F606W)}
 
-\section{What's next}
+\section{What's Next}
 
 We propose using the MOC files as defined to become an IVOA standard. 
-The Virtual Observatory project would greatly benefit from adopting a common indexing scheme for all the various types of data collections it embraced. 
+The Virtual Observatory project would greatly benefit from adopting a common indexing scheme for all the various types of data collections it embraces. 
 An attractive but simple form of virtual observatory user query is
 to request all records from the whole VO at a given sky position.
 While this is in principle possible by dispatching one narrow
 positional query to every registered Cone Search, SSA or SIA service,
 in practice the number of queries required leads to an unacceptable
-load on both clients and services, and moreover most of these queries
+load on both clients and servers, and moreover most of these queries
 will deliver no results because most services lack coverage in the
 queried region. If footprint information is available for all registered services, only those
 services with coverage in the region of interest, and hence which

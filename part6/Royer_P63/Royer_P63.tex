@@ -1,10 +1,10 @@
 
 \resetcounters
 
-\markboth{Royer et al.}{The GIRAFFE Archive : 1D and 3D spectra}
+\markboth{Royer et al.}{The GIRAFFE Archive: 1D and 3D Spectra}
 
 
-\title{The GIRAFFE Archive: 1D and 3D spectra}
+\title{The GIRAFFE Archive: 1D and 3D Spectra}
 \author{F.~Royer,$^1$ I.~J\'egouzo,$^1$ F.~Tajahmady,$^1$ J.~Normand,$^2$ and I.~Chilingarian$^3$
 \affil{$^1$GEPI -- Observatoire de Paris}
 \affil{$^2$VO Paris Data Center -- Observatoire de Paris}
@@ -27,7 +27,7 @@ We present here the status of the archive and the different functionalities to s
  The current version of the GIRAFFE Archive contains reduced spectroscopic data observed until the end of 2010, i.e. about 7000 scientific exposures. It represents a progress of about 40\% compared to the content available last year \citep{Ror_12}.
 Figure\,\ref{camembert} shows how these data are distributed among the different fiber configurations --- Medusa: individual fibers; IFU and Argus: integral field observations \citep[details about the instrument can be found in][]{Pai_02}. 
 
- The automatic reduction with the ESO pipeline, and its fine tuning, are in progress in order to get a better completeness of the content. The GIRAFFE Archive is accessible on a web interface at \url{http://giraffe-archive.obspm.fr}.
+ The automatic reduction with the ESO pipeline, and its fine tuning, are in progress in order to get a better completeness of the content. The GIRAFFE Archive is accessible via a web interface at \url{http://giraffe-archive.obspm.fr}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -39,18 +39,18 @@ Figure\,\ref{camembert} shows how these data are distributed among the different
 \end{figure}
 
 
-\section{1D spectra}
+\section{1D Spectra}
 
-In the Archive, 1D spectra are associated to targets and correspond to the physical fiber buttons in the instrument. In Medusa mode, they correspond to individual fibers. In IFU and Argus modes, 1D spectra are the sum of the spectra in the considered button (respectively 20 and 300 fibers). Their coordinates on the sky are the $\alpha$ and $\delta$ of the objects. The 1D reduced data can be retrieved in different ways:
+In the Archive, 1D spectra are associated with targets and correspond to the physical fiber buttons in the instrument. In Medusa mode, they correspond to individual fibers. In IFU and Argus modes, 1D spectra are the sum of the spectra in the considered button (respectively 20 and 300 fibers). Their coordinates on the sky are the $\alpha$ and $\delta$ of the objects. The 1D reduced data can be retrieved in different ways:
 \paragraph{Visualization} 1D spectra can be selected on the web interface as ``Buttons'' data products and interactively visualized.
 \paragraph{Virtual Observatory} 1D spectra are offered through the VO by the GIRAFFE 1D SSA service, in VOTable format.
 \paragraph{Download} 1D spectra are available for download (one-by-one or multiple) in the web interface as ``Buttons'': single 1D spectra for Medusa mode and array of 1D spectra for IFU and Argus modes, in FITS format. It is worth noticing that this download option provides all the spectra of a given Argus or IFU button, and not the summed spectra as in the aforementioned options. 
 
-\section{3D spectra}
+\section{3D Spectra}
 
-Multi-fibers observations with the GIRAFFE spectrograph gives 3D spectroscopic data, i.e. spectra for different spatial positions, contiguous or not. These data can be explored in the following ways:
-\paragraph{Visualization} The spectral dimension of a 3D datacube cannot be visualized on the web interface, but when available, the reconstructed spatial image can be displayed for integrated field observations (Fig.\,\ref{thumbnails}).
-\paragraph{Virtual Observatory} Full reduced observations are available in the VO with the GIRAFFE 3D SSA service which offers these data in the ``native'' FITS format (direct output from the ESO reduction pipeline, \url{ftp://ftp.eso.org/pub/dfs/pipelines/giraffe/giraf-manual-2.9.pdf}),
+Multi-fiber observations with the GIRAFFE spectrograph gives 3D spectroscopic data, i.e. spectra for different spatial positions, contiguous or not. These data can be explored in the following ways:
+\paragraph{Visualization} The spectral dimension of a 3D datacube cannot be visualized on the web interface, but when available, the reconstructed spatial image can be displayed for integrated field observations (see Figure~\ref{thumbnails}).
+\paragraph{Virtual Observatory} Fully reduced observations are available in the VO with the GIRAFFE 3D SSA service which offers these data in the ``native'' FITS format (direct output from the ESO reduction pipeline, \url{ftp://ftp.eso.org/pub/dfs/pipelines/giraffe/giraf-manual-2.9.pdf}).
 \paragraph{Download} The same ``native'' FITS files can be downloaded (one-by-one or multiple) from the web interface, as ``Field'' data products. For IFU and Argus data, a reconstructed datacube (3D FITS image) can also be downloaded in the ``Field''  data product section. The full set of pipeline science products for a given observation can be downloaded as a tar file, together with the reduction log file. 
 
 \begin{figure}[!ht]
@@ -61,7 +61,7 @@ Multi-fibers observations with the GIRAFFE spectrograph gives 3D spectroscopic d
 \label{thumbnails}
 \end{figure}
 
-\section{Exploring both spatial and spectral dimensions}
+\section{Exploring Both Spatial and Spectral Dimensions}
 The VO-Paris Euro3D client is developed by \citet{Chn_08} to deal with 3D spectroscopic datasets. Through interactions using SAMP between Aladin and VOSpec, it offers selection and visualization capabilities, spatially and spectrally (Fig\,\ref{aladin}). The input are Euro3D (e.g.  output format of the MMT/Magellan Infrared Spectrograph data reduction pipeline) and ``native'' GIRAFFE formats. 
 \begin{figure}[!ht]
 \begin{center}
