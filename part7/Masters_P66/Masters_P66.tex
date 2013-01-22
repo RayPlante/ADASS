@@ -13,7 +13,7 @@
 \aindex{Braatz, J.}
 
 \begin{abstract}
-Recently, history Green Bank Telescope (GBT) data was made available to the user community through the National Radio Astronomy Observatory (NRAO) data archive service.  In support of this archive, and to offer quick access to GBT data, NRAO has instituted the GBT Pipeline Project to provide reduced spectra from public GBT datasets to the user community.
+Recently, historic Green Bank Telescope (GBT) data was made available to the user community through the National Radio Astronomy Observatory (NRAO) data archive service.  In support of this archive, and to offer quick access to GBT data, NRAO has instituted the GBT Pipeline Project to provide reduced spectra from public GBT datasets to the user community.
 \end{abstract}
 
 \section{Introduction}
@@ -29,13 +29,13 @@ Most extragalactic HI spectra are affected by RFI at some level.  The ``before a
 \begin{figure}[ht!]
 \centering%
 \includegraphics[width=5in]{part7/Masters_P66/P66_f1}
-\caption{RFI excision of three exmample spectra.  Plots on the left are before RFI exicsion and plots on the right are the removal of bad component spectra and/or bad channels.}
+\caption{RFI excision of three example spectra.  Plots on the left are before RFI excision and plots on the right are the removal of bad component spectra and/or bad channels.}
 \label{fig:RFIfigure}
 \end{figure}
 
 \subsection{Baseline Subtraction}
 
-Like RFI exicsion, the best methods for baseline subtraction will take some experimentation.  However, baseline subtraction in the pipeline will likely consist of:
+Like RFI excision, the best methods for baseline subtraction will take some experimentation.  However, baseline subtraction in the pipeline will likely consist of:
 
 \begin{itemize}
 \item a selectable baseline fitting range (i.e. channels, velocity)
@@ -51,7 +51,7 @@ The pipeline will allow users to select which data to process.  In some cases, t
 
 \paragraph{Automatic}
 
-The first, and in some ways most sophisticated mode, is for the pipeline to run without user input.  Ideally, the pipeline will run automatically at the completion of an observation.  Alternatively, the user should just direct the pipeline to a particular input file or even a Project Identifier.  In this mode, the pipeline will use information contained within the dataset(s) to make educated guesses about what calibration techiniques and parameter values are appropriate for the observation.
+The first, and in some ways most sophisticated mode, is for the pipeline to run without user input.  Ideally, the pipeline will run automatically at the completion of an observation.  Alternatively, the user should just direct the pipeline to a particular input file or even a Project Identifier.  In this mode, the pipeline will use information contained within the dataset(s) to make educated guesses about what calibration techniques and parameter values are appropriate for the observation.
 
 A user may use the automatic mode on an entire dataset or a subsection of integrations.
 
@@ -64,7 +64,6 @@ The user will also be able to run the pipeline with full, or close to full, cont
 By default, the pipeline will produce the following data products.  Depending on options set by the user, the format of each of these products may vary.
 \begin{enumerate}
 \item Calibrated single dish FITS (SDFITS) with a spectrum per target per spectral window
-%        + multi-beam scenarios are a special case to be handled differently
 \item A summary web page including images of spectra, header information and basic statistics/analysis
 \end{enumerate}
 
@@ -76,16 +75,16 @@ The pipeline will produce a summary page (or set of summary pages) for each proc
 
 It will include:
 \begin{itemize}
-\item a plot of each calibrated spectrum with high-level metadata for the dataset according to the data selection parameters.  By default, this will produce a spectrum for each target.
+\item A plot of each calibrated spectrum with high-level metadata for the dataset according to the data selection parameters.  By default, this will produce a spectrum for each target.
 \item Weather information
 \item Basic statistics
 \end{itemize}
 
 \section{Future work}
 
-The intitial approach is to run the pipeline on the Green Bank network.  At a later stage, the pipeline may be controlable from a web interface or able to be run on a user's home computer.
+The initial approach is to run the pipeline on the Green Bank network.  At a later stage, the pipeline may be controllable from a web interface or able to be run on a user's home computer.
 
-Likewise for data product retrieval.  Initally the data produced by the pipeline will be accessable on the Green Bank network.  Later, data procucts may be retrieved either from an archive access interface or another web interface.  If the pipeline is run on a user's home computer, then the data products will be produced on that machine.
+Likewise for data product retrieval.  Initially the data produced by the pipeline will be accessible on the Green Bank network.  Later, data products may be retrieved either from an archive access interface or another web interface.  If the pipeline is run on a user's home computer, then the data products will be produced on that machine.
 
 \acknowledgements We would like to thank the National Science Foundation for funding this work.
 

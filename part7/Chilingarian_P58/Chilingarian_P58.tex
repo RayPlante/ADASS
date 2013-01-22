@@ -5,7 +5,7 @@
 
 \markboth{Chilingarian et al.}{MMIRS Data Reduction Pipeline}
 
-\title{Data reduction pipeline for the MMT Magellan Infrared Spectrograph
+\title{Data Reduction Pipeline for the MMT Magellan Infrared Spectrograph
 }
 \author{Igor~Chilingarian, 
 Warren~Brown, Daniel~Fabricant, 
@@ -24,8 +24,8 @@ Cambridge, MA 02138, USA}}
 \begin{abstract} We describe principal components of the new spectroscopic
 data pipeline for the multi-object MMT/Magellan Infrared Spectrograph
 (MMIRS).  The pipeline is implemented in {\sc idl} and {\sc C++}.  The
-performance of the data processing algorithms is sufficient to reduce a
-single dataset in 2--3~min on a modern PC workstation so that one can use
+performance of the data processing algorithms are sufficient to reduce a
+single dataset in 2--3~min on a modern PC workstation, so that one can use
 the pipeline as a quick-look tool during the observations.  We provide an
 example of the spectral data processed by our pipeline and demonstrate that
 the sky subtraction quality get close to the limits set by the Poisson
@@ -42,7 +42,7 @@ array.  It can also operate as a single-object spectrograph with a 7~arcmin
 long 0.2--3~arcsec wide slit.  Here we present the data reduction pipeline
 which handles data obtained in the MOS and long slit modes.
 
-\section{Pipeline design and implementation}
+\section{Pipeline Design and Implementation}
 
 The MMIRS spectroscopic data reduction pipeline is a stand-alone {\sc idl}
 package with the most computationally intensive step implemented in {\sc
@@ -53,7 +53,7 @@ observational metadata generated after each observing run.  Then it can be
 edited in order to perform specific data reduction steps or adjust certain
 parameters of data processing algorithms.  The following steps are
 executed for every observing block represented by a pair of spectra
-spatially dithered along the slit (see Fig.~\ref{figP58_1}).
+spatially dithered along the slit (see Figure~\ref{figP58_1}).
 
  \emph{Fitting the up-the-ramp slope} in every pixel and obtaining a
 2-dimensional image. At present, this step is performed by the {\sc
@@ -71,17 +71,17 @@ exposures.  To subtract the scattered light (only for MOS data), the
 pipeline analyses the MOS mask definition files, then uses them to trace the
 spectra and gaps between them on a dark subtracted spectral flat field
 exposure.  Then, a smooth background model is constructed from gap counts in
-all types of frames (science, calibrations, telluric standards) using
+all types of frames (science, calibration, telluric standards) using
 low-order polynomials.
 
  \emph{Mapping the optical distortions} is done using spectral traces
 from the previous step.  We use a low order 2D polynomial approximation to
-describe distortions coming from both, collimator and camera. The distortion
+describe distortions coming from both, collimator, and camera. The distortion
 map accounts not only for optical distortions but also for the imperfect
 positioning of the grism causing the tilt of spectra with respect to the
-detector edge by up-to 0.7~deg).
+detector edge by up-to 0.7~deg.
 
- \emph{Extraction of 2D spectra and flat fielding} is done by analysing mask
+ \emph{Extraction of 2D spectra and flat fielding} is done by analyzing mask
 definition files and extracting the bounding boxes of every spectrum.  Then
 we create a normalized flat field and correct all exposures by it.  This is
 a critical step in the NIR data reduction as pixel-to-pixel variations
@@ -92,7 +92,7 @@ the argon lines from the comparison spectrum frame are automatically
 identified and the initial wavelength solution is approximated using a low
 order 2D polynomial.  This step applied to the entire frame in the long-slit
 mode or to every extracted slit in the MOS mode.  Alignment stars where
-spectral lines are too broad are not processed at this stage.  The second
+spectral lines which are too broad are not processed at this stage.  The second
 step of the wavelength calibration applies only to MOS data: we approximate
 the coefficients in all slits simultaneously as low order 2D polynomials of
 the (X,Y) position on the mask.  This allows us to handle alignment star
@@ -106,7 +106,7 @@ dispersion in order to determine small residual shifts which are then
 included into the final wavelength solution.
 
  \emph{Sky subtraction} is one of the most critical steps in the NIR data
-reduction.  NIR night sky spectrum contains rapidly changing very bright
+reduction.  NIR night sky spectrum contains rapidly changing, very bright
 emission lines (mostly hydroxyl, OH) as well as the continuum background. 
 Targets observed with MMIRS with integration times of many hours are up-to
 hundreds of times fainter than the night sky level.  Therefore high quality
@@ -119,7 +119,7 @@ reach tens of per~cent over 5--10~min.  We apply the modified
 residual night sky emission.  This technique uses non-resampled spectra and
 precise pixel-to-wavelength mapping in order to create the oversampled model
 of the night sky spectrum which is then parametrized using $b$-splines and
-evaluated at every position at every slit.  It allows one to avoid artefacts
+evaluated at every position at every slit.  It allows one to avoid artifacts
 originating from the interpolation of sharp undersampled OH line profiles. 
 However, this requires slit images on the detector frame to have sufficient
 curvature in order to well sample the line contours.  While it works for
@@ -135,7 +135,7 @@ to account for smooth variations of $b$-spline coefficients.  By using this
 approach we get the sky subtraction quality close to the limit set by the
 Poisson photon statistics.
 
-\emph{Final cosmic ray cleaning, linearisation and rectification} is
+\emph{Final cosmic ray cleaning, linearization and rectification} is
 performed on sky subtracted frames.  We use the modified Laplacian filtering
 technique \citep{vanDokkum01} which handles both, negative and positive
 ``hits'' on difference images.  At the end, we put the spectra into the
@@ -168,7 +168,7 @@ metadata making them Virtual Observatory compliant
 
 \section{Example of a fully reduced dataset}
 
-In Fig.~\ref{figP58_2} we present an example of a dataset obtained in
+In Figure~\ref{figP58_2} we present an example of a dataset obtained in
 Dec~2011 in the low-resolution HK mode at the 6.5~m Magellan telescope. The
 integration time was 7h~20min. Our excellent sky subtraction quality
 leads to detections of faint galaxies ($m_H>20$~mag).

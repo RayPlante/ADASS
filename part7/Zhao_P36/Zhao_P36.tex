@@ -36,14 +36,14 @@ allows flexible allocation of thousands of spectral channels to each receiver.
 \section{Miriad for SMA Data Reduction}
 {\it Miriad} is a radio interferometer data reduction package \citep{stw95} 
 and has been adopted by the SMA for data reduction.\footnote{http://www.cfa.harvard.edu/sma/miriad/} {\it Miriad} can be configured 
-for the specifications required by the SMA. Specific codes for handling 
+for the specifications required by the SMA. Specific code for handling 
 the SMA data have been developed and are supported. {\it Miriad} now can be 
 used for the reduction of continuum and spectral line observations from 
 loading of the SMA archival data  through to the image analysis. The SMA 
 features have particular emphasis on aspects of interest to users of the 
 SMA. We support the off-line software including software tools used for 
 calibration and analysis of the SMA data observed at submillimeter 
-wavelengths. The newly developed codes are (will be) placed under 
+wavelengths. The newly developed code are under the
 {\it Miriad} CVS system (./miriad$_{-}$cvs/src/prog/sma) 
 which is managed by the CARMA group.
 
@@ -114,22 +114,22 @@ and spectral line data can be summarized by nine major steps:
 6) flux-density scale calibration; 
 7) imaging continuum emission; 
 8) continuum subtraction; 
-9) Construction of spectral line cube. Fig. 1 shows a flow chart
+9) Construction of spectral line cube. Figure~1 shows a flow chart
 of processing SMA data in {\it Miriad} from reading data, calibrations
 to final images.
 
 \subsection{Tutorial Scripts }
 One of the nice features in {\it Miriad} is that the detailed 
 procedure of input setup and execution of data reduction tasks 
-can be compiled in a shell script program. SMA staff have taken 
-the advantage to provide users tutorial examples in C-shell 
+can be compiled into a shell script program. SMA staff have taken 
+advantage of this to provide users with tutorial examples in C-shell 
 scripts for reducing data acquired from the basic observing 
-modes including hybrid-spectral resolution, dual receivers, 
-polarization, mosaic with the standard SMA correlator configurations 
+modes, including hybrid-spectral resolution, dual receivers, 
+polarization, and mosaic with the standard SMA correlator configurations 
 (2GHz bandwidth) or the double-band modes (4GHz bandwidth). 
 The examples of the scripts have been posted on the SMA-Miriad 
 webpage.\footnote{http://www.cfa.harvard.edu/sma/miriad/spec/SMAscripts/}
-Fig. 2 shows the result plots from one of the example scripts 
+Figure~2 shows the result plots from one of the example scripts 
 (a non-polarization, 2 receiver mode) based on the test data 
 from observations of DM Tau.
 
