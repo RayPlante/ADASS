@@ -55,7 +55,7 @@ I then pulled again and got the file.
    git config --global user.email teuben@gmail.com
    git config --global user.name "Peter Teuben"
    
-   (which didn't seem to work for me....)
+   (which didn't seem to work for me all the time, and even when it does, I get "error: git-credential-osxkeychain died of signal 11" message twice after a push, but at least I don't have to type my user name and password!)
 
    Also useful: 
    
