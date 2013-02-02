@@ -27,3 +27,5 @@ Here's a super simple "git for dummies"
    git commit README.md
    git push
 
+
+4.) if you have made changes to a file that has been changed upstream, a pull will fail. You will have to stash the file (git help stash) before you can pull the updated version down. 
