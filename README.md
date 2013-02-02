@@ -50,7 +50,14 @@ I then pulled again and got the file.
 
    git config --global core.editor emacs
 
-9.) reserved for future use
+9.) git push will normally ask for a username/password, but some recommended practices Peter found to set credentials (once) are:
+
+   git config --global user.email teuben@gmail.com
+   git config --global user.name "Peter Teuben"
+
+   Also useful: 
+   
+   git config --global credential.helper 'cache --timeout 3600'
 
 10.) The most commonly used git commands are:
    add		Add file contents to the index
