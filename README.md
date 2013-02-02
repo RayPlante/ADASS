@@ -26,7 +26,7 @@ Here's a super simple "git for dummies"
    edit README.md
    git add README.md
    git commit README.md
--- or if you don't like your choice of unix editors
+-- or if you don't like your choice of unix editors (vi in particular)
    git commit -m "reasons of changes to file"  README.md
    git push
 
