@@ -54,6 +54,8 @@ I then pulled again and got the file.
 
    git config --global user.email teuben@gmail.com
    git config --global user.name "Peter Teuben"
+   
+   (which didn't seem to work for me....)
 
    Also useful: 
    
