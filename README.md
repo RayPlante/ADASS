@@ -19,12 +19,15 @@ Here's a super simple "git for dummies"
    cd ADASS
    git pull
 
-3) make a change and give it back to the others
+3) make a change and give it back to the others.   Pick your favorite editor,
+   and the -m flag is for those who don't want/need the editor at that stage.
 
    cd ADASS
    edit README.md
    git add README.md
    git commit README.md
+-- or if you don't like your choice of unix editors
+   git commit -m "reasons of changes to file"  README.md
    git push
 
 
