@@ -32,3 +32,7 @@ Here's a super simple "git for dummies"
 
 
 4.) if you have made changes to a file that has been changed upstream, a pull will fail. You will have to stash the file (git help stash) before you can pull the updated version down. 
+
+If you have stashed a file that you no longer want, you apparently have to delete it before you can push the file you are currently working on. 
+
+git checkout -- README.md to fix stuff....!
