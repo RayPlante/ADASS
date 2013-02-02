@@ -10,6 +10,9 @@ Here's a super simple "git for dummies"
 
    git clone https://github.com/astro-friedel/ADASS.git
 
+   and it will create a new subdirectory called 'ADASS'. If 
+   you alreadyu had one, git will nicely complain.
+
 2) this will get you the latest updates from the others:
 
 
