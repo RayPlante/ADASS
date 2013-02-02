@@ -11,7 +11,7 @@ Here's a super simple "git for dummies"
    git clone https://github.com/astro-friedel/ADASS.git
 
    and it will create a new subdirectory called 'ADASS'. If 
-   you alreadyu had one, git will nicely complain.
+   you already had one, git will nicely complain.
 
 2) this will get you the latest updates from the others:
 
@@ -26,8 +26,7 @@ Here's a super simple "git for dummies"
    edit README.md
    git add README.md
    git commit README.md
--- or if you don't like your choice of unix editors
-   git commit -m "reasons of changes to file"  README.md
+	better is :   git commit -m "reasons of changes to file"  README.md
    git push
 
 
@@ -35,4 +34,15 @@ Here's a super simple "git for dummies"
 
 If you have stashed a file that you no longer want, you apparently have to delete it before you can push the file you are currently working on. 
 
-git checkout -- README.md to fix stuff....!
+5.) I have deleted a file, did a pull, and did not get the file; in this case, the file was README.md. Peter suggested I type:
+
+   git checkout -- README.md 
+   
+I then pulled again and got the file. 
+
+6.) use alias git=/usr/local/git/bin/git to 
+
+7.) use :q! to get out of the editor when dumped into it
+
+
+   
