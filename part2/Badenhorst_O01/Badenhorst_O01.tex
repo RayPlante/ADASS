@@ -18,13 +18,13 @@
 \begin{abstract}
 We aim to enable fast automated extraction of neutral hydrogen (HI)  sources from large survey data sets. 
 This requires both handling the large files ($>$5 TB) to be produced by next-generation interferometers and acceleration of  the source extraction algorithm. 
-We develop an efficient multithreaded implementation of the A'Trous wavelet reconstruction algorithm, which we evaluate against the serial implementation in the DUCHAMP package.  We also evaluate three memory management libraries (Mmap, Boost and Stxxl) that enable processing of data files too large to fit into main memory, to establish which provides the best performance. 
+We develop an efficient multithreaded implementation of the A'Trous wavelet reconstruction algorithm, which we evaluate against the serial implementation in the DUCHAMP\ooindex{DUCHAMP, ascl:1201.011} package.  We also evaluate three memory management libraries (Mmap, Boost and Stxxl) that enable processing of data files too large to fit into main memory, to establish which provides the best performance. 
 \end{abstract}
 
 \section{Introduction}
 
 Deep and wide-field surveys of neutral hydrogen (HI) galaxies on the proposed Square Kilometer Array (SKA) will produce 
-large data sets that will make manual extraction of sources unfeasible.  Automated source extraction is commonly performed with the SExtractor \citep{Bertin1996} and DUCHAMP software \citep{Whiting2012}.  
+large data sets that will make manual extraction of sources unfeasible.  Automated source extraction is commonly performed with the SExtractor\ooindex{SExtractor,ascl:1010.064} \citep{Bertin1996} and DUCHAMP software \citep{Whiting2012}.  
  The recent addition to DUCHAMP of  noise removal with A'Trous wavelet reconstruction \citep{West2010} improves the reliability of automated source extraction \citep{Popping2012, Whiting2012}.  
 However, the method remains computationally expensive and does not scale to large datasets.  
 
