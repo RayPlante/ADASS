@@ -21,7 +21,7 @@
 \begin{abstract}
 The Ground Based Optical Tracking (GBOT) group is a part of the “Data Processing and Analysis Consortium”, the large consortium of over 400 scientists from many European countries, charged with the scientific conduction of the Gaia mission by ESA. The GBOT group is in charge of the optical part of tracking of the Gaia satellite. This optical tracking is necessary to allow the Gaia mission to fully reach its goal in terms of astrometry precision level.  These observations will be done daily, during 5 years of the mission, with the use of optical CCD frames taken by a small network of 1-2m class telescopes located all over the world. The requirements for the accuracy on the satellite position determination, with respect of the stars in the field of view, are 20 mas. 
 These optical satellite positions will be sent weekly by GBOT to the SOC of ESAC and used with other kinds of observations (radio ranging and Doppler) by MOC of ESOC to improve the Gaia ephemeris.\\ 
-\hspace*{0.5cm}For this purpose, we developed a set of accurate astrometry reduction programs specially adapted for tracking moving objects. The inputs of these programs are for each tracked target an ephemeris and a set of fits images. The outputs are for each image: a file containing all information about the detected objects, a catalogue file used for calibration, a tiff file for visual explanation of the reduction result, and an improvement of the fits image header. The final result is an overview file containing only the data related to the target extracted from all the images. These programs are written in GNU fortran 95 and provide results in VOTable format (supported by Virtual Observatory protocols). All these results are sent automatically into the GBOT Database which is built with the SAADA freeware. The user of this Database can archive and query the data but also, thanks to the delegate option provided by SAADA, select a set of images and run directly the GBOT reduction programs with a dedicated Web interface. For more information about SAADA (an Automatic System for Astronomy Data Archive under gpl license and VO‑compatible) see the L. Michel related paper.
+\hspace*{0.5cm}For this purpose, we developed a set of accurate astrometry reduction programs specially adapted for tracking moving objects. The inputs of these programs are for each tracked target an ephemeris and a set of fits images. The outputs are for each image: a file containing all information about the detected objects, a catalogue file used for calibration, a tiff file for visual explanation of the reduction result, and an improvement of the fits image header. The final result is an overview file containing only the data related to the target extracted from all the images. These programs are written in GNU fortran 95 and provide results in VOTable format (supported by Virtual Observatory protocols). All these results are sent automatically into the GBOT Database which is built with the SAADA\ooindex{Saada, ascl:1111.003} freeware. The user of this Database can archive and query the data but also, thanks to the delegate option provided by SAADA, select a set of images and run directly the GBOT reduction programs with a dedicated Web interface. For more information about SAADA (an Automatic System for Astronomy Data Archive under gpl license and VO‑compatible) see the L. Michel related paper.
 \end{abstract}
 
 \section{What are the GBOT Tools?}
@@ -67,7 +67,7 @@ reduction parameters and results for a “night” in a same file.
 
 \section{The GBOT DATABASE}
 
-This Database is built with the help of the SAADA freeware (an Astronomical Database Generator under gpl license and VO‑compatible, ~\cite{Michel_2011})
+This Database is built with the help of the SAADA\ooindex{Saada, ascl:1111.003} freeware (an Astronomical Database Generator under gpl license and VO‑compatible, ~\cite{Michel_2011})
 After a basic validation process, all the new data useful for the GBOT project are inserted into this Database. These data are of three kinds:
 
 $\bullet$ Observations (Images \& Parameters) (fits and Vo-Table files)
@@ -88,18 +88,18 @@ $\bullet$ Useful related Information (Calibration preview, O-C plots, ...) (jpf 
 Relationships are built to linked the related data (for instance: to link a set of observations, with its astrometric results or with the calibration stars in the reference catalogs chosen).
 \end{itemize}
 
-These data are easily selected by users using SAADA Web interface with mouse click or with SAADAQL (“data-mining” query langage) panel. \\
+These data are easily selected by users using SAADA\ooindex{Saada, ascl:1111.003} Web interface with mouse click or with SAADAQL (“data-mining” query langage) panel. \\
 The Data selected by Web users can be exported using 3 way :\\
 \begin{itemize}
 \item Using card icon and click on download cart button to exported them into a zip file on user computer
 \item Using card icon and click on “delegate option” (see details in part 4)
-\item Using WebSamp button ("VO-Paris Data Centre's WebSampConnector toolkit.“) to sent the data to VO tools as Aladin or Topcat.
+\item Using WebSamp button ("VO-Paris Data Centre's WebSampConnector toolkit.“) to sent the data to VO tools as Aladin\ooindex{Aladin, ascl:1112.019} or Topcat\ooindex{TOPCAT, ascl:1101.010}.
 \end{itemize}
 \hspace*{0.25cm}In Fig.1 you see the  first version of GBOT database (can be tested at \url{http://gbotone-se.obspm.fr:8080/dbgbot3})
 
 \section{The GBOT WEB-PIPELINE}
 The user can access to the GBOT Web Interface by selecting one set of observations among the SOLASTRO tables
-in the GBOT Database and by using the “delegate option” provided by the last version of SAADA
+in the GBOT Database and by using the “delegate option” provided by the last version of SAADA\ooindex{Saada, ascl:1111.003}
 (see the L. Michel related presentation). From this interface two options are available for the user :
 \begin{itemize}
 \item Local download of the selected observations into the GBOT Server
