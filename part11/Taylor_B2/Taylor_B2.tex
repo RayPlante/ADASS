@@ -110,7 +110,7 @@ easily generated automatically using SWIG,\footnote{\url{http://www.swig.org/}}
 or custom interfaces can be hand-generated to provide a more language-specific
 interface (e.g.,\ one that uses idioms of the language as in a {\em Pythonic\/}
 interface, or a binding for languages not supported by SWIG such as {\em SPP\/}
-used in IRAF).
+used in IRAF\ooindex{IRAF, ascl:9911.002}).
 
 \subsection{sampjs}
 
@@ -129,26 +129,26 @@ A common usage scenario for SAMP is integrated use of
 multiple interactive desktop applications specialised for different data types.
 SAMP's data exchange enables them to work together as a single
 integrated suite with the union of the capabilites of the component tools.
-An example workflow involving TOPCAT (a table analysis tool)
-and Aladin (a sky image analysis tool) might be:
+An example workflow involving TOPCAT\ooindex{TOPCAT, ascl:1101.010} (a table analysis tool)
+and Aladin\ooindex{Aladin, ascl:1112.019} (a sky image analysis tool) might be:
 
-1.\ display an image of a region of sky in Aladin
+1.\ display an image of a region of sky in Aladin\ooindex{Aladin, ascl:1112.019}
 
-2.\ acquire a catalogue in Aladin with multi-band photometry
+2.\ acquire a catalogue in Aladin\ooindex{Aladin, ascl:1112.019} with multi-band photometry
     corresponding to sources visible in the region
 
 3.\ overplot the catalogue positions on the sky imagery
 
-4.\ send the catalogue to TOPCAT using SAMP
+4.\ send the catalogue to TOPCAT\ooindex{TOPCAT, ascl:1101.010} using SAMP
 
-5.\ plot a color-magnitude diagram in TOPCAT
+5.\ plot a color-magnitude diagram in TOPCAT\ooindex{TOPCAT, ascl:1101.010}
 
-6.\ identify a sub-population in TOPCAT from the color-magnitude plot
+6.\ identify a sub-population in TOPCAT\ooindex{TOPCAT, ascl:1101.010} from the color-magnitude plot
 
 7.\ send the sub-population referencing the original catalogue
-    back to Aladin using SAMP
+    back to Aladin\ooindex{Aladin, ascl:1112.019} using SAMP
 
-8.\ Aladin displays the sub-population sources in a way which
+8.\ Aladin\ooindex{Aladin, ascl:1112.019} displays the sub-population sources in a way which
     distinguishes them visually from the others
 
 The SAMP send operations are typically initiated by the user
@@ -166,11 +166,11 @@ in different programming languages in order to make them communicate. Such
 a private interface can also be exercised by different clients than those
 that were targeted originally.
 
-Iris \citep{2012ASPC..461..893D}, the Virtual Astronomical Observatory
+Iris\ooindex{Iris, ascl:1205.007} \citep{2012ASPC..461..893D}, the Virtual Astronomical Observatory
 tool for the analysis of Spectral Energy distributions, for example,
 employed SAMP to make the connection between a Java application for
-spectral analysis (Specview, by STScI, \citet{2000ASPC..216...79B}) and a
-Python fitting engine (Sherpa, by SAO, \citet{2007ASPC..376..543D}). The
+spectral analysis (Specview\ooindex{Specview, ascl:1210.016}, by STScI, \citet{2000ASPC..216...79B}) and a
+Python fitting engine (Sherpa\ooindex{Sherpa, ascl:1107.005}, by SAO, \citet{2007ASPC..376..543D}). The
 design is straightforward and requires the specification of methods,
 identified by MTypes; arguments, in the form of SAMP dictionaries;
 exceptions, serialized as SAMP messages and as such propagated from one
@@ -185,12 +185,12 @@ and lightweight.
 \subsection{SAMP from the command line}
 
 The {\em Libsamp\/} library was used to fully SAMP-enable
-the IRAF Command Language
+the IRAF\ooindex{IRAF, ascl:9911.002} Command Language
 (CL) as well as to build a command-line tool (called {\em vosamp\/}) to
 allow scripts to send (and optionally receive) messages.  In both cases,
 a simplified command interface further hides the details of the SAMP
 protocol from the user.  For example, a {\em load\/} command takes as a single
-argument the name of a local file or a URL. The IRAF CL or {\em vosamp\/}
+argument the name of a local file or a URL. The IRAF\ooindex{IRAF, ascl:9911.002} CL or {\em vosamp\/}
 task determine whether this file is a FITS image or a VOTable and format
 the appropriate message type or supply additional arguments as needed.
 Options exist to send directed messages to specific applications or send
