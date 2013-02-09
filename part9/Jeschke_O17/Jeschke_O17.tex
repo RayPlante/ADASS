@@ -15,7 +15,7 @@
 
 \begin{abstract}
 We introduce Ginga, a new open-source FITS
-viewer and toolkit based on Python astronomical packages such as pyfits,
+viewer and toolkit based on Python astronomical packages such as pyfits\ooindex{PyFITS, ascl:1207.009},
 numpy, scipy, matplotlib and pywcs.  For developers, we present a set of
 python classes for viewing FITS files under the modern Gtk and Qt widget
 sets and a more  full-featured viewer that has a plugin architecture.
@@ -36,7 +36,7 @@ development and data reduction tasks.
 This has been driven not only by the productivity gains of writing in a
 very high-level object-oriented language, but also by the development of
 several very useful scientific packages for python, including 
-{\tt numpy}, {\tt pyfits} \citep{Barrett99}, {\tt scipy} and 
+{\tt numpy}, {\tt pyfits}\ooindex{PyFITS, ascl:1207.009} \citep{Barrett99}, {\tt scipy} and 
 {\tt matplotlib} \citep{matplotlib}, all of which let you script high
 performance scientific C routines from Python. 
 Collectively these modules make a very powerful open-source toolkit for the
@@ -96,7 +96,7 @@ For developers interested in a basic FITS display widget for their
 python programs one of these classes may be suitable.
 The Ginga widgets are complementary to, and interoperate with, other
 scientific python packages; images are passed in as {\tt numpy} arrays,
-{\tt pyfits} objects, buffers or loaded from a file.  
+{\tt pyfits}\ooindex{PyFITS, ascl:1207.009} objects, buffers or loaded from a file.  
 There are several 
 example programs distributed with the package that illustrate how
 to use the widget by itself in either pygtk or pyqt, which are the
@@ -110,7 +110,7 @@ comprehensive and customizing it, there is the Ginga viewer.  The viewer is
 essentially a highly configurable multi-container with a collection of
 \emph{plugins}--encapsulated modules that perform various operations.
 This provides a viewer with many features similar to the venerable
-skycat \citep{skycat} or DS9 (although not yet as feature complete).
+skycat\ooindex{SkyCat, ascl:1109.019} \citep{skycat} or DS9 (although not yet as feature complete).
 The viewer can be easily reconfigured to show the plugin Graphical User
 Interfaces (GUIs) in different layouts and arrangements.  
 Figure \ref{fig:ginga} shows an example of the viewer with several
