@@ -5,7 +5,7 @@
 
 \markboth{Berry et al.}{Starlink 2012 - The Kapuahi Release}
 
-\title{Starlink 2012 - The Kapuahi Release}
+\title{ 2012 - The Kapuahi Release}
 
 \author{David~Berry,$^1$ Malcolm~Currie,$^1$ Tim~Jenness,$^1$ Peter~Draper,$^2$ Graham~Bell,$^1$ and Remo~Tilanus$^1$
 \affil{$^1$Joint Astronomy Centre, Hilo, Hawaii}
@@ -19,13 +19,13 @@
 \aindex{Tilanus, R.}
 
 \begin{abstract}
-We present details of the most recent release of the Starlink Software
+We present details of the most recent release of the Starlink\ooindex{Starlink, ascl:1110.012} Software
 Collection, code-named "Kapuahi".
 \end{abstract}
 
 \section{What is Starlink?}
 
-Starlink (\url{www.starlink.ac.uk}) is an open-source project hosted on
+Starlink\ooindex{Starlink, ascl:1110.012} (\url{www.starlink.ac.uk}) is an open-source project hosted on
 github that provides a wide range of astronomical applications and
 associated infrastructure libraries. From an initial start in 1980, the
 software has been in development and use ever since, and is
@@ -43,9 +43,9 @@ cubes (\url{star-www.dur.ac.uk/~pdraper/gaia/gaia.html}).
 \item[CCDPACK] Commands for the reduction of CCD data.
 \item[POLPACK] Commands for the creation and display of polarisation vectors from arrays of analysed intensity.
 \item[SMURF] Sub-mm data reduction facilities for the James Clerk Maxwell Telescope.
-\item[CUPID] Provides implementations of various clump-finding algorithms such as ClumpFind, GaussClumps, and others, together with other supporting commands.
+\item[CUPID] Provides implementations of various clump-finding algorithms such as ClumpFind\ooindex{Clumpfind, ascl:1107.014}, GaussClumps, and others, together with other supporting commands.
 \item[ATOOLS] A command-line interface to the WCS management functions provided by the AST library.
-\item[CONVERT] Commands for converting to and from the Starlink NDF data format. Several foreign data formats are supporting, including FITS.
+\item[CONVERT] Commands for converting to and from the Starlink\ooindex{Starlink, ascl:1110.012} NDF data format. Several foreign data formats are supporting, including FITS.
 \end{description}
 
 \subsection{Selected Infra-structure Libraries}
@@ -57,12 +57,12 @@ handling STC-S format and a wide range of FITS formats
 
 \item[NDF] The main data access library for Starlink-implements an extensible, hierarchical astronomical data model. Native NDF files use the HDS format, but the other formats such as FITS can also be read.
 \item[PAL] Provides low-level functions for manipulating celestial coordinate systems-a re-write in C of the earlier Fortran SLALIB library, using the SOFA library.
-\item[PCS] A collection of libraries that provide the integrated messaging and parameter system upon which the Starlink environment is built.
+\item[PCS] A collection of libraries that provide the integrated messaging and parameter system upon which the Starlink\ooindex{Starlink, ascl:1110.012} environment is built.
 \item[HDS] A low-level hierarchical data format.
 \end{description}
 
 \section{The Kapuahi Release - What's New?}
-Released in September 2012, the current release of the Starlink Software
+Released in September 2012, the current release of the Starlink\ooindex{Starlink, ascl:1110.012} Software
 Collection has code name ``Kapuahi'' - the Hawaiian name for Aldebaran.
 This section lists a few of the more important changes since the previous
 release (``Namaka''). The development version adds support for data values
@@ -126,7 +126,7 @@ created from SCUBA-2 data (\url{scuba2.wordpress.com}).
 hosted on github (\url{github.com/timj/starlink-pyast}).
 \item Now included in Fedora and Debian repositories.
 \item Now based on the SOFA and PAL libraries rather than SLALIB.
-\item Extended support for a variety of distorted FITS projections including SIP, TPV, TNX, ZPX, SAO, and SCAMP.
+\item Extended support for a variety of distorted FITS projections including SIP, TPV, TNX, ZPX, SAO, and SCAMP\ooindex{SCAMP, ascl:1010.063}.
 \item Boundaries of complex Regions are now plotted much faster.
 \end{itemize}
 
@@ -144,15 +144,15 @@ A new C library that provides the functionality of the older Fortran SLALIB libr
 A new library that provides facilities to manage pools of persistent threads, allowing jobs to be run in parallel from within C applications.
 
 \section{The Starlink Github Repository}
-The Starlink git repositories have been moved from the Joint Astronomy
+The Starlink\ooindex{Starlink, ascl:1110.012} git repositories have been moved from the Joint Astronomy
 Centre, Hawaii, and are now hosted on github
 (\url{github.com/Starlink/starlink}).
 
 \section{Obtaining Starlink Software}
-The Starlink Software Collection may be obtained in three ways:
+The Starlink\ooindex{Starlink, ascl:1110.012} Software Collection may be obtained in three ways:
 \begin{itemize}
-\item Downloading a pre-built Kapuahi release. These are available for both Linux and OS X (32 and 64 bit). See the Starlink home page for instructions.
-\item Copying the current cutting-edge build from the Joint Astronomy Centre, using rsync. Again, see the Starlink home page for instructions.
+\item Downloading a pre-built Kapuahi release. These are available for both Linux and OS X (32 and 64 bit). See the Starlink\ooindex{Starlink, ascl:1110.012} home page for instructions.
+\item Copying the current cutting-edge build from the Joint Astronomy Centre, using rsync. Again, see the Starlink\ooindex{Starlink, ascl:1110.012} home page for instructions.
 \item Checking out the source files from the github repository and building from source. See the README file in the checkout root directory for instructions.
 \end{itemize}
 
