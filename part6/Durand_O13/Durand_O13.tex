@@ -67,11 +67,14 @@ two series of observations, A and B, and a catalogue
 C. The MOC operator could then perform operations on objects in C which have $z >$ 2.0 or "give me all the areas of the sky observed by A and B".
 \articlefigure{part6/Durand_O13/O013_f2.eps}{DurFig1}{Scuba I images showing MOC superposed.}
 The MOC encoding method has been described in an IVOA document and a Java library is available and already implemented in the well known VO tools Aladin (\url{http://aladin.u-strasbg.fr}) and TOPCAT (\url{http://www.star.bris.ac.uk/~mbt/topcat/}).
+\ooindex{Aladin, ascl:1112.019} 
+\ooindex{TOPCAT, ascl:1101.010} 
+
 
 \subsection{Data Access}
 A MOC file itself does not retain the list of original files or sources it is describing, it is just a coverage descriptor. But under the condition that the original data providers have built their database index using the same HEALPix mechanism, access to original data becomes extremely efficient: each cell of MOC correspond to one index cell of the data base. 
 To support this, the CDS has re-indexed, using HEALPix, a large number of survey catalogues and provides a new service called "query by MOC" which is able to return all sources from one dedicated catalogue inside a MOC. Similarly, the CADC has been re-indexing all HST images using the HEALPix library and generated not only the MOCs of these observations, but the list of input which was used to produce the MOC. This allows the user to get back the original image links at any moment while performing MOC operations.
-
+%  ASCL question:  what library did he use? \ooindex{HEALPix, ascl:1107.018} 
 
 \section{Use Cases}
 We studied a few use cases mostly to show the entirety of the processes which could be used to: create MOCs from various data sets (Simbad, VizieR tables, pixel surveys like HST, SDSS, XMM); find all the Quasars in CFHTLS, not yet observed by SLOAN for with we have both an XMM and an HST observations; or find all HST infrared observations which coincide with bright NOMAD sources (see Figure~\ref{DurFig2}).
