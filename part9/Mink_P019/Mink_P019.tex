@@ -12,7 +12,7 @@
 \aindex{Mink, J.}
 
 \begin{abstract}
-Since the last paper describing the IRAF RVSAO radial velocity package
+Since the last paper describing the IRAF\ooindex{IRAF, ascl:9911.002} RVSAO\ooindex{RVSAO, ascl:9912.003} radial velocity package
 was published almost 15 years ago, this collection of tasks dealing
 with wavelength-shifted spectra has continued to grow and evolve.
 Many changes have been made to improve robustness and accuracy
@@ -21,7 +21,7 @@ Two new tasks, \textbf{pxcsao} and \textbf{pemsao}, find radial velocities using
 methods, but save the results as task parameters, making them easier to
 use in CL scripts.  Spectra can now be cross-correlated in pixel or
 wavelenth space as well as velocity space.  A major task, \textbf{eqwidth}, based
-on the IRAF \textbf{bands} task, computes equivalent widths in redshifted spectra.
+on the IRAF\ooindex{IRAF, ascl:9911.002} \textbf{bands} task, computes equivalent widths in redshifted spectra.
 \textbf{sumspec}, which rebins, normalizes, re-redshifts, sums, and/or stacks
 spectra, has proven to be useful in multi-fiber spectrograph reduction
 pipelines.  \textbf{listspec} lists spectra in a variety of user-selected formats,
@@ -30,9 +30,9 @@ lines.
 
 \end{abstract}
 
-\section*{RVSAO IRAF Package}
+\section*{RVSAO\ooindex{RVSAO, ascl:9912.003} IRAF\ooindex{IRAF, ascl:9911.002} Package}
 
-The RVSAO package was developed at the Smithsonian Astrophysical
+The RVSAO\ooindex{RVSAO, ascl:9912.003} package was developed at the Smithsonian Astrophysical
 Observatory to compute velocities of stars and galaxies for a variety
 of astrophysical projects.  The first version of the \textbf{xcsao}
 cross-correlation task was described at the first ADASS meeting in 1991
@@ -59,7 +59,7 @@ Documentation and source code are online at \url{http://tdc-www.harvard.edu/iraf
 
 \section*{New Task to Compute Equivalent Widths}
 
-Based on the IRAF \textbf{onedspec.bands} task
+Based on the IRAF\ooindex{IRAF, ascl:9911.002} \textbf{onedspec.bands} task
 \citep{1992ASPC...25..417V},
 \textbf{eqwidth} computes equivalent widths and a variety of variations
 which provide information with which to compare emission and absorption
@@ -91,10 +91,10 @@ the number of lines fit and information about the fit to the first
 emission line.  If there are multiple orders or apertures (specnum is a
 range or list), mean and median velocities and error information are returned.
 
-\section*{Using RVSAO Tasks from a Unix Shell}
+\section*{Using RVSAO\ooindex{RVSAO, ascl:9912.003} Tasks from a Unix Shell}
 
-Most tasks of the IRAF RVSAO spectrum package may be run from the Unix/Linux
-command line almost as if you were inside IRAF. The parameters used come from the IRAF
+Most tasks of the IRAF\ooindex{IRAF, ascl:9911.002} RVSAO\ooindex{RVSAO, ascl:9912.003} spectrum package may be run from the Unix/Linux
+command line almost as if you were inside IRAF\ooindex{IRAF, ascl:9911.002}. The parameters used come from the IRAF
 home directory defined by the \textit{irafhome} environment variable or
 the IRAF/ subdirectory of the user's home directory.
 
@@ -110,7 +110,7 @@ the IRAF/ subdirectory of the user's home directory.
 
 \texttt{emplot~~~~~Plot a spectrum labelling lines}
 
-\texttt{ihelp~~~~~~Print help file of an IRAF task}
+\texttt{ihelp~~~~~~Print help file of an IRAF\ooindex{IRAF, ascl:9911.002} task}
 
 \texttt{irafhelp~~~Print help file of an IRAF task}
 
@@ -118,7 +118,7 @@ the IRAF/ subdirectory of the user's home directory.
 
 \texttt{listspec~~~List the spectrum in the specified format}
 
-\texttt{rvsao~~~~~~Type this message}
+\texttt{rvsao~~~~~~Type this message}\ooindex{RVSAO, ascl:9912.003}
 
 \texttt{sumspec~~~~Add spectra, shift them, and/or remove continua}
 
@@ -134,7 +134,7 @@ for example:
 
 \texttt{usage: xcsao spectrum [templates=xxx][other arguments]}
 
-\texttt{~~~~~~~~~~~xcsao help for IRAF help}
+\texttt{~~~~~~~~~~~xcsao help for IRAF\ooindex{IRAF, ascl:9911.002} help}
 
 \texttt{~~~~~~~~~~~xcsao dpar to dump parameters}
 
@@ -148,7 +148,7 @@ where
 
 \texttt{[task] epar} edits the parameters using IRAFs eparam
 
-\texttt{[task] help} opens IRAF help for the task
+\texttt{[task] help} opens IRAF\ooindex{IRAF, ascl:9911.002} help for the task
 
 \texttt{[task] lpar} list the parameters using IRAFs lparam
 
@@ -156,7 +156,7 @@ where
 
 Figure 1 shows an image of 9,795 galaxy spectra from the SHELS survey
 \citep{shels_2005}
-sorted from emission to absorption using several RVSAO tasks.
+sorted from emission to absorption using several RVSAO\ooindex{RVSAO, ascl:9912.003} tasks.
 
 1.  Reduce spectra using Hectospec pipeline
 
