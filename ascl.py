@@ -83,8 +83,10 @@ def parse3(file,codes):
         else:
             print line
 
-
 def wclean(word):
+    """
+    clean a word from possible punctuation at start or end
+    """
     w = word.lower()
     len1 = len(punct)
     for p in punct:
@@ -109,6 +111,7 @@ def parse4(file,codes):
     lines = fp.readlines()
     fp.close()
     if debug: print codes
+    count = {}
     for line in lines:
         if debug: print 'LINE: ',line
         line2 = ''
@@ -120,11 +123,16 @@ def parse4(file,codes):
             if codes.has_key(word):
                 has_a_code = True
                 line2 = line2 +  "%s \n" % (codes[word])
+                if count.has_key(word):
+                    count[word] = count[word] + 1
+                else:
+                    count[word] = 1
         if has_a_code:
             print "# " + line
             print line2
         else:
             if debug: print line
+    print count
 
 
 #parse3('sample.tex',codes)
