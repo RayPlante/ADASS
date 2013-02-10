@@ -97,11 +97,11 @@ Headerlets are implemented in a python module, headerlet.py, part of STWCS. The 
 \begin{itemize}
   \item the entire FITS file is attached as a NonstandardHDU
   \item transparent to FITS readers
-  \item but PyFITS provides full access to it
+  \item but PyFITS\ooindex{PyFITS, ascl:1207.009} provides full access to it
 \end{itemize}
 \item Extract a headerlet extension form a science file
 \begin{itemize}
-  \item PyFITS is used to read a headerlet HDU (MEF FITS file by itself) and save it to disk
+  \item PyFITS\ooindex{PyFITS, ascl:1207.009} is used to read a headerlet HDU (MEF FITS file by itself) and save it to disk
 \end{itemize}
 \item Restore a WCS from an attached headerlet HDU
 \begin{itemize}
@@ -128,10 +128,10 @@ HDU called a `HeaderletHDU`. A HeaderletHDU consists of a simple header
 describing the headerlet, and has as its data the headerlet file itself,
 (which may be compressed). A HeaderletHDU has an 'XTENSION' 
 value of 'HDRLET'. Support for this is provided through the implementation
-of a NonstandardExtHDU in PyFITS. If stwcs.wcsutil.headerlet is imported,
-PyFITS will recognize these extension as HeaderletHDU.
+of a NonstandardExtHDU in PyFITS\ooindex{PyFITS, ascl:1207.009}. If stwcs.wcsutil.headerlet is imported,
+PyFITS\ooindex{PyFITS, ascl:1207.009} will recognize these extension as HeaderletHDU.
 
-HeaderletHDU objects are similar to other HDU objects in PyFITS.
+HeaderletHDU objects are similar to other HDU objects in PyFITS\ooindex{PyFITS, ascl:1207.009}.
 However, they have a special `.headerlet` attribute that returns
 the actual headerlet contained in the HDU data as a `Headerlet` object.
 
@@ -144,7 +144,7 @@ The HST archive is in the process of defining procedures and
 implementation details to support archiving HST headerlets and making
 them available to the community through a searchable tool.
 
-\acknowledgements The support for saving FITS files as extensions to other FITS files in PyFITS was implemented by Erik Bray.
+\acknowledgements The support for saving FITS files as extensions to other FITS files in PyFITS\ooindex{PyFITS, ascl:1207.009} was implemented by Erik Bray.
 
 \footnote{STScI technical reports are located at \url{http://stsdas.stsci.edu/tsr}}
 
