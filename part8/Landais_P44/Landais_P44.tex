@@ -22,8 +22,8 @@ in the VizieR access facilities.
 
 The PostgreSQL engine has been chosen to store data: it provides a solid
 database containing utilities to manage SQL or to create the customized
-HEALPix indexing ``H3C'' which permits a fast access from sky coordinates.
-The TAP standard however was not designed to accomodate databases
+HEALPix\ooindex{HEALPix, ascl:1107.018} indexing ``H3C'' which permits a fast access from sky coordinates.
+The TAP standard however was not designed to accommodate databases
 managing tens of thousands of tables like VizieR, and some compromises
 with the TAP standard were necessary in this first version of TAPVizieR.
 \end{abstract}
@@ -54,7 +54,7 @@ constraint (BTmag-VTmag) and a cone search arround M80.}\label{P044:ADQLexample}
 TAP \citep{tap_2011} is a protocol to execute an ADQL query 
 on a remote database. 
 TAP services are already available in data centers like CADC or GAVO, and
-some external software like TOPCat or TAPHandle can work with
+some external software like TOPCat\ooindex{TOPCAT, ascl:1101.010} or TAPHandle can work with
 the standard. These applications link tables coming from different databases
 (GAVO, CADC and now VizieR) with a unique interface and use the same language.
 They offer real extended possibilities for astronomers who can combine 
@@ -94,9 +94,9 @@ The PgSphere is user-friendly; however, Q3C minimizes resources and
 is more efficient with tables containing over one million of records ---
 therefore better suited for VizieR.
 Q3C works with the quadcube algorithm;
-however, {\em HEALPix} is more and more becoming a standard in
+however, {\em HEALPix}\ooindex{HEALPix, ascl:1107.018} is more and more becoming a standard in
 astronomical applications like 
-Aladin, the CDS Crossmatch service, GAIA, etc.
+Aladin\ooindex{Aladin, ascl:1112.019}, the CDS Crossmatch service, GAIA, etc.
 
 
 \paragraph{The H3C library}
@@ -107,10 +107,10 @@ We built a 2D PostgreSQL library \textbf{H3C}
 the functions dealing with polygons are available 
 for convexes only.
 
-The tessellation of the sphere with HEALPix cells requires however
+The tessellation of the sphere with HEALPix\ooindex{HEALPix, ascl:1107.018} cells requires however
 a deep resolution 
 to be as efficient as Q3C. This implementation was possible thanks to the recent
-improvement of the  HEALPix 64bits C++ library maintained by the Nasa 
+improvement of the  HEALPix\ooindex{HEALPix, ascl:1107.018} 64bits C++ library maintained by the Nasa 
 \citep{gorski_healpix}.
 
 \paragraph{Some comparisons between libraries} (\textit{see fig.\ref{P044:comparative}})
@@ -235,6 +235,6 @@ the ADQL evolutions.
 The homogenization of tables in the same coordinate system is being performed. %have to be done.
 The {\em Upload} capabilities, described in TAP, will be implemented soon.
 Finally, we will add a search by {\em MOC}  (Multi-Order Coverage map) 
-using the HEALPix indexation \citep{O13_adassxxii}.
+using the HEALPix\ooindex{HEALPix, ascl:1107.018} indexation \citep{O13_adassxxii}.
 
 \bibliography{editor}
