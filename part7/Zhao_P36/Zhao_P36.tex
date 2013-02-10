@@ -12,7 +12,7 @@
 \aindex{Zhao, J.-H.}
 
 \begin{abstract}
-Multichannel image reconstruction, image analysis, and display ({\it Miriad}) 
+Multichannel image reconstruction, image analysis, and display ({\it Miriad}\ooindex{MIRIAD, ascl:1106.007}) 
 is a command line based software package, originally developed to handle 
 data from the BIMA millimeter array telescope. The software package has been 
 adapted for the reading, calibration, and imaging of the Submillimeter Array
@@ -33,7 +33,7 @@ synthesized beam of sub-arcsec. Each element can observe with two receivers
 simultaneously, with 2~GHz bandwidth each. The digital correlator backend 
 allows flexible allocation of thousands of spectral channels to each receiver.
 
-\section{Miriad for SMA Data Reduction}
+\section{Miriad\ooindex{MIRIAD, ascl:1106.007} for SMA Data Reduction}
 {\it Miriad} is a radio interferometer data reduction package \citep{stw95} 
 and has been adopted by the SMA for data reduction.\footnote{http://www.cfa.harvard.edu/sma/miriad/} {\it Miriad} can be configured 
 for the specifications required by the SMA. Specific code for handling 
@@ -44,7 +44,7 @@ features have particular emphasis on aspects of interest to users of the
 SMA. We support the off-line software including software tools used for 
 calibration and analysis of the SMA data observed at submillimeter 
 wavelengths. The newly developed code are under the
-{\it Miriad} CVS system (./miriad$_{-}$cvs/src/prog/sma) 
+{\it Miriad}\ooindex{MIRIAD, ascl:1106.007} CVS system (./miriad$_{-}$cvs/src/prog/sma) 
 which is managed by the CARMA group.
 
 \begin{figure}
@@ -55,9 +55,9 @@ which is managed by the CARMA group.
 \begin{figure}
 \centering
 \includegraphics[scale=0.5, angle = 0]{part7/Zhao_P36/f1c.eps}
-\caption{A flow chart of handling SMA data in {\it Miriad}.
+\caption{A flow chart of handling SMA data in {\it Miriad}\ooindex{MIRIAD, ascl:1106.007}.
 {\it Left column} shows the major steps of the data reduction
-procedure. {\it Middle column} lists the {\it Miriad} tasks used in
+procedure. {\it Middle column} lists the {\it Miriad}\ooindex{MIRIAD, ascl:1106.007} tasks used in
 the process. {\it Right column} shows the final calibrated uv
 data and image files as well as the interim uvdata, gain
 table and image files produced from the data reduction
@@ -90,7 +90,7 @@ and USB of both 350 and 400 receivers.
 \subsection{Powered for Submillimeter Data Reduction}
 
 SMA planet models have been used for flux density scale calibration 
-for the submillimeter observations in {\it Miriad}.\footnote{Mark Gurwell, 
+for the submillimeter observations in {\it Miriad}\ooindex{MIRIAD, ascl:1106.007}.\footnote{Mark Gurwell, 
 http://sma1.sma.hawaii.edu/planetvis.html}
 The SMA planet models have been coded in {\it smaflux}.
 Also,  {\it smamfcal} is implemented with 
@@ -115,11 +115,11 @@ and spectral line data can be summarized by nine major steps:
 7) imaging continuum emission; 
 8) continuum subtraction; 
 9) Construction of spectral line cube. Figure~1 shows a flow chart
-of processing SMA data in {\it Miriad} from reading data, calibrations
+of processing SMA data in {\it Miriad}\ooindex{MIRIAD, ascl:1106.007} from reading data, calibrations
 to final images.
 
 \subsection{Tutorial Scripts }
-One of the nice features in {\it Miriad} is that the detailed 
+One of the nice features in {\it Miriad}\ooindex{MIRIAD, ascl:1106.007} is that the detailed 
 procedure of input setup and execution of data reduction tasks 
 can be compiled into a shell script program. SMA staff have taken 
 advantage of this to provide users with tutorial examples in C-shell 
@@ -137,11 +137,11 @@ from observations of DM Tau.
 In the near future, the SMA backend will be implemented with a broad-band digital
 correlator producing  tens of thousands of spectral  channels to each receiver.
 A typical size of data produced from an observing track will exceed 50 Gbytes. 
-{\it Miriad} can be adapted for the SMA upgrade.  
+{\it Miriad}\ooindex{MIRIAD, ascl:1106.007} can be adapted for the SMA upgrade.  
 
 \acknowledgements The article was presented by JHZ on behalf of the SMA
 team and {\it Miriad} developers. JHZ is grateful to Mel Wright, Peter
 Teuben \& Bob Sault for their contributions in supporting SMA data reduction 
-with {\it Miriad}. 
+with {\it Miriad}\ooindex{MIRIAD, ascl:1106.007}. 
 
 \bibliography{editor}
