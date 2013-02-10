@@ -13,7 +13,7 @@
 \aindex{Budav\'ari, T.}
 
 \begin{abstract}
-Base on the Zones Algorithm, we introduced a new catalog matching method which involves the sky coverage of catalogs. It benefits the matching between the catalogs with little overlapping area. Objects which were not inside the intersection area would be skipped to accelerate the matching. Moreover, the new method leads to a fast way to detect dropouts, i.e., the missing components that are in the observed regions of the sphere but did not reach the detection limit. These often provide invaluable insight into the spectral energy distribution of matched sources but rarely available in traditional associations.
+Based on the Zones Algorithm, we introduced a new catalog matching method which involves the sky coverage of catalogs. It benefits the matching between the catalogs with little overlapping area. Objects which were not inside the intersection area would be skipped to accelerate the matching. Moreover, the new method leads to a fast way to detect dropouts, i.e., the missing components that are in the observed regions of the sphere but did not reach the detection limit. These often provide invaluable insight into the spectral energy distribution of matched sources but rarely available in traditional associations.
 \end{abstract}
 
 \section{Introduction}
@@ -22,7 +22,7 @@ From the observation record, images and some other related information, the foot
 This work tried to utilize the footprint information of catalogs. We introduced a new method to constrain crossmatching in the intersection region of catalogs, and make the whole process faster. The result of crossmatching and the overlap region also can be used for dropout identification. The objects without a counter-part in specific regions could be found out from catalogs.
 
 \section{Crossmatching with Spatial Constraints}
-This work is mainly base on the Zones Algorithm ~\citep{DBLP:journals/corr/abs-cs-0701171} and the Footprint Service\footnote{\url{http://voservices.net/footprint/}} ~\citep{2007ASPC..376..559B}. The Zones Algorithm divides the celestial sphere into narrow constant declination rings or "zones". The detections are grouped into pre-defined zones by their \textit{ZoneID}, which can be calculated by their declination $\delta$ in equation~\ref{zoneid}. When matching catalogs, we only have to consider sources in several neighbor zones as opposed to the whole sky, e.g. $ZoneID-1$, $ZoneID$ and $ZoneID+1$. This unique characteristic makes it faster to run on a database system.
+This work is mainly based on the Zones Algorithm ~\citep{DBLP:journals/corr/abs-cs-0701171} and the Footprint Service\footnote{\url{http://voservices.net/footprint/}} ~\citep{2007ASPC..376..559B}. The Zones Algorithm divides the celestial sphere into narrow constant declination rings or "zones". The detections are grouped into pre-defined zones by their \textit{ZoneID}, which can be calculated by their declination $\delta$ in equation~\ref{zoneid}. When matching catalogs, we only have to consider sources in several neighbor zones as opposed to the whole sky, e.g. $ZoneID-1$, $ZoneID$ and $ZoneID+1$. This unique characteristic makes it faster to run on a database system.
 \begin{equation}\label{zoneid}
 ZoneID=\lfloor{\frac{\delta + 90^\circ}{h}}\rfloor
 \end{equation}
