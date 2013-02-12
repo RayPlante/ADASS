@@ -73,8 +73,8 @@ The MOC encoding method has been described in an IVOA document and a Java librar
 
 \subsection{Data Access}
 A MOC file itself does not retain the list of original files or sources it is describing, it is just a coverage descriptor. But under the condition that the original data providers have built their database index using the same HEALPix mechanism, access to original data becomes extremely efficient: each cell of MOC correspond to one index cell of the data base. 
-To support this, the CDS has re-indexed, using HEALPix, a large number of survey catalogues and provides a new service called "query by MOC" which is able to return all sources from one dedicated catalogue inside a MOC. Similarly, the CADC has been re-indexing all HST images using the HEALPix library and generated not only the MOCs of these observations, but the list of input which was used to produce the MOC. This allows the user to get back the original image links at any moment while performing MOC operations.
-%  ASCL question:  what library did he use? \ooindex{HEALPix, ascl:1107.018} 
+To support this, the CDS has re-indexed, using HEALPix, a large number of survey catalogues and provides a new service called "query by MOC" which is able to return all sources from one dedicated catalogue inside a MOC. Similarly, the CADC has been re-indexing all HST images using the HEALPix method and generated not only the MOCs of these observations, but the list of input which was used to produce the MOC. This allows the user to get back the original image links at any moment while performing MOC operations.
+%  ASCL question:  what library did he use? \ooindex{HEALPix, ascl:1107.018}  - no, method, not library
 
 \section{Use Cases}
 We studied a few use cases mostly to show the entirety of the processes which could be used to: create MOCs from various data sets (Simbad, VizieR tables, pixel surveys like HST, SDSS, XMM); find all the Quasars in CFHTLS, not yet observed by SLOAN for with we have both an XMM and an HST observations; or find all HST infrared observations which coincide with bright NOMAD sources (see Figure~\ref{DurFig2}).
