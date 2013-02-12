@@ -23,7 +23,7 @@ encapsulation of radio astronomy data products pursuant to insertion
 into the VO-compliant Common Archive Observation Model (CAOM) database
 hosted by the Canadian Astronomy Data Centre (CADC). This
 specification accommodates radio FITS Image and UV Visibility data, as
-well as pure CASA Tables Imaging and Visibility Measurement Sets. To
+well as pure CASA\ooindex{CASA, ascl:1107.013} Tables Imaging and Visibility Measurement Sets. To
 extract and engineer radio metadata, we have authored two software
 packages: metaData (v0.5.0) and mddb (v1.3). Together, these python
 packages can convert all the above stated data format types into
@@ -61,7 +61,7 @@ suggests, the metaData package is responsible for encapsulating
 the metadata of a variety of data formats and types.\footnote{These
   are data ``types'' in a meta sense, such as ``imaging'' and ``visibility.''}
 Metadata are extracted and encapsulated only and explicitly for FITS
-images, UVFITS data, Casa Tables images, and Casa Tables Visibility
+images, UVFITS data, Casa\ooindex{CASA, ascl:1107.013} Tables images, and Casa Tables Visibility
 Measurement Sets. The mddb package is then responsible for configuring
 thusly encapsulated metadata for CAOM database insertion.
 
@@ -187,7 +187,7 @@ deprecated, errant, and/or missing metadata. Examples include converting
 \texttt{{\small CDELT}}\textit{i} and \texttt{{\small CROTA}}\textit{i} keywords to a
 \texttt{{\small CD}}\textit{i\_j} matrix as required by the CAOM data model;
 ensuring \texttt{{\small RADESYS}} and \texttt{{\small EQUINOX}} are specified and
-consistent; converting a Casa Image geodetic ``telescope position'' in
+consistent; converting a Casa\ooindex{CASA, ascl:1107.013} Image geodetic ``telescope position'' in
 latitude, longitude and height to geocentric measures specified
 by \texttt{{\small OBSGEO-X}}, \texttt{{\small OBSGEO-Y}}, \texttt{{\small OBSGEO-Z}}. The
 CyberSKA project has noted that user supplied metadata can vary widely
@@ -208,7 +208,7 @@ header file. This feature has proved particularly useful in prototype developmen
 \section{Conclusion}
 When used in conjunction, the two packages, metaData and mddb, form a
 workflow that is capable of receiving a dataset file in one of several
-formats (FITS image, UVFITS, Casa Image, Visibility Measurement Set),
+formats (FITS image, UVFITS, Casa\ooindex{CASA, ascl:1107.013} Image, Visibility Measurement Set),
 extract and encapsulate the dataset's metadata, write an adjudicated
 header file, configure those adjudicated metadata to a form appropriate to the
 CAOM data model, and insert those data into a selected CAOM
