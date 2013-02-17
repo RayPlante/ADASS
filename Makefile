@@ -10,7 +10,7 @@ b = editor
 
 all:	$(p).pdf 
 
-$(p).pdf:  $(p).dvi $(FIGS)
+$(p).pdf:  $(p).dvi
 	dvipdf $(p)
 
 $(p).dvi:  $(p).tex $(b).bib
@@ -22,7 +22,7 @@ $(p).dvi:  $(p).tex $(b).bib
 
 index:
 	# just a wild guess
-	makeindex < $(p).idx > $(p).ind
+	makeindex < $(p).adx > $(p).and
 	makeindex < $(p).odx > $(p).ond
 
 pdf:
