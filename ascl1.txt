@@ -18,7 +18,7 @@ ascl:1107.007 AMUSE
 ascl:1110.001 analytic_infall
 ascl:9909.002 ANGSIZ
 ascl:1209.009 ANNz
-ascl:1103.011 AP<sup>3</sup>M
+ascl:1103.011 AP3M
 ascl:1208.017 APLpy
 # ascl:1106.019 Application of Compressive Sampling to Radio Astr
 ascl:1208.003 APT
@@ -107,7 +107,7 @@ ascl:1111.002 CRBLASTER
 ascl:1110.020 CROSS_CMBFAST
 ascl:1202.007 CRUNCH3D
 ascl:0104.002 CSENV
-ascl:1208.018 CUBEP<sup>3</sup>M
+ascl:1208.018 CUBEP3M
 ascl:1111.007 CUBISM
 ascl:1109.013 CULSP
 ascl:1011.006 DAME
