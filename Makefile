@@ -15,8 +15,10 @@ $(p).pdf:  $(p).dvi
 
 $(p).dvi:  $(p).tex $(b).bib
 	latex $(p)
-	bibtex $(p)
+	-bibtex $(p)
 	latex $(p)
+	makeindex < $(p).adx > $(p).and
+	makeindex < $(p).odx > $(p).ond
 	latex $(p)
 	latex $(p)
 
@@ -25,16 +27,13 @@ index:
 	makeindex < $(p).adx > $(p).and
 	makeindex < $(p).odx > $(p).ond
 
-pdf:
-	pdflatex $(p)
-	bibtex $(p)
-	pdflatex $(p)
-	pdflatex $(p)
-
+# for for ADASS books
 test:
 	pdflatex $(p)
 
 clean:
 	rm -f $(p).dvi $(p).bbl
+	rm -f part*/*/*.aux
+
 
 
