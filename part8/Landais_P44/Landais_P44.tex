@@ -6,7 +6,7 @@
 
 \resetcounters
 
-\title{TAPVizieR: a new way to acess the VizieR database}
+\title{TAPVizieR: A New Way to Access the VizieR Database}
 \author{Gilles~Landais, Fran\c cois~Ochsenbein, Anne-Camille~Simon
 \affil{Centre de Donn\'ees astronomiques de Strasbourg (CDS) }}
 
@@ -16,13 +16,13 @@
 
 \begin{abstract}
 VizieR is a component of the Virtual Observatory: it provides tables of
-catalogs to external softwares with VO standards like the VOTable output.
+catalogs to external software with VO standards like the VOTable output.
 Accessing VizieR with the ADQL/TAP standard represents a new milestone
 in the VizieR access facilities.
 
 The PostgreSQL engine has been chosen to store data: it provides a solid
 database containing utilities to manage SQL or to create the customized
-HEALPix\ooindex{HEALPix, ascl:1107.018} indexing ``H3C'' which permits a fast access from sky coordinates.
+HEALPix\ooindex{HEALPix, ascl:1107.018} indexing ``H3C'' which permits fast access from sky coordinates.
 The TAP standard however was not designed to accommodate databases
 managing tens of thousands of tables like VizieR, and some compromises
 with the TAP standard were necessary in this first version of TAPVizieR.
@@ -34,9 +34,9 @@ ADQL \citep{adql_2011} is an other way to query VizieR tables
 \citep{ochsenbein_2000}; ADQL is an extension of SQL 
 with additional astronomical functions and geometrical objects. 
 It enables the usage of formulae involving column combinations which can be used 
-for display or to filter a set of records (\textit{see fig.\ref{P044:ADQLexample}}). 
-That kind of operations were limited in the VizieR application and required 
-the usage of external softwares for such computations.
+for display or to filter a set of records (see Figure~\ref{P044:ADQLexample}). 
+These kinds of operations were limited in the VizieR application and required 
+the usage of external software for such computations.
 
 \begin{figure}[!h] \center
 \begin{footnotesize}
@@ -61,37 +61,37 @@ They offer real extended possibilities for astronomers who can combine
 tables stored in different places. %data center.
 
 
-\section{A dedicated database}
+\section{A Dedicated Database}
 
-\subsection{Homogenize the storage}
+\subsection{Homogenize the Storage}
 The VizieR application provides catalogs. The tables and their metadata (descriptions) 
 are stored in a transactionnal database, or in dedicated binary files
 for the large catalogs (e.g. WISE, 2MASS, SDSS, etc.) in order to speed up the 
 search by position.
 
-ADQL based on SQL requires 
-transactionnal database or 
+ADQL based on SQL requires a
+transactional database or 
 technologies like Hadoop. We think that SQL is the more practical way
 to be ADQL-compatible, so, we chose to create a new dedicated database which
 gathers all catalogs. 
 
-This new database is a PostgreSQL engine which supports effectively 3.5 Tb
+This new database is a PostgreSQL engine which effectively supports 3.5 Tb
 of data and indexes.
 With PostgreSQL, we gain the replication capabilities and some easy way
 to create advanced functions.
 
 \subsection{Indexation}
 VizieR has tables that can contain up to 1 billion records. This volumetry
-needs indexation and in particular a positionnal indexation, because conesearch
+needs indexation and in particular a positional indexation, because conesearch
 or crossmatch (join tables according to their positions) are the most popular 
 functionalities in VizieR.
 
-In PostgreSQL an index by position can be built with libraries like {\em PgSphere}
-provided by PostgreSQL; an external plugin {\em Q3C}
+In PostgreSQL an index by position can be built with libraries like PgSphere
+provided by PostgreSQL; an external plugin Q3C
 was also developed 
 by \citet{q3c_2006} for astronomical applications.
 The PgSphere is user-friendly; however, Q3C minimizes resources and
-is more efficient with tables containing over one million of records ---
+is more efficient with tables containing over one million records ---
 therefore better suited for VizieR.
 Q3C works with the quadcube algorithm;
 however, {\em HEALPix}\ooindex{HEALPix, ascl:1107.018} is more and more becoming a standard in
@@ -110,13 +110,13 @@ for convexes only.
 The tessellation of the sphere with HEALPix\ooindex{HEALPix, ascl:1107.018} cells requires however
 a deep resolution 
 to be as efficient as Q3C. This implementation was possible thanks to the recent
-improvement of the  HEALPix\ooindex{HEALPix, ascl:1107.018} 64bits C++ library maintained by the Nasa 
+improvement of the  HEALPix\ooindex{HEALPix, ascl:1107.018} 64bits C++ library maintained by NASA 
 \citep{gorski_healpix}.
 
-\paragraph{Some comparisons between libraries} (\textit{see fig.\ref{P044:comparative}})
-About efficiency, the tests show than Q3C and H3C are largely better than 
+\paragraph{Some comparisons between libraries} (see Figure~\ref{P044:comparative})
+Regarding  efficiency, the tests show that Q3C and H3C are largely better than 
 PgSphere. Moreover the size required by the index
-as well as the time required for their creation
+as well as the time required for their creation,
 are significantly smaller with Q3C/H3C than with PgSphere.
 
 \begin{figure}[htp] \center
@@ -141,7 +141,7 @@ PostgreSQL (version 9.1) database. The cache disk was deleted before each test.}
 
 \paragraph{Managing the coordinate systems}
 
-The coordinate system used in VizieR tables depend on the catalog, but VizieR 
+The coordinate system used in VizieR tables depends on the catalog, but VizieR 
 can compute positions of any catalog in another coordinate system than the 
 original one, taking into account the proper motions when these are 
 described in the VizieR METAdata.
@@ -153,9 +153,9 @@ the new columns (\_ra.icrs, \_de.icrs) are computed for the epoch J2000
 if proper motions are known.
 
 
-\section{TAPVizieR implementation}
+\section{TAPVizieR Implementation}
 
-\subsection{Technologies and library used}
+\subsection{Technologies and the Library Used}
 \paragraph{The database}
 
 
@@ -167,14 +167,14 @@ coordinate conversions were also added on the server side.
 
 The TAP/ADQL service is a Web application written in Java. 
 We use the UWS/TAP and ADQL libraries \citep{simbad_tap_2011}, 
-helpful to translate ADQL into an object tree 
-easily handled to take into account the VizieR METAdata. 
+which were helpful in translating ADQL into an object tree to 
+easily handle the VizieR METAdata. 
 
 \paragraph{Architecture}
 The TAPVizieR architecture is composed of the TAP/ADQL web application, a VizieR
-mirror and a PostgreSQL installation (\textit{see fig.\ref{P044:architecture}}).
-The database is composed of a master and a standby databases using
-the synchronous replication available in PostgreSQL since the version 9.1.
+mirror and a PostgreSQL installation (see Figure~\ref{P044:architecture}).
+The database is composed of a master and a standby database using
+the synchronous replication available in PostgreSQL since version 9.1.
 The pool {\em PgBouncer} is also used to manage database connections, and to
 enable a precise configuration. 
 
@@ -185,9 +185,9 @@ enable a precise configuration.
 
 \subsection{The Web interface}
 \label{P044:web_interface}
-2 modes are available to query tables in TAPVizieR.
-The first, the {\em TAP mode}, is
-following the TAP protocol; it consists in a set of standardized URLs
+Two modes are available to query tables in TAPVizieR.
+The first, the {\em TAP mode}, 
+follows the TAP protocol; it consists of a set of standardized URLs
 which
 describe and execute an ADQL Query. This mode, used by external TAP-compatible
 software, is available from
@@ -203,20 +203,20 @@ in which the rich METAdata available in VizieR are used in order to retrieve tab
 from position, keywords, authors, etc.
 
 
-\subsection{Departures from standards}
+\subsection{Departures from Standards}
 
 \paragraph{A big volumetry}
 
 The VizieR database is huge:  3.5Tb constituted by 10,000 catalogues, 20,000
 tables and more than 300,000 columns of tables. The TAP standard requires
 to return the TAP schema as a single XML output file. Such an output represents
-$\sim$86Mb, which is too huge to be processed by a remote TAP-aware
+$\sim$86Mb, which is too huge to be processed by remote TAP-aware
 software (in 
 particular for a remote web application).
 
 So, VizieR currently returns only the table descriptions without the 
 column description ($\sim$3.5Mb). 
-An additional service (\textit{i.e. an other URL}) provides a full
+An additional service (i.e. another URL) provides a full
 description of a specified table; this service is not (yet) a TAP standard.
 
 \paragraph{Understanding the coordinate system}
@@ -230,7 +230,7 @@ to perform a change of coordinate system in the output parameters.
 This syntax is not ADQL-compliant and  will evolve in the future with
 the ADQL evolutions.
 
-\section{On-going developments}
+\section{On-going Developments}
 
 The homogenization of tables in the same coordinate system is being performed. %have to be done.
 The {\em Upload} capabilities, described in TAP, will be implemented soon.
