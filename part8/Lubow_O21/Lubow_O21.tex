@@ -16,7 +16,7 @@
 
 \begin{abstract}
 We have created an initial catalog of objects observed by the WFPC2 and ACS instruments on the Hubble Space Telescope (HST). The catalog is based on observations taken on more than 6000 visits (telescope pointings) of ACS/WFC and more than 25000 visits of WFPC2. The catalog is obtained by cross matching by position in the sky all Hubble Legacy Archive (HLA) Source Extractor source lists for these instruments. The source lists describe properties of source detections within a visit. The calculations are performed on a SQL Server database system. First we collect overlapping images into groups, e.g., Eta Car, and determine nearby (approximately matching) pairs of sources from different images within each group. We then apply a novel algorithm for improving the cross matching of pairs of sources by adjusting the astrometry of the images. Next, we combine pairwise matches into maximal sets of possible multi-source matches. 
-We apply a greedy Bayesian method to split the maximal matches into more reliable matches. We test the accuracy of the matches by comparing the fluxes of the matched sources. The result is a set of information that ties together multiple observations of the same object. A biproduct of the catalog is greatly improved relative astrometry for many of the HST images. We also provide information on nondetections that can be used to determine dropouts. With the catalog, for the first time, one can carry out time domain, multi-wavelength studies across a large set of HST data. The catalog is publicly available. Much more can be done to expand the catalog capabilities.
+We apply a greedy Bayesian method to split the maximal matches into more reliable matches. We test the accuracy of the matches by comparing the fluxes of the matched sources. The result is a set of information that ties together multiple observations of the same object. A byproduct of the catalog is greatly improved relative astrometry for many of the HST images. We also provide information on nondetections that can be used to determine dropouts. With the catalog, for the first time, one can carry out time domain, multi-wavelength studies across a large set of HST data. The catalog is publicly available. Much more can be done to expand the catalog capabilities.
 
 \end{abstract}
 
@@ -45,7 +45,7 @@ images.  These image groups are constructed by applying the friend-of-friends
 algorithm to images, where a friend is required to overlap with some image
 in the group to some threshold value, currently set to 10\% of the WFPC2 aperture area.
 The grouping effectively partitions the set of source lists being cross matched into
-disjoint subsets that can be more analyzed for efficiently for cross matches.
+disjoint subsets that can be analyzed more efficiently for cross matches.
 
 \section{Pairwise Matching}
 
@@ -59,7 +59,7 @@ The next step is to bring the overlapping images into better alignment, that is,
 improve the relative astrometric accuracy of the images in each group.
 This process involves adjusting the astrometry of each
 image within an image group so as to  minimize the sum of the separations of the
-pairs of nearby sources involving that image described in the previous section.
+pairs of nearby sources involving the image described in the previous section.
 To carry out this step, we have devised a new algorithm that is based
 on applying 3D rotations on the images. 
 For small astrometric corrections,
@@ -70,7 +70,7 @@ the astrometry of
 each image within a group, while regarding all other images as having fixed astrometry.
 For small (infinitestimal) adjustments in astrometry of each image, the minimization of the residual astrometric errors
 has an analytic solution
-that involves the inversion of a $3 \times 3$ matrix \cite{2012arXiv1206.0644B}. This analytic solution allows the astrometric correction to be applied
+that involves the inversion of a $3 \times 3$ matrix \citep{2012arXiv1206.0644B}. This analytic solution allows the astrometric correction to be applied
  in a fast and efficient manner. The astrometric correction (3D rotation)
 for every image within the group is corrected in this way. After determining the corrections
 to all images within the group, we apply the corrections  to all
@@ -99,7 +99,7 @@ compute a Bayes factor for each partitioning based on \cite{2008ApJ...679..301B}
 the inherent positional uncertainty of each source position. The partitioning with
 the highest value of the Bayes factor (most probable) is regarded as describing the sources
 that match together. In most cases, the favored match is the original one determined
-by the friends-of-friends algorithm, i.e., not involving further partitioning.. 
+by the friends-of-friends algorithm (i.e. not involving further partitioning). 
 
 \section{Catalog}
 We construct a database table that describes each source. Each source in a match has the same matchid value.
@@ -134,9 +134,7 @@ embedded in the database through DLLs as extended stored procedures. The generat
 takes a few days  with SQL Server 2008 running on a single (aging) Dell PowerEdge 2950 server with 
 Intel Xeon E5430 @ 2.66Ghz (2 processors) and 24GB of memory.
 
-The HSC has produced improved astrometry for about half the WFPC2 and ACS/WFC
-images. 
-Typically, the improvements are greater than a factor of 3 reduction in relative positional errors across overlapping
+The HSC has produced improved astrometry for about half the WFPC2 and ACS/WFC images. Typically, the improvements are greater than a factor of 3 reduction in relative positional errors across overlapping
 images.
 In some cases, an order of magnitude improvement was made.
 In some other cases, images could not be corrected because
@@ -162,7 +160,7 @@ We have been examining the discovery potential of the catalog.
 We have been analyzing cases where pairs of sources with the same filter and detector
 within a match have undergone substantial flux variations in time. A small fraction of objects ($\la 0.1 \%$)
 have flux variations by more than a factor of 2. In some cases, these    objects correspond
-to known GRBs and supernovae (see Fig 1).  In other cases, we have found problems with
+to known GRBs and supernovae (see Figure 1).  In other cases, we have found problems with
 the images or source lists. We then may be able to identify and prune/correct problem
 images. Other cases appear to be previously unknown variable objects.
 In addition, the catalog may provide a useful role as a tool to examine the long term trends
