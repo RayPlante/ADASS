@@ -13,7 +13,7 @@
 \aindex{Smith, A.}
 
 \begin{abstract}
-Astronomers mainly use the web for data retrieval. To create visualizations and conduct analyses requires installation of many external packages, often creating a difficult task for the astronomer. An ideal situation would move many of the common tasks to a browser - a homogenous solution for data access, visualization and analyses in one application.
+Astronomers mainly use the web for data retrieval. To create visualizations and conduct analyses requires installation of many external packages, often creating a difficult task for the astronomer. An ideal situation would move many of the common tasks to a browser - a homogenous solution for data access, visualization, and analyses in one application.
 
 As part of an effort to build research tools around core citizen science experiences, the Zooniverse is building science grade tools for handling astronomical data. As the browser is Zooniverse's medium, JavaScript - the only client-side programming language - becomes ever more relevant for feature-rich web applications. The technology industry is investing large development time in improving JavaScript engines resulting in performance gains that exceed other scripting languages. The science community could benefit from this investment by migrating development of desktop applications to web applications.  Similar to the astropy initiative, \textsc{astrojs} is providing a consolidation of JavaScript libraries for in-browser client-side astronomical data visualization and analyses.
 \end{abstract}
@@ -28,7 +28,7 @@ The Zooniverse (\url{http://www.zooniverse.org}) is a web-based platform that in
 
 While significant research value was realized through the classifications collected in the primary interface, a number of exciting discoveries including Hanny's Voorwerp \citep{2009MNRAS.399..129L} and The Galaxy Zoo Green Peas \citep{2009MNRAS.399.1191C} were made by the citizen science community because of a link provided to the SDSS SkyServer \citep{2002cs........2013S} catalog pages for each object in the site. Tools that provided catalog information about the galaxies combined with a community discussion forum meant that interested members of the Galaxy Zoo community could not only learn more about the astrophysics of an object but also discuss theories and form hypotheses with their peers.
 
-Based upon the success of Galaxy Zoo the Zooniverse software platform was developed and new citizen science project opportunities were sought. To date, more than twenty citizen science projects have been developed by the Zooniverse collaboration. Like Galaxy Zoo, the Zooniverse projects of today follow a similar design of a core analysis task together with a community discussion environment. Unfortunately for may of the projects developed today there is a lack of online research tools such as the SDSS SkyServer available to facilitate user-led research within the community.
+Based upon the success of Galaxy Zoo the Zooniverse software platform was developed and new citizen science project opportunities were sought. To date, more than twenty citizen science projects have been developed by the Zooniverse collaboration. Like Galaxy Zoo, the Zooniverse projects of today follow a similar design of a core analysis task together with a community discussion environment. Unfortunately for many of the projects developed today there is a lack of online research tools such as the SDSS SkyServer available to facilitate user-led research within the community.
 
 This has led to the Zooniverse software group developing a number of tools that expose datasets to the citizen science community. As work has progressed over the last 6 months it has become apparent that a significant fraction of the libraries developed for astrophysics-oriented projects may be of value to the wider astronomical community. With the Zooniverse being a web project, these libraries are mainly written in JavaScript; the only standards compliant client-side programming language for the web.
 
@@ -36,13 +36,13 @@ With the emergence of these JavaScript libraries, Zooniverse is introducing the 
 
 \section{JavaScript for Astronomy}
 
-Over the last few years browser vendors have improved performance of JavaScript engines.  JavaScript performance plays a key role in overall browser performance, as such vendors are competing for the fastest engine.  JavaScript is becoming an ever more important language with figures such as Jeff Atwood stating ``any application that can be written in JavaScript, will eventually be written in JavaScript'' \citep{Atwood}.  Many applications are already becoming web applications, many astronomical applications can currently be implemented as web applications.
+Over the last few years browser vendors have improved performance of JavaScript engines.  JavaScript performance plays a key role in overall browser performance, as such vendors are competing for the fastest engine.  JavaScript is becoming an ever more important language with figures such as Jeff Atwood stating "any application that can be written in JavaScript, will eventually be written in JavaScript" \citep{Atwood}.  Many applications are already becoming web applications, and many astronomical applications can currently be implemented as web applications.
 
 All modern astronomy archives require an internet connection to transfer data.  Interfaces to these archives exist as web sites where astronomers can directly access data or submit requests for download.  Institutions are developing more elaborate interfaces for in-browser data visualization prior to transferring large volumes.  MAST's Data Discovery Portal is one example of utilizing new web technologies for astronomical archives; however, there is potential for more elaborate visualizations utilizing technologies that are still untouched by the astronomical community.
 
 \section{astrojs libraries}
 
-JavaScript libraries for astronomy are emerging but have not yet been consolidated.  The \textsc{astrojs} (\url{www.astrojs.org}) project is an effort to develop and aggregate libraries so they may be adopted by the larger community for development of astronomical web applications.  To begin this initiative two libraries are under active development that will provide useful for future web applications.
+JavaScript libraries for astronomy are emerging but have not yet been consolidated.  The \textsc{astrojs} (\url{www.astrojs.org}) project is an effort to develop and aggregate libraries so they may be adopted by the larger community for development of astronomical web applications.  To begin this initiative two libraries are under active development that will prove useful for future web applications.
 
 \subsection{fitsjs}
 

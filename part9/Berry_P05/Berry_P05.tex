@@ -25,17 +25,11 @@ Collection, code-named "Kapuahi".
 
 \section{What is Starlink?}
 
-Starlink\ooindex{Starlink, ascl:1110.012} (\url{www.starlink.ac.uk}) is an open-source project hosted on
-github that provides a wide range of astronomical applications and
-associated infrastructure libraries. From an initial start in 1980, the
-software has been in development and use ever since, and is
-now supported by the Joint Astronomy Centre, Hawaii
-\citep{SSC_2009}.
+Starlink\ooindex{Starlink, ascl:1110.012} (\url{www.starlink.ac.uk}) is an open-source project hosted on github that provides a wide range of astronomical applications and associated infrastructure libraries. From an initial start in 1980, the software has been in development and use ever since, and is now supported by the Joint Astronomy Centre, Hawaii \citep{SSC_2009}.
 
 \subsection{Selected Applications}
 \begin{description}
-\item[GAIA] An interactive display and analysis tool for use with images and
-cubes (\url{star-www.dur.ac.uk/~pdraper/gaia/gaia.html}).
+\item[GAIA] An interactive display and analysis tool for use with images and cubes (\url{star-www.dur.ac.uk/~pdraper/gaia/gaia.html}).
 \item[SPLAT] An interactive spectral display and analysis tool (\url{star-www.dur.ac.uk/~pdraper/splat/splat.html}).
 \item[ORAC-DR] An automated data processing pipe-line system
 (\url{www.oracdr.org}).
@@ -50,9 +44,7 @@ cubes (\url{star-www.dur.ac.uk/~pdraper/gaia/gaia.html}).
 
 \subsection{Selected Infra-structure Libraries}
 \begin{description}
-\item[AST] Provides a high-level object-oriented approach to handling
-spatial, spectral and temporal WCS meta-data, with facilities for
-handling STC-S format and a wide range of FITS formats
+\item[AST] Provides a high-level object-oriented approach to handling spatial, spectral and temporal WCS meta-data, with facilities for handling STC-S format and a wide range of FITS formats
 (\url{www.starlink.ac.uk/ast}).
 
 \item[NDF] The main data access library for Starlink-implements an extensible, hierarchical astronomical data model. Native NDF files use the HDS format, but the other formats such as FITS can also be read.
@@ -62,26 +54,18 @@ handling STC-S format and a wide range of FITS formats
 \end{description}
 
 \section{The Kapuahi Release - What's New?}
-Released in September 2012, the current release of the Starlink\ooindex{Starlink, ascl:1110.012} Software
-Collection has code name ``Kapuahi'' - the Hawaiian name for Aldebaran.
-This section lists a few of the more important changes since the previous
-release (``Namaka''). The development version adds support for data values
-stored as 64-bit integers.
+Released in September 2012, the current release of the Starlink\ooindex{Starlink, ascl:1110.012} Software Collection has the code name ``Kapuahi'' - the Hawaiian name for Aldebaran. This section lists a few of the more important changes since the previous release (``Namaka''). The development version adds support for data values stored as 64-bit integers.
 
 \subsection{Global Changes}
 \begin{itemize}
-\item Mutexes are used to serialise access to Fortran subroutines from within
-C code, making it safe to call them within a thread.
-\item All use of the SLALIB library within C code has been replaced by the new
-PAL library \citep{P56_adassxxii}. Fortran code still uses SLALIB.
+\item Mutexes are used to serialise access to Fortran subroutines from within C code, making it safe to call them within a thread.
+\item All use of the SLALIB library within C code has been replaced by the new PAL library \citep{P56_adassxxii}. Fortran code still uses SLALIB.
 \end{itemize}
 
 \subsection{Application Changes}
 
 \subsubsection{ATOOLS}
-All commands now allow the output WCS information to be created
-in various textual formats, including AST, XML, STC-S, or
-various FITS header formats.
+All commands now allow the output WCS information to be created in various textual formats, including AST, XML, STC-S, or various FITS header formats.
 
 \subsubsection{CUPID}
 \begin{itemize}
@@ -103,17 +87,16 @@ various FITS header formats.
 \begin{itemize}
 \item HISTOGRAM now allows weights to be associated with each input pixel value.
 \item MFITTREND now permits processing of very large datasets.
-\item PASTE now allows a constant shifts of origin between successive pasted data. For instance, this can be used to paste a set of 2D images into a 3D cube.
+\item PASTE now allows a constant shift of origin between successive pasted data. For instance, this can be used to paste a set of 2D images into a 3D cube.
 \item SCATTER now displays the Pearson coefficient of the data in the scatter plot, and writes it to a parameter.
 \item SETAXIS can now create axes describing a linear approximation to the WCS in the supplied NDF.
 \item SQORST now has an option to conserve flux.
-\item The REGRID, WCSALIGN and WCSMOSAIC commands now have more control over the details of how (as well as if) flux is conserved.
+\item The REGRID, WCSALIGN, and WCSMOSAIC commands now have more control over the details of how (as well as if) flux is conserved.
 \end{itemize}
 
 \subsubsection{SMURF}
 \begin{itemize}
-\item Many improvements have been made that allow better maps to be
-created from SCUBA-2 data (\url{scuba2.wordpress.com}).
+\item Many improvements have been made that allow better maps to be created from SCUBA-2 data (\url{scuba2.wordpress.com}).
 \item FIT1D is a new command that fits profiles to spectral lines.  It can fit complex spectra with multiple components and non-Gaussian shapes.
 \end{itemize}
 
@@ -122,8 +105,7 @@ created from SCUBA-2 data (\url{scuba2.wordpress.com}).
 
 \subsubsection{AST}
 \begin{itemize}
-\item Now has a python interface-PyAST \citep{P011_adassxxi}. It is
-hosted on github (\url{github.com/timj/starlink-pyast}).
+\item Now has a python interface-PyAST \citep{P011_adassxxi}. It is hosted on github (\url{github.com/timj/starlink-pyast}).
 \item Now included in Fedora and Debian repositories.
 \item Now based on the SOFA and PAL libraries rather than SLALIB.
 \item Extended support for a variety of distorted FITS projections including SIP, TPV, TNX, ZPX, SAO, and SCAMP\ooindex{SCAMP, ascl:1010.063}.
@@ -144,9 +126,7 @@ A new C library that provides the functionality of the older Fortran SLALIB libr
 A new library that provides facilities to manage pools of persistent threads, allowing jobs to be run in parallel from within C applications.
 
 \section{The Starlink Github Repository}
-The Starlink\ooindex{Starlink, ascl:1110.012} git repositories have been moved from the Joint Astronomy
-Centre, Hawaii, and are now hosted on github
-(\url{github.com/Starlink/starlink}).
+The Starlink\ooindex{Starlink, ascl:1110.012} git repositories have been moved from the Joint Astronomy Centre, Hawaii, and are now hosted on github (\url{github.com/Starlink/starlink}).
 
 \section{Obtaining Starlink Software}
 The Starlink\ooindex{Starlink, ascl:1110.012} Software Collection may be obtained in three ways:

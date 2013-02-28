@@ -12,91 +12,33 @@
 \aindex{Mink, J.}
 
 \begin{abstract}
-Since the last paper describing the IRAF\ooindex{IRAF, ascl:9911.002} RVSAO\ooindex{RVSAO, ascl:9912.003} radial velocity package
-was published almost 15 years ago, this collection of tasks dealing
-with wavelength-shifted spectra has continued to grow and evolve.
-Many changes have been made to improve robustness and accuracy
-in the \textbf{xcsao} cross-correlation and \textbf{emsao} emission line fitting tasks.
-Two new tasks, \textbf{pxcsao} and \textbf{pemsao}, find radial velocities using the same
-methods, but save the results as task parameters, making them easier to
-use in CL scripts.  Spectra can now be cross-correlated in pixel or
-wavelenth space as well as velocity space.  A major task, \textbf{eqwidth}, based
-on the IRAF\ooindex{IRAF, ascl:9911.002} \textbf{bands} task, computes equivalent widths in redshifted spectra.
-\textbf{sumspec}, which rebins, normalizes, re-redshifts, sums, and/or stacks
-spectra, has proven to be useful in multi-fiber spectrograph reduction
-pipelines.  \textbf{listspec} lists spectra in a variety of user-selected formats,
-and several CL scripts plot spectra with labelled emission and absorption
-lines. 
+Since the last paper describing the IRAF\ooindex{IRAF, ascl:9911.002} RVSAO\ooindex{RVSAO, ascl:9912.003} radial velocity package was published almost 15 years ago, this collection of tasks dealing with wavelength-shifted spectra has continued to grow and evolve. Many changes have been made to improve robustness and accuracy in the \textbf{xcsao} cross-correlation and \textbf{emsao} emission line fitting tasks. Two new tasks, \textbf{pxcsao} and \textbf{pemsao}, find radial velocities using the same methods, but save the results as task parameters, making them easier to use in CL scripts.  Spectra can now be cross-correlated in pixel or wavelenth space as well as velocity space.  A major task, \textbf{eqwidth}, based on the IRAF\ooindex{IRAF, ascl:9911.002} \textbf{bands} task, computes equivalent widths in redshifted spectra. \textbf{sumspec}, which rebins, normalizes, re-redshifts, sums, and/or stacks spectra, has proven to be useful in multi-fiber spectrograph reduction pipelines.  \textbf{listspec} lists spectra in a variety of user-selected formats, and several CL scripts plot spectra with labeled emission and absorption lines. 
 
 \end{abstract}
 
-\section*{RVSAO\ooindex{RVSAO, ascl:9912.003} IRAF\ooindex{IRAF, ascl:9911.002} Package}
+\section{RVSAO\ooindex{RVSAO, ascl:9912.003} IRAF\ooindex{IRAF, ascl:9911.002} Package}
 
-The RVSAO\ooindex{RVSAO, ascl:9912.003} package was developed at the Smithsonian Astrophysical
-Observatory to compute velocities of stars and galaxies for a variety
-of astrophysical projects.  The first version of the \textbf{xcsao}
-cross-correlation task was described at the first ADASS meeting in 1991
-\citep{xcsao_1991},
-and the workings of the \textbf{emsao} emission line fitting task were
-presented three years later
-\citep{1995ASPC...77..496M}.
-By the time a paper describing the entire package was written
-\citep{1998PASP..110..934K}
-it had progressed to version 2.0 and was being used in the FAST
-spectrograph pipeline
-\citep{1997ASPC..125..140T}.  Since then, the package has been used in
-pipelines for the Hectospec
-\citep{2007ASPC..376..249M}
-and TRES
-\citep{2011ASPC..442..305M}
-spectrographs and for a search through the 1,500,000 spectra of the
-Sloan Digital Sky Survey to create an atlas of S stars
-\citep{2011AAS...21715303O}.  These uses have required new capabilities
-and improved the robustness of the code and algorithms.  Several new
-tasks and ways of using the package will be briefly described.
+The RVSAO\ooindex{RVSAO, ascl:9912.003} package was developed at the Smithsonian Astrophysical Observatory to compute velocities of stars and galaxies for a variety of astrophysical projects.  The first version of the \textbf{xcsao} cross-correlation task was described at the first ADASS meeting in 1991 \citep{xcsao_1991}, and the workings of the \textbf{emsao} emission line fitting task were presented three years later \citep{1995ASPC...77..496M}. By the time a paper describing the entire package was written \citep{1998PASP..110..934K} it had progressed to version 2.0 and was being used in the FAST spectrograph pipeline \citep{1997ASPC..125..140T}.  Since then, the package has been used in pipelines for the Hectospec \citep{2007ASPC..376..249M} and TRES \citep{2011ASPC..442..305M} spectrographs and for a search through the 1,500,000 spectra of the Sloan Digital Sky Survey to create an atlas of S stars \citep{2011AAS...21715303O}.  These uses have required new capabilities and improved the robustness of the code and algorithms.  Several new tasks and ways of using the package will be briefly described.
 
 Documentation and source code are online at \url{http://tdc-www.harvard.edu/iraf/rvsao/}.
 
-\section*{New Task to Compute Equivalent Widths}
+\section{New Task to Compute Equivalent Widths}
 
-Based on the IRAF\ooindex{IRAF, ascl:9911.002} \textbf{onedspec.bands} task
-\citep{1992ASPC...25..417V},
-\textbf{eqwidth} computes equivalent widths and a variety of variations
-which provide information with which to compare emission and absorption
-lines between and within spectra.  Several standard band descriptions
-(center plus continuum samples) are included, as well as some defined
-by John Huchra, who helped signicantly with the algorithms and error computation.
+Based on the IRAF\ooindex{IRAF, ascl:9911.002} \textbf{onedspec.bands} task \citep{1992ASPC...25..417V}, \textbf{eqwidth} computes equivalent widths and a variety of variations which provide information with which to compare emission and absorption lines between and within spectra.  Several standard band descriptions (center plus continuum samples) are included, as well as some defined by John Huchra, who helped signicantly with the algorithms and error computation.
 
-Because it is often useful to compare strengths of emission lines in
-spectra where the measured continuum is often in the measurement noise,
-a flag can be set to return a scaled area in the line without a reference
-to the insignificant continuum.
+Because it is often useful to compare strengths of emission lines in spectra where the measured continuum is often in the measurement noise, a flag can be set to return a scaled area in the line without a reference to the insignificant continuum.
 
-The task can also redshift band descriptions to work with unmodified
-spectra so the noise characteristics are preserved.  A lot of effort
-went into getting the errors correct as the formula in the literature
-didn't always seem to give reasonable numbers.  \textbf{eqwidth} is made
-to be run on many spectra at once, though limited interaction is possible.
+The task can also redshift band descriptions to work with unmodified spectra so the noise characteristics are preserved.  A lot of effort went into getting the errors correct as the formula in the literature didn't always seem to give reasonable numbers.  \textbf{eqwidth} is made to be run on many spectra at once, though limited interaction is possible.
 
-\section*{New Tasks to Return Results as Task Parameters}
+\section{New Tasks to Return Results as Task Parameters}
 
-In addition to those in the \textbf{xcsao} task, \textbf{pxcsao} adds
-parameters to return information about the best template fit for the last
-spectrum.  If there are multiple orders or apertures (specnum is a 
-range or list), a median velocity and error information are returned.
+In addition to those in the \textbf{xcsao} task, \textbf{pxcsao} adds parameters to return information about the best template fit for the last spectrum.  If there are multiple orders or apertures (specnum is a  range or list), a median velocity and error information are returned.
 
-\textbf{pemsao} adds parameters to those in the \textbf{emsao}
-task to return line fit information for the last spectrum including
-the number of lines fit and information about the fit to the first
-emission line.  If there are multiple orders or apertures (specnum is a
-range or list), mean and median velocities and error information are returned.
+\textbf{pemsao} adds parameters to those in the \textbf{emsao} task to return line fit information for the last spectrum including the number of lines fit and information about the fit to the first emission line.  If there are multiple orders or apertures (specnum is a range or list), mean and median velocities and error information are returned.
 
-\section*{Using RVSAO\ooindex{RVSAO, ascl:9912.003} Tasks from a Unix Shell}
+\section{Using RVSAO\ooindex{RVSAO, ascl:9912.003} Tasks from a Unix Shell}
 
-Most tasks of the IRAF\ooindex{IRAF, ascl:9911.002} RVSAO\ooindex{RVSAO, ascl:9912.003} spectrum package may be run from the Unix/Linux
-command line almost as if you were inside IRAF\ooindex{IRAF, ascl:9911.002}. The parameters used come from the IRAF
-home directory defined by the \textit{irafhome} environment variable or
-the IRAF/ subdirectory of the user's home directory.
+Most tasks of the IRAF\ooindex{IRAF, ascl:9911.002} RVSAO\ooindex{RVSAO, ascl:9912.003} spectrum package may be run from the Unix/Linux command line almost as if you were inside IRAF\ooindex{IRAF, ascl:9911.002}. The parameters used come from the IRAF home directory defined by the \textit{irafhome} environment variable or the IRAF/ subdirectory of the user's home directory.
 
 \texttt{bcvcorr~~~~Compute barycentric velocity correction}
 
@@ -126,9 +68,7 @@ the IRAF/ subdirectory of the user's home directory.
 
 \texttt{pxcsao~~~~~Cross-correlate a spectrum against templates}
 
-If you type any task command with no arguments, you will get a simple help
-message with options for parameter access and more complete help,
-for example:
+If you type any task command with no arguments, you will get a simple help message with options for parameter access and more complete help, for example:
 
 \texttt{XCSAO: Cross-correlate a spectrum against a set of templates}
 
@@ -144,7 +84,7 @@ for example:
 
 where
 
-\texttt{[task] dpar} dumps the parameters using IRAFs dpar as task\.parameter\=value
+\texttt{[task] dpar} dumps the parameters using IRAFs dpar as task.parameter = value
 
 \texttt{[task] epar} edits the parameters using IRAFs eparam
 
@@ -152,24 +92,21 @@ where
 
 \texttt{[task] lpar} list the parameters using IRAFs lparam
 
-\section*{An Example Using Multiple Tasks}
+\section{An Example Using Multiple Tasks}
 
-Figure 1 shows an image of 9,795 galaxy spectra from the SHELS survey
-\citep{shels_2005}
-sorted from emission to absorption using several RVSAO\ooindex{RVSAO, ascl:9912.003} tasks.
+Figure 1 shows an image of 9,795 galaxy spectra from the SHELS survey \citep{shels_2005} sorted from emission to absorption using several RVSAO\ooindex{RVSAO, ascl:9912.003} tasks.
 
 1.  Reduce spectra using Hectospec pipeline
 
 2.  Find redshifts using \textbf{xcsao}, saving them in spectrum headers
 
-3.  Compute equivalent widths of H-alpha emission line with \textbf{eqwidth}.
+3.  Compute equivalent widths of H-alpha emission lines with \textbf{eqwidth}.
 
 4. Sort the output table by H-alpha equivalent width
 
-5. Extract a list of pathnames from sorted table
+5. Extract a list of pathnames from the sorted table
 
-6. Read sorted list of spectra with \textbf{sumspec}, shifting them to rest wavelength and
-stacking them into a FITS file from bright emission to deep absorption at H-alpha.
+6. Read the sorted list of spectra with \textbf{sumspec}, shifting them to rest wavelength and stacking them into a FITS file from bright emission to deep absorption at H-alpha.
 
 7. Convert to JPEG file using ds9
 
@@ -180,10 +117,6 @@ stacking them into a FITS file from bright emission to deep absorption at H-alph
 \end{figure}
 
 \acknowledgements
-I would like to thank all of the people who have used this package and helped
-it to be a more robust and capable set of software.  The late John Huchra was of
-great assistance in working the kinks out of the equivalent width task, and
-Susan Tokarz, Guilermo Torres, and Soren Meibom, whose offices are just down
-the hall from mine, have gotten most of the changes they requested.
+I would like to thank all of the people who have used this package and helped it to be a more robust and capable set of software.  The late John Huchra was of great assistance in working the kinks out of the equivalent width task, and Susan Tokarz, Guilermo Torres, and Soren Meibom, whose offices are just down the hall from mine, have gotten most of the changes they requested.
 
 \bibliography{editor}
