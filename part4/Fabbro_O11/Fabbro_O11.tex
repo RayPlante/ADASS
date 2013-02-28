@@ -15,102 +15,28 @@
 \aindex{Goliath, S.}
 
 \begin{abstract}
-  We present an approach to deliver astronomy processing software using
-  virtualization and a network file system. User-requested astronomy
-  software applications are built and tested on a dedicated server, and
-  distributed on-demand to cloud-based worker clients using a fast HTTP
-  read-only cache file system. The worker clients are light virtual
-  machines which keep overheads to processing resources very small,
-  while still ensuring the portability of all software applications. The
-  goal is to limit the need for astronomers to carry out software
-  maintenance tasks and to keep consistency between batch processing
-  and interactive analysis sessions. We describe the design and
-  infrastructure of the system, the software building process on the
-  server, and show an application with a multi-frame automated
-  transient detection on a wide field survey, with a batch processing
-  on a cloud infrastructure.
+  We present an approach to deliver astronomy processing software using   virtualization and a network file system. User-requested astronomy   software applications are built and tested on a dedicated server, and  distributed on-demand to cloud-based worker clients using a fast HTTP read-only cache file system. The worker clients are light virtual machines which keep overheads to processing resources very small, while still ensuring the portability of all software applications. The goal is to limit the need for astronomers to carry out software maintenance tasks and to keep consistency between batch processing and interactive analysis sessions. We describe the design and infrastructure of the system, the software building process on the server, and show an application with a multi-frame automated transient detection on a wide field survey, with a batch processing on a cloud infrastructure.
 \end{abstract}
 
 \section{Introduction}
-During the past decade, several astronomical communities have started using
-facilities that generate large amount of data, bringing challenges for
-data storage and analysis. While data reduction
-software for these facilities is typically deployed on dedicated
-infrastructure, many astronomers keep performing analysis of the 
-end products on their desktop. Such work flows create a discontinuity between the
-software stacks, making end-to-end data analysis and result
-reproducibility cumbersome. It is not clear whether it will scale
-with forthcoming projects such as LSST or SKA, where even end
-processed products will be too large for a typical desktop session.
+During the past decade, several astronomical communities have started using facilities that generate large amount of data, bringing challenges for data storage and analysis. While data reduction software for these facilities is typically deployed on dedicated infrastructure, many astronomers keep performing analysis of the end products on their desktop. Such work flows create a discontinuity between the software stacks, making end-to-end data analysis and result reproducibility cumbersome. It is not clear whether it will scale with forthcoming projects such as LSST or SKA, where even end processed products will be too large for a typical desktop session.
 
-Here we describe a modular approach that can be used for
-delivering legacy, reliable astronomy software which has the potential
-to scale from a single astronomer's own code up to distributing large
-software stacks across processing nodes. Fortunately, reliable
-software technologies exist in the astronomy,
-Linux, and High Energy Physics communities which are needed to achieve our goals. For
-processing and storage, we rely on the Canadian Advanced Network for
-Astronomical Research (CANFAR). To build and maintain software, we use the tools
-from the Gentoo Linux package management system, and for distributing the
-software, the CernVM File System (CVMFS) is being deployed.
+Here we describe a modular approach that can be used for delivering legacy, reliable astronomy software which has the potential to scale from a single astronomer's own code up to distributing large software stacks across processing nodes. Fortunately, reliable software technologies exist in the astronomy, Linux, and High Energy Physics communities which are needed to achieve our goals. For processing and storage, we rely on the Canadian Advanced Network for Astronomical Research (CANFAR). To build and maintain software, we use the tools from the Gentoo Linux package management system, and for distributing the software, the CernVM File System (CVMFS) is being deployed.
 
 \section{Components}
 \subsection{CANFAR as a Cloud Infrastructure}
-CANFAR (\cite{canfar}) is a computing infrastructure designed for
-astronomers. CANFAR aims to provide to its users easy access to very
-large resources for both storage and processing, using a cloud based
-framework. CANFAR allows astronomers to run processing jobs on a set
-of computing clusters, and to store data at a set of data centres. The
-same Virtual Machine (VM) can be used both for interactive analysis
-and replicated across several clusters for batch processing.
-There are two main components of CANFAR:
+CANFAR (\cite{canfar}) is a computing infrastructure designed for astronomers. CANFAR aims to provide to its users easy access to very large resources for both storage and processing, using a cloud based framework. CANFAR allows astronomers to run processing jobs on a set of computing clusters, and to store data at a set of data centres. The same Virtual Machine (VM) can be used both for interactive analysis and replicated across several clusters for batch processing. There are two main components of CANFAR:
 \begin{description}
-\item[Processing] Provisioning and managing virtual machines is done
-  with the Nimbus\footnote{\url{http://www.nimbusproject.org/}}
-  infrastructure suite. CANFAR offers the possibility
-  to create a VM based on a golden image and managing it with both
-  console and web based interface clients. Once configured,
-  the condor high throughput computing software\footnote{\url{http://research.cs.wisc.edu/condor/}} is used to
-  schedule VM jobs. The cloud scheduler\footnote{\url{htttp://www.cloudscheduler.org}} adds
-  an extra layer to distribute VMs across cluster instances.
-\item[Storage] A cloud storage based on the VOSpace specifications has
-  been implemented for CANFAR users. The storage is used to store any
-  type of data, including processing VM image files, and selective
-  access controls to data. Various interfaces are offered to the
-  users: console clients, a FUSE based mountable file system client,
-  and a web interface. The storage location is transparent for
-  the users, while practically we are trying to push towards data
-  replication in the various computing clustering sites. A central
-  database coupled with archiving tools developed at the Canadian
-  Astronomy Data Centre are used as a back-end to the VOSpace web services.
+\item[Processing] Provisioning and managing virtual machines is done   with the Nimbus\footnote{\url{http://www.nimbusproject.org/}}   infrastructure suite. CANFAR offers the possibility to create a VM based on a golden image and managing it with both console and web based interface clients. Once configured, the condor high throughput computing software\footnote{\url{http://research.cs.wisc.edu/condor/}} is used to schedule VM jobs. The cloud scheduler\footnote{\url{htttp://www.cloudscheduler.org}} adds an extra layer to distribute VMs across cluster instances.
+\item[Storage] A cloud storage based on the VOSpace specifications has been implemented for CANFAR users. The storage is used to store any type of data, including processing VM image files, and selective access controls to data. Various interfaces are offered to the users: console clients, a FUSE based mountable file system client, and a web interface. The storage location is transparent for the users, while practically we are trying to push towards data replication in the various computing clustering sites. A central database coupled with archiving tools developed at the Canadian Astronomy Data Centre are used as a back-end to the VOSpace web services.
 \end{description}
 
-CANFAR is an ongoing project. It has been tested by several
-collaborations, with scheduling 3 clusters, providing up to 500
-processor nodes, and a few hundred terabytes of stored data in
-VOSpace.
+CANFAR is an ongoing project. It has been tested by several collaborations, with scheduling 3 clusters, providing up to 500 processor nodes, and a few hundred terabytes of stored data in VOSpace.
 
 \subsection{Distributing the Software with CernVM-FS}
-The processing software used on a CANFAR VM is currently embedded within the VM image
-file itself. It obviously creates redundancy, as
-well as scalability and maintenance problems. The
-biggest challenge users are faced so far is the installation and
-maintenance of the software. In an effort to remove the maintenance burden
-to the non-proficient Linux user, we decided to try a ``kitchen sink''
-approach, delivering a standard base of astronomy software, by means
-of a powerful network file system recently developed for the Large
-Hadron Collider experiments at CERN.
+The processing software used on a CANFAR VM is currently embedded within the VM image file itself. It obviously creates redundancy, as well as scalability and maintenance problems. The biggest challenge users are faced so far is the installation and maintenance of the software. In an effort to remove the maintenance burden to the non-proficient Linux user, we decided to try a ``kitchen sink'' approach, delivering a standard base of astronomy software, by means of a powerful network file system recently developed for the Large Hadron Collider experiments at CERN.
 
-The CernVM File System (CVMFS,\cite{blomer11}) is a client-server file system
-specifically designed to deliver software onto virtual machines. CVMFS
-is also implemented as a FUSE module. It creates a directory
-tree stored on a web server, that appears as a local read-only file
-system on the client. It transfers files on demand, verifying their
-content by SHA-1 keys, and uses aggressive caching and reduction of latency. CVMFS is
-part of the larger CernVM project\footnote{\url{http://cervm.cern.ch/portal}}, to distribute software and
-conditions data to Grid sites. Several experiments distribute a few tens of Gigabytes of software with CVMFS to worker
-nodes, and various tests have shown the overheads are smaller than 5\%
-processing time compared to a local disk installed software.
+The CernVM File System (CVMFS,\cite{blomer11}) is a client-server file system specifically designed to deliver software onto virtual machines. CVMFS is also implemented as a FUSE module. It creates a directory tree stored on a web server, that appears as a local read-only file system on the client. It transfers files on demand, verifying their content by SHA-1 keys, and uses aggressive caching and reduction of latency. CVMFS is part of the larger CernVM project\footnote{\url{http://cervm.cern.ch/portal}}, to distribute software and conditions data to Grid sites. Several experiments distribute a few tens of Gigabytes of software with CVMFS to worker nodes, and various tests have shown the overheads are smaller than 5\% processing time compared to a local disk installed software.
 
 \begin{center}
   \begin{figure}
@@ -120,61 +46,15 @@ processing time compared to a local disk installed software.
 \end{center}
 
 \subsection{Server Software Building with Gentoo Tools}
-Currently the CANFAR VMs are built from
-Scientific Linux 5. While being a stable distribution, software versions
-are often out of date, resulting in frustrated users installing their own
-compilers, maintaining their own copies of stock libraries and
-sometimes developing their own package management system. There are however many UNIX/Linux distributions offering
-very complete and modular package management. We resorted to
-using the Gentoo Linux package management (portage) and scripting formats
-(ebuild) for the extreme configuration it offers, its reliability, and
-familiarity. The builds are done on a dedicated computer and propagated to the CVMFS
-server. The packages are built from source, with the same system libraries as used on the
-distributed VM for consistency and reproducibility. All software
-goes through a battery of unit testing, when it exists, along with a series
-of integration tests. Specifically, we used the Gentoo Prefix system\footnote{\url{http://www.gentoo.org/proj/en/gentoo-alt/prefix/}}
-which allows us to install a full standalone software stack tree on a non
-Gentoo system without root privileges.
+Currently the CANFAR VMs are built from Scientific Linux 5. While being a stable distribution, software versions are often out of date, resulting in frustrated users installing their own compilers, maintaining their own copies of stock libraries and sometimes developing their own package management system. There are however many UNIX/Linux distributions offering very complete and modular package management. We resorted to using the Gentoo Linux package management (portage) and scripting formats (ebuild) for the extreme configuration it offers, its reliability, and familiarity. The builds are done on a dedicated computer and propagated to the CVMFS server. The packages are built from source, with the same system libraries as used on the distributed VM for consistency and reproducibility. All software goes through a battery of unit testing, when it exists, along with a series of integration tests. Specifically, we used the Gentoo Prefix system\footnote{\url{http://www.gentoo.org/proj/en/gentoo-alt/prefix/}} which allows us to install a full standalone software stack tree on a non Gentoo system without root privileges.
 
 \section{Tests}
 
-As an example we show how we built, tested, and used our software stack
-for a transient detection survey.
-The NASA New Horizons mission is planed to fly by Pluto in 2015 and
-continue onto the Kuiper Belt, providing the possibility of a close
-encounter with a few Kuiper Belt Objects beyond Pluto by
-2018. Potential targets must first be discovered and a coordinated
-search between Subaru SuprimeCam, Magellan Megacam and IMACS, and CFHT
-Megaprime to find potential target KBOs was started in 2011. Desired objects
-are in the 50km size range, with magnitude of $r\approx 26$. The search lies in
-Sagittarius so we need to remove a very dense star background. Each
-field is visited multiple times and difference images are
-batched-processed by the team. There are a few
-pipelines organized across the collaboration, and the one we tested is
-composed of various astronomy software of which the center block is the poloka software suite, a C++
-library originally developed for supernova surveys.
+As an example we show how we built, tested, and used our software stack for a transient detection survey. The NASA New Horizons mission is planed to fly by Pluto in 2015 and continue onto the Kuiper Belt, providing the possibility of a close encounter with a few Kuiper Belt Objects beyond Pluto by 2018. Potential targets must first be discovered and a coordinated search between Subaru SuprimeCam, Magellan Megacam and IMACS, and CFHT Megaprime to find potential target KBOs was started in 2011. Desired objects are in the 50km size range, with magnitude of $r\approx 26$. The search lies in Sagittarius so we need to remove a very dense star background. Each field is visited multiple times and difference images are batched-processed by the team. There are a few pipelines organized across the collaboration, and the one we tested is composed of various astronomy software of which the center block is the poloka software suite, a C++ library originally developed for supernova surveys.
 
-Every software component of the detection pipeline has
-been packaged into a Gentoo ebuild and resulting binaries were tested
-thoroughly on a dedicated VM, and distributed with a CernVM-FS
-server. The pipeline process archived Megaprime images from the CADC archive,
-plants fake KBO's, register, build references, performs single
-exposure image subtractions, and shifts and stacks the resulting
-subtractions according to to-be-found KBO's expected velocities. Since
-it uses mostly software developed in the previous decades, it is very
-i/o dependent and stresses the network load and database back-end of
-CANFAR. About 40,000 VM jobs were propagated through the CANFAR, with
-a modest rate of failure of 0.13\%, none of which was from the software
-delivery process.
+Every software component of the detection pipeline has been packaged into a Gentoo ebuild and resulting binaries were tested thoroughly on a dedicated VM, and distributed with a CernVM-FS server. The pipeline process archived Megaprime images from the CADC archive, plants fake KBO's, register, build references, performs single exposure image subtractions, and shifts and stacks the resulting subtractions according to to-be-found KBO's expected velocities. Since it uses mostly software developed in the previous decades, it is very i/o dependent and stresses the network load and database back-end of CANFAR. About 40,000 VM jobs were propagated through the CANFAR, with a modest rate of failure of 0.13\%, none of which was from the software delivery process.
 
 \section{Development and future work}
-We are now focusing our development of the described software
-delivery system on building a very large stack of well tested,
-reliable standard astronomy software and carrying on further scalability
-tests to deploy it for the CANFAR users. We try as much as possible to keep the components
-independent, to be ready for a very likely switch of technologies of
-the fast moving cloud software. We are also starting to investigate
-reducing virtualization overheads using Linux containers and improve
-usability with web configuration interfaces for VM contextualization.
+We are now focusing our development of the described software delivery system on building a very large stack of well tested, reliable standard astronomy software and carrying on further scalability tests to deploy it for the CANFAR users. We try as much as possible to keep the components independent, to be ready for a very likely switch of technologies of the fast moving cloud software. We are also starting to investigate reducing virtualization overheads using Linux containers and improve usability with web configuration interfaces for VM contextualization.
 
 \bibliography{editor}

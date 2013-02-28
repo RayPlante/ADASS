@@ -21,9 +21,7 @@
 \begin{abstract}
 The NASA Exoplanet Science Institute (NExScI) hosts the annual Sagan Workshops, thematic meetings aimed at introducing researchers to the latest tools and methodologies in exoplanet research. The theme of the Summer 2012 workshop, held from July 23 to July 27 at Caltech, was to explore the use of exoplanet light curves to study planetary system architectures and atmospheres. A major part of the workshop was to use hands-on sessions to instruct attendees in the use of three open source tools for the analysis of light curves, especially from the Kepler mission. Each hands-on session involved the 160 attendees using their laptops to follow step-by-step tutorials given by experts. 
 
-One of the applications, PyKE, is a suite of Python tools designed to reduce and analyze Kepler light curves; these tools can be invoked from the Unix command line or a GUI 
-in PyRAF.\ooindex{PyRAF, ascl:1207.011}  
-The Transit Analysis Package (TAP) uses Markov Chain Monte Carlo (MCMC) techniques to fit light curves under the Interactive Data Language (IDL) environment, and Transit Timing Variations (TTV) uses IDL tools and Java-based GUIs to confirm and detect exoplanets from timing variations in light curve fitting. 
+One of the applications, PyKE, is a suite of Python tools designed to reduce and analyze Kepler light curves; these tools can be invoked from the Unix command line or a GUI in PyRAF.\ooindex{PyRAF, ascl:1207.011}  The Transit Analysis Package (TAP) uses Markov Chain Monte Carlo (MCMC) techniques to fit light curves under the Interactive Data Language (IDL) environment, and Transit Timing Variations (TTV) uses IDL tools and Java-based GUIs to confirm and detect exoplanets from timing variations in light curve fitting. 
 
 Rather than attempt to run these diverse applications on the inevitable wide range of environments on attendees laptops, they were run instead on the Amazon Elastic Cloud 2 (EC2). The cloud offers features ideal for this type of short term need: computing and storage services are made available on demand for as long as needed, and a processing environment can be customized and replicated as needed. The cloud environment included an NFS file server virtual machine (VM), 20 client VM’s for use by attendees, and a VM to enable ftp downloads of the attendees' results. The file server was configured with a 1 TB Elastic Block Storage (EBS) volume (network-attached storage mounted as a device) containing the application software and attendees’ home directories. The clients were configured to mount the applications and home directories from the server via NFS. All VM’s were built with CentOS version 5.8. Attendees connected their laptops to one of the client VMs using the Virtual Network Computing (VNC) protocol, which enabled them to interact with a remote desktop GUI during the hands-on sessions. 
 
@@ -32,8 +30,7 @@ We will describe the mechanisms for handling security, failovers, and licensing 
 \end {abstract}
 
 \section{Introduction}
-The NASA Exoplanet Science Center (NExScI) hosts the Sagan Workshops, which are annual themed conferences aimed at introducing the latest techniques in exoplanet astronomy to young researchers. The workshops emphasize interaction with data, and include hands-on sessions where participants use their laptops to follow step-by-step tutorials given by experts.  The 2012 workshop had the theme "Working With Exoplanet Light Curves," and posed special challenges for the conference organizers because the  three applications chosen for the tutorials run on different platforms, and because over 160 persons attended,  the largest attendance to date. One of the applications, PyKE,\ooindex{PyKE, ascl:1208.004} 
-is a suite of Python tools designed to reduce and analyze Kepler light curves; it is called from the command line or from a GUI in PyRAF. The Transit Analysis Package (TAP) uses Markov Chain Monte Carlo (MCMC) techniques to fit light curves in the Interactive Data Language (IDL) environment, and Systemic Console analyzes Transit Timing Variations (TTV) with IDL and Java-based GUIs to confirm and detect exoplanets from timing variations in light curve fitting.  Rather than attempt to run these diverse applications on the inevitable wide range of environments on attendees' laptops, the conference organizers, in consultation with the Virtual Astronomical Observatory, chose instead to run the applications on the Amazon Elastic Cloud 2 (EC2). This paper summarizes the system architecture, the Amazon resources consumed, and lessons learned and best practices.
+The NASA Exoplanet Science Center (NExScI) hosts the Sagan Workshops, which are annual themed conferences aimed at introducing the latest techniques in exoplanet astronomy to young researchers. The workshops emphasize interaction with data, and include hands-on sessions where participants use their laptops to follow step-by-step tutorials given by experts.  The 2012 workshop had the theme "Working With Exoplanet Light Curves," and posed special challenges for the conference organizers because the  three applications chosen for the tutorials run on different platforms, and because over 160 persons attended,  the largest attendance to date. One of the applications, PyKE,\ooindex{PyKE, ascl:1208.004} is a suite of Python tools designed to reduce and analyze Kepler light curves; it is called from the command line or from a GUI in PyRAF. The Transit Analysis Package (TAP) uses Markov Chain Monte Carlo (MCMC) techniques to fit light curves in the Interactive Data Language (IDL) environment, and Systemic Console analyzes Transit Timing Variations (TTV) with IDL and Java-based GUIs to confirm and detect exoplanets from timing variations in light curve fitting.  Rather than attempt to run these diverse applications on the inevitable wide range of environments on attendees' laptops, the conference organizers, in consultation with the Virtual Astronomical Observatory, chose instead to run the applications on the Amazon Elastic Cloud 2 (EC2). This paper summarizes the system architecture, the Amazon resources consumed, and lessons learned and best practices.
 
 \section{The System Architecture}
 
@@ -44,28 +41,17 @@ The Sagan Workshop took advantage of the EC2's capabilities to support Virtual M
 
 \begin{itemize}
 
-\item One master virtual machine image, built on the Cent OS 64-bit operating system, was used for all servers.
-A boot script determined the VM’s identity.
-Usernames and passwords were the same on all machines. 
-\item
-1 TB of Elastic Block Storage (EBS), a 
-block-based storage service where
-volumes appear as disk drives connected to VMs,
-contained applications, tutorial data, and user home directories. Applications and tutorial data are installed on VM images, and so data are not lost if a tutorial server fails.
+\item One master virtual machine image, built on the Cent OS 64-bit operating system, was used for all servers. A boot script determined the VM’s identity. Usernames and passwords were the same on all machines. 
+\item 1 TB of Elastic Block Storage (EBS), a block-based storage service where volumes appear as disk drives connected to VMs, contained applications, tutorial data, and user home directories. Applications and tutorial data are installed on VM images, and so data are not lost if a tutorial server fails.
 
-\item
-The EC2 m1.2xlarge instance type was chosen to handle the load of 20 tutorial servers. It has enough memory to cache commonly accessed files,  mounts all the partitions from the EBS volumes, and exports all partitions via NFS to the tutorial servers.
-\item
-The tutorial servers were EC2 c1.xlarge instance type, with 
+\item The EC2 m1.2xlarge instance type was chosen to handle the load of 20 tutorial servers. It has enough memory to cache commonly accessed files,  mounts all the partitions from the EBS volumes, and exports all partitions via NFS to the tutorial servers.
+\item The tutorial servers were EC2 c1.xlarge instance type, with 
 8 cores and 7 GB RAM, chosen because the applications were CPU-bound.
 Server performance was benchmarked with 8 users, but the servers were in fact able to support up to 25 users. 
-\item
-A Virtual Network Computing (VNC) server provided remote desktop logins to the tutorial servers. VNC is similar to the X Window system, but sends compressed images instead of drawing commands and proved more responsive than X in our tests. Each tutorial server ran one VNC server that supported up to 30 connections.  Screen resolution set to 1024x768 to balance usability and performance. In practice,  the workshop used TigerVNC as the server and RealVNC as the client.
-\item
-The tutorial servers were connected via an ssh tunnel to an IDL license server at IPAC. 
+\item A Virtual Network Computing (VNC) server provided remote desktop logins to the tutorial servers. VNC is similar to the X Window system, but sends compressed images instead of drawing commands and proved more responsive than X in our tests. Each tutorial server ran one VNC server that supported up to 30 connections.  Screen resolution set to 1024x768 to balance usability and performance. In practice,  the workshop used TigerVNC as the server and RealVNC as the client.
+\item The tutorial servers were connected via an ssh tunnel to an IDL license server at IPAC. 
 IDL VM sessions think the license server is on localhost, and the license server thinks IDL is inside IPAC's network. We used autossh to ensure the tunnel was re-established if disconnected
-\item
-The Amazon AWS Security Rules limited access only to the VNC, SSH and IDL ports, and only from the Caltech and IPAC subnets  used to support the workshop.
+\item The Amazon AWS Security Rules limited access only to the VNC, SSH and IDL ports, and only from the Caltech and IPAC subnets  used to support the workshop.
 \end{itemize}
 
 \section{Cost of Using the Amazon Elastic Cloud 2}
