@@ -23,10 +23,7 @@
 \aindex{Vitello, F.}
 
 \begin{abstract}
-We present a web-based and workflow-enabled framework called VisIVO Gateway that allows integration of large-scale multidimensional datasets together with applications for visualization and exploration on Distributed Computing Infrastructures (DCIs).\ooindex{VisIVO, ascl:1011.020}
-Our framework is implemented through a workflow-enabled portal wrapped around WS-PGRADE which is the grid User Support Environment (gUSE) portal.  We provide customized interfaces for creating, invoking, monitoring and also modifying scientific workflows. All technical complexities, e.g. related to visualization algorithms and DCI configurations, are conveniently hidden from view.
-A number of workflows are enabled by default, e.g. implementing local or remote uploading and creation of scientific movies. Scientific movies are useful not only to scientists for presenting their research results, but also to museums and science centers for engaging visitors with complex scientific concepts.
-Our gateway can be accessed via standard www interfaces but also through a newly developed iOS mobile application offering novel ways for sharing analysis and exploration experiences with large-scale datasets in collaborative environments.
+We present a web-based and workflow-enabled framework called VisIVO Gateway that allows integration of large-scale multidimensional datasets together with applications for visualization and exploration on Distributed Computing Infrastructures (DCIs).\ooindex{VisIVO, ascl:1011.020} Our framework is implemented through a workflow-enabled portal wrapped around WS-PGRADE which is the grid User Support Environment (gUSE) portal.  We provide customized interfaces for creating, invoking, monitoring and also modifying scientific workflows. All technical complexities, e.g. related to visualization algorithms and DCI configurations, are conveniently hidden from view. A number of workflows are enabled by default, e.g. implementing local or remote uploading and creation of scientific movies. Scientific movies are useful not only to scientists for presenting their research results, but also to museums and science centers for engaging visitors with complex scientific concepts. Our gateway can be accessed via standard www interfaces but also through a newly developed iOS mobile application offering novel ways for sharing analysis and exploration experiences with large-scale datasets in collaborative environments.
 \end{abstract}
 
 \section{Introduction}
@@ -67,6 +64,7 @@ The data-model determines the structure of user data allowing creation of a virt
 
 \section{VisIVO Mobile}
 VisIVO Mobile  (see Figure \ref{fig:visivomobile}) is an application for iOS providing access to our scientific gateway by exploiting the widely used iPhone / iPad platforms. End users can login with the same credentials as with the gateway. The application allows encryption of passwords by using SHA1 cryptography and the results are base 64 encoded. Hashed passwords are sent to the server for the authentication phase. The classes that allow authentication can be re-used each time an iOS application is to be authenticated for a scientific gateway based on Liferay  and the software is released under GPL V.2. The mobile application is designed for intuitive browsing, importing and visualization of user datasets.
+
 \section{Summary}
 Research in modern astrophysics is facing a data avalanche represented by exponential growth of datasets obtained through observations or numerical simulations. VisIVO Science Gateway is addressing this challenge by providing an interface for exploiting DCI resources in a transparent way and a rich set of visualization tools for handling large-scale datasets. This is realized in an environment for creating and sharing visualization workflows.  
 

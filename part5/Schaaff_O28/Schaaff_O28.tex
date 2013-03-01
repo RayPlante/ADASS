@@ -30,14 +30,11 @@ In 2010, we started development for Android with a prototype based on VizieR Min
 \section{Different Ways of Development}
 
 We have explored three ways to build applications for mobile devices.
-It is possible to develop Web applications in HTML4/5 as for desktops, but with dedicated Javascript libraries like Mobile jQuery which are optimized for mobile devices.
-A second solution is to develop a native application in Java for Android, Objective C for iOS, etc. 
-A third solution is to develop Web applications in HTML and javascript and to convert these applications to pseudo native applications through converters like PhoneGap.
-We have not tried any another way which consists of the development in one language (for example Java) and the conversion to an another like Objective-C. It is possible to find a few frameworks to do it like J2ObjC which converts just the Java code (data access, etc.) excepting the GUI side.
+It is possible to develop Web applications in HTML4/5 as for desktops, but with dedicated Javascript libraries like Mobile jQuery which are optimized for mobile devices. A second solution is to develop a native application in Java for Android, Objective C for iOS, etc. 
+A third solution is to develop Web applications in HTML and javascript and to convert these applications to pseudo native applications through converters like PhoneGap. We have not tried any another way which consists of the development in one language (for example Java) and the conversion to an another like Objective-C. It is possible to find a few frameworks to do it like J2ObjC which converts just the Java code (data access, etc.) excepting the GUI side.
 
 \subsection{Web Development}
-Web development is the fastest way to develop an application on mobile devices. A number of frameworks and javascript libraries are now available and it is possible to create a very nice application in a few hours or at least in a few days for a well designed application.
-A mobile version of the CDS Portal has been developed this way (see Fig.~\ref{O28:1}).
+Web development is the fastest way to develop an application on mobile devices. A number of frameworks and javascript libraries are now available and it is possible to create a very nice application in a few hours or at least in a few days for a well designed application. A mobile version of the CDS Portal has been developed this way (see Fig.~\ref{O28:1}).
 
 \begin{figure}[h] \center
 \includegraphics[scale=0.7]{part5/Schaaff_O28/O28_f4.eps}
@@ -46,10 +43,7 @@ A mobile version of the CDS Portal has been developed this way (see Fig.~\ref{O2
 \end{figure}
 
 \subsection{Native Development}
-The number of HEALpix \citep{gorski_2005} available\ooindex{HEALPix, ascl:1107.018}
- surveys is growing and a few HEALPix visualizers are available, like Aladin through the Allsky mode \citep{fernique_2010}. This mode runs well on a desktop or a laptop with good performance but it was a real challenge to develop a visualizer for smartphones and Internet tablets. We decided to develop it on Android because it was possible to reuse a part of the Aladin source written in Java. The first tests were not really good due to the basic hardware capabilities compared to a desktop. Aladin does not use OpenGL but this graphical library is available on almost all the mobile devices. The new prototype implementing this library was between thirty and forty times faster and the FPS (frames per second) were sufficient to provide a fluid display.
-All the surveys available, and added in the future, in Aladin will also be available in the application called SkySurveys (see Fig.~\ref{O28:2}). It is possible to try it by downloading from the CDS developer's corner. 
-We consider this application as an advanced prototype for Android devices and we will probably not develop it the same way for iOS devices.
+The number of HEALpix \citep{gorski_2005} available\ooindex{HEALPix, ascl:1107.018} surveys is growing and a few HEALPix visualizers are available, like Aladin through the Allsky mode \citep{fernique_2010}. This mode runs well on a desktop or a laptop with good performance but it was a real challenge to develop a visualizer for smartphones and Internet tablets. We decided to develop it on Android because it was possible to reuse a part of the Aladin source written in Java. The first tests were not really good due to the basic hardware capabilities compared to a desktop. Aladin does not use OpenGL but this graphical library is available on almost all the mobile devices. The new prototype implementing this library was between thirty and forty times faster and the FPS (frames per second) were sufficient to provide a fluid display. All the surveys available, and added in the future, in Aladin will also be available in the application called SkySurveys (see Fig.~\ref{O28:2}). It is possible to try it by downloading from the CDS developer's corner. We consider this application as an advanced prototype for Android devices and we will probably not develop it the same way for iOS devices.
 
 \begin{figure}[h] \center
 \includegraphics[scale=0.28]{part5/Schaaff_O28/O28_f1.eps}
@@ -60,9 +54,7 @@ We consider this application as an advanced prototype for Android devices and we
 \end{figure}
 
 \subsection{Converters}
-We have developed the main features of SkyObjects in HTML5 and we have converted it using PhoneGap to iOS and Android applications. But we had a big "gap" between the final application and what we had developed directly in Java or Objective-C: the generated application is not a real native application, it is just an Android or iOS application implementing an HTML5 emulator with the HTML5 Web application code. So it is not a real conversion to a native language. 
-It means also that it is not possible to convert in a native language and to modify this code.
-Another difficulty was also the lack of some functionalities of the mobile devices like the gyroscope  (see Fig.~\ref{O28:3}).
+We have developed the main features of SkyObjects in HTML5 and we have converted it using PhoneGap to iOS and Android applications. But we had a big "gap" between the final application and what we had developed directly in Java or Objective-C: the generated application is not a real native application, it is just an Android or iOS application implementing an HTML5 emulator with the HTML5 Web application code. So it is not a real conversion to a native language. It means also that it is not possible to convert in a native language and to modify this code. Another difficulty was also the lack of some functionalities of the mobile devices like the gyroscope  (see Fig.~\ref{O28:3}).
 
 \begin{figure}[h] \center
 \includegraphics[scale=0.28]{part5/Schaaff_O28/O28_f5.eps}
@@ -72,9 +64,7 @@ Another difficulty was also the lack of some functionalities of the mobile devic
 \end{figure}
 
 \section{Perspectives}
-We are now focusing the new developments on Web apps based on HTML5 (\url{http://www.w3.org/TR/html5/}), which can provide rich content and which should become a standard probably in about one year. As it is not easy to have both Java and Objective-C skills in a team and to have enough time for native development, it has the advantage of allowing development independent of the mobile platform and to avoid the deep tests which are needed, for example on Android devices. 
-But frameworks should also evolve and it should be easier in the future to develop applications for the main mobile operating systems without doing the work two or three times.
-All the experiments are detailed at \url{cds.u-strasbg.fr/resources/doku.php?id=mobiledev}.
+We are now focusing the new developments on Web apps based on HTML5 (\url{http://www.w3.org/TR/html5/}), which can provide rich content and which should become a standard probably in about one year. As it is not easy to have both Java and Objective-C skills in a team and to have enough time for native development, it has the advantage of allowing development independent of the mobile platform and to avoid the deep tests which are needed, for example on Android devices. But frameworks should also evolve and it should be easier in the future to develop applications for the main mobile operating systems without doing the work two or three times. All the experiments are detailed at \url{cds.u-strasbg.fr/resources/doku.php?id=mobiledev}.
 
 \section{Conclusion}
 The first prototypes were important to evaluate the time necessary to develop tools for mobile devices and to have a reflection about which service or application would be useful on these kinds of devices. The development of native applications for mobile devices has a high cost in terms of man power and time. It is easy to use, for example, existing Java source code with a quick development of an Android user interface but development from scratch needs time similar to development for desktops or laptops. We think that the development of a native "app" for Android or iOS are justified if it is not possible to provide or adapt a simple Web application (HTML and Javascript) independent from the device.
