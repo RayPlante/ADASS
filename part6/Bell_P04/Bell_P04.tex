@@ -14,45 +14,13 @@
 \aindex{Agarwal, A.}
 
 \begin{abstract}
-In order to make the large number of cron jobs
-required to perform data archiving tasks
-at the Joint Astronomy Centre more manageable,
-we have designed and implemented a dashboard system
-for monitoring their progress. 
-The status of all of the tasks can be monitored on the dashboard's
-web interface, and via consolidated notification emails.
+In order to make the large number of cron jobs required to perform data archiving tasks at the Joint Astronomy Centre more manageable, we have designed and implemented a dashboard system for monitoring their progress. The status of all of the tasks can be monitored on the dashboard's web interface, and via consolidated notification emails.
 \end{abstract}
 
 \section{Introduction}
-At the Joint Astronomy Centre (JAC)
-we use a large number of cron jobs to
-perform data archiving tasks such as transfers to
-the Canadian Astronomy Data Centre
-for inclusion in the JCMT Science Archive
-\citep{2011ASPC..442..203E}.
-We must also back up data locally and
-ensure sufficient disk space is available
-on our data acquisition and reduction machines
-before each night of observing.
-The cron scheduler runs these
-jobs on a given schedule, and by default would send any output by email.
-However as the number of machines and cron jobs
-running on them increases to cope with
-the demands of modern instruments such as SCUBA-2,
-we have found that this can lead to an
-unmanageable amount of email traffic.
-A related problem is that it is
-not obvious when a cron job has not been run, for whatever reason.
+At the Joint Astronomy Centre (JAC) we use a large number of cron jobs to perform data archiving tasks such as transfers to the Canadian Astronomy Data Centre for inclusion in the JCMT Science Archive \citep{2011ASPC..442..203E}. We must also back up data locally and ensure sufficient disk space is available on our data acquisition and reduction machines before each night of observing. The cron scheduler runs these jobs on a given schedule, and by default would send any output by email. However as the number of machines and cron jobs running on them increases to cope with the demands of modern instruments such as SCUBA-2, we have found that this can lead to an unmanageable amount of email traffic. A related problem is that it is not obvious when a cron job has not been run, for whatever reason.
 
-We therefore designed and implemented a dashboard system,
-written in Python,
-for monitoring the progress of the tasks. 
-Each task reports its status by sending messages
-to a server when it starts and finishes.
-The finish message can include a status to indicate whether the task
-was successful, along with any output.  
-A client utility allows crontab files
-to be imported so that the system can detect when a job has been missed.
+We therefore designed and implemented a dashboard system, written in Python, for monitoring the progress of the tasks. Each task reports its status by sending messages to a server when it starts and finishes. The finish message can include a status to indicate whether the task was successful, along with any output.  A client utility allows crontab files to be imported so that the system can detect when a job has been missed.
 
 
 \section{Implementation}
@@ -60,152 +28,44 @@ to be imported so that the system can detect when a job has been missed.
 \subsection{Overview}
 
 \articlefigure[scale=0.75]{part6/Bell_P04/P04_f1}{fig:arch}{
-Diagram showing the architecture  of the Crab system.
-The lower section shows the Crab server:
-the notification and monitor tasks run as Python threads
-while the server task and web interface run under CherryPy
---- a Python web server and framework.
-The upper section shows four possible types of cron jobs
-(dashed boxes) and how they communicate: either
-through the \texttt{crabsh} and \texttt{crab}
-utilities, or by directly using the client libraries.}
+Diagram showing the architecture  of the Crab system. The lower section shows the Crab server: the notification and monitor tasks run as Python threads while the server task and web interface run under CherryPy --- a Python web server and framework. The upper section shows four possible types of cron jobs (dashed boxes) and how they communicate: either through the \texttt{crabsh} and \texttt{crab} utilities, or by directly using the client libraries.}
 
-The architecture of the Crab system is
-shown in Figure~\ref{fig:arch}.
-Crab clients communicate with the server
-by sending JSON messages over HTTP.
-There are matching Python client and server libraries
-which implement the complete protocol.
-We have also written a basic Perl client library implementing
-a subset of the protocol sufficient for 
-reporting the status of cron jobs.
+The architecture of the Crab system is shown in Figure~\ref{fig:arch}. Crab clients communicate with the server by sending JSON messages over HTTP. There are matching Python client and server libraries which implement the complete protocol. We have also written a basic Perl client library implementing a subset of the protocol sufficient for reporting the status of cron jobs.
 
-The storage module is a Python object which serves to isolate the
-server tasks from the underlying database engine and schema, and would
-allow alternative storage mechanisms to be implemented.
-The tasks are kept separate from each other, by having them communicate
-through this module, except that the web interface needs to be
-able to access the monitor task's cache of the job status information
-in order to be able to update the dashboard display in
-an efficient manner.
+The storage module is a Python object which serves to isolate the server tasks from the underlying database engine and schema, and would allow alternative storage mechanisms to be implemented. The tasks are kept separate from each other, by having them communicate through this module, except that the web interface needs to be able to access the monitor task's cache of the job status information in order to be able to update the dashboard display in an efficient manner.
 
 \subsection{Client Utilities}
 
 
-A general client utility, \texttt{crab},
-is distributed with the Crab system.
-It can be used to send the job start
-and end messages, and to import crontab files.
-Crontab files can also be exported,
-either exactly as last imported,
-or as generated from the job records in the database,
-including any changes made since the last
-import.
+A general client utility, \texttt{crab}, is distributed with the Crab system. It can be used to send the job start and end messages, and to import crontab files. Crontab files can also be exported, either exactly as last imported, or as generated from the job records in the database, including any changes made since the last import.
 
-To allow existing jobs to easily
-be brought into the system,
-we have also written a wrapper script, \texttt{crabsh}, which acts
-like a shell.
-This can be activated for a whole crontab 
-simply by setting the \texttt{SHELL}
-variable in the crontab to the path to this script.
+To allow existing jobs to easily be brought into the system, we have also written a wrapper script, \texttt{crabsh}, which acts like a shell. This can be activated for a whole crontab simply by setting the \texttt{SHELL} variable in the crontab to the path to this script.
 
 \subsection{Identification of Jobs}
 
-The central part of the Crab server's response to a message
-regarding a job is the identification of the job involved.
-This consists of a database search, restricted to the
-given host and user name, to determine the job number
---- the primary key of the job table.
-The search includes deleted jobs, so that they can
-be un-deleted rather than duplicated.
-To allow crontabs to be imported with as little change as possible,
-it can attempt to recognize jobs from the command string.
-However the process can be made more robust by assigning each
-job a unique name via the \texttt{CRABID} parameter.
-This need only be unique for a given user and host.
+The central part of the Crab server's response to a message regarding a job is the identification of the job involved. This consists of a database search, restricted to the given host and user name, to determine the job number --- the primary key of the job table. The search includes deleted jobs, so that they can be un-deleted rather than duplicated. To allow crontabs to be imported with as little change as possible, it can attempt to recognize jobs from the command string. However the process can be made more robust by assigning each job a unique name via the \texttt{CRABID} parameter. This need only be unique for a given user and host.
 
-The presence of a Crab ID allows the server to detect when a command string
-has been changed and update it in the database.
-It also allows Crab to distinguish jobs with identical command
-strings, such as a job running at multiple times of
-day which cannot be combined into a single cron schedule.
-Additionally it provides a convenient name for the job
-to be displayed on the web interface and in notification messages.
+The presence of a Crab ID allows the server to detect when a command string has been changed and update it in the database. It also allows Crab to distinguish jobs with identical command strings, such as a job running at multiple times of day which cannot be combined into a single cron schedule. Additionally it provides a convenient name for the job to be displayed on the web interface and in notification messages.
 
 \subsection{Monitor Task}
 
-The monitor task is a Python class which runs in a separate
-thread as part of the server.
-It polls
-the storage module for new events, and
-uses
-these to update its internal data structures
-to indicate
-the state of all of the jobs
-and which are currently running.
-It also caches the cron schedule and timezone for each job,
-and checks every minute whether this matches
-the current time.
-This allows it to insert alarms
-into the database
-whenever a job is late or missed.
-A further check is made for jobs which
-have run beyond their
-configured time-out period.
+The monitor task is a Python class which runs in a separate thread as part of the server. It polls the storage module for new events, and uses these to update its internal data structures to indicate the state of all of the jobs and which are currently running. It also caches the cron schedule and timezone for each job, and checks every minute whether this matches the current time. This allows it to insert alarms into the database whenever a job is late or missed. A further check is made for jobs which have run beyond their configured time-out period.
 
-Each error status code has an associated severity
-(trivial, warning or error)
-so that the dashboard display
-does not replace an important status with a less significant message.
-A successful job completion resets the
-display to ``Succeeded'' so that the dashboard
-always presents a useful at a glance overview
-of the tasks.
+Each error status code has an associated severity (trivial, warning or error) so that the dashboard display does not replace an important status with a less significant message. A successful job completion resets the display to ``Succeeded'' so that the dashboard always presents a useful at a glance overview of the tasks.
 
 \subsection{Notification Task}
 
-One of the goals of developing Crab was to replace
-large numbers of separate emails from
-the cron daemon with more manageable
-consolidated messages.
-To this end, Crab includes a
-configurable notification system.
-Notifications can either be
-attached to specific jobs
-or configured by host name and/or by user name.
-Options for each notification include
-the severity level of messages to
-display and whether or not to show
-the job output
---- if there are no relevant events, the notification
-will not be sent.
+One of the goals of developing Crab was to replace large numbers of separate emails from the cron daemon with more manageable consolidated messages. To this end, Crab includes a configurable notification system. Notifications can either be attached to specific jobs or configured by host name and/or by user name. Options for each notification include the severity level of messages to display and whether or not to show the job output --- if there are no relevant events, the notification will not be sent.
 
 \section{Example Usage}
 
-An example crontab file
-based on two of the data archiving tasks used at the
-James Clerk Maxwell Telescope (JCMT)
-is given in Table~\ref{tab:crontab}.
-The additions made
-to prepare it for use with Crab
-are shown in bold
---- all of these jobs simply run under \texttt{crabsh}
-rather than having to be made Crab-aware.
+An example crontab file based on two of the data archiving tasks used at the James Clerk Maxwell Telescope (JCMT) is given in Table~\ref{tab:crontab}. The additions made to prepare it for use with Crab are shown in bold --- all of these jobs simply run under \texttt{crabsh} rather than having to be made Crab-aware.
 
-Figure~\ref{fig:screenshot} shows
-part of the Crab web interface.
-To construct this example,
-the cron jobs from Table~\ref{tab:crontab} were imported,
-along with a few more based on JCMT tasks.
-Clicking a job's status in the dashboard
-leads to a page showing its most recent output.
+Figure~\ref{fig:screenshot} shows part of the Crab web interface. To construct this example, the cron jobs from Table~\ref{tab:crontab} were imported, along with a few more based on JCMT tasks. Clicking a job's status in the dashboard leads to a page showing its most recent output.
 
 
 \begin{table}[!ht]
-\caption{Example crontab file. The \texttt{crabd-check} script starts the
-Crab server unless it is already running,
-so it is excluded from monitoring by Crab.}
+\caption{Example crontab file. The \texttt{crabd-check} script starts the Crab server unless it is already running, so it is excluded from monitoring by Crab.}
 \label{tab:crontab}
 \smallskip
 \begin{center}
@@ -234,34 +94,15 @@ Crontab & Comments \\
 \end{table}
 
 \articlefigure[width=4in]{part6/Bell_P04/P04_f2}{fig:screenshot}{
-Screenshot of the Crab dashboard page.
-Various events have been triggered
-to demonstrate a range of statuses.
-The links lead to pages summarizing the jobs for a
-particular host / user, and a page showing the history of each job.}
+Screenshot of the Crab dashboard page. Various events have been triggered to demonstrate a range of statuses. The links lead to pages summarizing the jobs for a particular host / user, and a page showing the history of each job.}
 
 \section{Conclusion}
 
-The system has made cron job tracking
-at the JAC much
-simpler, and has made it easier to determine
-when there are urgent
-issues that need to be attended to.
-We have designed the software to be as general as possible,
-and hope that other observatories will
-find it useful for monitoring
-data archiving or other scheduled tasks.
+The system has made cron job tracking at the JAC much simpler, and has made it easier to determine when there are urgent issues that need to be attended to. We have designed the software to be as general as possible, and hope that other observatories will find it useful for monitoring data archiving or other scheduled tasks.
 
 
 \altsubsubsection*{Obtaining the Software}
 
-Crab is available under the GPL, version 3,
-from GitHub
-(\url{https://github.com/grahambell/crab}).
-It can also be installed using the
-\texttt{crab} package on PyPI
-and the Perl client library
-(\texttt{WWW::Crab::Client})
-can be downloaded from CPAN.
+Crab is available under the GPL, version 3, from GitHub (\url{https://github.com/grahambell/crab}). It can also be installed using the \texttt{crab} package on PyPI and the Perl client library (\texttt{WWW::Crab::Client}) can be downloaded from CPAN.
 
 \bibliography{editor}
