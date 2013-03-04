@@ -13,107 +13,36 @@
 \aindex{Polsterer, K. L.}
 
 \begin{abstract}
-LUCI is a pair of NIR spectrographs and imagers for the Large Binocular Telescope (LBT).
-Currently only one instrument is available at the LBT. 
-The second instrument is going to be installed at the LBT in 2013. The next software version has to support synchronized
-binocular observations with both LUCI instruments.
-Therefore it will run the observation cycles synchronously on both telescope sides.
-Here we describe the interfaces and strategies that are used for an implementation of the scheduling and the synchronization of the binocular observations. 
+LUCI is a pair of NIR spectrographs and imagers for the Large Binocular Telescope (LBT). Currently only one instrument is available at the LBT. The second instrument is going to be installed at the LBT in 2013. The next software version has to support synchronized binocular observations with both LUCI instruments. Therefore it will run the observation cycles synchronously on both telescope sides. Here we describe the interfaces and strategies that are used for an implementation of the scheduling and the synchronization of the binocular observations. 
 
 \end{abstract}
 
 \section{Introduction}
 
-The Large Binocular Telescope (LBT) is an optical telescope for astronomy located on Mount Graham (3,300\,m) in 
-Arizona.
-The LBT is currently one of the world's most advanced optical telescopes; using two 8.4\,m wide mirrors on 
-a common mount can give the same light gathering ability as a 11.8\,m wide single circular telescope and 
-detail of 22.8\,m wide one. Two mirrors on a common mount is a unique design among the 
-modern largest telescopes. The telescope works as a single one for a large angular movement 
-(e.g. a pointing to new coordinates). However the mirrors can be tilted independently up to 20\arcsec~ if we have to 
-align on different areas. In this case we have two ``independent'' 
-telescopes. We also should care about effective usage of both spectrographs / imagers on the individual telescope arms: 
-the instrument on one arm should not have a large idle time between exposures while the other instrument works.
-In addition, we have to be able to change the observation workflow for both instruments in case of unexpected events, like technical failures or changing weather conditions.
-Even though, these requirements are common for the majority of instruments at the LBT, the
-scheduling and the synchronization has to be implemented in the LUCI control software, too. 
-LUCI is a pair of NIR spectrographs and imagers working in the wavelength range
-from 0.85\,$\micron$ -- 2.6\,$\micron$ (\cite{2003SPIE.4841..962S}, \cite{polsterer:2011}). To realize observations, 
-a software scheduler is used to process an observation queue, analyze the setup requirements and send the given commands to the telescope and the instruments. 
+The Large Binocular Telescope (LBT) is an optical telescope for astronomy located on Mount Graham (3,300\,m) in Arizona. The LBT is currently one of the world's most advanced optical telescopes; using two 8.4\,m wide mirrors on a common mount can give the same light gathering ability as an 11.8\,m wide single circular telescope and detail of a 22.8\,m wide one. Two mirrors on a common mount is a unique design among the modern large telescopes. The telescope works as a single one for large angular movement (e.g. a pointing to new coordinates). However the mirrors can be tilted independently up to 20\arcsec~ if we have to align on different areas. In this case we have two ``independent'' telescopes. We also should care about effective usage of both spectrographs / imagers on the individual telescope arms: the instrument on one arm should not have a large idle time between exposures while the other instrument works.In addition, we have to be able to change the observation workflow for both instruments in case of unexpected events, like technical failures or changing weather conditions. Even though, these requirements are common for the majority of instruments at the LBT, the scheduling and the synchronization has to be implemented in the LUCI control software, too. LUCI is a pair of NIR spectrographs and imagers working in the wavelength range from 0.85\,$\micron$ -- 2.6\,$\micron$ \citep{2003SPIE.4841..962S,polsterer:2011}. To realize observations, a software scheduler is used to process an observation queue, analyze the setup requirements and send the given commands to the telescope and the instruments. 
 
 \section{Observation Program Definition}
 
-To run correct binocular observations astronomers should prepare a program which takes into account a synchronization 
-between the telescope and both instruments. An observation preparation software will help with the planning of a scientific program for 
-the binocular mode. 
-The top-level object which is required to define observations is the observation program (Fig.~\ref{Fig:ObservationProgramObject}). 
-A program contains metadata and observation blocks. 
-The metadata describes the general properties of a program like title, description, principal investigator name, allocation time etc. 
+To run correct binocular observations astronomers should prepare a program which takes into account a synchronization between the telescope and both instruments. Observation preparation software will help with the planning of a scientific program for the binocular mode. The top-level object which is required to define observations is the observation program (Figure~\ref{Fig:ObservationProgramObject}). A program contains metadata and observation blocks. The metadata describes the general properties of a program like title, description, principal investigator name, allocation time, etc. 
 \articlefigure[width=7.2cm]{part10/Pramskiy_P038/ObservationProgramObject01.eps}{Fig:ObservationProgramObject}{Observation program with metadata and sub-components.}
-The program is composed of several observation blocks. These blocks contain a list of instructions for the telescope and 
-for both LUCI instruments. Each block has its own observation requirements and goals. Blocks may differ by observation mode, by observation conditions or 
-by their list of objects. 
+The program is composed of several observation blocks. These blocks contain a list of instructions for the telescope and for both LUCI instruments. Each block has its own observation requirements and goals. Blocks may differ by observation mode, by observation conditions or by their list of objects. 
 
 \articlefigure[width=8.5cm]{part10/Pramskiy_P038/ObservationItemObject.eps}{Fig:ObservationItemObject}{Observation item with tasks for both instruments and the telescope.}
-Each observation block is split into a list of observation items (Fig.~\ref{Fig:ObservationItemObject}). 
-These items contain instructions for the
-telescope as well as for the instruments on the left and on the right arm. 
-An observation item can contain empty tasks for subcomponents if no action is required.
-For example observation item can contain tasks just for the telescope or just for the both detectors. 
-In the first example, we send changes just to the telescope, while in the second example, we just start exposures with both detectors at the same time.
-The instrument tasks
-can define abstract actions as well as concretized hardware setups. A sequence of tasks can be
-created and validated in the observation preparation tool. 
-The tasks for the instrument can be used to
-trigger a readout of the detector or to select new instrument setups (e.g. to change filter, grating or
-mask). The tasks for the telescope include the general instructions for the whole mount and individual
-instructions for each mirror arm. The metadata in this item holds the information about general properties, like
-object description, synchronization of the telescope, etc. 
-After the astronomer has specified his scientific goals and conditions, observations can be processed
-automatically.
+Each observation block is split into a list of observation items (Figure~\ref{Fig:ObservationItemObject}). These items contain instructions for the telescope as well as for the instruments on the left and right arms. An observation item can contain empty tasks for subcomponents if no action is required. For example an observation item can contain tasks just for the telescope or just for the both detectors. In the first example, we send changes just to the telescope, while in the second example, we just start exposures with both detectors at the same time. The instrument tasks can define abstract actions as well as concretized hardware setups. A sequence of tasks can be created and validated in the observation preparation tool.  The tasks for the instrument can be used to trigger a readout of the detector or to select new instrument setups (e.g.\ to change a filter, grating, or mask). The tasks for the telescope include the general instructions for the whole mount and individual instructions for each mirror arm. The metadata in this item holds the information about general properties, like object description, synchronization of the telescope, etc. After the astronomer has specified his scientific goals and conditions, observations can be processed automatically.
 
 \section{The Observation Queue}
 
-
-Before starting the observation an observer has to create a queue of the observation blocks (Fig.~\ref{Fig:ObservationBlockObject}).
-The scientific priorities, the weather conditions, the moon phases, the allocated time for the program are used to sort the observation blocks inside of the queue.
-During an observation run the observer can replace blocks by others to improve observation efficiency or to fix hardware accidents,
-but the observer can not split blocks. 
-This restriction is important because it does not break the synchronization points between the telescope and both instruments inside of a single observation block.
-Instead the observer should create new observation block, if required. These new blocks can be created from scratch or by copying and modifying the existing ones. 
-The observer should care about synchronization for the created block.
-After compiling several observation block to a queue, the observation is ready to be executed.
-\articlefigure[width=10.7cm]{part10/Pramskiy_P038/ObservationBlockObject.eps}{Fig:ObservationBlockObject}{Two observation blocks in the queue.}
+Before starting the observation an observer has to create a queue of the observation blocks (Figure~\ref{Fig:ObservationBlockObject}). The scientific priorities, the weather conditions, the moon phases, and the allocated time for the program are used to sort the observation blocks inside of the queue. During an observation run the observer can replace blocks by others to improve observation efficiency or to fix hardware accidents, but the observer cannot split blocks. This restriction is important because it does not break the synchronization points between the telescope and both instruments inside of a single observation block. Instead the observer should create new observation block, if required. These new blocks can be created from scratch or by copying and modifying the existing ones. The observer should care about synchronization for the created block. After compiling several observation block to a queue, the observation is ready to be executed. \articlefigure[width=10.7cm]{part10/Pramskiy_P038/ObservationBlockObject.eps}{Fig:ObservationBlockObject}{Two observation blocks in the queue.}
 
 \section{Processing the Observation Queue}
 
-When observations are started, the scheduler is responsible for solving the synchronization conflicts between the left and the right arm (Fig.~\ref{Fig:SchedulerGeneral}).
-Like an iterator the scheduler cursor sequentially extracts instructions from the observation items of current observation block.
-Those instructions are divided into telescope instructions and commands for the left and the right instrument. 
-Depending on the type of synchronization, the scheduler commits instructions to one or several components at the same time. 
-If it is required, the scheduler waits until the end of the tasks of the other arm. 
-\articlefigure[width=10.8cm]{part10/Pramskiy_P038/SchedulerGeneral.eps}{Fig:SchedulerGeneral}{Scheduling workflow.}
-The scheduler sends tasks to the left and the right instrument manager / readout manager, and to the telescope manager. 
-The managers transform an user-friendly tasks into low level commands for the hardware.
-All business logic is implemented inside of the managers to hide the complexity on hardware level. The chosen hierarchy handles the synchronization between 
-the components in the top level scheduler instead of shifting it to lower level subsystems.  
-Therefore the scheduling and synchronization issues are solved just in the scheduler. 
+When observations are started, the scheduler is responsible for solving the synchronization conflicts between the left and the right arm (Figure~\ref{Fig:SchedulerGeneral}). Like an iterator, the scheduler cursor sequentially extracts instructions from the observation items of the current observation block. Those instructions are divided into telescope instructions and commands for the left and right instruments. Depending on the type of synchronization, the scheduler commits instructions to one or several components at the same time. If it is required, the scheduler waits until the end of the tasks of the other arm. \articlefigure[width=10.8cm]{part10/Pramskiy_P038/SchedulerGeneral.eps}{Fig:SchedulerGeneral}{Scheduling workflow.} The scheduler sends tasks to the left and the right instrument manager / readout manager, and to the telescope manager. The managers transform user-friendly tasks into low level commands for the hardware. All business logic is implemented inside of the managers to hide the complexity of the hardware level. The chosen hierarchy handles the synchronization between the components in the top level scheduler instead of shifting it to lower level subsystems. Therefore the scheduling and synchronization issues are solved just in the scheduler. 
 
-The scheduler is split into four components: the cursor, the parser, the analyzer, the committer, and an optional adapter in 
-case of a ``guest'' instrument / detector. 
-The cursor extracts the current observation item from the queue and sends it to the parser. The parser prepares the observation item
-for the analyzer. The analyzer contains default business logic for the scheduling and the synchronization between the telescope and 
-both instruments. For example, if we have to run an exposure we should check when the telescope has finished the pointing process.  
-The opposite use case is, that the analyzer can not run a telescope movement until both instruments finished their exposures.
-When all required components (the telescope and the instruments) are ready the analyzer sends instructions from the observation item to the committer.
-The committer distributes instructions between the telescope, both instruments and both detectors.  
+The scheduler is split into four components: the cursor, the parser, the analyzer, and the committer. The cursor extracts the current observation item from the queue and sends it to the parser. The parser prepares the observation item for the analyzer. The analyzer contains default business logic for the scheduling and the synchronization between the telescope and both instruments. For example, if we have to run an exposure we should check when the telescope has finished the pointing process.  The opposite use case is, that the analyzer can not run a telescope movement until both instruments finished their exposures. When all required components (the telescope and the instruments) are ready, the analyzer sends instructions from the observation item to the committer. The committer distributes instructions between the telescope, both instruments, and both detectors.  
 
-In the default case, the scheduler will work with the LUCI instruments. We may use a ``guest'' instrument on the right or on the left telescope arm.
-In this case we have to use additional component: adapters to instrument / readout APIs (as in the Fig.~\ref{Fig:SchedulerGeneral}). 
-This component converts the observation items to match the custom instrument and detector interfaces. 
-For each type of ``guest'' instrument the adapter class can be easily developed by extending a basic adapter class.
+In the default case, the scheduler will work with the LUCI instruments. We may use a ``guest'' instrument on the right or on the left telescope arm. In this case we have to use an additional component: adapters to instrument / readout APIs (as in the Figure~\ref{Fig:SchedulerGeneral}). This component converts the observation items to match the custom instrument and detector interfaces. For each type of ``guest'' instrument the adapter class can be easily developed by extending a basic adapter class.
 
 \acknowledgements 
-Das diesem Bericht zugrundeliegende Vorhaben wurde mit Mittel des Bundesministeriums f\"ur Bildung und Forschung unter dem F\"orderkennzeichen 05A08PCA gef\"ordert. Die Verantwortung f\"ur den Inhalt dieser Ver\"offentlichung liegt beim Autor.
+The project underlying this report was supported with funds from the Bundesministeriums f\"ur Bildung und Forschung under the Forderkennzeichen 05A08PCA. The responsibility for the content of this paper lies with the author.
 
 \bibliography{editor}

@@ -23,9 +23,9 @@ The AAO's HERMES spectrograph will start operation in 2013. Its primary project 
 
 \section{Introduction}
 
-The AAO's new HERMES instrument \citep{Hermes_2010} is due to begin operations in mid-2013. The existing 2dF robotic fibre positioner will feed the output from ~400 optical fibres at a time into a powerful new spectrograph covering four optical bands simultaneously. The primary science project for HERMES is the ‘Galactic Archaeology‘ (GA) Survey, which aims to reconstruct the history of our Galaxy's formation from precise multi-element abundance measurements of one million stars.
+The AAO's new HERMES instrument \citep{Hermes_2010} is due to begin operations in mid-2013. The existing 2dF robotic fibre positioner will feed the output from ~400 optical fibres at a time into a powerful new spectrograph covering four optical bands simultaneously. The primary science project for HERMES is the 'Galactic Archaeology' (GA) Survey, which aims to reconstruct the history of our Galaxy's formation from precise multi-element abundance measurements of one million stars.
 
-The software for HERMES is an extension of that used for the existing 2dF and AAOmega instruments. A simplistic way of looking at HERMES is to see it as AAOmega with a new spectrograph and with four, larger, detectors instead of two. The modular design of the original 2dF software has greatly simplified its evolution, first for use with AAOmega, now for use with HERMES.
+The software for HERMES is an extension of that used for the existing 2dF and AAOmega instruments. A simplistic way of looking at HERMES is to see it as AAOmega with a new spectrograph and with four, larger detectors instead of two. The modular design of the original 2dF software has greatly simplified its evolution, first for use with AAOmega, now for use with HERMES.
 
 The main software changes involved in the transition from AAOmega to HERMES are:
 
@@ -47,7 +47,7 @@ To minimise (and preferably to eliminate) the dead period between the hardware b
 
 The main frame of the spectrograph is now complete, and the optics for one arm (the blue) are being tested. The other three arms will follow shortly.
 
-\section{Observing system}
+\section{Observing System}
 
 The existing 2dF/AAOmega observing software has been evolving continuously since it was first designed in 1994. It consists of a collection of tasks all written using the AAO's DRAMA data acquisition environment \citep{Drama_1995}. The modular design of the system has simplified the evolution of the software to match that of the hardware from 2dF to AAOmega (mainly a replacement of the spectrographs) and now to HERMES (again a new spectrograph, but also with new optical fibres that can feed either HERMES or AAOmega, and four detectors rather than two).
 
@@ -58,11 +58,11 @@ The overall structure of the HERMES observing system is shown in Figure 1. Real-
 \caption{The 2dF observing system, running in HERMES mode.}
 \end{figure}
 
-Overall control is provided by the main 2dF control task, which coordinates the operation of the rest of the system. Not shown in the diagram are the fibre configuration program, which handles the assignment of the fibres to the target objects, and the data reduction system, 2dFdr, which normally runs autonomously alongside the observing system. HERMES will have slightly more coordination between the observing system and 2dFdr in order to provide an automated focus and alignment facility. The Galactic archaeology project supplies its own analysis pipeline; 2dFdr removes the instrumental effects from the data and provides calibrated spectra to the pipeline, which then handles the scientific analysis.
+Overall control is provided by the main 2dF control task, which coordinates the operation of the rest of the system. Not shown in the diagram are the fibre configuration program, which handles the assignment of the fibres to the target objects, and the data reduction system, 2dFdr, which normally runs autonomously alongside the observing system. HERMES will have slightly more coordination between the observing system and 2dFdr in order to provide an automated focus and alignment facility. The Galactic Archaeology project supplies its own analysis pipeline; 2dFdr removes the instrumental effects from the data and provides calibrated spectra to the pipeline, which then handles the scientific analysis.
 
 The system can be run in either AAOmega or HERMES mode.
 
-\section{Spectrograph control task and simulator}
+\section{Spectrograph Control Task and Simulator}
 
 In both modes, AAOmega and HERMES, there is a spectrograph control task. This task is responsible for all communication with the hardware and implements high-level DRAMA commands for moving the spectrograph into various observing configurations. Because the two spectrographs are quite different, there are two separate spectrograph control tasks, although both interact with the overall control task in the same way.
 
@@ -70,15 +70,15 @@ For all its optical complexity, the HERMES spectrograph operates in fixed wavele
 
 We also needed to be able to test the new spectrograph control task long before the hardware would become available, since we could not afford the traditional long delays involved in finally getting hardware and software working together. This, combined with the need to be confident about the CANOpen library in a DRAMA environment, led us to use a highly elaborate low-level simulation not just of the spectrograph but also of the underlying CANBus hardware.
 
-Rather than provide a simulation version of the CANOpen library, we chose to use the real library in all its multi-threaded glory, intercepting the CANBus packets it creates at the point they would normally be written to the CANBus interface hardware. These are routed instead to a UNIX pipe, connected to an AAO-written task that emulates CANBus operation at this very low level, and which mimics the operation of a set of CANBus nodes (digital I/O and amplifier modules) which work with a detailed simulation of the HERMES spectrograph to produce a test bed that not only allows the control task to be tested, but also provides confidence that the CANOpen library works without problems in a DRAMA task. This essentially involved reverse engineering the CANOpen protocol, and represented a significant effort, but was something that could be done early in the project and so was not on the critical path.
+Rather than provide a simulation version of the CANOpen library, we chose to use the real library in all its multi-threaded glory, intercepting the CANBus packets it creates at the point they would normally be written to the CANBus interface hardware. These are routed instead to a UNIX pipe, connected to an AAO-written task that emulates CANBus operations at this very low level, and which mimics the operation of a set of CANBus nodes (digital I/O and amplifier modules) which work with a detailed simulation of the HERMES spectrograph to produce a test bed that not only allows the control task to be tested, but also provides confidence that the CANOpen library works without problems in a DRAMA task. This essentially involved reverse engineering the CANOpen protocol, and represented a significant effort, but was something that could be done early in the project and so was not on the critical path.
 
 The simulator has its own GUI, and this can be used to provide control over how the simulated spectrograph operates. For example, a slider on the GUI controls the simulated air pressure for the pneumatic mechanisms, and can be used to reduce this pressure to the point that they no longer work. The control task has to spot this, handle the resulting failures, and report the error condition to the overall HERMES control task.
 
 This approach, based on previous use of detailed simulation at AAO \citep{TCS_2010}, has been very successful. So far, integration of the hardware as it becomes available with the already functionally complete control task has been remarkably unexciting. We are able to run in a partial simulation mode, using the actual hardware that is available and simulating the hardware still to be completed. We have almost no test programs as such; all testing is done with the complete, operational, control task running with varying amounts of simulation.
 
-\section{Data reduction and the data simulator}
+\section{Data Reduction and the Data Simulator}
 
-The AAO's existing fibre instrument reduction package, 2dFdr, is being adapted to support HERMES. 2dFdr is quite an old package now (it is written in Fortran and originally was based around Starlink\ooindex{Starlink, ascl:1110.012} package) but has been refurbished and refactored in recent years and the necessary changes are relatively easy to implement. The main changes relate partly to changes in the fibre data itself (there is more overlap between the data from adjoining fibres, meaning optimal extraction techniques become very important, and the resolution is higher) and partly to the stringent new signal to noise requirements of the Galactic Archaeology survey, which mandates much more precise handling of many aspects of the data reduction, particularly the arc identification and wavelength calibration.
+The AAO's existing fibre instrument reduction package, 2dFdr, is being adapted to support HERMES. 2dFdr is quite an old package now (it is written in Fortran and originally was based around the Starlink\ooindex{Starlink, ascl:1110.012} package) but has been refurbished and refactored in recent years and the necessary changes are relatively easy to implement. The main changes relate partly to changes in the fibre data itself (there is more overlap between the data from adjoining fibres, meaning optimal extraction techniques become very important, and the resolution is higher) and partly to the stringent new signal to noise requirements of the Galactic Archaeology survey, which mandates much more precise handling of many aspects of the data reduction, particularly the arc identification and wavelength calibration.
 
 The survey timetable means we cannot afford the usual delay as the instrumental characteristics become apparent from the initial batches of data. We need to test the data reduction software in advance of the construction of the actual instrument. To allow this, a very detailed data simulator has been written,
 
