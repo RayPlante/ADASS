@@ -1,8 +1,6 @@
 
 \resetcounters
 
-%\bibliographystyle{asp2010}
-
 \markboth{Song, Luo, and Zhao}{A New Python Library --- PydasLib}
 
 \title{A New Python Library for Spectroscopic Analysis with MIDAS Style}
@@ -16,90 +14,45 @@
 \aindex{Zhao, Y.}
 
 \begin{abstract}
-The ESO MIDAS is a system for astronomers to analyze data and many 
-astronomers are using that. Python is a high level script language and 
-there are many applications in astronomical data process. 
-We release a new python library which realize some MIDAS commands in python.
-People can use it to write a MIDAS style python code. We call it PydasLib.
-It is a python library based on ESO MIDAS functions, which is 
-easily used by astronomers who is familiar with the usage of MIDAS.
+The ESO MIDAS is a system for astronomers to analyze data which many astronomers are using. Python is a high level script language and there are many applications for astronomical data process. We are releasing a new Python library which realizes some MIDAS commands in Python. People can use it to write a MIDAS style Python code. We call it PydasLib. It is a Python library based on ESO MIDAS functions, which is easily used by astronomers who are familiar with the usage of MIDAS.
 \end{abstract}
 
 	  \section{Introduction}
-As a popular language, Python is wildly used in astronomical programming now. 
-More and more researchers use python to realize their algorithm and ideas for 
-astronomical data processing. 
+Python is a popular language, wildly used in astronomical programming now. More and more researchers use Python to realize their algorithms and ideas for astronomical data processing. 
 
-MIDAS is an outstanding programming language in astronomy. It is created and 
-maintained by by European Organization for Astronomical Research in the 
-Southern Hemisphere (ESO). 
-There are a lot of good codes written in MIDAS and there are a lot of people 
-use it for years.
+MIDAS is an outstanding programming language for astronomy. It is created and maintained by by European Organization for Astronomical Research in the Southern Hemisphere (ESO). There are many good codes written in MIDAS and many people have been many using it for years.
 
-We release a new python library which realize some MIDAS commands in python.
-People can use it to write a MIDAS style python code. We call it PydasLib.
-Our work here can help two kinds of people:
+We are releasing a new Python library which realizes some MIDAS commands in Python. People can use it to write a MIDAS style Python code. We call it PydasLib. Our work here can help two kinds of people:
 \begin{itemize}
-   \item Python users who want to migrate some MIDAS codes to python. 
-   \item MIDAS users who want to use python to realize their idea using commands which 
-they are familiar with.
+   \item Python users who want to migrate some MIDAS code to Python. 
+   \item MIDAS users who want to use Python to realize their idea using commands which they are familiar with.
 \end{itemize}
 
 
           \section{MIDAS and Python}
 \subsection{ESO MIDAS}
 
-ESO MIDAS is a system which provides general tools for image processing 
-and data reduction with emphasis on astronomical applications including 
-imaging and special reduction packages. Many astronomy researchers use 
-this system to achieve their thought and algorithms on data analysis. 
-The MIDAS supports many basic data types and functions such as fitting, 
-statistics on tables and images etc. It can also display images 
-and output the results to a file or on a screen. \\
+ESO MIDAS is a system which provides general tools for image processing and data reduction with an emphasis on astronomical applications including imaging and special reduction packages. Many astronomy researchers use this system to achieve their thoughts and algorithms on data analysis. MIDAS supports many basic data types and functions such as fitting, statistics on tables and images, etc. It can also display images and output the results to a file or on a screen.
 
-There are four shortness of the MIDAS:
+There are four shortcomings of MIDAS:
 \begin{itemize}
-  \item  Data structure 
-in MIDAS is not very flexible. The basic type of variable in MIDAS can be 
-integer, float or string. There are no list or dictionary in it. 
-   \item  
-MIDAS is a self-sealing system. The code can be run very well under 
-its environment but it is not able to be called by other programs. It 
-is hard to write a function in MIDAS which serves the whole software 
-pipeline. 
-   \item  It is not convenient to run the MIDAS code
- in parallel.    You need to select parallel mode in the system to run 
-another MIDAS program at the same time. Nowadays, with a great deal of data
- springing up, how long will a program take will be considered.  
-    \item MIDAS can not be installed in Windows which limits its
-applications. 
+  \item  Data structure in MIDAS is not very flexible. The basic type of variable in MIDAS can be integer, float or string. There is no list or dictionary in it. 
+   \item  MIDAS is a self-sealing system. The code can run very well in its environment but it is not able to be called by other programs. It is hard to write a function in MIDAS which serves the whole software pipeline. 
+   \item  It is not convenient to run MIDAS code  in parallel.    You need to select parallel mode in the system to run another MIDAS program at the same time. Nowadays, with a great deal of data  springing up, how long will a program take will be considerable.  
+    \item MIDAS can not be installed in Windows which limits its applications. 
 \end{itemize}
 
           \subsection{Python}
-Python is an interpreted, general-purpose high-level programming language 
-whose design philosophy emphasizes code readability. It supports multiple 
-programming paradigms, primarily but not limited to object oriented, 
-imperative and, to a lesser extent, functional programming styles. It 
-features a fully dynamic type system and automatic memory management. 
+Python is an interpreted, general-purpose high-level programming language with a design philosophy which emphasizes code readability. It supports several programming paradigms which include functional, object oriented, and imperative programming styles. It features automatic memory management as well as a fully dynamic type system \citep{python_web}. 
 
           \subsection{PyMidas}
-PyMidas is a a product of ESO project named Sampo since 2005. It is 
-an interface for python call MIDAS programs. Because the precondition of 
-using PyMidas is that MIDAS should be installed, it is hard to use under
-different operation system.
+PyMidas has been a product of the ESO project Sampo since 2005. It is an interface for Python to call MIDAS programs. Because the precondition of using PyMidas is that MIDAS should be installed, it is hard to use under different operation system.
 
-          \section{PydasLib --- Our work}
-In PydasLib, we fulfill dozens of MIDAS commands in python. 
-The goal of our work is to make a library of python which 
-can achieve the function of some MIDAS commands. Using this library, people 
-can write their algorithms in python without MIDAS or migrate best MIDAS
-codes to python. The code can be easily 
-called by other programs under different operation system. 
+          \section{PydasLib --- Our Work}
+In PydasLib, we fulfill dozens of MIDAS commands in Python. The goal of our work is to make a Python library which can achieve the functions of some MIDAS commands. Using this library, people can write their algorithms in Python without MIDAS or migrate their favorite MIDAS code to Python. The code can be easily called by other programs under different operation system. 
 
 	  \subsection{PydasLib Commands and Corresponding MIDAS Commands}
-Table \ref{commands} shows PydasLib commands and the corresponding MIDAS commands.
-The function of PydasLib commands are almost as same as the corresponding MIDAS ones.
-Table \ref{new-commands} shows commands which are not included in MIDAS. 
+Table \ref{commands} shows PydasLib commands and the corresponding MIDAS commands. The functions of PydasLib commands are almost as same as the corresponding MIDAS ones. Table \ref{new-commands} shows new commands which are not included in MIDAS. 
 
 \begin{table}[!hb]
 \begin{center}
@@ -175,7 +128,7 @@ valid\_row & return a list of valid rows of the table\\
 \end{center}
 \end{table}
           \section{Example }
-Table \ref{code} shows a short example. The example uses PydasLib to read a Sloan fits file, to make a convolution with gaussion profile and to extract H$\alpha$ emission line. Finally, the example save the plotted figures(Figure:\ref{fig}) into files.
+Table \ref{code} shows a short example. The example uses PydasLib to read a Sloan FITS file, to make a convolution with a gaussian profile and to extract H$\alpha$ emission lines. Finally, the example saves the plotted figures (see Figure~\ref{fig}) into files.
 
 \begin{table}[!hb]
 \begin{center}
@@ -207,13 +160,11 @@ lineno & code\\
 
 \includegraphics[width=.46\textwidth]{part9/Song_P65/part}
 \includegraphics[width=.46\textwidth]{part9/Song_P65/halpha}\\
-The top one is the whole spectrum. Left bottom one is the spectrum after convolution by a Gaussian kernel. Right bottom one is 
-H$\alpha$ emission line.
+The top one is the whole spectrum. Left bottom one is the spectrum after convolution by a Gaussian kernel. Right bottom one is a H$\alpha$ emission line.
 \end{center}
 \end{figure}
 	  \section{Summary}
-We introduces a new library for Python which can realize some functions of 
-the ESO MIDAS. Using this library, people who are used to the gramma of the MIDAS
-can keep their customs and enjoy the powful python. This library is for spectra
-analysis. Because this is the first version of the library, not all the functions 
-and commands of MIDAS are included. In the future, the library will be better.
+We introduce a new library for Python which can realize some functions of ESO's MIDAS package. Using this library, people who are used to the grammar of MIDAS can keep their customs and enjoy the power of Python. This library is for spectral analysis. Since this is the first version of the library, not all the functions and commands of MIDAS are included. In the future, the library will be better.
+
+\bibliographystyle{asp2010}
+\bibliography{editor}
