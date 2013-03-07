@@ -23,7 +23,7 @@ The \ssindex{observatories!space-based!XMM-Newton}XMM-Newton Science \ssindex{so
 
 \section{XMM-Newton Infrastructure}
 Current XMM-Newton Science \ssindex{software!control system}Control System architecture is showed in Figure~1. It can be divided into downlink and uplink chains. The first chain is mainly in charge of the observation monitoring, raw telemetry processing and L0/L1 products production \citep{vallejo11}. The uplink chain systems are mainly dedicated to the handling of the proposed observations and creation of command sequences which will be later sent to the Mission Operations Center (MOC). Initial design imposed an isolation between both chains, which constrained the operability of the XSCS as a whole. 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=90 mm]{part10/Perez_P022/P022_f1.eps}
 \caption{The current XMM-Newton Science \ssindex{software!control system}Control System (XSCS) architecture}
@@ -33,7 +33,7 @@ Being a long-life mission, the users' needs have evolved with time, the old hard
 
 \subsection{Infrastructure Evolution}
 The new infrastructure is to be accord to SOA principles and best practices. The main concepts consist in loosely coupling and component reusability, in order to face a changing business environment. The general idea of SOA is to drive software to a high flexibility, scalability, extensibility, and plug-and-play \ssindex{computing!architecture}architecture modifying legacy systems as little as possible \citep{soa1}. Figure 2 depicts the main services envisaged in the scope of the prototype as aligned with the services taxonomy that can be found in the literature \citep{soa2}.
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=80 mm]{part10/Perez_P022/P022_f2.eps}
 \caption{Service Oriented Architecture}
@@ -42,7 +42,7 @@ The middleware represents the way to distribute the data between the different a
 
 \subsection{Storage and Processing \ssindex{computing!cloud}Cloud}
 In addition to the above, GMV is taking such a scenario as the baseline for studying  new paradigms of having processing infrastructures  able to cope with both the processing of large amounts of data and its storage. These activities  are indeed forming part of a wider exercise in which other projects are under consideration, mainly Earth Observations missions, which have similar processing needs. We focus here in the necessary support to increasing storage and processing capabilities and the associated different policies for distribution among the centers involved in the whole data processing flow, where different studies have been performed by GMV \citep{RubenPerez1}.
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=80 mm]{part10/Perez_P022/P022_f3.eps}
 \caption{\ssindex{computing!cloud}Cloud Processing and Storage in a non centralized environment}

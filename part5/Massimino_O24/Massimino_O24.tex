@@ -68,7 +68,7 @@ The \emph{Help} screen gives information about the meaning of any control and co
 
 \section{Operational Scenario}
 The typical operational scenario is to first select frames to be part of the player's virtual journey in the cosmos (see Figure~2). Secondly, a selection of images is required, taken from particular viewpoints and associated with user-defined zoom levels. Finally, a HTTP request is submitted to a \ssindex{packages!VisIVO}VisIVO server to produce a cinematic film. In the \emph{Movies} screen are all the generated movies, for each the first frame is shown.
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.9]{part5/Massimino_O24/P024_f2}
 \caption{Select frames during journey in the cosmos}
@@ -79,7 +79,7 @@ The required computational resources depend on the underlying hardware specifica
 
 The components of the application residing on the server will  create, between  6 snapshots, 500 frames for a total duration of the movie of 50 seconds  (10 fps). The maximum number of selectable snapshots are 18, equivalent  to a movie that lasts about 3 minutes. In this case the duration of the images generation and rendering phase is about  2 hours. The current version of the application utilizes 192MB for displaying 1 million bodies\footnote{Full dataset size: 12 GB, number of points: 500 million}. Once a movie is completed the player receives by email all necessary instructions for watching it, e.g. either by using a common browser or the application itself. Movies can also be uploaded to YouTube by using a feature of the application. Figure~3 shows the data flow of the application.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.9]{part5/Massimino_O24/P024_f3}
 \caption{Data flow}

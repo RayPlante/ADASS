@@ -36,7 +36,7 @@ A third solution is to develop Web applications in HTML and \ssindex{computer la
 \subsection{Web Development}
 Web development is the fastest way to develop an application on mobile devices. A number of frameworks and \ssindex{computer languages!JavaScript}javascript libraries are now available and it is possible to create a very nice application in a few hours or at least in a few days for a well designed application. A mobile version of the\ssindex{Centre de Donn\'ees astronomiques de Strasbourg (CDS)} CDS Portal has been developed this way (see Fig.~\ref{O28:1}).
 
-\begin{figure}[h] \center
+\begin{figure}[ht] \center
 \includegraphics[scale=0.7]{part5/Schaaff_O28/O28_f4.eps}
 \caption{CDS mobile portal} 
 \label{O28:1}
@@ -45,7 +45,7 @@ Web development is the fastest way to develop an application on mobile devices. 
 \subsection{Native Development}
 The number of \ssindex{libraries!HEALPix}HEALpix \citep{gorski_2005} available\ooindex{HEALPix, ascl:1107.018} surveys is growing and a few \ssindex{libraries!HEALPix}HEALPix visualizers are available, like \ssindex{applications!Aladin}Aladin through the Allsky mode \citep{fernique_2010}. This mode runs well on a desktop or a laptop with good performance but it was a real challenge to develop a visualizer for smartphones and Internet tablets. We decided to develop it on \ssindex{computing!mobile!Android}Android because it was possible to \ssindex{software!reuse}reuse a part of the \ssindex{applications!Aladin}Aladin source written in \ssindex{computer languages!Java}Java. The first tests were not really good due to the basic hardware capabilities compared to a desktop. \ssindex{applications!Aladin}Aladin does not use \ssindex{libraries!OpenGL}\ssindex{software!tools!OpenGL}OpenGL but this graphical library is available on almost all the mobile devices. The new prototype implementing this library was between thirty and forty times faster and the FPS (frames per second) were sufficient to provide a fluid display. All the surveys available, and added in the future, in \ssindex{applications!Aladin}Aladin will also be available in the application called SkySurveys (see Fig.~\ref{O28:2}). It is possible to try it by downloading from the\ssindex{Centre de Donn\'ees astronomiques de Strasbourg (CDS)} CDS developer's corner. We consider this application as an advanced prototype for \ssindex{computing!mobile!Android}Android devices and we will probably not develop it the same way for \ssindex{computing!mobile!iOS}iOS devices.
 
-\begin{figure}[h] \center
+\begin{figure}[ht] \center
 \includegraphics[scale=0.28]{part5/Schaaff_O28/O28_f1.eps}
 \includegraphics[scale=0.28]{part5/Schaaff_O28/O28_f2.eps}
 \includegraphics[scale=0.28]{part5/Schaaff_O28/O28_f3.eps}
@@ -56,7 +56,7 @@ The number of \ssindex{libraries!HEALPix}HEALpix \citep{gorski_2005} available\o
 \subsection{Converters}
 We have developed the main features of SkyObjects in HTML5 and we have converted it using PhoneGap to \ssindex{computing!mobile!iOS}iOS and \ssindex{computing!mobile!Android}Android applications. But we had a big "gap" between the final application and what we had developed directly in \ssindex{computer languages!Java}Java or \ssindex{computer languages!Objective-C}Objective-C: the generated application is not a real native application, it is just an \ssindex{computing!mobile!Android}Android or \ssindex{computing!mobile!iOS}iOS\ssindex{web!applications} application implementing an HTML5 emulator with the HTML5 Web\ssindex{web!applications} application code. So it is not a real conversion to a native language. It means also that it is not possible to convert in a native language and to modify this code. Another difficulty was also the lack of some functionalities of the mobile devices like the gyroscope  (see Fig.~\ref{O28:3}).
 
-\begin{figure}[h] \center
+\begin{figure}[ht] \center
 \includegraphics[scale=0.28]{part5/Schaaff_O28/O28_f5.eps}
 \includegraphics[scale=0.28]{part5/Schaaff_O28/O28_f6.eps}
 \caption{SkySurveys with pointing functionality using the gyroscope.} 
