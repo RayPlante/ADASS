@@ -3,7 +3,7 @@
 
 \markboth{Teuben et al.}{Science Mining and Characterization of ALMA Large Data Cubes}
 
-\title{Science Mining and Characterization of ALMA Large Data Cubes}
+\title{Science Mining and Characterization of \ssindex{observatories!Earth-based!ALMA}ALMA Large Data Cubes}
 \author{Peter~Teuben,$^1$ Cheuk~Yiu~Ip,$^2$ Lee~Mundy,$^1$ and Amitabh~Varshney$^2$
 \affil{$^1$Astronomy Department, University of Maryland, College Park}
 \affil{$^2$Institute for Advanced Computer Studies, University of Maryland, College Park}}
@@ -15,26 +15,26 @@
 
 %% start cut and paste body 
 \begin{abstract}
-We are using Multilevel Segmentation of the Intensity-Gradient Histograms and Description Vectors to show unique ways to visualize and analyze complex structures in large ALMA data cubes. In particular higher dimensional data cubes with many spectral lines are a challenge both algorithmically and visually. In this poster we show some examples of both theoretical and observational data cubes and how novel techniques developed outside of our field can be applied to astronomy, and compare them to more traditional methods used in astronomy, such as ClumpFind.
+We are using Multilevel Segmentation of the Intensity-Gradient Histograms and Description Vectors to show unique ways to visualize and analyze complex structures in large \ssindex{observatories!Earth-based!ALMA}ALMA data cubes. In particular higher dimensional data cubes with many spectral lines are a challenge both algorithmically and visually. In this poster we show some examples of both theoretical and observational data cubes and how novel techniques developed outside of our field can be applied to astronomy, and compare them to more traditional methods used in astronomy, such as \ssindex{algorithm!ClumpFind}ClumpFind.
 \end{abstract}
 
 \section{Introduction}
 
-Large 4-dimensional datacubes that telescopes such as ALMA are now producing, provide an extra challenge for visualization and analysis. For each voxel in the traditional RA-DEC-VEL datacube we now have information on a large number of molecular transitions. Or one could use a single long 3D cube, or a series of 3D cubes, one for each molecular transition. Apart from automatically detecting the emission and categorizing their properties, correlations between the different species can lead to a deeper understanding of the underlying physics and chemistry in the emission regions.
+Large 4-dimensional datacubes that telescopes such as \ssindex{observatories!Earth-based!ALMA}ALMA are now producing, provide an extra challenge for visualization and analysis. For each voxel in the traditional RA-DEC-VEL datacube we now have information on a large number of \ssindex{physics!molecular}molecular transitions. Or one could use a single long 3D cube, or a series of 3D cubes, one for each \ssindex{physics!molecular}molecular transition. Apart from \ssindex{software!automatic detection}automatically detecting the emission and categorizing their properties, correlations between the different species can lead to a deeper understanding of the underlying physics and chemistry in the emission regions.
 
 We will introduce a new method to find and categorize emission, and compare this to a more traditional method of assigning clumps to the emission structure.
 
 \section{ALMA data}
 
-We obtained some ALMA data for NGC 253, organized in a single 350 x 350 x 1500 cube, but where the 3rd (spectral) axis are really 15 different windows (and not all equal in size) representing 15 different molecular transitions.
+We obtained some \ssindex{observatories!Earth-based!ALMA}ALMA data for NGC 253, organized in a single 350 x 350 x 1500 cube, but where the 3rd (spectral) axis are really 15 different windows (and not all equal in size) representing 15 different \ssindex{physics!molecular}molecular transitions.
 
 
 \section{Saliency Maps}
 
-This procedure effectively reduces millions of pixels to hundreds or tens of parameterized objects.  We present an automatic algorithm that identifies salient regions from a radio astronomy image and we parameterized and index these regions by fitting ellipses to the identified regions.  Our algorithm is inspired by the computational saliency model which detects regions of interest from images.
+This procedure effectively reduces millions of pixels to hundreds or tens of parameterized objects.  We present an \ssindex{software!automatic detection}automatic algorithm that identifies salient regions from a \ssindex{astronomy!radio}radio astronomy image and we parameterized and index these regions by fitting ellipses to the identified regions.  Our algorithm is inspired by the computational saliency model which detects regions of interest from images.
 
 
-A saliency map shows which part of an image is likely to attract the most attention of the low-level human visual system. \cite{itti98:_model_of_salien_based_visual} have proposed a computational model of visual saliency by using multiscale image processing.  Multiscale image processing techniques analyze an image at different scales to simulate the retinal receptive fields.  Their image saliency model aggregates the results from three features of an image -- intensity, color opponencies, and orientation. For this astronomy application we only consider the signal intensity for the computing image saliency. See also \citep{ip2012hierarchical}.
+A saliency map shows which part of an image is likely to attract the most attention of the low-level human visual system. \cite{itti98:_model_of_salien_based_visual} have proposed a computational model of visual saliency by using multiscale \ssindex{software!image processing}image processing.  Multiscale \ssindex{software!image processing}image processing techniques analyze an image at different scales to simulate the retinal receptive fields.  Their image saliency model aggregates the results from three features of an image -- intensity, color opponencies, and orientation. For this astronomy application we only consider the signal intensity for the computing image saliency. See also \citep{ip2012hierarchical}.
 
 The traditional algorithm for computing a saliency map of an image is essentially the following:
 
@@ -63,13 +63,13 @@ For each segment, we fit ellipses to the pixels by using principal component ana
 
 \section{Comparing}
 
-In order to compare the two methods, we used NEMO \citep{nemo} to construct a known model rotating galactic disk with a set number of Giant Molecular Clouds (GMC's): N=100, 1000, and 10,000, and constructed synthetic RA-DEC-VEL datacubes. The last one in particular is showing serious blending. The synthetic datacubes were analyzed with the ClumpFind \citep{clumpfind} program, as implemented in the MIRIAD \citep{miriad} package. \ooindex{Clumpfind, ascl:1107.014} \ooindex{MIRIAD, ascl:1106.007} \ooindex{NEMO, ascl:1010.051}
+In order to compare the two methods, we used NEMO \citep{nemo} to construct a known model rotating galactic disk with a set number of Giant Molecular Clouds (GMC's): N=100, 1000, and 10,000, and constructed synthetic RA-DEC-VEL datacubes. The last one in particular is showing serious blending. The synthetic datacubes were analyzed with the \ssindex{algorithm!ClumpFind}ClumpFind \citep{clumpfind} program, as implemented in the \ssindex{packages!MIRIAD}MIRIAD \citep{miriad} package. \ooindex{Clumpfind, ascl:1107.014} \ooindex{MIRIAD, ascl:1106.007} \ooindex{NEMO, ascl:1010.051}
 
-On its most basic level, the experiments with 100, 1000 and 10,000 clumps returned 70, 248, and 255 clumps respectively in ClumpFind, whereas our new method resulted in 67, 338, and 568 clumps respectively. Results are summarized in Table 1.  
+On its most basic level, the experiments with 100, 1000 and 10,000 clumps returned 70, 248, and 255 clumps respectively in \ssindex{algorithm!ClumpFind}ClumpFind, whereas our new method resulted in 67, 338, and 568 clumps respectively. Results are summarized in Table 1.  
 
 
 \begin{table}[!ht]
-\caption{Recovery of Number and total Mass of clumps in a rotating galactic disk   (1=clumpfind  2=saliency maps)}
+\caption{Recovery of Number and total Mass of clumps in a rotating galactic disk   (1=\ssindex{algorithm!ClumpFind}clumpfind  2=saliency maps)}
 \smallskip
 \begin{center}
 {\small
@@ -98,7 +98,7 @@ N    &  NC1   & NC2   & M1   & dM1 & M2  \\
 \begin{figure}[ht!]
 \centering
 \includegraphics[scale=0.45]{part9/Teuben_P059/gmc1.eps}
-\caption{Simulation of N=100 (left) and N=1000 (right) GMC's in a galactic disk.}
+\caption{\ssindex{astronomy!simulation}Simulation of N=100 (left) and N=1000 (right) GMC's in a galactic disk.}
 \label{fig:teuben2}
 \end{figure}
 

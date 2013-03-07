@@ -19,34 +19,34 @@
 \aindex{Altmann, M}
 
 \begin{abstract}
-The Ground Based Optical Tracking (GBOT) group is a part of the “Data Processing and Analysis Consortium”, the large consortium of over 400 scientists from many European countries, charged with the scientific conduction of the Gaia mission by ESA. The GBOT group is in charge of the optical part of tracking of the Gaia satellite. This optical tracking is necessary to allow the Gaia mission to fully reach its goal in terms of astrometry precision level.  These observations will be done daily, during the 5 years of the mission, with the use of optical CCD frames taken by a small network of 1-2m class telescopes located all over the world. The requirements for the accuracy on the satellite position determination, with respect of the stars in the field of view, are 20 mas. These optical satellite positions will be sent weekly by GBOT to the SOC of ESAC and used with other kinds of observations (radio ranging and Doppler) by MOC of ESOC to improve the Gaia ephemeris.
+The Ground Based Optical Tracking (GBOT) group is a part of the “Data Processing and Analysis Consortium”, the large consortium of over 400 scientists from many European countries, charged with the scientific conduction of the \ssindex{observatories!space-based!Gaia}Gaia mission by ESA. The GBOT group is in charge of the optical part of tracking of the \ssindex{observatories!space-based!Gaia}Gaia satellite. This optical tracking is necessary to allow the \ssindex{observatories!space-based!Gaia}Gaia mission to fully reach its goal in terms of \ssindex{astronomy!astrometry}astrometry precision level.  These observations will be done daily, during the 5 years of the mission, with the use of optical CCD frames taken by a small network of 1-2m class telescopes located all over the world. The requirements for the accuracy on the satellite position determination, with respect of the stars in the field of view, are 20 mas. These optical satellite positions will be sent weekly by GBOT to the SOC of ESAC and used with other kinds of observations (radio ranging and Doppler) by MOC of ESOC to improve the \ssindex{observatories!space-based!Gaia}Gaia ephemeris.
 
-For this purpose, we developed a set of accurate astrometry reduction programs specially adapted for tracking moving objects. The inputs of these programs for each tracked target are an ephemeris and a set of FITS images. The outputs for each image are: a file containing all information about the detected objects, a catalogue file used for calibration, a TIFF file for visual explanation of the reduction result, and an improvement of the fits image header. The final result is an overview file containing only the data related to the target extracted from all the images. These programs are written in GNU Fortran 95 and provide results in VOTable format (supported by Virtual Observatory protocols). All these results are sent automatically into the GBOT Database which is built with the SAADA\ooindex{Saada, ascl:1111.003} freeware. The user of this Database can archive and query the data but also, thanks to the delegate option provided by SAADA, select a set of images and directly run the GBOT reduction programs with a dedicated Web interface. For more information about SAADA (an Automatic System for Astronomy Data Archive under GPL license and VO‑compatible), see the related paper \citet{michel12}.
+For this purpose, we developed a set of accurate \ssindex{astronomy!astrometry}astrometry reduction programs specially adapted for tracking moving objects. The inputs of these programs for each tracked target are an ephemeris and a set of \ssindex{data formats!FITS}FITS images. The outputs for each image are: a file containing all information about the detected objects, a catalogue file used for calibration, a TIFF file for visual explanation of the reduction result, and an improvement of the \ssindex{data formats!FITS}fits image header. The final result is an overview file containing only the data related to the target extracted from all the images. These programs are written in GNU \ssindex{computer languages!Fortran}Fortran 95 and provide results in \ssindex{data formats!VOTable}VOTable format (supported by \ssindex{Virtual Observatory (VO)}Virtual Observatory protocols). All these results are sent automatically into the GBOT Database which is built with the \ssindex{databases!tools!Saada}SAADA\ooindex{Saada, ascl:1111.003} freeware. The user of this Database can archive and query the data but also, thanks to the delegate option provided by \ssindex{databases!tools!Saada}SAADA, select a set of images and directly run the GBOT reduction programs with a dedicated Web interface. For more information about \ssindex{databases!tools!Saada}SAADA (an Automatic System for Astronomy Data Archive under \ssindex{license!GPL}GPL license and\ssindex{Virtual Observatory(VO)} VO‑compatible), see the related paper \citet{michel12}.
 \end{abstract}
 
 \section{What are the GBOT Tools?}
 There are four different tools useful for GBOT reduction : 
 \begin{itemize}
 \item The GBOT Field of View Maker: a Web tool allowing observers to build a map of the Target Field of View with Target Trajectory and Ephemeris ( \url{http://gbot/fov/}). This tool is not described in this document.
-\item The GBOT Reduction Pipeline: a set of "image analyzing programs" specially developed for providing accurate astrometry of moving objects. 
+\item The GBOT Reduction \ssindex{data!pipelines!reduction}Pipeline: a set of "image analyzing programs" specially developed for providing accurate \ssindex{astronomy!astrometry}astrometry of moving objects. 
 \item The GBOT Database to archive and query:
                 \begin{itemize}
                 \item the images of tracked moving objects and the related observations parameters
-                \item the data used or produced by the GBOT Reduction Pipeline or by the Web-Pipeline (e.g. reduction parameters, results, statistics, etc.)
+                \item the data used or produced by the GBOT Reduction \ssindex{data!pipelines!reduction}Pipeline or by the Web-\ssindex{data!pipelines!reduction}Pipeline (e.g. reduction parameters, results, statistics, etc.)
                 \item some visual previews and information useful to estimate the quality of observations and results
                 \end{itemize}  
-\item The GBOT Web-Pipeline: a web interface to directly apply the GBOT Reduction Pipeline to a set of images selected from the Gbot Database.                                    
+\item The GBOT Web-\ssindex{data!pipelines!reduction}Pipeline: a web interface to directly apply the GBOT Reduction \ssindex{data!pipelines!reduction}Pipeline to a set of images selected from the Gbot Database.                                    
 \end{itemize}
 
 
-\section{The GBOT Reduction Pipeline}
+\section{The GBOT Reduction \ssindex{data!pipelines!reduction}Pipeline}
 
-This pipeline is mainly written in GNU Fortran 95 and provides results in VOTable format supported by VO protocols \citep{Bouquillon_2012}. The pipeline is divided into seven main parts. The Input are sets of FITS images of tracked targets and their ephemerides.
+This \ssindex{data!pipelines!reduction}pipeline is mainly written in GNU \ssindex{computer languages!Fortran}Fortran 95 and provides results in \ssindex{data formats!VOTable}VOTable format supported by\ssindex{Virtual Observatory(VO)} VO protocols \citep{Bouquillon_2012}. The \ssindex{data!pipelines!reduction}pipeline is divided into seven main parts. The Input are sets of \ssindex{data formats!FITS}FITS images of tracked targets and their ephemerides.
 \begin{itemize}
-\item HeaderModif: to homogenizes FITS image header
-\item FindSources: to detect and extract from a FITS image all the sources brighter than a threshold value, and determine their pixel (i.e. x,y) positions using one of several fitting techniques which can be chosen by the user
-\item CatalogueMaker: to download the stars from a reference catalog corresponding to the Image Field of view (based on “CDSCLIENT” tool from CDS Strasbourg)
-\item AstroReduc: to link the stars of a reference catalog with the sources detected in the FITS images and to perform astrometric reduction
+\item HeaderModif: to homogenizes \ssindex{data formats!FITS}FITS image header
+\item FindSources: to detect and extract from a \ssindex{data formats!FITS}FITS image all the sources brighter than a threshold value, and determine their pixel (i.e. x,y) positions using one of several fitting techniques which can be chosen by the user
+\item CatalogueMaker: to download the stars from a reference catalog corresponding to the Image Field of view (based on “CDSCLIENT” tool from\ssindex{Centre de Donn\'ees astronomiques de Strasbourg (CDS)} CDS Strasbourg)
+\item AstroReduc: to link the stars of a reference catalog with the sources detected in the \ssindex{data formats!FITS}FITS images and to perform astrometric reduction
 \item TargetFinder: to find and improve the determination of target parameters
 \item MakeTiff: to create TIFF previews of the images with the stars used for calibration (based on a routine written by Jay Anderson)
 \item MakeReductionOverview: to gather all the reduction parameters and results for a "night" into a single file
@@ -55,11 +55,11 @@ This pipeline is mainly written in GNU Fortran 95 and provides results in VOTabl
 
 \section{The GBOT Database}
 
-This database is built with the help of the SAADA\ooindex{Saada, ascl:1111.003} freeware (an Astronomical Database Generator under gpl license and VO‑compatible, ~\cite{michel12}). After a basic validation process, all the new data useful for the GBOT project are inserted into this Database. These data are of three kinds:
+This database is built with the help of the \ssindex{databases!tools!Saada}SAADA\ooindex{Saada, ascl:1111.003} freeware (an Astronomical Database Generator under \ssindex{license!GPL}gpl license and\ssindex{Virtual Observatory(VO)} VO‑compatible, ~\cite{michel12}). After a basic validation process, all the new data useful for the GBOT project are inserted into this Database. These data are of three kinds:
 
-$\bullet$ Observations (images \& parameters) (FITS and VOTable files)
+$\bullet$ Observations (images \& parameters) (\ssindex{data formats!FITS}FITS and \ssindex{data formats!VOTable}VOTable files)
 
-$\bullet$ Reduction process data (parameters \& results) (VOTable files)
+$\bullet$ Reduction process data (parameters \& results) (\ssindex{data formats!VOTable}VOTable files)
 
 $\bullet$ Useful related Information (Calibration preview, O-C plots, etc.) (jpf files)
 \newpage
@@ -74,42 +74,42 @@ $\bullet$ Useful related Information (Calibration preview, O-C plots, etc.) (jpf
 \item The OMCPLOT collection contains the plots Preview of the astrometric solution. Relationships are built to link the related data (for instance: to link a set of observations, with its astrometric results or with the calibration stars in the reference catalogs chosen).
 \end{itemize}
 
-These data are easily selected by users using the SAADA\ooindex{Saada, ascl:1111.003} Web interface  or with the SAADAQL ("data-mining" query language) panel. The data selected by web users can be exported using 3 way :
+These data are easily selected by users using the \ssindex{databases!tools!Saada}SAADA\ooindex{Saada, ascl:1111.003} Web interface  or with the \ssindex{databases!query language!SaadaQL}SAADAQL ("data-\ssindex{data!mining}mining" query language) panel. The data selected by web users can be exported using 3 way :
 \begin{itemize}
 \item Using the card icon click on the download cart button to exported them into a zip file on user's computer.
 \item Using the card icon click on the "delegate option" (see details in \S~4).
-\item Using the WebSamp button (such as the VO-Paris Data Centre's WebSampConnector toolkit) to send the data to VO tools as Aladin\ooindex{Aladin, ascl:1112.019} or Topcat\ooindex{TOPCAT, ascl:1101.010}.
+\item Using the WebSamp button (such as the\ssindex{Virtual Observatory(VO)} \ssindex{Virtual Observatory (VO)!individual!VO-Paris}VO-Paris Data Centre's WebSampConnector toolkit) to send the data to\ssindex{Virtual Observatory(VO)} VO tools as \ssindex{applications!Aladin}Aladin\ooindex{Aladin, ascl:1112.019} or \ssindex{applications!TOPCAT}Topcat\ooindex{TOPCAT, ascl:1101.010}.
 \end{itemize}
 In Figure 1 you see the  first version of the GBOT database (can be tested at \url{http://gbotone-se.obspm.fr:8080/dbgbot3}).
 
-\section{The GBOT Web-Pipeline}
-The user can access the GBOT Web Interface by selecting one set of observations among the SOLASTRO tables in the GBOT Database and by using the "delegate option" provided by the last version of SAADA\ooindex{Saada, ascl:1111.003} (see \citet{michel12}). From this interface two options are available for the user :
+\section{The GBOT Web-\ssindex{data!pipelines!reduction}Pipeline}
+The user can access the GBOT Web Interface by selecting one set of observations among the SOLASTRO tables in the GBOT Database and by using the "delegate option" provided by the last version of \ssindex{databases!tools!Saada}SAADA\ooindex{Saada, ascl:1111.003} (see \citet{michel12}). From this interface two options are available for the user :
 \begin{itemize}
 \item Local download of the selected observations into the GBOT Server
 (for example to process these data later or using their own tools).
-\item Run GBOT Web Pipeline online to re-reduce this set of observations
+\item Run GBOT Web \ssindex{data!pipelines!reduction}Pipeline online to re-reduce this set of observations
 (these new results can be inserted into the GBOT Database after a GBOT administrator validation).
 \end{itemize}
 
 \section{Conclusion}
-The main features of interest of this architecture  are for the GBOT Pipeline :\\
+The main features of interest of this architecture  are for the GBOT \ssindex{data!pipelines!reduction}Pipeline :\\
 \hspace*{0.25cm}- availability of a large set of centroid algorithms well-adapted to moving objects\\
 \hspace*{0.25cm}- some robust estimators for the position error \\
-\hspace*{0.25cm}- can be used independently of GBOT Database and Web Pipeline\\\\
+\hspace*{0.25cm}- can be used independently of GBOT Database and Web \ssindex{data!pipelines!reduction}Pipeline\\\\
 For the GBOT Database : \\
-\hspace*{0.25cm}- powerful tools to select and export data compatible with VO protocols \\
+\hspace*{0.25cm}- powerful tools to select and export data compatible with\ssindex{Virtual Observatory(VO)} VO protocols \\
 \hspace*{0.25cm}-"delegate option" allowing export data into a user own web interface
 
 \begin{figure}[ht]
 \epsscale{0.25}
 \plotone{part9/Barache_P03/P03.fig2.eps}
-\caption{GBOT Database with SAADA Web Interface} \label{P03-fig-1}
+\caption{GBOT Database with \ssindex{databases!tools!Saada}SAADA Web Interface} \label{P03-fig-1}
 \end{figure}
 
 
 
 \acknowledgements 
-We thank VO Paris Data Centre and CDS de Strasbourg for their technical and financial support.
+We thank\ssindex{Virtual Observatory(VO)} \ssindex{Virtual Observatory (VO)!individual!VO-Paris}VO Paris Data Centre and\ssindex{Centre de Donn\'ees astronomiques de Strasbourg (CDS)} CDS de Strasbourg for their technical and financial support.
 
 
 \bibliography{editor}

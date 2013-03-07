@@ -5,7 +5,7 @@
 
 \markboth{Eguchi et al.}{Web and Desktop Applications for ALMA}
 
-\title{Prototype Implementation of Web and Desktop Applications for ALMA Science Verification Data and the Lessons Learned}
+\title{Prototype Implementation of Web and Desktop\ssindex{web!applications} Applications for ALMA Science Verification Data and the Lessons Learned}
 \author{Satoshi~Eguchi, Wataru~Kawasaki, Yuji~Shirasaki, Yutaka~Komiya, George~Kosugi, Masatoshi~Ohishi, and Yoshihiko~Mizumoto
 \affil{National Astronomical Observatory of Japan, 2-21-1, Osawa, Mitaka, Tokyo, 181-8588 Japan}}
 
@@ -18,18 +18,18 @@
 \aindex{Mizumoto, Y.}
 
 \begin{abstract}
-ALMA is estimated to generate TB scale data during only one observation; astronomers need to identify which part of the data they are really interested in. We have been developing new GUI software for this purpose utilizing the VO interface: ALMA Web Quick Look System (ALMAWebQL) and ALMA Desktop Application (Vissage). The former is written in JavaScript and HTML5 generated from Java code by the Google Web Toolkit, and the latter is in pure Java. An essential point of our approach is how to reduce network traffic: we prepare, in advance, "compressed" FITS files of 2x2x1 (horizontal, vertical, and spectral directions, respectively) binning, 2x2x2 binning, 4x4x2 binning data, and so on. These files are hidden from users, and Web QL automatically chooses the proper one for each user operation. Through this work, we find that network traffic in our system is still a bottleneck towards TB scale data distribution. Hence we have to develop alternative data containers for much faster data processing. In this paper, we introduce our data analysis systems, and describe what we learned through the development.
+\ssindex{observatories!Earth-based!ALMA}ALMA is estimated to generate TB scale data during only one observation; astronomers need to identify which part of the data they are really interested in. We have been developing new \ssindex{software!user interfaces}GUI software for this purpose utilizing the\ssindex{Virtual Observatory(VO)} VO interface: ALMA Web Quick Look System (ALMAWebQL) and ALMA Desktop Application (\ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage). The former is written in \ssindex{computer languages!JavaScript}JavaScript and HTML5 generated from \ssindex{computer languages!Java}Java code by the \ssindex{web!development tools!Google Web Toolkit (GWT)}Google Web Toolkit, and the latter is in pure \ssindex{computer languages!Java}Java. An essential point of our approach is how to reduce network traffic: we prepare, in advance, "compressed" \ssindex{data formats!FITS}FITS files of 2x2x1 (horizontal, vertical, and spectral directions, respectively) binning, 2x2x2 binning, 4x4x2 binning data, and so on. These files are hidden from users, and Web QL automatically chooses the proper one for each user operation. Through this work, we find that network traffic in our system is still a bottleneck towards TB scale data distribution. Hence we have to develop alternative data containers for much faster data processing. In this paper, we introduce our data analysis systems, and describe what we learned through the development.
 \end{abstract}
 
 \section{Introduction}
 
-Atacama Large Millimeter/submillimeter Array (ALMA) is the largest radio telescope built on the Chajnantor plateau in northern Chile, and it is expected to provide us with much useful information to deepen our understanding of the universe due to its unprecedented high resolution data in space and spectrum.
+Atacama Large Millimeter/submillimeter Array (\ssindex{observatories!Earth-based!ALMA}ALMA) is the largest \ssindex{astronomy!radio}radio telescope built on the Chajnantor plateau in northern Chile, and it is expected to provide us with much useful information to deepen our understanding of the universe due to its unprecedented high resolution data in space and spectrum.
 
-ALMA is estimated to generate $\sim$200\ TB observational raw data every year, and the volume of a processed data cube for one target may exceed 2\ TB. One has to consider 1) how to bring such a big data cube into his/her computer, and 2) how to extract fruitful information from the data cube on the computer.
+\ssindex{observatories!Earth-based!ALMA}ALMA is estimated to generate $\sim$200\ TB observational raw data every year, and the volume of a processed data cube for one target may exceed 2\ TB. One has to consider 1) how to bring such a big data cube into his/her computer, and 2) how to extract fruitful information from the data cube on the computer.
 
 \section{Method}
 
-To solve these problems, we apply ``binning'' and ``cut-out'' to a data cube. An ALMA data cube has 4 dimensions: right ascension (R.A.), declination (Dec.), channel (frequency), and polarization. Current Science Verification data do not have polarization, and they are identical to 3-dimensional data cubes. In the binning stage, we make every $q \ (q = 1, 2, 2^{2}, 2^{3}, \cdots)$ pixels into one pixel in the R.A. and Dec. directions, and every $p \ (p = 1, 2, 2^{2}, 2^{3}, \cdots)$ channels into one channel. By binning, the data cube size becomes $p q^{2}$ times smaller than original one. We prepare all binned data cubes in advance. In the cut-out stage, one should download a subset of the data cube which he/she is interested in. By a combination of binning and cut-out, we can reduce network traffic drastically.
+To solve these problems, we apply ``binning'' and ``cut-out'' to a data cube. An \ssindex{observatories!Earth-based!ALMA}ALMA data cube has 4 dimensions: right ascension (R.A.), declination (Dec.), channel (frequency), and \ssindex{astronomy!polarization}polarization. Current Science Verification data do not have \ssindex{astronomy!polarization}polarization, and they are identical to 3-dimensional data cubes. In the binning stage, we make every $q \ (q = 1, 2, 2^{2}, 2^{3}, \cdots)$ pixels into one pixel in the R.A. and Dec. directions, and every $p \ (p = 1, 2, 2^{2}, 2^{3}, \cdots)$ channels into one channel. By binning, the data cube size becomes $p q^{2}$ times smaller than original one. We prepare all binned data cubes in advance. In the cut-out stage, one should download a subset of the data cube which he/she is interested in. By a combination of binning and cut-out, we can reduce network traffic drastically.
 
 \section{System Configuration and Use Case}
 
@@ -40,11 +40,11 @@ To solve these problems, we apply ``binning'' and ``cut-out'' to a data cube. An
 	\label{O10_f1}}
 \end{figure}
 
-We developed a new on-line system \citep{D5_adassxxii} consisting of two web applications (JVO portal and web viewer) and one desktop application (desktop viewer; \citealt{P047_adassxxii}) shown in Figure~\ref{O10_f1}.
+We developed a new on-line system \citep{D5_adassxxii} consisting of two web\ssindex{web!applications} applications (JVO portal and web viewer) and one desktop application (desktop viewer; \citealt{P047_adassxxii}) shown in Figure~\ref{O10_f1}.
 
 The use case is below:
 \begin{enumerate}
-	\item A user visits the Japanese Virtual Observatory (JVO) portal site: url{http://jvo.nao.ac.jp/portal/}.At this site, the user searches and selects data cubes which contain his/her objects of interest. However, he/she cannot figure out where his/her interested region in each data cube is, and which resolutions are adequate for his/her research.
+	\item A user visits the \ssindex{Virtual Observatory (VO)!individual!Japanese Virtual Observatory (JVO)}Japanese \ssindex{Virtual Observatory (VO)}Virtual Observatory (JVO) portal site: url{http://jvo.nao.ac.jp/portal/}.At this site, the user searches and selects data cubes which contain his/her objects of interest. However, he/she cannot figure out where his/her interested region in each data cube is, and which resolutions are adequate for his/her research.
 	
 	\item The user launches the web viewer from the result pages. The web viewer enables the user to change resolution, viewing position, and zoom graphically, hence he/she confirms the desired cut-out region and binning factors exactly.
 	
@@ -58,7 +58,7 @@ The user can iterate this process if he/she wants.
 \begin{figure}
 	\epsscale{0.85}
 	\plotone{part9/Eguchi_O10/O10_f2.eps}
-	\caption{{\bf Left:} A screen shot of ALMAWebQL. With the web application, one can change resolution, viewing position, and zoom on a web browser. {\bf Right:} The relation between fits file size and processing time. Blue filled circles, red open circles, and magenta filled rectangles represent file conversion time, file downloading time, and total processing time, respectively.\label{O10_f2}}
+	\caption{{\bf Left:} A screen shot of ALMAWebQL. With the web\ssindex{web!applications} application, one can change resolution, viewing position, and zoom on a web browser. {\bf Right:} The relation between fits file size and processing time. Blue filled circles, red open circles, and magenta filled rectangles represent file conversion time, file downloading time, and total processing time, respectively.\label{O10_f2}}
 \end{figure}
 
 
@@ -67,15 +67,15 @@ The user can iterate this process if he/she wants.
 
 \subsection{Implementation}
 
-ALMAWebQL is a web viewer which enables a user to find his/her sufficient binning factors and a cut-out region graphically (Figure~\ref{O10_f2}, left)\footnote{You can watch the screen video on \url{http://youtu.be/48IJ5G-5cG4}.}. This is an Ajax application built on Google Web Toolkit, utilizing the HTML5 Canvas component.
+ALMAWebQL is a web viewer which enables a user to find his/her sufficient binning factors and a cut-out region graphically (Figure~\ref{O10_f2}, left)\footnote{You can watch the screen video on \url{http://youtu.be/48IJ5G-5cG4}.}. This is an \ssindex{software!tools!AJAX}Ajax application built on \ssindex{web!development tools!Google Web Toolkit (GWT)}Google Web Toolkit, utilizing the HTML5 Canvas component.
 
-A web browser provides very limited programming interfaces, and it is difficult to access the local file system inside the browser. However, one can perform simple operations without any servers by utilizing  JavaScript. We let the web browser do as many, {\bf but simple} operations, as possible to reduce network traffic. In case of ALMAWebQL, we implemented coordinate transforms and zoom functionality with JavaScript.
+A web browser provides very limited programming interfaces, and it is difficult to access the local file system inside the browser. However, one can perform simple operations without any servers by utilizing  \ssindex{computer languages!JavaScript}JavaScript. We let the web browser do as many, {\bf but simple} operations, as possible to reduce network traffic. In case of ALMAWebQL, we implemented coordinate transforms and zoom functionality with \ssindex{computer languages!JavaScript}JavaScript.
 
-Figure~\ref{O10_f3} is a schematic block diagram of ALMAWebQL, which consists of a web client and an application server. The application server contacts the VO server in ADQL, and retrieves a proper FITS file from the file server when a user does certain actions on the web client. Then the application server sends back the FITS header information and image to the web client as a JavaScript object.
+Figure~\ref{O10_f3} is a schematic block diagram of ALMAWebQL, which consists of a web client and an\ssindex{web!applications} application server. The\ssindex{web!applications} application server contacts the\ssindex{Virtual Observatory(VO)} VO server in \ssindex{databases!querylanguage!ADQL}ADQL, and retrieves a proper \ssindex{data formats!FITS}FITS file from the file server when a user does certain actions on the web client. Then the\ssindex{web!applications} application server sends back the \ssindex{data formats!FITS}FITS header information and image to the web client as a \ssindex{computer languages!JavaScript}JavaScript object.
 
 \subsection{Problems Working Towards a Production Release}
 
-We evaluate the system performance and found some problems working towards a production release. Figure~\ref{O10_f2} (right) shows the relation between FITS file size and file processing time of the application server. It is obvious that file retrieval time is dominating. To solve the problem, the file server should be more intelligent to reduce network traffic.
+We evaluate the system performance and found some problems working towards a production release. Figure~\ref{O10_f2} (right) shows the relation between \ssindex{data formats!FITS}FITS file size and file processing time of the\ssindex{web!applications} application server. It is obvious that file retrieval time is dominating. To solve the problem, the file server should be more intelligent to reduce network traffic.
 
 Currently, this is only in the idea stage, but a new database savvy hierarchical data cube container might be a solution.
 
@@ -84,13 +84,13 @@ Currently, this is only in the idea stage, but a new database savvy hierarchical
 	\begin{center}
 		\includegraphics[keepaspectratio,width=0.54\hsize,clip]{part9/Eguchi_O10/O10_f3.eps}
 	\end{center}
-	\caption{A schematic block diagram of ALMAWebQL. The application consists of a user client written in JavaScript and an application server written in Java. Any user actions are translated into ADQL and the results are translated into a JavaScript object on the application
+	\caption{A schematic block diagram of ALMAWebQL. The application consists of a user client written in \ssindex{computer languages!JavaScript}JavaScript and an application server written in \ssindex{computer languages!Java}Java. Any user actions are translated into \ssindex{databases!querylanguage!ADQL}ADQL and the results are translated into a \ssindex{computer languages!JavaScript}JavaScript object on the\ssindex{web!applications} application
 	server.\label{O10_f3}}
 \end{figure}%
 
 \section{Summary}
 
-ALMA generates a big data cube for one object, and it may exceed 2\ TB. On the other hand, both network bandwidth and computer resource are limited. To solve these problems, we developed a VO system consisting of two web applications and one desktop application. The aim of this system is to reduce network traffic by binning and cut-out.
+\ssindex{observatories!Earth-based!ALMA}ALMA generates a big data cube for one object, and it may exceed 2\ TB. On the other hand, both network bandwidth and computer resource are limited. To solve these problems, we developed a\ssindex{Virtual Observatory(VO)} VO system consisting of two web\ssindex{web!applications} applications and one desktop application. The aim of this system is to reduce network traffic by binning and cut-out.
 
 We provide a web viewer to let a user select his/her adequate binning factors and cut out his/her interested region visually, and also provide a desktop viewer to perform a detailed quick look. However, network traffic is still a bottleneck towards a production release, and a more intelligent file server is required.
 

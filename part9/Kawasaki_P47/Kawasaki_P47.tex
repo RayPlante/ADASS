@@ -3,9 +3,9 @@
 
 \bibliographystyle{asp2010}
 
-\markboth{Kawasaki et al.}{Vissage: An ALMA-VO Desktop Application}
+\markboth{Kawasaki et al.}{\ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage: An ALMA-VO Desktop Application}
 
-\title{Vissage: An ALMA-VO Desktop Application}
+\title{\ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage: An ALMA-VO Desktop Application}
 \author{Wataru~Kawasaki, Satoshi~Eguchi, Yuji~Shirasaki, Yutaka~Komiya, George~Kosugi, Masatoshi~Ohishi, 
 and Yoshihiko~Mizumoto
 \affil{National Astronomical Observatory of Japan, 2-21-1 Osawa, Mitaka, Tokyo, 181-8588, Japan}}
@@ -19,31 +19,31 @@ and Yoshihiko~Mizumoto
 \aindex{Mizumoto, Y.}
 
 \begin{abstract}
-Vissage is a FITS browser primarily targeting FITS data cubes obtained from ALMA. It currently offers some basic functionalities to view three-dimensional data cube and to connect with the JVO's ALMA data service. We will describe the present development status of Vissage, its aims, and future plans.
+\ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage is a \ssindex{data formats!FITS}FITS browser primarily targeting \ssindex{data formats!FITS}FITS data cubes obtained from \ssindex{observatories!Earth-based!ALMA}ALMA. It currently offers some basic functionalities to view three-dimensional data cube and to connect with the JVO's \ssindex{observatories!Earth-based!ALMA}ALMA data service. We will describe the present development status of \ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage, its aims, and future plans.
 \end{abstract}
 
 \section{Introduction}
-Since it has been one year from the beginning of scientific operations based on selected observing proposals, the Atacama Large Millimeter/submillimeter Array (ALMA) will soon be releasing data whose proprietary periods have expired, in addition to Science Verification data that have already been released. The released ALMA data will be available from websites of the three ALMA  Regional Centres located at East Asia, North America and Europe, and we are planning to distribute ALMA data via the Japanese Virtual Observatory (JVO) as well. We are then faced with two problems in distributing ALMA data in the framework of Virtual Observatory (hereafter VO) system, namely, its huge size and high dimensionality. 
+Since it has been one year from the beginning of scientific operations based on selected observing proposals, the Atacama Large Millimeter/submillimeter Array (\ssindex{observatories!Earth-based!ALMA}ALMA) will soon be releasing data whose proprietary periods have expired, in addition to Science Verification data that have already been released. The released \ssindex{observatories!Earth-based!ALMA}ALMA data will be available from websites of the three \ssindex{observatories!Earth-based!ALMA}ALMA  Regional Centres located at East Asia, North America and Europe, and we are planning to distribute \ssindex{observatories!Earth-based!ALMA}ALMA data via the \ssindex{Virtual Observatory (VO)!individual!Japanese Virtual Observatory (JVO)}Japanese \ssindex{Virtual Observatory (VO)}Virtual Observatory (JVO) as well. We are then faced with two problems in distributing \ssindex{observatories!Earth-based!ALMA}ALMA data in the framework of \ssindex{Virtual Observatory (VO)}Virtual Observatory (hereafter\ssindex{Virtual Observatory(VO)} VO) system, namely, its huge size and high dimensionality. 
 
-ALMA's unprecedented performance, especially when it gets to its full specifications in the near future, leads us to an obvious expectation that even a single dataset from ALMA could be on the Terabyte-scale. As for dimensionality, ALMA data will be provided as data cubes with 3 or 4 dimensions as typical radio imaging observations: spatial 2D and spectral  1D, often plus polarisational 1D. Compared with ordinary 2D images, data cubes have a much wider variety in ways of viewing including moment maps, channel maps, Position-Velocity diagrams, etc. 
+\ssindex{observatories!Earth-based!ALMA}ALMA's unprecedented performance, especially when it gets to its full specifications in the near future, leads us to an obvious expectation that even a single dataset from \ssindex{observatories!Earth-based!ALMA}ALMA could be on the Terabyte-scale. As for dimensionality, \ssindex{observatories!Earth-based!ALMA}ALMA data will be provided as data cubes with 3 or 4 dimensions as typical \ssindex{astronomy!radio}radio imaging observations: spatial 2D and spectral  1D, often plus \ssindex{astronomy!polarization}polarisational 1D. Compared with ordinary 2D images, data cubes have a much wider variety in ways of viewing including moment maps, channel maps, Position-Velocity diagrams, etc. 
 
-To cope with such huge datasets with high dimensionality in JVO, we have been developing a new mechanism and software \citep{O10_adassxxii, D5_adassxxii}. Our project covers both the server-side and the desktop side: the former includes the new functions of JVO ALMA portal including the ALMA Web Quick Look System (hereafter WebQL; \citet{O10_adassxxii}). 
+To cope with such huge datasets with high dimensionality in JVO, we have been developing a new mechanism and software \citep{O10_adassxxii, D5_adassxxii}. Our project covers both the server-side and the desktop side: the former includes the new functions of JVO \ssindex{observatories!Earth-based!ALMA}ALMA portal including the ALMA Web Quick Look System (hereafter WebQL; \citet{O10_adassxxii}). 
 
-As a solution for the latter, we are developing Vissage ({\it VISualisation Software for Astronomical Gigantic data cubEs}), a brand-new FITS browser. Its primary use case includes (1) viewing FITS data cubes downloaded from the JVO portal or WebQL for research on interesting regions and (2) connecting the JVO seamlessly to search and download ALMA data for the same object but with a different spatial/spectral resolutions from the one you are viewing to better fit your scientific purposes. 
+As a solution for the latter, we are developing \ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage ({\it VISualisation Software for Astronomical Gigantic data cubEs}), a brand-new FITS browser. Its primary use case includes (1) viewing \ssindex{data formats!FITS}FITS data cubes downloaded from the JVO portal or WebQL for research on interesting regions and (2) connecting the JVO seamlessly to search and download \ssindex{observatories!Earth-based!ALMA}ALMA data for the same object but with a different spatial/spectral resolutions from the one you are viewing to better fit your scientific purposes. 
 
-\section{Current Status of Vissage}
+\section{Current Status of \ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage}
 \subsection{Distribution Package}
-Vissage is now available from the JVO website (\url{http://jvo.nao.ac.jp/download/Vissage}) as a tarball. It contains a front-end program (.exe) for Windows and a main program (executable jar file). The main program is implemented with Java/Swing, so it runs on all platforms with JRE (Java Runtime Environment) 6 or newer. Though it is directly executable, Windows users are strongly encouraged to launch it via the front-end program. The front-end for Windows platform enables you to open images by drag and drop onto a shortcut of Vissage and computes an appropriate heap size for the Java Virtual Machine (the latter is critical especially when you use 32-bit Java). 
+\ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage is now available from the JVO website (\url{http://jvo.nao.ac.jp/download/Vissage}) as a tarball. It contains a front-end program (.exe) for Windows and a main program (executable jar file). The main program is implemented with \ssindex{computer languages!Java}Java/Swing, so it runs on all platforms with JRE (Java Runtime Environment) 6 or newer. Though it is directly executable, Windows users are strongly encouraged to launch it via the front-end program. The front-end for Windows platform enables you to open images by drag and drop onto a shortcut of \ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage and computes an appropriate heap size for the Java Virtual Machine (the latter is critical especially when you use\ssindex{computing!architecture} 32-bit \ssindex{computer languages!Java}Java). 
 
 \subsection{Available Functions}
-Vissage now offers basic functions to show major two-dimensional views of data cubes. Currently available functions include:
+\ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage now offers basic functions to show major two-dimensional views of data cubes. Currently available functions include:
 \begin{itemize}
-  \item Open FITS data
+  \item Open \ssindex{data formats!FITS}FITS data
     \begin{itemize}
       \item by drag and drop onto the main window (for all platforms)
-      \item by drag and drop onto Vissage icon or shortcut (for Windows only)
+      \item by drag and drop onto \ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage icon or shortcut (for Windows only)
     \end{itemize}
-  \item Readable FITS files
+  \item Readable \ssindex{data formats!FITS}FITS files
     \begin{itemize}
       \item ALMA data
       \item Nobeyama 45m OTF data
@@ -59,7 +59,7 @@ Vissage now offers basic functions to show major two-dimensional views of data c
   \item Connect with JVO
     \begin{itemize}
       \item with ALMA Web QL
-      \item with JVO ALMA portal via TAP (Table Access Protocol)
+      \item with JVO ALMA portal via \ssindex{protocols!TAP}TAP (Table Access Protocol)
     \end{itemize}
   \item Image operation
     \begin{itemize}
@@ -70,31 +70,31 @@ Vissage now offers basic functions to show major two-dimensional views of data c
     \end{itemize}
 \end{itemize}
 
-You can see how Vissage works in Figures \ref{Kfig1} and \ref{Kfig2}. 
+You can see how \ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage works in Figures \ref{Kfig1} and \ref{Kfig2}. 
 
 \begin{figure}[tb]
   \centering
   \includegraphics[width=12cm]{part9/Kawasaki_P47/P047_f1.eps}
-  \caption{Showing ALMA images in a single Vissage window. The top left, bottom left and the bottom right images are integrated intensity maps with different colorsets. The top middle image is the same object as the top left one but is a mean velocity (1st moment) map. The top right is a channel map.}
+  \caption{Showing \ssindex{observatories!Earth-based!ALMA}ALMA images in a single \ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage window. The top left, bottom left and the bottom right images are integrated intensity maps with different colorsets. The top middle image is the same object as the top left one but is a mean velocity (1st moment) map. The top right is a channel map.}
   \label{Kfig1}
 \end{figure}
 
 \section{Future Plans}
-As a latecomer to astronomical viewer software, we would like to make Vissage to be equipped with user-friendly interfaces as well as many useful functions, some of which might have been missed in the previous ones. Though the main keywords of the functionality of Vissage are 'easy handling data cubes' and 'tight connection with JVO', 'multi-wavelength' and 'multi-image' can also be added for future planning since data available from general VOs cover a wide range of wavelength. The functions being implemented or planned for the near future are as follows: 
+As a latecomer to astronomical viewer software, we would like to make \ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage to be equipped with user-friendly interfaces as well as many useful functions, some of which might have been missed in the previous ones. Though the main keywords of the functionality of \ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage are 'easy handling data cubes' and 'tight connection with JVO', 'multi-wavelength' and 'multi-image' can also be added for future planning since data available from general\ssindex{Virtual Observatory(VO)} VOs cover a wide range of wavelength. The functions being implemented or planned for the near future are as follows: 
 
 \begin{itemize}
-  \item Connect with VOs
+  \item Connect with\ssindex{Virtual Observatory(VO)} VOs
     \begin{itemize}
-      \item with JVO (other than ALMA, including Subaru, etc.)
-      \item with other VOs
+      \item with JVO (other than \ssindex{observatories!Earth-based!ALMA}ALMA, including \ssindex{observatories!Earth-based!Subaru}Subaru, etc.)
+      \item with other\ssindex{Virtual Observatory(VO)} VOs
     \end{itemize}
-  \item Read FITS data from other telescopes than ALMA
+  \item Read \ssindex{data formats!FITS}FITS data from other telescopes than \ssindex{observatories!Earth-based!ALMA}ALMA
     \begin{itemize}
-      \item Spitzer, Herschel, Subaru, HST, Chandra, etc.
+      \item \ssindex{observatories!space-based!Spitzer}Spitzer, \ssindex{observatories!space-based!Herschel}Herschel, \ssindex{observatories!Earth-based!Subaru}Subaru, \ssindex{observatories!space-based!HST}HST, \ssindex{observatories!space-based!Chandra}Chandra, etc.
     \end{itemize}
   \item Overlay multiple images and catalogues
   \item Contour
-  \item View FITS data
+  \item View \ssindex{data formats!FITS}FITS data
     \begin{itemize}
       \item 2D view for arbitrary combination of cube axes
       \item 3D view, 1D view (spectra)
@@ -103,7 +103,7 @@ As a latecomer to astronomical viewer software, we would like to make Vissage to
   \item File export
 \end{itemize}
 
-Vissage is new software and still has only a limited number of functionalities, but we aim to evolve it to one of the favourite gadgets in astronomy in the future. 
+\ssindex{applications!Vissage}\ssindex{packages!Vissage}Vissage is new software and still has only a limited number of functionalities, but we aim to evolve it to one of the favourite gadgets in astronomy in the future. 
 
 \begin{figure}[tb]
   \centering

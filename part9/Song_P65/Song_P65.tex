@@ -3,7 +3,7 @@
 
 \markboth{Song, Luo, and Zhao}{A New Python Library --- PydasLib}
 
-\title{A New Python Library for Spectroscopic Analysis with MIDAS Style}
+\title{A New \ssindex{computer languages!Python}Python Library for Spectroscopic Analysis with \ssindex{packages!MIDAS}MIDAS Style}
 \author{Yihan~Song,$^{1,2}$ Ali~Luo,$^{1,2}$ and Yongheng~Zhao$^{1,2}$
 \affil{$^1$Key Laboratory of Optical Astronomy, Nationsal Astronomical obervatories, Chinese Academy of Sciences, 20A Datun Road, Chaoyang District, Beijing, 100012, China}
 \affil{$^2$National Astronomical Observatories, Chinese Academy of Sciences,20A Datun Road, Chaoyang District, Beijing, 100012, China}
@@ -14,45 +14,45 @@
 \aindex{Zhao, Y.}
 
 \begin{abstract}
-The ESO MIDAS is a system for astronomers to analyze data which many astronomers are using. Python is a high level script language and there are many applications for astronomical data process. We are releasing a new Python library which realizes some MIDAS commands in Python. People can use it to write a MIDAS style Python code. We call it PydasLib. It is a Python library based on ESO MIDAS functions, which is easily used by astronomers who are familiar with the usage of MIDAS.
+The ESO \ssindex{packages!MIDAS}MIDAS is a system for astronomers to analyze data which many astronomers are using. \ssindex{computer languages!Python}Python is a high level script language and there are many applications for astronomical data process. We are releasing a new \ssindex{computer languages!Python}Python library which realizes some \ssindex{packages!MIDAS}MIDAS commands in \ssindex{computer languages!Python}Python. People can use it to write a \ssindex{packages!MIDAS}MIDAS style \ssindex{computer languages!Python}Python code. We call it \ssindex{libraries!PydasLib}PydasLib. It is a \ssindex{computer languages!Python}Python library based on ESO \ssindex{packages!MIDAS}MIDAS functions, which is easily used by astronomers who are familiar with the usage of \ssindex{packages!MIDAS}MIDAS.
 \end{abstract}
 
 	  \section{Introduction}
-Python is a popular language, wildly used in astronomical programming now. More and more researchers use Python to realize their algorithms and ideas for astronomical data processing. 
+\ssindex{computer languages!Python}Python is a popular language, wildly used in astronomical programming now. More and more researchers use \ssindex{computer languages!Python}Python to realize their algorithms and ideas for astronomical data processing. 
 
-MIDAS is an outstanding programming language for astronomy. It is created and maintained by by European Organization for Astronomical Research in the Southern Hemisphere (ESO). There are many good codes written in MIDAS and many people have been many using it for years.
+\ssindex{packages!MIDAS}MIDAS is an outstanding programming language for astronomy. It is created and maintained by by European Organization for Astronomical Research in the Southern Hemisphere (ESO). There are many good codes written in \ssindex{packages!MIDAS}MIDAS and many people have been many using it for years.
 
-We are releasing a new Python library which realizes some MIDAS commands in Python. People can use it to write a MIDAS style Python code. We call it PydasLib. Our work here can help two kinds of people:
+We are releasing a new \ssindex{computer languages!Python}Python library which realizes some \ssindex{packages!MIDAS}MIDAS commands in \ssindex{computer languages!Python}Python. People can use it to write a \ssindex{packages!MIDAS}MIDAS style \ssindex{computer languages!Python}Python code. We call it \ssindex{libraries!PydasLib}PydasLib. Our work here can help two kinds of people:
 \begin{itemize}
-   \item Python users who want to migrate some MIDAS code to Python. 
-   \item MIDAS users who want to use Python to realize their idea using commands which they are familiar with.
+   \item \ssindex{computer languages!Python}Python users who want to migrate some \ssindex{packages!MIDAS}MIDAS code to \ssindex{computer languages!Python}Python. 
+   \item \ssindex{packages!MIDAS}MIDAS users who want to use \ssindex{computer languages!Python}Python to realize their idea using commands which they are familiar with.
 \end{itemize}
 
 
-          \section{MIDAS and Python}
-\subsection{ESO MIDAS}
+          \section{\ssindex{packages!MIDAS}MIDAS and \ssindex{computer languages!Python}Python}
+\subsection{ESO \ssindex{packages!MIDAS}MIDAS}
 
-ESO MIDAS is a system which provides general tools for image processing and data reduction with an emphasis on astronomical applications including imaging and special reduction packages. Many astronomy researchers use this system to achieve their thoughts and algorithms on data analysis. MIDAS supports many basic data types and functions such as fitting, statistics on tables and images, etc. It can also display images and output the results to a file or on a screen.
+ESO \ssindex{packages!MIDAS}MIDAS is a system which provides general tools for \ssindex{software!image processing}image processing and data reduction with an emphasis on astronomical applications including imaging and special reduction packages. Many astronomy researchers use this system to achieve their thoughts and algorithms on data analysis. \ssindex{packages!MIDAS}MIDAS supports many basic data types and functions such as fitting, statistics on tables and images, etc. It can also display images and output the results to a file or on a screen.
 
-There are four shortcomings of MIDAS:
+There are four shortcomings of \ssindex{packages!MIDAS}MIDAS:
 \begin{itemize}
-  \item  Data structure in MIDAS is not very flexible. The basic type of variable in MIDAS can be integer, float or string. There is no list or dictionary in it. 
-   \item  MIDAS is a self-sealing system. The code can run very well in its environment but it is not able to be called by other programs. It is hard to write a function in MIDAS which serves the whole software pipeline. 
-   \item  It is not convenient to run MIDAS code  in parallel.    You need to select parallel mode in the system to run another MIDAS program at the same time. Nowadays, with a great deal of data  springing up, how long will a program take will be considerable.  
-    \item MIDAS can not be installed in Windows which limits its applications. 
+  \item  Data structure in \ssindex{packages!MIDAS}MIDAS is not very flexible. The basic type of variable in \ssindex{packages!MIDAS}MIDAS can be integer, float or string. There is no list or dictionary in it. 
+   \item  \ssindex{packages!MIDAS}MIDAS is a self-sealing system. The code can run very well in its environment but it is not able to be called by other programs. It is hard to write a function in \ssindex{packages!MIDAS}MIDAS which serves the whole software \ssindex{data!pipelines!reduction}pipeline. 
+   \item  It is not convenient to run \ssindex{packages!MIDAS}MIDAS code  in parallel.    You need to select parallel mode in the system to run another \ssindex{packages!MIDAS}MIDAS program at the same time. Nowadays, with a great deal of data  springing up, how long will a program take will be considerable.  
+    \item \ssindex{packages!MIDAS}MIDAS can not be installed in Windows which limits its applications. 
 \end{itemize}
 
           \subsection{Python}
-Python is an interpreted, general-purpose high-level programming language with a design philosophy which emphasizes code readability. It supports several programming paradigms which include functional, object oriented, and imperative programming styles. It features automatic memory management as well as a fully dynamic type system \citep{python_web}. 
+\ssindex{computer languages!Python}Python is an interpreted, general-purpose high-level programming language with a design philosophy which emphasizes code readability. It supports several programming paradigms which include functional, object oriented, and imperative programming styles. It features automatic memory management as well as a fully dynamic type system \citep{python_web}. 
 
           \subsection{PyMidas}
-PyMidas has been a product of the ESO project Sampo since 2005. It is an interface for Python to call MIDAS programs. Because the precondition of using PyMidas is that MIDAS should be installed, it is hard to use under different operation system.
+\ssindex{libraries!PyMidas}PyMidas has been a product of the ESO project Sampo since 2005. It is an interface for \ssindex{computer languages!Python}Python to call \ssindex{packages!MIDAS}MIDAS programs. Because the precondition of using \ssindex{libraries!PyMidas}PyMidas is that \ssindex{packages!MIDAS}MIDAS should be installed, it is hard to use under different operation system.
 
-          \section{PydasLib --- Our Work}
-In PydasLib, we fulfill dozens of MIDAS commands in Python. The goal of our work is to make a Python library which can achieve the functions of some MIDAS commands. Using this library, people can write their algorithms in Python without MIDAS or migrate their favorite MIDAS code to Python. The code can be easily called by other programs under different operation system. 
+          \section{\ssindex{libraries!PydasLib}PydasLib --- Our Work}
+In \ssindex{libraries!PydasLib}PydasLib, we fulfill dozens of \ssindex{packages!MIDAS}MIDAS commands in \ssindex{computer languages!Python}Python. The goal of our work is to make a \ssindex{computer languages!Python}Python library which can achieve the functions of some \ssindex{packages!MIDAS}MIDAS commands. Using this library, people can write their algorithms in \ssindex{computer languages!Python}Python without \ssindex{packages!MIDAS}MIDAS or migrate their favorite \ssindex{packages!MIDAS}MIDAS code to \ssindex{computer languages!Python}Python. The code can be easily called by other programs under different operation system. 
 
-	  \subsection{PydasLib Commands and Corresponding MIDAS Commands}
-Table \ref{commands} shows PydasLib commands and the corresponding MIDAS commands. The functions of PydasLib commands are almost as same as the corresponding MIDAS ones. Table \ref{new-commands} shows new commands which are not included in MIDAS. 
+	  \subsection{\ssindex{libraries!PydasLib}PydasLib Commands and Corresponding \ssindex{packages!MIDAS}MIDAS Commands}
+Table \ref{commands} shows \ssindex{libraries!PydasLib}PydasLib commands and the corresponding \ssindex{packages!MIDAS}MIDAS commands. The functions of \ssindex{libraries!PydasLib}PydasLib commands are almost as same as the corresponding \ssindex{packages!MIDAS}MIDAS ones. Table \ref{new-commands} shows new commands which are not included in \ssindex{packages!MIDAS}MIDAS. 
 
 \begin{table}[!hb]
 \begin{center}
@@ -60,7 +60,7 @@ Table \ref{commands} shows PydasLib commands and the corresponding MIDAS command
 \label{commands}
 \begin{tabular}{cc||cc}
 \hline
- PydasLib & MIDAS &PydasLib & MIDAS\\
+ \ssindex{libraries!PydasLib}PydasLib & \ssindex{packages!MIDAS}MIDAS &PydasLib & MIDAS\\
 \hline
 \hline
  centerGauss & center/gauss &
@@ -114,7 +114,7 @@ writeDescriptor & write/descriptor\\
 \label{new-commands}
 \begin{tabular}{c|c}
 \hline
- PydasLib & Comments\\
+ \ssindex{libraries!PydasLib}PydasLib & Comments\\
 \hline 
 \hline
  add\_fit  & add a fitting function to the fitting file\\
@@ -128,7 +128,7 @@ valid\_row & return a list of valid rows of the table\\
 \end{center}
 \end{table}
           \section{Example }
-Table \ref{code} shows a short example. The example uses PydasLib to read a Sloan FITS file, to make a convolution with a gaussian profile and to extract H$\alpha$ emission lines. Finally, the example saves the plotted figures (see Figure~\ref{fig}) into files.
+Table \ref{code} shows a short example. The example uses \ssindex{libraries!PydasLib}PydasLib to read a Sloan FITS file, to make a convolution with a gaussian profile and to extract H$\alpha$ emission lines. Finally, the example saves the plotted figures (see Figure~\ref{fig}) into files.
 
 \begin{table}[!hb]
 \begin{center}
@@ -164,7 +164,7 @@ The top one is the whole spectrum. Left bottom one is the spectrum after convolu
 \end{center}
 \end{figure}
 	  \section{Summary}
-We introduce a new library for Python which can realize some functions of ESO's MIDAS package. Using this library, people who are used to the grammar of MIDAS can keep their customs and enjoy the power of Python. This library is for spectral analysis. Since this is the first version of the library, not all the functions and commands of MIDAS are included. In the future, the library will be better.
+We introduce a new library for \ssindex{computer languages!Python}Python which can realize some functions of ESO's \ssindex{packages!MIDAS}MIDAS package. Using this library, people who are used to the grammar of \ssindex{packages!MIDAS}MIDAS can keep their customs and enjoy the power of \ssindex{computer languages!Python}Python. This library is for \ssindex{astronomy!spectral analysis}\ssindex{software!spectral analysis}spectral analysis. Since this is the first version of the library, not all the functions and commands of \ssindex{packages!MIDAS}MIDAS are included. In the future, the library will be better.
 
 \bibliographystyle{asp2010}
 \bibliography{editor}

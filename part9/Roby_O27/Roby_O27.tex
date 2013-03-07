@@ -14,27 +14,27 @@
 \aindex{Goldina, T.}
 
 \begin{abstract}
-Astronomy web developers are looking for fast and powerful \newline HTML~5/AJAX tools to enhance their web archives. We are exploring ways to make this easier for the developer. How could you have a full FITS visualizer or a Web 2.0 table that supports paging, sorting, and filtering in your web page in 10 minutes? Can it be done without even installing any software or maintaining a server? Firefly is a powerful, configurable system for building web-based user interfaces to access astronomy science archives. It has been in production for the past three years. Recently, we have made some of the advanced components available through very simple JavaScript calls. This allows a web developer, without any significant knowledge of Firefly, to have FITS visualizers, advanced table display, and spectrum plots on their web pages with minimal learning curve. Because we use cross-site JSONP, installing a server is not necessary. Web sites that use these tools can be created in minutes.
+Astronomy web developers are looking for fast and powerful \newline HTML~5/\ssindex{software!tools!AJAX}AJAX tools to enhance their web archives. We are exploring ways to make this easier for the developer. How could you have a full FITS visualizer or a Web 2.0 table that supports paging, sorting, and filtering in your web page in 10 minutes? Can it be done without even installing any software or maintaining a server? Firefly is a powerful, configurable system for building web-based user interfaces to access astronomy science archives. It has been in production for the past three years. Recently, we have made some of the advanced components available through very simple \ssindex{computer languages!JavaScript}JavaScript calls. This allows a web developer, without any significant knowledge of Firefly, to have FITS visualizers, advanced table display, and spectrum plots on their web pages with minimal learning curve. Because we use cross-site \ssindex{protocols!JSONP}JSONP, installing a server is not necessary. Web sites that use these tools can be created in minutes.
 
-Firefly was created in IRSA, the NASA/IPAC Infrared Science Archive \newline (http://irsa.ipac.caltech.edu). We are using Firefly to serve many projects including Spitzer, Planck, WISE, PTF, LSST and others. 
+Firefly was created in IRSA, the NASA/\ssindex{data centers!IPAC}IPAC \ssindex{archives!individual!Infrared Science Archive (IRSA)}Infrared Science Archive \newline (http://irsa.ipac.caltech.edu). We are using Firefly to serve many projects including \ssindex{observatories!space-based!Spitzer}Spitzer, \ssindex{observatories!space-based!Planck}Planck, \ssindex{observatories!space-based!WISE}WISE, PTF, \ssindex{observatories!Earth-based!LSST}LSST and others. 
 
 \end{abstract}
 
 \section{Firefly Overview}
-Firefly is IRSA's new web-based system to access science archives. It provides new groundbreaking data visualization capabilities not available in many web-based archives. Our efforts to create a tightly integrated and user-friendly interface has generated numerous positive feedback from scientists. Users can browse and understand large volumes of archive data in a fraction of the time it took in the past.
+Firefly is IRSA's new web-based system to access science archives. It provides new groundbreaking data \ssindex{visualization}visualization capabilities not available in many web-based archives. Our efforts to create a tightly integrated and user-friendly interface has generated numerous positive feedback from scientists. Users can browse and understand large volumes of archive data in a fraction of the time it took in the past.
 
-AJAX technology gives us an opportunity to radically add value to basic data search and retrieval. In addition to searching and downloading, scientists can study, visualize, investigate, and begin to do science while browsing the archive. Not only can these advanced capabilities be an incredible time saver, but also improve the quality of the research.
+\ssindex{software!tools!AJAX}AJAX technology gives us an opportunity to radically add value to basic data search and retrieval. In addition to searching and downloading, scientists can study, visualize, investigate, and begin to do science while browsing the archive. Not only can these advanced capabilities be an incredible time saver, but also improve the quality of the research.
 
-Firefly is being reused for multiple archives because we make all the components configurable using XML. This has allowed us to now implement additional archive systems at a fraction of the cost of the first system, the Spitzer Heritage Archive.
+Firefly is being reused for multiple archives because we make all the components configurable using \ssindex{data formats!XML}XML. This has allowed us to now implement additional archive systems at a fraction of the cost of the first system, the \ssindex{archives!individual!Spitzer Heritage Archive}\ssindex{observatories!space-based!Spitzer}Spitzer Heritage Archive.
 
-Firefly is implemented as a web application. This differs from a web page. With a web page, every time the display changes a new page is loaded. With a web application, there is just one page that is completely controlled by the JavaScript much like a desktop application. This approach does have some limitations. If you wish to take advantage of Firefly you must work completely in the Firefly environment. At IRSA, we want to provide cutting-edge web applications and enhance our existing web pages. Since we cannot retrofit the Firefly into existing web pages, we wrote the Firefly Tools interface to provide a solution to these limitations.
+Firefly is implemented as a web\ssindex{web!applications} application. This differs from a web page. With a web page, every time the display changes a new page is loaded. With a web\ssindex{web!applications} application, there is just one page that is completely controlled by the \ssindex{computer languages!JavaScript}JavaScript much like a desktop application. This approach does have some limitations. If you wish to take advantage of Firefly you must work completely in the Firefly environment. At IRSA, we want to provide cutting-edge web\ssindex{web!applications} applications and enhance our existing web pages. Since we cannot retrofit the Firefly into existing web pages, we wrote the Firefly Tools interface to provide a solution to these limitations.
 
-Firefly Tools exposes the most powerful components of Firefly in a way that can be used by any web page with no prerequisites. It allows any web developer access to Firefly's FITS visualizers or Table Tool with just a very few lines of JavaScript. The goal is to make these tools very easy to use with only a 10 minute learning curve.  
+Firefly Tools exposes the most powerful components of Firefly in a way that can be used by any web page with no prerequisites. It allows any web developer access to Firefly's FITS visualizers or Table Tool with just a very few lines of \ssindex{computer languages!JavaScript}JavaScript. The goal is to make these tools very easy to use with only a 10 minute learning curve.  
 
-An important feature is that the Firefly Tools server can be installed cross-site. In other words, it is not required to be on the same server as the web page. Firefly Tools can do this because it uses JSONP for the server communication.  This allows Firefly Tools not to be limited by the server's Same Origin Policy and to give the developer a lot of flexibility. The web developer does not have to do any installation, but can simply just start using Firefly Tools. (see Figure \ref{server-chart})
+An important feature is that the Firefly Tools server can be installed cross-site. In other words, it is not required to be on the same server as the web page. Firefly Tools can do this because it uses \ssindex{protocols!JSONP}JSONP for the server communication.  This allows Firefly Tools not to be limited by the server's Same Origin Policy and to give the developer a lot of flexibility. The web developer does not have to do any installation, but can simply just start using Firefly Tools. (see Figure \ref{server-chart})
 
 \begin{figure}[!ht]
-\caption{\small Firefly Tools server works in the web page by using cross-site scripting and communicating using JSONP}
+\caption{\small Firefly Tools server works in the web page by using cross-site scripting and communicating using \ssindex{protocols!JSONP}JSONP}
 \plotfiddle{part9/Roby_O27/ff-server-chart.eps}{3.5cm}{0}{50}{50}{-70}{0}
 \label{server-chart}
 \end{figure}
@@ -43,7 +43,7 @@ An important feature is that the Firefly Tools server can be installed cross-sit
 \subsection{Major Firefly Tools Components}
 
 \altsubsubsection*{Fits Visualization}
-Firefly provides a first-class FITS visualization on the Web without any plugins. All of the significant components you would expect to see in a basic desktop FITS application are available with any FITS file that Firefly displays.
+Firefly provides a first-class FITS \ssindex{visualization}visualization on the Web without any plugins. All of the significant components you would expect to see in a basic desktop FITS application are available with any \ssindex{data formats!FITS}FITS file that Firefly displays.
 
 \altsubsubsection*{Tabular Display}
 Firefly has implemented “Excel-like” tables on the webpage. In an easy, interactive way, a user can sort the results, filter the data on multiple constraints, hide or show columns or select data for download or visualization. The Firefly Tools server is optimized to show very large tables without significant performance degradation. In addition, Firefly Tools also allows the user to easily connect tables to plots to create more integrated and powerful behavior.
@@ -60,12 +60,12 @@ Firefly shows 2D line graphs interactively so that a user can read the data poin
            src='http://irsa.ipac.caltech.edu/fftools/fftools.nocache.js'> </script>
 \end{verbatim}
 \normalsize
-To load firefly Tools, you should include the above declaration in your HTML file. When Firefly Tools completes its loading, it calls a JavaScript function \scriptsize \texttt{onFireflyLoaded()}\normalsize. Firefly Tools works by placing its components in a HTML \scriptsize\texttt{<div>} \normalsize element with a specified ID. The following are several examples of what can be done in the \scriptsize \texttt{onFireflyLoaded()} \normalsize function. All test data can be found at \texttt{http://web.ipac.caltech.edu/staff/roby/demo}.
+To load firefly Tools, you should include the above declaration in your HTML file. When Firefly Tools completes its loading, it calls a \ssindex{computer languages!JavaScript}JavaScript function \scriptsize \texttt{onFireflyLoaded()}\normalsize. Firefly Tools works by placing its components in a HTML \scriptsize\texttt{<div>} \normalsize element with a specified ID. The following are several examples of what can be done in the \scriptsize \texttt{onFireflyLoaded()} \normalsize function. All test data can be found at \texttt{http://web.ipac.caltech.edu/staff/roby/demo}.
 
 \textit{Note- For brevity some of the HTML boiler plate code have been removed in the examples.}
 
 
-\altsubsubsection*{Example 1 - Plotting One FITS Image}
+\altsubsubsection*{Example 1 - Plotting One \ssindex{data formats!FITS}FITS Image}
 
 \scriptsize
 \begin{verbatim}
@@ -83,7 +83,7 @@ function onFireflyLoaded() {
 See result on the left hand side of Figure \ref{examples14}).
         
 \altsubsubsection*{Example 2 and 3 - Plotting Table and Image}
-It is very easy to plot a table. The table can be used by itself or you can attach an image viewer to the table. The source for the table tool can be an IPAC table, a CSV, or a TSV file. 
+It is very easy to plot a table. The table can be used by itself or you can attach an image viewer to the table. The source for the table tool can be an IPAC table, a \ssindex{data formats!CSV}CSV, or a \ssindex{data formats!TSV}TSV file. 
 
 The following examples creates a side-by-side HTML layout.  The table is plotted in the \scriptsize\texttt{<div>} \normalsize labled "table2Here" and the related image is plotting in the \scriptsize\texttt{<div>} \normalsize labled "previewHere". The table contains a column with the URL of an image related for that row. Every time the user clicks on a row the image will update. See the result on the left hand side of Figure \ref{table-and-preview}.
 
@@ -124,7 +124,7 @@ Using a similar approach you can create a coverage plot from a table that has co
 \normalsize
 
 \altsubsubsection*{Example 4 - Plotting related images}
-In this example, we create four image viewers. Each belong to the same group ("wise-group").  We then set some global parameters so all the plots display the same. Now we plot each of the four images by specifying the URL of the FITS file. By doing this, all the plotting controls will work on all four images simultaneously. The HTML \scriptsize\texttt{<div>} \normalsize declaration is omitted for brevity. See the result on right hand side of Figure \ref{examples14}.
+In this example, we create four image viewers. Each belong to the same group ("wise-group").  We then set some global parameters so all the plots display the same. Now we plot each of the four images by specifying the URL of the \ssindex{data formats!FITS}FITS file. By doing this, all the plotting controls will work on all four images simultaneously. The HTML \scriptsize\texttt{<div>} \normalsize declaration is omitted for brevity. See the result on right hand side of Figure \ref{examples14}.
 
 \scriptsize
 \begin{verbatim}

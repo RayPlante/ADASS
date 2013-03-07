@@ -3,7 +3,7 @@
 
 \markboth{Allen, et al.}{Software Visibility and Re-use}
 
-\title{Bring out your codes! Bring out your codes! (Increasing Software Visibility and Re-use)}
+\title{Bring out your codes! Bring out your codes! (Increasing Software Visibility and \ssindex{software!reuse}Re-use)}
 \author{Alice~Allen,$^1$ Bruce~Berriman,$^{2,3}$ 
 Robert~Brunner,$^4$ Dan~Burger,$^5$ Kimberly~DuPrie,$^1$ Robert~J.~Hanisch,$^{3,6}$ Robert~Mann,$^7$ Jessica~Mink,$^8$ Christer~Sandin,$^9$ Keith~Shortridge,$^{10}$ and Peter~Teuben$^{11}$
 \affil{$^1$Astrophysics Source Code Library}
@@ -32,9 +32,9 @@ Robert~Brunner,$^4$ Dan~Burger,$^5$ Kimberly~DuPrie,$^1$ Robert~J.~Hanisch,$^{3,
 
 \begin{abstract}
 
-Progress is being made in code discoverability and preservation, but as discussed at ADASS XXI, many codes still remain hidden from public view. With the Astrophysics Source Code Library (ASCL)\footnote{http://ascl.net/} now indexed by the SAO/NASA Astrophysics Data System (ADS), the introduction of a new journal, {\em Astronomy \& Computing}, focused on astrophysics software, and the increasing success of education efforts such as Software Carpentry\footnote{http://software-carpentry.org/} and SciCoder,\footnote{http://www.scicoder.org/} the community has the opportunity to set a higher standard for its science by encouraging the release of software for examination and possible reuse. We assembled representatives of the community to present issues inhibiting code release and sought suggestions for tackling these factors.
+Progress is being made in code discoverability and preservation, but as discussed at ADASS XXI, many codes still remain hidden from public view. With the Astrophysics \ssindex{software!source code}Source Code Library (\ssindex{projects!ASCL}ASCL)\footnote{http://ascl.net/} now indexed by the SAO/NASA \ssindex{Astrophysics Data System (ADS)}Astrophysics Data System (ADS), the introduction of a new journal, {\em Astronomy \& Computing}, focused on astrophysics software, and the increasing success of education efforts such as Software Carpentry\footnote{http://software-carpentry.org/} and SciCoder,\footnote{http://www.scicoder.org/} the community has the opportunity to set a higher standard for its science by encouraging the release of software for examination and possible \ssindex{software!reuse}reuse. We assembled representatives of the community to present issues inhibiting code release and sought suggestions for tackling these factors.
 
-The session began with brief statements by panelists; the floor was then opened for discussion and ideas. Comments covered a diverse range of related topics and points of view, with apparent support for the propositions that algorithms should be readily available, code used to produce published scientific results should be made available, and there should be discovery mechanisms to allow these to be found easily. With increased use of resources such as GitHub (for code availability), ASCL (for code discovery), and a stated strong preference from the new journal {\em Astronomy \& Computing} for code release, we expect to see additional progress over the next few years.
+The session began with brief statements by panelists; the floor was then opened for discussion and ideas. Comments covered a diverse range of related topics and points of view, with apparent support for the propositions that algorithms should be readily available, code used to produce published scientific results should be made available, and there should be discovery mechanisms to allow these to be found easily. With increased use of resources such as \ssindex{code!repository!GitHub}GitHub (for code availability), \ssindex{projects!ASCL}ASCL (for code discovery), and a stated strong preference from the new journal {\em Astronomy \& Computing} for code release, we expect to see additional progress over the next few years.
 \end{abstract}
 
 \section{Introduction}
@@ -48,8 +48,8 @@ The astronomy community has begun to recognize the need to and benefits of publi
 \begin{itemize}
 \item Blogs such as Astronomy Computing Today\footnote{http://astrocompute.wordpress.com/} and AstroBetter,\footnote{http://www.astrobetter.com/} devoted in part or wholly to software topics and doing things better.
 \item Projects such as Software Carpentry and SciCoder to improve coding skills.
-\item Increasing efforts to recognize the role of the astronomical software professional in advancing the field through the development of astroinformatics conferences, coursework, and code citation.
-\item Expansion of the ASCL, indexing of its entries by ADS, and ADS's exploration of linking papers to code entries and code entries to papers.
+\item Increasing efforts to recognize the role of the astronomical software professional in advancing the field through the development of \ssindex{astroinformatics}astroinformatics conferences, coursework, and code \ssindex{citation}citation.
+\item Expansion of the \ssindex{projects!ASCL}ASCL, indexing of its entries by ADS, and ADS's exploration of linking papers to code entries and code entries to papers.
 \item Collaborative coding efforts such as AstroPy.\footnote{http://www.astropy.org/}
 \item Social software bringing astronomers together in previously unprecedented ways ({\em i.e.}, Astronomers' Facebook group, AstroShare Google group\footnote{https://groups.google.com/forum/?fromgroups\#!forum/AstroShareGroup}).
 \item Launch of a journal, {\em Astronomy \& Computing}, devoted to the development and use of software methods in astronomy.
@@ -91,13 +91,13 @@ Discussion was spirited and wide-ranging, with several themes emerging from it:
 \item It is important to distinguish between code and algorithms; often people care more about the algorithms, and while code may embody an algorithm it can also obscure it.
 \item  Insisting that every last piece of code be made available sounds unrealistic, but code used to produce published results really matters. Some journals and funding bodies are starting to see such code as an integral part of the work, so as something that needs to be available.
 \item Versions of code become important for understanding its evolution and in order to know just which version produced a published result.
-\item It is important to distinguish between accessibility and discoverability, although both matter. Sites such as ASCL address the discoverability problem.
-\item Some people, particularly with a computer science background, are comfortable with putting code into GitHub from the very start which solves both the accessibility and the versioning problem.
+\item It is important to distinguish between accessibility and discoverability, although both matter. Sites such as \ssindex{projects!ASCL}ASCL address the discoverability problem.
+\item Some people, particularly with a computer science background, are comfortable with putting code into \ssindex{code!repository!GitHub}GitHub from the very start which solves both the accessibility and the versioning problem.
 \end{itemize}
 
 Releasing software increases transparency, though some are reluctant to release code in part because of a perceived need to be available to support the code. This could be mitigated with the implementation of the Community Research and Academic Programming License, or CRAPL\footnote{http://matt.might.net/articles/crapl/}. Looking at messy codes can be instructive; software authors could partner with computer science students to clean code up. Science can be advanced by improving the skills of code authors in areas of testing (creating and publishing test cases), clean coding, version control, and documentation. Though these did not come up in the BoF, suggestions for improvement can be found in \citet{DBLP:journals/corr/abs-1210-0530}. 
 
-In the longer term, astronomy will advance faster with greater transparency of software and adoption of open source licenses, as others can improve and extend work that has already been done; methods already exist for publishing codes and managing code changes/versions and releases. The science can be improved by improving software distribution, which can be aided by the use of social coding sites.
+In the longer term, astronomy will advance faster with greater transparency of software and adoption of \ssindex{software!open source}open source licenses, as others can improve and extend work that has already been done; methods already exist for publishing codes and managing code changes/versions and releases. The science can be improved by improving software distribution, which can be aided by the use of social coding sites.
 
 \section{Conclusions}
 

@@ -19,25 +19,25 @@ in TES X-Ray Detectors}
 \aindex{Gottardi, L.}
 
 \begin{abstract}
-The current and forthcoming research lines in X-ray astronomy will require unprecedented spectral resolution with imaging capabilities. The most promising detectors able to provide these capabilities are the calorimeters based on Transition Edge Sensor (TES) technologies, like the one that has been under development for the proposed ATHENA x-ray space mission.
+The current and forthcoming research lines in \ssindex{astronomy!X-ray}X-ray astronomy will require unprecedented spectral resolution with imaging capabilities. The most promising detectors able to provide these capabilities are the calorimeters based on Transition Edge Sensor (TES) technologies, like the one that has been under development for the proposed \ssindex{observatories!space-based!ATHENA}ATHENA x-ray space mission.
 
-We present here the Data Flow designed for one of such instruments covering the detection algorithms to extract the x-ray events (photons) from the noisy signal (as well as to cope with a possible pile-up), the event qualification (event grade) according to the event arrival time and proximity to other events, and finally the filtering process applied to these pulses to get their energy content, and thus the astronomical source spectrum.
+We present here the Data Flow designed for one of such instruments covering the detection algorithms to extract the \ssindex{astronomy!X-ray}x-ray events (photons) from the noisy signal (as well as to cope with a possible pile-up), the event qualification (event grade) according to the event arrival time and proximity to other events, and finally the filtering process applied to these pulses to get their energy content, and thus the astronomical source spectrum.
 
-This development is currently part of a collaboration between IFCA (Spain) and SRON (NL) institutes, as part of a larger project initiated in 2005 and named EURECA \citep{deKorte_2009} involving many other institutes in Europe and the USA. This project was created to design the TES prototype proposed for the XEUS/IXO/ATHENA ESA missions.
+This development is currently part of a collaboration between IFCA (Spain) and SRON (NL) institutes, as part of a larger project initiated in 2005 and named EURECA \citep{deKorte_2009} involving many other institutes in Europe and the USA. This project was created to design the TES prototype proposed for the XEUS/IXO/\ssindex{observatories!space-based!ATHENA}ATHENA ESA missions.
 \end{abstract}
 
 \section{Introduction}
 
-In the Transition Edge Sensor (TES) devices, the X-ray photons coming from the astronomical sources are absorbed by the detector, producing a steep temperature increase and giving rise to current pulses which are the device response to an abrupt resistance increment in the superconductor element. The arrival time, position and energy content of the pulses are then obtained by analyzing the electrical pulses generated.
+In the Transition Edge Sensor (TES) devices, the \ssindex{astronomy!X-ray}X-ray photons coming from the astronomical sources are absorbed by the detector, producing a steep temperature increase and giving rise to current pulses which are the device response to an abrupt resistance increment in the superconductor element. The arrival time, position and energy content of the pulses are then obtained by analyzing the electrical pulses generated.
 
-As part of this collaboration, we have designed a full suite of software tools \citep{ceballos_2011} to detect the pulses generated in this type of devices in response to the incoming X-ray photons as well as to characterize the TES instrument. 
+As part of this collaboration, we have designed a full suite of software tools \citep{ceballos_2011} to detect the pulses generated in this type of devices in response to the incoming \ssindex{astronomy!X-ray}X-ray photons as well as to characterize the TES instrument. 
 
 The event processing Data Flow presented here (see Fig.~\ref{dataflow}), accounts for the events (photons) detection \citep{ceballos_2012} as well as for the events qualification. In addition it implements a calibration mode to create the library of template pulses that will be finally used to precisely determine the energy content of the high quality pulses.
 
 \begin{figure}
 \centering
 \includegraphics[angle=90,width=\textwidth]{part2/Ceballos_P009/P009_f1.eps} 
-\caption{Processing Data Flow: Pulse Detection (in blue boxes) and Pulse Qualification (in salmon boxes)}
+\caption{Processing Data Flow: \ssindex{astronomy!pulse detection}Pulse Detection (in blue boxes) and Pulse Qualification (in salmon boxes)}
 \label{dataflow}
 \end{figure}
 

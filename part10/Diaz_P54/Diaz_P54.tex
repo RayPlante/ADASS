@@ -3,9 +3,9 @@
 
 \bibliographystyle{asp2010}
 
-\markboth{Diaz et al.}{HST Cycle 21 Exposure Time Calculator}
+\markboth{Diaz et al.}{HST Cycle 21 \ssindex{observing!exposure}Exposure Time Calculator}
 
-\title{HST Cycle 21 Exposure Time Calculator}
+\title{\ssindex{observatories!space-based!HST}HST Cycle 21 \ssindex{observing!exposure}Exposure Time \ssindex{observing!calculator}\ssindex{software!observation planning}Calculator}
 \author{R.~I.~Diaz,$^1$ V.~G.~Laidler,$^2$ I.~Busko,$^1$ M.~Davis,$^1$ C.~Hanley,$^1$ M.~Sienkiewicz,$^1$ C.~Sontag,$^1$ and B. York$^1$
 \affil{$^1$Space Telescope Science Institute, 3700 San Martin Dr, Baltimore MD 21218}
 \affil{$^2$Computer Sciences Corporation at STScI, 3700 San Martin Dr, Baltimore MD 21218}}
@@ -20,15 +20,15 @@
 \aindex{York, B.}
 
 \begin{abstract}
-We will present the most recent updates that will be part of Exposure Time Calculator for Cycle 21 (ETC 21.1). We also touch on some of the future improvements that are being consider for next Cycle. 
+We will present the most recent updates that will be part of \ssindex{observing!exposure}Exposure Time \ssindex{observing!calculator}\ssindex{software!observation planning}Calculator for Cycle 21 (ETC 21.1). We also touch on some of the future improvements that are being consider for next Cycle. 
 \end{abstract}
 
 \section{Introduction}
-The ETC is an integral part of the  Hubble Space Telescope (HST) planning tools, which evolve over time with the changes in the HST instruments and with changes in the software and hardware \citep{Diaz3_2010, Diazetal_2010}. The ETC is used by HST observers to assess the feasibility of their science programs and to plan their observations. As such, the ETC calculations should accurately predict the observatory response for each of the instruments and observing modes \citep{Diaz_2012}.
+The ETC is an integral part of the  Hubble Space Telescope (\ssindex{observatories!space-based!HST}HST) \ssindex{software!observation planning}planning tools, which evolve over time with the changes in the \ssindex{observatories!space-based!HST}HST instruments and with changes in the software and \ssindex{computers!hardware}hardware \citep{Diaz3_2010, Diazetal_2010}. The ETC is used by \ssindex{observatories!space-based!HST}HST observers to assess the feasibility of their science programs and to plan their observations. As such, the ETC calculations should accurately predict the observatory response for each of the instruments and observing modes \citep{Diaz_2012}.
 
-The current ETC, or pyetc because it is written in Python \citep{pyetc2010}, provides the engine to put together all the pieces of the puzzle together: instrument response, spectral models for different sources, normalizations at different passbands, and background contributions that will be used to derive the observing time needed to achieve a given signal-to-noise (S/N) or the S/N that can be attained after a given observing time.
+The current ETC, or pyetc because it is written in \ssindex{computer languages!Python}Python \citep{pyetc2010}, provides the engine to put together all the pieces of the puzzle together: instrument response, spectral models for different sources, normalizations at different passbands, and background contributions that will be used to derive the observing time needed to achieve a given signal-to-noise (S/N) or the S/N that can be attained after a given observing time.
 
-The instrument response is divided in two parts: the throughput files for all the HST instruments' observing modes  and constraints given by  the aperture transmission, the  fraction of energy contained in the aperture, and the type of source selected (point or extended source). The sensitivity from the different filters and gratings is contained in throughput tables that are accessed via the pysynphot package (\url{http://stsdas.stsci.edu/pysynphot/}). These tables are updated, if needed, before each release in order to account for changes in the sensitivity of the detectors \citep{cdbs_2012}. The rest of the parameters are defined or calculated in the code or included via instrument data files; which are updated before each release, if needed.
+The instrument response is divided in two parts: the throughput files for all the \ssindex{observatories!space-based!HST}HST instruments' observing modes  and constraints given by  the aperture transmission, the  fraction of energy contained in the aperture, and the type of source selected (point or extended source). The sensitivity from the different filters and gratings is contained in throughput tables that are accessed via the \ssindex{packages!pysynphot}pysynphot package (\url{http://stsdas.stsci.edu/pysynphot/}). These tables are updated, if needed, before each release in order to account for changes in the sensitivity of the detectors \citep{cdbs_2012}. The rest of the parameters are defined or calculated in the code or included via instrument data files; which are updated before each release, if needed.
 
 \section{ETC Cycle 21 Changes}
 
@@ -36,37 +36,37 @@ With ETC 21.1, only a few changes will be implemented and are described below:
 
 \begin{itemize}
 \item {\bf{ Improved date configuration for Bright Object checking.}}
-Portions of the ETC software are used to generate tables for the BOT (Bright Object Tool), which is used by APT to perform bright object protection checking. For Cycle 21, this software has been modified to permit configuring the date used to estimate instrument sensitivities when generating these tables.  This is particularly important for instruments like the Cosmic Origins Spectrograph (COS) and the Space Telescope Imaging Spectrograph (STIS) for which there is a variation of the sensitivity with time. While the ETC is configured to perform all calculations using the predicted values for the middle of the cycle (April 1, 2014), the configuration is modified for the software used to generate the BOT tables so that it uses the predicted values at the beginning of the Cycle (October 1, 2013). This conservatively performs the calculations for the point at which the instruments have the highest sensitivity, in order to avoid potentially underestimating cases that might cause a hazard to the detector.
+Portions of the ETC software are used to generate tables for the BOT (Bright Object Tool), which is used by APT to perform bright object protection checking. For Cycle 21, this software has been modified to permit configuring the date used to estimate instrument sensitivities when generating these tables.  This is particularly important for instruments like the Cosmic Origins Spectrograph (\ssindex{instruments!individual!COS}COS) and the Space Telescope Imaging Spectrograph (\ssindex{instruments!individual!STIS}STIS) for which there is a variation of the sensitivity with time. While the ETC is configured to perform all calculations using the predicted values for the middle of the cycle (April 1, 2014), the configuration is modified for the software used to generate the BOT tables so that it uses the predicted values at the beginning of the Cycle (October 1, 2013). This conservatively performs the calculations for the point at which the instruments have the highest sensitivity, in order to avoid potentially underestimating cases that might cause a hazard to the detector.
 
 \item {\bf { Extended Zodiacal light contribution}}.
 The Sun angle table, used to determine the contribution of the  Zodiacal light to the sky background, will be updated with a finer grid that extends closer to  the point where it is disallowed due to its closeness to the Sun direction. ETC 20.2 has limits on calculations to heliocentric angles of $60^o$ and $30^o$ degrees, for both heliocentric latitude and longitude ($\beta$, $\lambda$) combinations. The APT calculations, on the other hand, are still valid at  $\beta = 46.9^o$ and $\lambda = 17.72^o$. In Cycle 21  the ETC and the APT will be consistent, helping users determine the feasibility of their observations at all the angles allowed by the APT and perform their corresponding BOP screening.
 
 \item {\bf Updates to detector background and throughput files}.
-The dark rates will be updated for COS and STIS;  along with new  throughput files for most of the modes. As stated before, the changes in the throughput files incorporate the loss of sensitivity with time, via Modified Julian date parameterization.
+The dark rates will be updated for \ssindex{instruments!individual!COS}COS and \ssindex{instruments!individual!STIS}STIS;  along with new  throughput files for most of the modes. As stated before, the changes in the throughput files incorporate the loss of sensitivity with time, via Modified Julian date parameterization.
 
 \item {\bf Normalization in the observing band}.
-A survey made after the close of Phase I for Cycle 19 revealed that users were keen to normalize their spectra using the observed bandpass rather than a different one. This option will be implemented in ETC 21.1 for all the HST modes; except for STIS modes using gratings. The normalization units will be ABmag.
+A survey made after the close of Phase I for Cycle 19 revealed that users were keen to normalize their spectra using the observed bandpass rather than a different one. This option will be implemented in ETC 21.1 for all the \ssindex{observatories!space-based!HST}HST modes; except for \ssindex{instruments!individual!STIS}STIS modes using gratings. The normalization units will be ABmag.
 
 
 \end{itemize}
 
 \section{Future Builds}
 
-In a continuous effort to provide users with the most accurate calculations that cover the whole range of possible observations with HST, the ETC group is working or considering the following changes to the tool:
+In a continuous effort to provide users with the most accurate calculations that cover the whole range of possible observations with \ssindex{observatories!space-based!HST}HST, the ETC group is working or considering the following changes to the tool:
 
 \subsection{Work under consideration}
 
 \begin{itemize}
 
-\item Support central-wavelength dependent enclosed energy and extraction height for COS. Currently these are  defined for each  grating but the new modes have  much larger cross-dispersion profiles compared to the other modes, making these changes necessary.
+\item Support central-wavelength dependent enclosed energy and extraction height for \ssindex{instruments!individual!COS}COS. Currently these are  defined for each  grating but the new modes have  much larger cross-dispersion profiles compared to the other modes, making these changes necessary.
 
 \item Include dead-time correction in the ETC calculations; which can affect considerably the count rates of bright targets.
 
-\item CTE mitigation.  Users of CCDs would benefit by requesting a preflash for their observations. A warning making observers aware that CTE mitigation, if the background counts per pixel are too low, should be implemented. This affects mainly ACS and WFC3 and should be applied according to the total background counts per pixel.
+\item CTE mitigation.  Users of CCDs would benefit by requesting a preflash for their observations. A warning making observers aware that CTE mitigation, if the background counts per pixel are too low, should be implemented. This affects mainly \ssindex{instruments!individual!ACS}ACS and \ssindex{instruments!individual!WFC3}WFC3 and should be applied according to the total background counts per pixel.
 
-\item Support calculation for WFC3 spatial scanning mode. This observing mode is currently supported by WFC3 but not yet in the ETC. Using this observing strategy allows observers to reduce the fraction of overhead in observations of very bright stars and enables observations of very bright primary calibrators that would otherwise saturate the IR detector \citep{TheMcs2011}. 
+\item Support calculation for \ssindex{instruments!individual!WFC3}WFC3 spatial scanning mode. This observing mode is currently supported by \ssindex{instruments!individual!WFC3}WFC3 but not yet in the ETC. Using this observing strategy allows observers to reduce the fraction of overhead in observations of very bright stars and enables observations of very bright primary calibrators that would otherwise saturate the IR detector \citep{TheMcs2011}. 
 
-\item Support WFC3 secondary order calculations. WFC3 provides a slitless spectroscopy mode in the IR and UVIS channels. The dispersion of the grism is high enough such that the positive first and second-order spectra, (and for some of them the +3 order) as well as the zeroth-order image, are visible on the detector. For very bright sources, where the first order saturates, the secondary order, which is 90 time less sensitive, can be used.
+\item Support \ssindex{instruments!individual!WFC3}WFC3 secondary order calculations. \ssindex{instruments!individual!WFC3}WFC3 provides a slitless spectroscopy mode in the IR and UVIS channels. The dispersion of the grism is high enough such that the positive first and second-order spectra, (and for some of them the +3 order) as well as the zeroth-order image, are visible on the detector. For very bright sources, where the first order saturates, the secondary order, which is 90 time less sensitive, can be used.
 
 \item Increase the wavelength range of non-stellar spectral models.
 
@@ -74,7 +74,7 @@ In a continuous effort to provide users with the most accurate calculations that
 
 \section{Health and Safety of the Instruments}
 
-Besides helping users to achieve their scientific objectives, the ETC assists observers and STScI Scientist to verify that the observations will not damage the detectors. COS, STIS, and ACS have instruments that can be damaged  by observing very bright sources. In order to make sure observations are safe, the ETC has a warning system that identifies these conflicting observations. A more extensive check is later done by the APT; which bases its information on the results derived with the ETC.
+Besides helping users to achieve their scientific objectives, the ETC assists observers and STScI Scientist to verify that the observations will not damage the detectors. \ssindex{instruments!individual!COS}COS, \ssindex{instruments!individual!STIS}STIS, and \ssindex{instruments!individual!ACS}ACS have instruments that can be damaged  by observing very bright sources. In order to make sure observations are safe, the ETC has a warning system that identifies these conflicting observations. A more extensive check is later done by the APT; which bases its information on the results derived with the ETC.
 
 \subsection{ETC Warnings}
 

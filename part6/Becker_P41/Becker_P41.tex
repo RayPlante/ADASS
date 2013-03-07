@@ -5,7 +5,7 @@
 
 \markboth{Becker, Winkelman, and Rots}{Better Living Through Metadata}
 
-\title{Better Living Through Metadata: Examining Archive Usage}
+\title{Better Living Through \ssindex{data!metadata}Metadata: Examining Archive Usage}
 \author{Glenn~Becker, Sherry~Winkelman, and Arnold~Rots}
 \affil{Smithsonian Astrophysical Observatory, 60 Garden Street, Cambridge, MA 02138}
 
@@ -14,14 +14,14 @@
 \aindex{Rots, A.}
 
 \begin{abstract}
-The primary purpose of an observatory's archive is to provide access to the data through various interfaces. User interactions with the archive are recorded in server logs, which can be used to answer basic questions like: Who has downloaded dataset X? When did she do this? Which tools did she use? The answers to questions like these fill in patterns of data access (e.g., how many times dataset X has been downloaded in the past three years). Analysis of server logs provides metrics of archive usage and provides feedback on interface use which can be used to guide future interface development.
+The primary purpose of an observatory's archive is to provide \ssindex{data!access}access to the data through various interfaces. User interactions with the archive are recorded in server logs, which can be used to answer basic questions like: Who has downloaded dataset X? When did she do this? Which tools did she use? The answers to questions like these fill in patterns of data \ssindex{data!access}access (e.g., how many times dataset X has been downloaded in the past three years). Analysis of server logs provides \ssindex{metrics}metrics of archive usage and provides feedback on interface use which can be used to guide future interface development.
 
-The Chandra X-ray Observatory is fortunate in that a database to track data access and downloads has been continuously recording such transactions for years; however, it is overdue for an update. We will detail changes we hope to effect and the differences the changes may make to our usage metadata picture. We plan to gather more information about the geographic location of users without compromising privacy; create improved archive statistics; and track and assess the impact of web "crawlers" and other scripted access methods on the archive. With the improvements to our download tracking we hope to gain a better understanding of the dissemination of Chandra's data; how effectively it is being done; and perhaps discover ideas for new services.
+The \ssindex{observatories!space-based!Chandra}Chandra X-ray Observatory is fortunate in that a database to track data \ssindex{data!access}access and downloads has been continuously recording such transactions for years; however, it is overdue for an update. We will detail changes we hope to effect and the differences the changes may make to our usage \ssindex{data!metadata}metadata picture. We plan to gather more information about the geographic location of users without compromising privacy; create improved archive statistics; and track and assess the impact of web "crawlers" and other scripted access methods on the archive. With the improvements to our download tracking we hope to gain a better understanding of the dissemination of \ssindex{observatories!space-based!Chandra}Chandra's data; how effectively it is being done; and perhaps discover ideas for new services.
 \end{abstract}
 
 \section{Introduction}
 
-Over the thirteen years of the Chandra mission the data in the downloads tracking database have yielded useful statistics about large-scale data usage and trends. Recently, we have decided to drill down further to gather more detailed information in order to be able to more accurately chart and tabulate how the data is accessed, by whom, and at what rate.
+Over the thirteen years of the \ssindex{observatories!space-based!Chandra}Chandra mission the data in the downloads tracking database have yielded useful statistics about large-scale data usage and trends. Recently, we have decided to drill down further to gather more detailed information in order to be able to more accurately chart and tabulate how the data is \ssindex{data!access}accessed, by whom, and at what rate.
 
 To accomplish this we are making changes to the downloads database tables to incorporate both historical data harvested from server logs and new data obtained through online services. The changes have so far been incremental rather than sweeping, yet they already allow for the creation of plots that reveal regional statistics and trends through time.
 
@@ -43,7 +43,7 @@ As Figure~\ref{fig:HostsByYear} displays graphically, the number of unique hosts
 
 \item collected corresponding IP addresses where they were available in logfiles;
 
-\item utilized UNIX 'host' and/or 'dig' commands programmatically (using Perl) to resolve alphanumeric hostnames into numeric IP addresses;
+\item utilized UNIX 'host' and/or 'dig' commands programmatically (using \ssindex{computer languages!Perl}Perl) to resolve alphanumeric hostnames into numeric IP addresses;
 
 \item determined that use of command line 'whois' to resolve IP addresses was:
 
@@ -85,7 +85,7 @@ There are other possibilities as well. Some of the interesting additional fields
 
 It was obvious from even a cursory glance at the downloads database that Google robots had been hitting the Chandra archive harder as the mission has progressed - but we wondered if there were less obvious bulk usages of the archive.
 
-Our ultimate goal was to identify, as much as possible, when downloads were scripted or automated, as opposed to hand-downloaded. Since mirrors of the Chandra archive (both official and unofficial / private) have popped up across the globe,\footnote{Italy, India and HEASARC currently host official archives; the UK used to have one.} we folded these into the analysis as well. Some mirrors are not explicitly identified as such, but are easy to spot since they periodically download the entire archive. Figure~\ref{fig:mirrorsAndBots} is a breakout of activity by year.
+Our ultimate goal was to identify, as much as possible, when downloads were scripted or automated, as opposed to hand-downloaded. Since mirrors of the \ssindex{archives!individual!Chandra Data Archive}Chandra archive (both official and unofficial / private) have popped up across the globe,\footnote{Italy, India and \ssindex{data centers!HEASARC}HEASARC currently host official archives; the UK used to have one.} we folded these into the analysis as well. Some mirrors are not explicitly identified as such, but are easy to spot since they periodically download the entire archive. Figure~\ref{fig:mirrorsAndBots} is a breakout of activity by year.
 
 \begin{figure}[H]
 \begin{center}
@@ -99,6 +99,6 @@ Our ultimate goal was to identify, as much as possible, when downloads were scri
 
 We are only beginning to reap the benefits of both tidying up our downloads database and inserting newly-researched pieces into place. Currently, the database records each file download as an individual transaction. Going forward we hope to clarify the notion of a discrete download session so that we may better understand usage trends. 
 
-The Chandra archive has collected a great deal of data regarding downloads, and our modified and strengthened metadata skeleton is giving it much-needed form.
+The \ssindex{archives!individual!Chandra Data Archive}\ssindex{observatories!space-based!Chandra}Chandra archive has collected a great deal of data regarding downloads, and our modified and strengthened \ssindex{data!metadata}metadata skeleton is giving it much-needed form.
 
 \acknowledgements This work is supported by NASA contract 8-03060.

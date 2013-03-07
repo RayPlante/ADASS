@@ -10,13 +10,13 @@
 \aindex{Viallefond, F.}
 
 \begin{abstract}
-The formalization of the Measurement Set reveals the ubiquity of a structure, a simplicial 2-complex. A subset of this complex is a hexagon encompassed into a triangle. The following shows that this hexagon also appears in the structure of the grammar of XML-Schema, a language used to express types or structures. This result gives insights to interpret this ubiquity. XML is famous for being described by itself (the schema of schema). Here we are in the case of models with this ubiquous structure which are described using a language with a grammar having itself that structure.
+The formalization of the Measurement Set reveals the ubiquity of a structure, a simplicial 2-complex. A subset of this complex is a hexagon encompassed into a triangle. The following shows that this hexagon also appears in the structure of the grammar of \ssindex{data formats!XML}XML-Schema, a language used to express types or structures. This result gives insights to interpret this ubiquity. \ssindex{data formats!XML}XML is famous for being described by itself (the schema of schema). Here we are in the case of models with this ubiquous structure which are described using a language with a grammar having itself that structure.
 \end{abstract}
 
 \section{Introduction}
 Given the evolution of the instrumentation and the very large amount of data that they may produce, the role of a data model becomes critical. An attractive approach to model data is to transform the objects defined using our human language into mathematical objects thus leading to robust, efficient, and expressive data processors in information systems. Lets call the Measurement Set (MS) the model of the data acquired by telescopes in observatories. This model is shaped by action and operational semantics. We find that its overal structure is a simplicial 2-complex, its internal hexagonal pattern, a borromean structure. This structure appears to be ubiquitous in this approach.
 
-The implementation of a model requires a modeling language. During the development of an application, {\it xsd2cpp}, which transforms models described using the XML-Schema language into C++ objects we find that this structure also organizes concepts defined in the XML-Schema grammar. The following presents this result and gives some insights for the interpretation. It borrows vocabulary from the XML-Schema W3C recommendation and the wsdlpull C++ schema processor. Due to limited space the detailed and complete study will be given elsewhere.
+The implementation of a model requires a modeling language. During the development of an application, {\it xsd2cpp}, which transforms models described using the XML-Schema language into \ssindex{computer languages!C++}C++ objects we find that this structure also organizes concepts defined in the XML-Schema grammar. The following presents this result and gives some insights for the interpretation. It borrows vocabulary from the XML-Schema W3C recommendation and the wsdlpull \ssindex{computer languages!C++}C++ schema processor. Due to limited space the detailed and complete study will be given elsewhere.
 
 \section{Component and Uniqueness Constraints} 
 When modeling an object or system, the semantic is captured by setting constraints. Let us consider an object defined by a tuple of elements. There is no element hierarchy. Let this tuple composed of parts, an {\it abstract} structure defined using grammar. Depending on how these parts are assembled there are two conceptual approaches:\\
@@ -125,7 +125,7 @@ The retrospection and prospection being the corrolaries of the realization. Figu
 \section{Conclusion}
 The theory of the Measuremet Set (work in progress) reveals the ubiquity of a structure, a triangle encompassing a hexagon. Results presented here shows this ubiquity  now at the level of the XML-Schema grammar defining concepts. This ubiquity is bound to the  modeling activity to express the meaning of things, a conceptualization. Semantics is introduced by developing structures which have symmetries, these introducing relations are carriers of meaning.
 
-\acknowledgements {\small I am grateful to Vivek Krishna, author of the C++ schema parser available at \url{http://wsdlpull.sourceforge.net}.  
+\acknowledgements {\small I am grateful to Vivek Krishna, author of the \ssindex{computer languages!C++}C++ schema parser available at \url{http://wsdlpull.sourceforge.net}.  
 
 \bibliographystyle{asp2010}
 \bibliography{editor}
