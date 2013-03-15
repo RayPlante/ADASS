@@ -56,7 +56,7 @@
 			The presentation of this in \citet{Grosbol} emphasizes the accessibility to legacy software as well as its capability in enabling user scripting routines. This project relies on the \ssindex{protocols!SAMP}SAMP protocol. To the author's knowledge, \ssindex{packages!FASE}FASE is still actually a prototype designed to show the feasibility of such a solution.
 
 	\section{Toward a Domain Specific Language}
-		Working toward an unified ecosystem for astrophysical data analysis is mandatory. The \ssindex{protocols!SAMP}SAMP and \ssindex{packages!FASE}FASE projects presented above only address part of the main issues emphasized in \S~\ref{BLINK_ISSUES}. If we acknowledge that a monolithic software solution is non-sense, we think that a modular distributed middleware is a viable solution. Considering the lack of resources available to develop sustainable features and software in the field, it is crucial to have a way to share and to maintain the most common parts. Indeed, lots of computations needs the same parts of algorithms, and data structures.
+		Working toward an unified ecosystem for astrophysical data analysis is mandatory. The \ssindex{protocols!SAMP}SAMP and \ssindex{packages!FASE}FASE projects presented above only address part of the main issues emphasized in \S\ref{BLINK_ISSUES}. If we acknowledge that a monolithic software solution is non-sense, we think that a modular distributed middleware is a viable solution. Considering the lack of resources available to develop sustainable features and software in the field, it is crucial to have a way to share and to maintain the most common parts. Indeed, lots of computations needs the same parts of algorithms, and data structures.
 		
 		But we also advocate that astronomers should not have to worry about IT technical stuff and programming low level layers. That why we advocate for a Domain Specific Language for astronomical data analysis.
 
@@ -69,7 +69,7 @@
 			As we intend to offer an easy to install system, we have to design a strong \ssindex{software!scheduling}scheduling service able to learn and monitor its resources: using graph learning, graph mining, and decision machine learning. Such a system would also be able to run simulation test. Then in a second part, we look for data \ssindex{data!mining}mining and input categorization that will enable this \ssindex{software!scheduling}scheduling service to efficiently choose how to compute requests considering the request and the data to compute.
 
 		\subsection{DSPL for Strong Modularity and Good Performance}
-			Dynamic Software Product Line (DSPL) is a new interest in Computer Science \cite{DSPL}. This is a rising paradigm that focuses on software adaptation capabilities to runtime instead of forging it during compilation. This could allow one to change running software to fit the new computation needs and still reaching near optimal performance.
+			Dynamic Software Product Line (DSPL) is a new interest in Computer Science \citep{DSPL}. This is a rising paradigm that focuses on software adaptation capabilities to runtime instead of forging it during compilation. This could allow one to change running software to fit the new computation needs and still reaching near optimal performance.
 			
 			This way, we can create and adapt computation \ssindex{data!pipelines!reduction}pipelines on-the-fly which will fulfill users' requests as fast as possible.
 		

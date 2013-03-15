@@ -50,22 +50,21 @@ For testing, we generated synthetic \ssindex{astronomy!Dynamic Power Spectrum (D
 \begin{figure}
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
-    \hspace{-3.2em}
-    \includegraphics[scale=1.1]{part4/Laidler_O20/O20_f1} 
+    \includegraphics[scale=1.0]{part4/Laidler_O20/O20_f1} 
     \caption{Comparison of transformation speeds for the serial implementation (CPU) and four kernels (GPU1-4) on a  128x128x128x128 HS centered on $a=250 Hz \ b=0.5 Hz \ c=0.000196 \ d=1.445$ }  
     \label{speed}
   \end{subfigure}
   ~
-  \begin{subfigure}[b]{0.45\textwidth}
+  \begin{subfigure}[b]{0.44\textwidth}
     \centering
-    \includegraphics[scale=1.1]{part4/Laidler_O20/O20_f2}
+    \includegraphics[scale=1.0]{part4/Laidler_O20/O20_f2}
     \caption{The effects of tile size and amplitude parameter on transformation speed, for tiles centered on $a=250 Hz \ c=0.000196 \ d=1.445$ and a rage of $b$ values.}
     \label{speed2}
   \end{subfigure}
   \caption{Transform Speeds}
 \end{figure}
 
-Fig.~\ref{speed} shows the transformation speeds for a sample tile, representing an average speedup of $9.73, 19.16, 20.66$ and $25.79$ for \ssindex{computing!GPU}GPU1, GPU2, GPU3, and \ssindex{computing!GPU}GPU4  kernels respectively. Two key factors affecting transformation speed are the amplitude parameters covered by a tile and the tile size (Fig.~\ref{speed2}). The amplitude coverage has two main effects firstly it influences the number of input pixels selected: lower $b$ values lead to fewer points requiring transformation and thus faster filling of a tile of a given size. The amplitude also affects the shape of the hyperplane: a large $b$ will amplify changes in $c$, which can be thought of as increasing the separation of the 3D planes. Interestingly, each of the kernels has combinations of the two factors for which it outperforms the other kernels. For example, the \ssindex{computing!GPU}GPU1 kernel, which allocates one thread per input pixel, is the fastest for values of $b$ below $0.1$ where there are few input pixels and planes are close to parallel, giving the low divergence of \ssindex{computing!GPU}GPU1 an advantage. However, larger $b$ values result in  calculation of many $a$ values that are are not in the HS and result in a rapid decrease in \ssindex{computing!GPU}GPU1's performance.
+Figure~\ref{speed} shows the transformation speeds for a sample tile, representing an average speedup of $9.73, 19.16, 20.66$ and $25.79$ for \ssindex{computing!GPU}GPU1, GPU2, GPU3, and \ssindex{computing!GPU}GPU4  kernels respectively. Two key factors affecting transformation speed are the amplitude parameters covered by a tile and the tile size (Fig.~\ref{speed2}). The amplitude coverage has two main effects firstly it influences the number of input pixels selected: lower $b$ values lead to fewer points requiring transformation and thus faster filling of a tile of a given size. The amplitude also affects the shape of the hyperplane: a large $b$ will amplify changes in $c$, which can be thought of as increasing the separation of the 3D planes. Interestingly, each of the kernels has combinations of the two factors for which it outperforms the other kernels. For example, the \ssindex{computing!GPU}GPU1 kernel, which allocates one thread per input pixel, is the fastest for values of $b$ below $0.1$ where there are few input pixels and planes are close to parallel, giving the low divergence of \ssindex{computing!GPU}GPU1 an advantage. However, larger $b$ values result in  calculation of many $a$ values that are are not in the HS and result in a rapid decrease in \ssindex{computing!GPU}GPU1's performance.
 
 For all transformation kernels except \ssindex{computing!GPU}GPU2, larger tiles lead to higher speeds. \ssindex{computing!GPU}GPU2 performs well when the tile dimensions ($p$ and $q$) are close to the \ssindex{computing!architecture!CUDA}CUDA thread block dimensions, or low multiples thereof. As threads are distributed across $p,q$ pairs, large tiles result in a low number of thread blocks in which all threads are active. The use of SM in \ssindex{computing!GPU}GPU3 to precalculate and store the lookup buffer does not significantly improve results, as the method used to find the first $y$ value requires fewer cycles than the memory access required by the look-up method. For large tiles, \ssindex{computing!GPU}GPU4 usually has the best performance, running  20 to 25 times faster than the serial CPU implementation. Here the SM is used to store the results of calculations involving complex trigonometric functions. With large tiles, there are enough active thread blocks to effectively hide shared memory access and synchronization. For all kernels, speeds flatten off once the hypercubes reach side lengths of $\sim$64, at which point the \ssindex{computing!GPU}GPU is fully utilized.
 

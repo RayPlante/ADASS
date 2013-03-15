@@ -34,10 +34,10 @@ The NASA Exoplanet Science Center (NExScI) hosts the Sagan Workshops, which are 
 
 \section{The System Architecture}
 
-The Sagan Workshop took advantage of the EC2's capabilities to support Virtual Machines (VMs) that can be customized to meet local needs, then replicated, and then released on completion of the jobs. Fig. 1 shows the system architecture developed to support the Sagan Workshop. Participants logged into one of 20 tutorial servers via a Virtual Network Connection (VNC). The \ssindex{computing!resources!Amazon Elastic Cloud 2 (EC2)}Amazon Elastic Block Storage (EBS) system and the Network File System (NFS) were used to share common datasets and user home directories across all virtual machines. An \ssindex{packages!IDL}IDL license server at \ssindex{data centers!IPAC}IPAC received license request through an ssh tunnel. The following list describes the architecture component by component and the rationale for the design choices.
+The Sagan Workshop took advantage of the EC2's capabilities to support Virtual Machines (VMs) that can be customized to meet local needs, then replicated, and then released on completion of the jobs. Figure 1 shows the system architecture developed to support the Sagan Workshop. Participants logged into one of 20 tutorial servers via a Virtual Network Connection (VNC). The \ssindex{computing!resources!Amazon Elastic Cloud 2 (EC2)}Amazon Elastic Block Storage (EBS) system and the Network File System (NFS) were used to share common datasets and user home directories across all virtual machines. An \ssindex{packages!IDL}IDL license server at \ssindex{data centers!IPAC}IPAC received license request through an ssh tunnel. The following list describes the architecture component by component and the rationale for the design choices.
 
 
-\articlefigure {part4/Berriman_O03/O03_f1.eps}{Fig 1}{Hardware architecture to support the Sagan Workshop}
+\articlefigure {part4/Berriman_O03/O03_f1.eps}{Figure1}{Hardware architecture to support the Sagan Workshop}
 
 \begin{itemize}
 

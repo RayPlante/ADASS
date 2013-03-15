@@ -34,7 +34,7 @@ ZoneID=\lfloor{\frac{\delta + 90^\circ}{h}}\rfloor
 \end{center}
 \end{figure}
 
-Every catalog has a footprint (sky coverage). The footprint will cover some pre-divided zones on the celestial sphere, and we can overlap it with many intervals of zones. An interval is a section of a zone, it has left and right boundary, its top and bottom boundaries are the zone's top and bottom. For one zone, the footprint is zero (no intersection with the zone) or several intervals. So a footprint could be imitated by zones' intervals, See left side of Fig.~\ref{P046_f2}. It is not a perfect overlap; it would be a little larger than the real sky coverage. We have to make sure that the intervals cover the whole footprint. Since the zone height is very tiny in practice, the intervals approximation could be very close to the footprint.
+Every catalog has a footprint (sky coverage). The footprint will cover some pre-divided zones on the celestial sphere, and we can overlap it with many intervals of zones. An interval is a section of a zone, it has left and right boundary, its top and bottom boundaries are the zone's top and bottom. For one zone, the footprint is zero (no intersection with the zone) or several intervals. So a footprint could be imitated by zones' intervals, See left side of Figure~\ref{P046_f2}. It is not a perfect overlap; it would be a little larger than the real sky coverage. We have to make sure that the intervals cover the whole footprint. Since the zone height is very tiny in practice, the intervals approximation could be very close to the footprint.
 
 The purpose in intersecting the footprints of catalogs is to get the overlay region. But directly intersecting two footprints is complicated and time consuming. There is an alternative way: 1) imitate the footprints by lots of intervals; 2) to do the intervals' intersection by the intervals. The imitation still consumes a lot of time, but the intervals' intersection is very simple and fast. The advantage is: what we need (the intersection) is easy to obtain, and the approximation process only has to be done once. The footprints' intervals intersection could restrict the crossmatching - only calculate the objects inside the intervals. Once an object is outside the intersection, we can just skip it and test another object ~\citep{dongwei}. The footprints' intervals imitation could also be utilized in other crossmatchings or shape related calculations. The key is: DO NOT change the height of a zone. Every footprint should be mapped to the same sphere-to-zones division. We could choose a tiny value, i.e. 7.1 arcseconds, and keep using this value. The influence of the constant zone-height is when we choose a threshold for the crossmatching larger than zone-height, i.e. 8.0 arcseconds, the neighbor zones should be expanded to $\left[\textit{ZoneID}-2,\textit{ZoneID}+2\right]$ to include all the possible matched objects. 
 
@@ -42,11 +42,11 @@ The purpose in intersecting the footprints of catalogs is to get the overlay reg
 After crossmatching, we can efficiently find dropouts as well. Dropouts occur because of the different selection functions and other observational constraints. Sources in the footprint intersection that do not participate in associations are quickly identified by a simple set operation. i.e. from the new method, we could know: \textbf{Dataset1}, objects inside the footprint intersection of \textit{Catalog1}; \textbf{Dataset2}, matched objects between the two catalogs, \textit{Catalog1 \& Catalog2}. Do a simple subtraction set operation, $\textbf{Dataset1}-\textbf{Dataset2}$, to obtain the are the dropout objects.
 
 \section{Performance}
-Since our catalogs were all stored in databases. We implemented a version of the new method on the database system. The .net framework based Spherical Library\footnote{\url{http://voservices.net/spherical/}}~\citep{Budavari:2010ek, 2007cs........1163G} was chosen to do the geometry related calculations. In order to know the performance of the new method, we tested it on primary catalogs of \textbf{\ssindex{catalogs!individual!SDSS}\ssindex{surveys!Sloan Digital Sky Survey(SDSS)}SDSS DR6} \& \textbf{\ssindex{catalogs!individual!GALEX}GALEX GR3 AIS}. As Table\ref{tbl-1} shows~\footnote{All code was run on a machine with: Intel(R) Xeon(R) E5430 CPU @ 2.66GHz (2 Processors);24 GB Memory; Windows Server 2008 Datacenter Edition SP2; Microsoft SQL Server 2005 Developer Edition (64-bit).}, the new method has a $\textbf{20.3\%}$ acceleration comparing to the original \ssindex{algorithm!zones}Zones Algorithm.
+Since our catalogs were all stored in databases. We implemented a version of the new method on the database system. The .net framework based Spherical Library\footnote{\url{http://voservices.net/spherical/}}~\citep{Budavari:2010ek, 2007cs........1163G} was chosen to do the geometry related calculations. In order to know the performance of the new method, we tested it on primary catalogs of \textbf{\ssindex{catalogs!individual!SDSS}\ssindex{surveys!Sloan Digital Sky Survey(SDSS)}SDSS DR6} \& \textbf{\ssindex{catalogs!individual!GALEX}GALEX GR3 AIS}. As Table~\ref{tbl-1} shows,\footnote{All code was run on a machine with: Intel(R) Xeon(R) E5430 CPU @ 2.66GHz (2 Processors);24 GB Memory; Windows Server 2008 Datacenter Edition SP2; Microsoft SQL Server 2005 Developer Edition (64-bit).} the new method has a $\textbf{20.3\%}$ acceleration comparing to the original \ssindex{algorithm!zones}Zones Algorithm.
 
-The outline calculation part (a process to generate intervals) takes a lot of time. But it only has to be calculated once, so it is still acceptable. For testing the effectiveness of the new method, we cut the intersection region by R.A. ranges or Dec ranges to reduce the area. When intersection area reduced, time consumption of crossmatching also goes down (see the left of Fig.\ref{P046_f4}).
+The outline calculation part (a process to generate intervals) takes a lot of time. But it only has to be calculated once, so it is still acceptable. For testing the effectiveness of the new method, we cut the intersection region by R.A. ranges or Dec ranges to reduce the area. When intersection area reduced, time consumption of crossmatching also goes down (see the left of Figure\ref{P046_f4}).
 
-After we finished the crossmatching between DR6 and AIS, we could use the dropout identification method to solve a problem: which objects belongs to AIS are inside DR6's coverage but do not have counter-part in DR6? let $N$ =\{select objects from AIS which inside the intersection area\}; $M$ =\{the matched objects between AIS \& DR6\} . $N-M$ gives : 4,211,169 objects, and it only takes 29 seconds. Reducing the intersection area to see the trend of the time consumption in the dropout problem, gives the graph on the right of Fig.~\ref{P046_f4}.
+After we finished the crossmatching between DR6 and AIS, we could use the dropout identification method to solve a problem: which objects belongs to AIS are inside DR6's coverage but do not have counter-part in DR6? let $N$ =\{select objects from AIS which inside the intersection area\}; $M$ =\{the matched objects between AIS \& DR6\} . $N-M$ gives : 4,211,169 objects, and it only takes 29 seconds. Reducing the intersection area to see the trend of the time consumption in the dropout problem, gives the graph on the right of Figure~\ref{P046_f4}.
 
 \begin{table}
   \centering
@@ -54,19 +54,19 @@ After we finished the crossmatching between DR6 and AIS, we could use the dropou
 \caption{Time performance of two methods\label{tbl-1}}
 \begin{tabular}{rcc}
 \tableline\tableline
-Step & \ssindex{algorithm!zones}Zones Algorithm &  New Method\\
+{\small Step} & \ssindex{algorithm!zones}\small{Zones Algorithm} &  \small{New Method}\\
 \tableline
-ZoneDef &  00:02:08\tnote{1}& common proc.\\
-Outlines\tnote{2} &  N/A & 05:48:27\\
-Catalogs & 00:30:44& common proc.\\
-Intervals Intersection & N/A & 00:00:06\\
-ZoneZone &  00:01:01& common proc.\\
-crossmatching & 00:06:48& 00:05:25\\
+{\small ZoneDef} &  {\small 00:02:08\tnote{1}}& {\small common proc.}\\
+{\small Outlines\tnote{2}} &  {\small N/A} & {\small 05:48:27}\\
+{\small Catalogs} & {\small 00:30:44}& {\small common proc.}\\
+{\small Intervals Intersection} & {\small N/A} & {\small 00:00:06}\\
+{\small ZoneZone} &  {\small 00:01:01}& {\small common proc.}\\
+{\small crossmatching} & {\small 00:06:48}& {\small 00:05:25}\\
 \tableline
 \end{tabular}
  \begin{tablenotes}
-    \item[1] time format in "hour:minute:second"
-    \item[2] initial one-time process for intervals generation 
+    \item[1] {\small time format in "hour:minute:second"}
+    \item[2] {\small initial one-time process for intervals generation }
   \end{tablenotes}
  \end{threeparttable}
 \end{table}

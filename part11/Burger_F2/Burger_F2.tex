@@ -29,7 +29,8 @@ Increasingly in astronomy there is a need for performing quick-look inspection a
 To even begin visualizing such datasets---let alone perform basic analyses---can be a daunting task. The researcher is faced with questions such as: What is the content and what does it look like? Where are the ``holes" in the data (missing or bad data) and are there systematics or biases to be wary of? What are the relationships among the variables in the dataset, and are they meaningful? Are there interesting patterns that might be worthy of deeper investigation and analysis?
 
 \begin{figure}
-\includegraphics[width=120mm]{part11/Burger_F2/F2_f1.eps}
+\centering
+\includegraphics[width=110mm]{part11/Burger_F2/F2_f1.eps}
 \caption{An example of a \ssindex{applications!Filtergraph}Filtergraph portal using data collected from the Kilodegree Extremely Little Telescope (\ssindex{observatories!Earth-based!Kilodegree Extremely Little Telescope (KELT)}KELT) project. This portal is publicly available at http://filtergraph.vanderbilt.edu/keltsouth.}
 \end{figure}
 
@@ -65,7 +66,7 @@ Once a user registers for the site, he or she is asked to create a portal. To cr
 
 
 \section{Technical Details of \ssindex{applications!Filtergraph}Filtergraph}
-\ssindex{applications!Filtergraph}Filtergraph was written in \ssindex{computer languages!Python}Python and developed using the \ssindex{web!framework!Web2Py}Web2py framework. Once the data is loaded and arranged using \ssindex{libraries!numpy}Numpy, the results are distributed among multiple processes of Gnuplot and then flattened using Graphicsmagick. The number of Gnuplot processes used depends on the amount of data that is being plotted. In addition, \ssindex{computing!mobile!framework!jQuery}\ssindex{libraries!jQuery}JQuery, \ssindex{computing!mobile!framework!jQuery}\ssindex{libraries!jQuery}JQueryUI, and ImgAreaSelect are \ssindex{computer languages!JavaScript}Javascript libraries that are used to enhance the web browser experience. 
+\ssindex{applications!Filtergraph}Filtergraph was written in \ssindex{computer languages!Python}Python and developed using the \ssindex{web!framework!Web2Py}Web2py framework. Once the data is loaded and arranged using \ssindex{libraries!numpy}Numpy, the results are distributed among multiple processes of Gnuplot and then flattened using Graphicsmagick. The number of Gnuplot processes used depends on the amount of data that is being plotted. In addition, \ssindex{computing!mobile!framework!jQuery}\ssindex{libraries!jQuery}JQuery, \ssindex{computing!mobile!framework!jQuery}\ssindex{libraries!jQuery}JQueryUI, and ImgAreaSelect are \ssindex{computer languages!JavaScript}JavaScript libraries that are used to enhance the web browser experience. 
 
 \acknowledgements 
 The authors would like to acknowledge the users of \ssindex{applications!Filtergraph}Filtergraph who have provided valuable feedback throughout the development of this project, and support  through a NASA ADAP grant and from the Vanderbilt Initiative in Data-intensive Astrophysics (VIDA): {\tt www.vanderbilt.edu/astro/vida}. 

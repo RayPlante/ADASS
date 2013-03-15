@@ -31,13 +31,10 @@ The ESO Phase 3 Catalogue Facility provides investigators with the possibility t
 \section{Overview}
 The catalogue facility covers the complete workflow from catalogue submission to data retrieval. The first step is the upload of a catalogue stored in one or several \ssindex{data formats!FITS}FITS files to a staging area on the ESO network by a Principal Investigator. After validation, the catalogue is stored in the ESO archive, its meta data is ingested in a \ssindex{databases!Sybase}Sybase ASE relational database and its content is inserted in a dedicated table on a \ssindex{databases!Sybase}Sybase IQ data warehouse. Once a catalogue has been published by the operator, ESO users will have the possibility to query catalogues and to download the resulting records in one of the supported format: \ssindex{data formats!FITS}FITS, \ssindex{data formats!TSV}TSV, \ssindex{data formats!CSV}CSV, HTML, \ssindex{data formats!VOTable}VOTABLE. The following picture represents the complete workflow from catalogue submission to querying:
 \begin{center}
-\setlength\fboxsep{1pt}
-\setlength\fboxrule{1pt}
-\fbox{
+\begin{figure}[ht!]
+\centering
 \includegraphics [scale=0.7]{part8/Moins_P64/P64_1.eps}
-}
-\begin{figure}[h]
-\caption{Catalogue workflow from submission to web based search}
+\caption{Catalogue workflow from submission to web based search.}
 \end{figure}
 \end{center}
 

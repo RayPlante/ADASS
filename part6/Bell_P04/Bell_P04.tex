@@ -27,7 +27,7 @@ We therefore designed and implemented a dashboard system, written in \ssindex{co
 
 \subsection{Overview}
 
-\articlefigure[scale=0.75]{part6/Bell_P04/P04_f1}{fig:arch}{
+\articlefigure[scale=0.7]{part6/Bell_P04/P04_f1}{fig:arch}{
 Diagram showing the architecture  of the Crab system. The lower section shows the Crab server: the notification and monitor tasks run as \ssindex{computer languages!Python}Python threads while the server task and web interface run under \ssindex{web!framework!CherryPy}CherryPy --- a \ssindex{computer languages!Python}Python web server and framework. The upper section shows four possible types of cron jobs (dashed boxes) and how they communicate: either through the \texttt{crabsh} and \texttt{crab} utilities, or by directly using the client libraries.}
 
 The architecture of the Crab system is shown in Figure~\ref{fig:arch}. Crab clients communicate with the server by sending \ssindex{data formats!JSON}JSON messages over HTTP. There are matching \ssindex{computer languages!Python}Python client and server libraries which implement the complete protocol. We have also written a basic \ssindex{computer languages!Perl}Perl client library implementing a subset of the protocol sufficient for reporting the status of cron jobs.
@@ -77,12 +77,12 @@ Crontab & Comments \\
 \noalign{\smallskip}
 \tableline
 \noalign{\smallskip}
-\texttt{\footnotesize \textbf{SHELL=/jac\_sw/bin/crabsh}} & Activate Crab via wrapper shell. \\
-\texttt{\footnotesize CRON\_TZ=Pacific/Honolulu} & Specify time zone for schedule. \\
-\texttt{\footnotesize MAILTO=jcmtarch@jach.hawaii.edu} & Fallback address (receives Crab errors). \\
+\texttt{\footnotesize \textbf{SHELL=/jac\_sw/bin/crabsh}} & Activate Crab via wrapper shell \\
+\texttt{\footnotesize CRON\_TZ=Pacific/Honolulu} & Specify time zone for schedule \\
+\texttt{\footnotesize MAILTO=jcmtarch@jach.hawaii.edu} & Fallback address (receives Crab errs.) \\
  \\
-\texttt{\footnotesize 17 * * * * \textbf{CRABID=s2-copy} cadc.pl -i s2 -c }& Provide unique name for job (optional). \\
-\texttt{\footnotesize 50 * * * * \textbf{CRABID=s2-trans} cadc.pl -i s2 -t} \\
+\texttt{\footnotesize 17 * * * * \textbf{CRABID=s2-copy} cadc.pl -i s2 -c}& Provide unique name for job (optl.) \\
+\texttt{\footnotesize 50 * * * * \textbf{CRABID=s2-trans} cadc.pl -i s2 -t}& \\
  \\
 \texttt{\footnotesize \textbf{SHELL=/bin/sh}} \\
 \texttt{\footnotesize 7-57/10 * * * * \textbf{CRABIGNORE=yes} crabd-check} & Prevent import of this job. \\
