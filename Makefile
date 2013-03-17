@@ -34,6 +34,7 @@ index:
 	makeindex < $(p).adx > $(p).and
 	makeindex < $(p).odx > $(p).ond
 	makeindex < $(p).idx > $(p).ind
+	makeindex < $(p).sdx > $(p).snd
 
 clean:
 	rm -f $(p).dvi $(p).bbl $(p).aux
