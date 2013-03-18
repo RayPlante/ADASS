@@ -27,6 +27,7 @@ In a previous study \citet{Kuhlen:2008kr}, the whole sky map of \ssindex{astrono
 	\end{aligned}\right. ,
 \end{equation}
 where $\delta\theta$ is the angular distance from $(\theta, \phi)$ to the particle's angular position; $r_\theta$ is the angular radius of the particle; and $\rho_i, m_i, d_i$ are the density, mass and distance of the i-th particle. With the help of \ssindex{libraries!HEALPix}HEALPIX \citep{Gorski:2005ku}, each particle's contribution is calculated and weight distributed in a certain pixel disk, as described by Equation~(\ref{fluxeq}). Calculating the pixel disc is an extremely inefficient process. Even though it's easy to parallelize and to run each particle in a single \ssindex{computing!GPU}GPU thread, the direct \ssindex{computing!architecture!CUDA}CUDA version of the CPU code is even slower. The reason is that the pixel distribution of each particle is highly varied (each particle has an average of 68 pixels on its HEALPIX disk, but with a standard deviation of 115, and there are more than 20k particles having more than 10k pixels). Sorting the particles based on the angular radius could largely reduce the threads skew, however the optimal \ssindex{computing!architecture!CUDA}CUDA code needs 1 hr more to run (GPU: GTX 480), compare to the \ssindex{computer languages!C++}C++ code, which requires about 7 hrs ($\sim$3 GHz CPU). 
+\ooindex{HEALPix, ascl:1107.018}
 
 In this paper, we propose a new method which could largely increase the speed. Due to the high inefficiency of querying HEALPIX pixel disks, we used \ssindex{astronomy!projections!stereographic (STR)}stereographic projection (STR) instead. In \S 1, we introduce the method we used; \S 2 shows the comparison between the new result and old result; \S 3 introduces some potential usage of the new method.
 
@@ -50,7 +51,7 @@ With STR, we use \ssindex{libraries!OpenGL}\ssindex{software!tools!OpenGL}OpenGL
 \end{center}
 \end{figure}
 
-\section{Comparasion}
+\section{Comparison}
 Both projection and \ssindex{computing!GPU}GPU rendering could add additional errors. In order to verify the result, we converted our result back to the \ssindex{libraries!HEALPix}HEALPIX map. As shown in (Figure \ref{figcmp}), panel (a) shows the map of the original method, panel (b) shows the result of the GSP method. Their difference is shown in panel (c). The bright peaks appear in identical positions as the original method. Some errors is shown on very bright peaks, it may due to the float point error of \ssindex{computing!GPU}GPUs. The largest error is shown on the joint of the North and South sphere. We argue that, with good awareness of these, the physics is not changed and hence the error is negligible. 
 
 \begin{figure}[htb]
