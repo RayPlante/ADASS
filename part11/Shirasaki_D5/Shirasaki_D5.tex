@@ -46,7 +46,7 @@ The line corresponds to a rate of increase twice in 1.5 year.
 
 \section{Architecture}
 
-Figure~\ref{fig:2} shows the architecture of the ALMA-JVO quick look system. \ssindex{observatories!Earth-based!ALMA}ALMA data are stored on the ''ALMA VO Service'' shown in the right side of the figure, and the data search and quick look system, which are used by users, are shown in the left side. The data \ssindex{data!access}access interface is implemented based on Table Access Protocol (\ssindex{protocols!TAP}TAP) \footnote{\url{http://www.ivoa.net/Documents/TAP/}} developed by the International Astronomical Observatory Alliance (\ssindex{International Virtual Observatory Alliance (IVOA)}IVOA)\footnote{\url{http://www.ivoa.net/}}. By adapting the standard interface, we can easily extend our system to also handle the data of other\ssindex{Virtual Observatory(VO)} VO services.
+Figure~\ref{fig:2} shows the architecture of the ALMA-JVO quick look system. \ssindex{observatories!Earth-based!ALMA}ALMA data are stored on the ''ALMA VO Service'' shown in the right side of the figure, and the data search and quick look system, which are used by users, are shown in the left side. The data \ssindex{data!access}access interface is implemented based on Table Access Protocol (\ssindex{protocols!TAP}TAP)\footnote{\url{http://www.ivoa.net/Documents/TAP/}} developed by the International Astronomical Observatory Alliance (\ssindex{International Virtual Observatory Alliance (IVOA)}IVOA)\footnote{\url{http://www.ivoa.net/}}. By adapting the standard interface, we can easily extend our system to also handle the data of other\ssindex{Virtual Observatory(VO)} VO services.
 
 In order to make this system scalable to the size of \ssindex{observatories!Earth-based!ALMA}ALMA data, we need to consider how to reduce the size of data transfer between the quick look system and ALMA\ssindex{Virtual Observatory(VO)} VO service. To reduce the size of data transfer, we have prepared data cubes with a reduced resolution for each original data cube. As the amount of information that can be recognized at once on a display  is limited, it is enough and faster to use an appropriate size of the reduced data for a quick look purpose. The full-resolution data is required when looking at the precise structure of a small part of the data. In that case, the part of the data cube can be retrieved by using the cut-out functionality of the ALMA\ssindex{Virtual Observatory(VO)} VO service.
 
@@ -72,7 +72,7 @@ If you want to look at the data in more complicated modes, such as 1st / 2nd mom
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 1.0\textwidth]{part11/Shirasaki_D5/D5_f3.eps}
+\includegraphics[width = \textwidth]{part11/Shirasaki_D5/D5_f3.eps}
 \caption{Snap shots of each component of the ALMA-JVO Quick Look system}
 \label{Shfig:arch}
 \end{center}
