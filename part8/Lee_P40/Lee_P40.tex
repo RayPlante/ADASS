@@ -40,6 +40,7 @@ For each zone in Segment A, the worker thread launches as many kernels as there 
 
 \section{Results}
 Our results show a greater than 40x speedup over the previous best implementation based on multi CPU performance on SQL Server (see Figure 3). Our speedups are slightly sub-linear, but that can be expected as the overhead of controlling worker threads grows, speedups decrease. The larger the segment size we can keep in memory the better we perform on a same size problem. This is due to the overhead of launching sorters and passing jobs back and forth. Theoretically Nvida c2050s support 2 segments of 50 million objects, but we ran into glitches with our kernels and the overhead required by the \ssindex{libraries!Thrust}Thrust library for sorting and copying segments. This is a work-in-progress. In the future we would like to attempt adding dynamic segment size scaling based on the memory of available \ssindex{computing!GPU}GPUs. We have released a public version of our code on \ssindex{code!repository!GitHub}GitHub. Please visit \url{http://matthiaslee.github.com/Xmatch} or email us if you are interested in using and/or contributing to this project.
+\ooindex{xmatch, ascl:1303.021}
 \articlefigure[scale=0.4]{part8/Lee_P40/P040_f3.eps}{Lresults}{Speedup and Scaleup across \ssindex{computing!GPU}GPU count and segment size} 
 
 \bibliographystyle{asp2010}

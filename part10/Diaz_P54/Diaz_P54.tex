@@ -29,6 +29,7 @@ The ETC is an integral part of the  Hubble Space Telescope (\ssindex{observatori
 The current ETC, or pyetc because it is written in \ssindex{computer languages!Python}Python \citep{pyetc2010}, provides the engine to put together all the pieces of the puzzle together: instrument response, spectral models for different sources, normalizations at different passbands, and background contributions that will be used to derive the observing time needed to achieve a given signal-to-noise (S/N) or the S/N that can be attained after a given observing time.
 
 The instrument response is divided in two parts: the throughput files for all the \ssindex{observatories!space-based!HST}HST instruments' observing modes  and constraints given by  the aperture transmission, the  fraction of energy contained in the aperture, and the type of source selected (point or extended source). The sensitivity from the different filters and gratings is contained in throughput tables that are accessed via the \ssindex{packages!pysynphot}pysynphot package (\url{http://stsdas.stsci.edu/pysynphot/}). These tables are updated, if needed, before each release in order to account for changes in the sensitivity of the detectors \citep{cdbs_2012}. The rest of the parameters are defined or calculated in the code or included via instrument data files; which are updated before each release, if needed.
+\ooindex{pysynphot, ascl:1303.023}
 
 \section{ETC Cycle 21 Changes}
 
