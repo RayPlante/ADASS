@@ -6,13 +6,13 @@
 \markboth{Lubow and Budavari}{Hubble Source Catalog}
 
 \title{Hubble Source Catalog}
-\author{Stephen~Lubow$^1$ and Tamas~Budavari$^2$
+\author{Stephen~Lubow$^1$ and Tam\'as~Budav{\'a}ri$^2$
 \affil{$^1$Space Telescope Science Institute, 3700 San Martin Drive, Baltimore MD 21218}
 \affil{$^2$Department of Physics and Astronomy, Johns Hopkins University, Baltimore MD 21218}
 }
 
 \aindex{Lubow, S.}
-\aindex{Budavari, T.}
+\aindex{Budav{\'a}ri, T.}
 
 \begin{abstract}
 We have created an initial catalog of objects observed by the \ssindex{instruments!individual!WFPC2}WFPC2 and \ssindex{instruments!individual!ACS}ACS instruments on the \ssindex{observatories!space-based!HST}Hubble Space Telescope (\ssindex{observatories!space-based!HST}HST). The catalog is based on observations taken on more than 6000 visits (telescope pointings) of \ssindex{instruments!individual!ACS}ACS/\ssindex{instruments!individual!WFC3}WFC and more than 25000 visits of \ssindex{instruments!individual!WFPC2}WFPC2. The catalog is obtained by \ssindex{cross-matching}cross matching by position in the sky all \ssindex{archives!individual!Hubble Legacy Archive}\ssindex{observatories!space-based!HST}Hubble Legacy Archive (HLA) \ssindex{applications!SExtractor}Source Extractor source lists for these instruments. The source lists describe properties of source detections within a visit. The calculations are performed on a SQL Server database system. First we collect overlapping images into groups, e.g., Eta Car, and determine nearby (approximately matching) pairs of sources from different images within each group. We then apply a novel algorithm for improving the \ssindex{cross-matching}cross matching of pairs of sources by adjusting the \ssindex{astronomy!astrometry}astrometry of the images. Next, we combine pairwise matches into maximal sets of possible multi-source matches. We apply a greedy \ssindex{classification!Bayesian}\ssindex{methods!Bayesian}Bayesian method to split the maximal matches into more reliable matches. We test the accuracy of the matches by comparing the fluxes of the matched sources. The result is a set of information that ties together multiple observations of the same object. A byproduct of the catalog is greatly improved relative \ssindex{astronomy!astrometry}astrometry for many of the \ssindex{observatories!space-based!HST}HST images. We also provide information on nondetections that can be used to determine dropouts. With the catalog, for the first time, one can carry out \ssindex{astronomy!time domain}time domain, multi-wavelength studies across a large set of \ssindex{observatories!space-based!HST}HST data. The catalog is publicly available. Much more can be done to expand the catalog capabilities.
