@@ -10,9 +10,9 @@
 \affil{Space Telescope Science Institute, \\3700 San Martin Dr., Baltimore, MD 21218, USA}
 }
 
-\aindex{Hack, W. J.}
+\aindex{Hack, W.}
 \aindex{Dencheva, N.}
-\aindex{Fruchter, A. S.}
+\aindex{Fruchter, A.}
 
 \begin{abstract}
 Calibration of the geometric distortion of \ssindex{observatories!space-based!HST}HST instruments includes up to 3 separate distortion components to be used in conjunction with the \ssindex{World Coordinate System (WCS)}WCS information. Managing and applying these separate components in an efficient manner required merging the use of multiple \ssindex{data formats!FITS}FITS conventions into a single \ssindex{World Coordinate System (WCS)}WCS representation, which includes the full distortion model, that gets stored in the \ssindex{data formats!FITS}FITS header itself. The capabilities of this multi-component \ssindex{World Coordinate System (WCS)}WCS already simplify how \ssindex{observatories!space-based!HST}HST images are aligned and combined by users based on calibrations which have improved accuracy, while headerlets have the potential to allow alignment solutions to be more easily shared within the astronomical community. The logic implemented to combine these \ssindex{data formats!FITS}FITS conventions are described here. The \ssindex{packages!DrizzlePac}DrizzlePac \ssindex{computer languages!Python}Python package now serves as a practical demonstration of how this new logic works with real \ssindex{observatories!space-based!HST}HST data and shows how this set of tools provides all the pieces necessary for managing and applying these highly accurate, complex \ssindex{World Coordinate System (WCS)}WCS representations with minimal effort. 
