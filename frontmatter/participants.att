@@ -4,13 +4,12 @@
 \attendee{{\sc Tim Axelrod}}{taxelrod@lsst.org}{LSST}{}
 \attendee{{\sc Ferdinand Babas}}{babas@cfht.hawaii.edu}{Canada France Hawaii Telescope Corp.}{}
 \attendee{{\sc Scott Badenhorst}}{scottjbadenhorst@gmail.com}{University of Cape Town}{}
-\attendee{{\sc Nick Ball}}{nick.ball@nrc-cnrc.gc.ca}{Research Council Canada}{}
+\attendee{{\sc Nick Ball}}{nick.ball@nrc-cnrc.gc.ca}{National Research Council Canada}{}
 \attendee{{\sc Christophe Barache}}{christophe.barache@obspm.fr}{SYRTE / Observatoire de Paris}{}
 \attendee{{\sc Rob Barnsley}}{rmb@astro.livjm.ac.uk}{LJMU}{}
 \attendee{{\sc Richard Baxter}}{richard.jonathan.baxter@gmail.com}{University of Cape Town}{}
 \attendee{{\sc Glenn Becker}}{skutch@head.cfa.harvard.edu}{SAO}{}
 \attendee{{\sc Graham Bell}}{g.bell@jach.hawaii.edu}{Joint Astronomy Centre}{}
-\attendee{{\sc Glenn Becker}}{skutch@head.cfa.harvard.edu}{SAO}{}
 \attendee{{\sc Graham Berriman}}{gbb@ipac.caltech.edu}{IPAC, Caltech}{}
 \attendee{{\sc David Berry}}{d.berry@jach.hawaii.edu}{Joint Astronomy Centre}{}
 \attendee{{\sc Marc Berthoud}}{berthoud@yerkes.uchicago.edu}{University of Chicago}{}
@@ -18,31 +17,27 @@
 \attendee{{\sc Thomas Boch}}{thomas.boch@astro.unistra.fr}{CNRS / Observatoire de Strasbourg}{}
 \attendee{{\sc David Bohlender}}{david.bohlender@nrc-cnrc.gc.ca}{National Research Council of Canada}{}
 \attendee{{\sc Robert Brunner}}{bigdog@illinois.edu}{Dept. of Astronomy, University of Illinois}{}
-\attendee{{\sc Andrea Bulgarelli}}{bulgarelli@iasfbo.inaf.it}{INAF/IASF Bologna}{}
 \attendee{{\sc Dan Burger}}{dan.burger@vanderbilt.edu}{Vanderbilt University}{}
 \attendee{{\sc Howard Bushouse}}{bushouse@stsci.edu}{Space Telescope Science Institute}{}
 \attendee{{\sc Ivo Busko}}{busko@stsci.edu}{Space Telescope Science Institute}{}
-\attendee{{\sc Nicola Caon}}{nicola.caon@iac.es}{Instituto de Astrofisica de Canarias}{}
 \attendee{{\sc Nicolas Cardiel}}{cardiel@fis.ucm.es}{Universidad Complutense de Madrid}{}
 \attendee{{\sc Matias Carrasco Kind}}{mcarras2@illinois.edu}{University of Illinois at Urbana-Champaign}{}
-\attendee{{\sc M.Teresa Ceballos}}{ceballos@ifca.unican.es}{Instituto de Fisica de Cantabria (CSIC-UC)}{}
+\attendee{{\sc M. Teresa Ceballos}}{ceballos@ifca.unican.es}{Instituto de Fisica de Cantabria (CSIC-UC)}{}
 \attendee{{\sc Seo-Won Chang}}{seowony@galaxy.yonsei.ac.kr}{Department of Astronomy, Yonsei University}{}
 \attendee{{\sc Igor Chilingarian}}{chil@sai.msu.ru}{CfA}{}
 \attendee{{\sc Alberto Conti}}{aconti@stsci.edu}{Space Telescope Science Institute}{}
 \attendee{{\sc Tim Cornwell}}{tim.cornwell@csiro.au}{CSIRO and SKA}{}
 \attendee{{\sc Alessandro Costa}}{alessandro.costa@oact.inaf.it}{INAF Osservatorio Astrofisico di Catania}{}
-\attendee{{\sc Gergely Cs\'{e}p\'{a}ny}}{csepany.gergely@reak.bme.hu}{MTA Res. Cntr for Astron. and Earth Sci.}{}
-\attendee{{\sc Andr\'{e} Csillaghy}}{andre.csillaghy@fhnw.ch}{FHNW, University of Applied Sciences and Arts Northwestern Switzerland}{}
+\attendee{{\sc Gergely Cs\'ep\'any}}{csepany.gergely@reak.bme.hu}{MTA Res. Cntr for Astron. and Earth Sci.}{}
 \attendee{{\sc Malcolm Currie}}{m.currie@jach.hawaii.edu}{Joint Astronomy Centre}{}
 \attendee{{\sc Nadia Dencheva}}{dencheva@stsci.edu}{STScI}{}
 \attendee{{\sc Erik Leiden Deul}}{deul@strw.leidenuniv.nl}{Observatory}{}
 \attendee{{\sc Daniel Devost}}{devost@cfht.hawaii.edu}{Canada-France-Hawaii Telescope Corporation}{}
-\attendee{{\sc Rosa Space Diaz}}{rdiaz@stsci.edu}{Telescope Science Institute}{}
+\attendee{{\sc Rosa Diaz}}{rdiaz@stsci.edu}{Space Telescope Science Institute}{}
 \attendee{{\sc Adam Dobrzycki}}{adobrzyc@eso.org}{ESO}{}
 \attendee{{\sc Tom Donaldson}}{tdonaldson@stsci.edu}{Space Telescope Science Institute}{}
 \attendee{{\sc Jayce Dowell}}{jdowell@unm.edu}{University of New Mexico}{}
 \attendee{{\sc Patrick Dowler}}{patrick.dowler@nrc-cnrc.gc.ca}{National Research Council Canada}{}
-\attendee{{\sc Thom Dunning}}{tdunning@ncsa.illinois.edu}{National Center for Supercomputing Applications}{}
 \attendee{{\sc Kimberly DuPrie}}{kidukidu@gmail.com}{independent}{}
 \attendee{{\sc Daniel Durand}}{daniel.durand@nrc.ca}{National Research Council Canada}{}
 \attendee{{\sc Frossie Economou}}{frossie@noao.edu}{NOAO}{}
@@ -58,12 +53,12 @@
 \attendee{{\sc Mike Freemon}}{mfreemon@illinois.edu}{NCSA}{}
 \attendee{{\sc Douglas Friedel}}{friedel@astro.illinois.edu}{University of Illinois}{}
 \attendee{{\sc Carlos Gabriel}}{carlos.gabriel@sciops.esa.int}{ESA / ESAC}{}
-\attendee{{\sc Séverin Gaudet}}{severin.gaudet@nrc-cnrc.gc.ca}{NRC/HIA/CADC}{}
+\attendee{{\sc S\'everin Gaudet}}{severin.gaudet@nrc-cnrc.gc.ca}{NRC/HIA/CADC}{}
 \attendee{{\sc Claudio Gheller}}{hoggian@cscs.ch}{CSCS}{}
 \attendee{{\sc Kim Gillies}}{kgillies@tmt.org}{Thirty Meter Telescope}{}
 \attendee{{\sc Ken Glotfelty}}{kjg@head.cfa.harvard.edu}{SAO}{}
 \attendee{{\sc Tatiana Goldina}}{tgoldina@gmail.com}{Spitzer Science Center, IPAC, Caltech}{}
-\attendee{{\sc Celestino G\'{o}mez Cid}}{formacion@gmv.com}{GMV Aerospace and Defence S.A.U.}{}
+\attendee{{\sc Celestino G\'omez Cid}}{formacion@gmv.com}{GMV Aerospace and Defence S.A.U.}{}
 \attendee{{\sc Arvind Gopu}}{agopu@iu.edu}{Indiana University - Pervasive Technology Inst.}{}
 \attendee{{\sc Steve Groom}}{sgroom@ipac.caltech.edu}{IPAC / Caltech}{}
 \attendee{{\sc Jonas Haase}}{jhaase@eso.org}{ESO/ESA}{}
@@ -72,7 +67,6 @@
 \attendee{{\sc Christopher Hanley}}{chanley@stsci.edu}{Space Telescope Science Institute}{}
 \attendee{{\sc Paul Hirst}}{phirst@gemini.edu}{Gemini Observatory}{}
 \attendee{{\sc Robert Hurt}}{hurt@ipac.caltech.edu}{Spitzer Science Center}{}
-\attendee{{\sc Wen-Mei Hwu}}{w-hwu@illinois.edu}{University of Illinois}{}
 \attendee{{\sc Aitor Ibarra}}{aitor.ibarra@sciops.esa.int}{XMM-Newton SOC. ESAC/ESA}{}
 \attendee{{\sc Jorge Ibsen}}{jibsen@alma.cl}{ALMA}{}
 \attendee{{\sc David Imel}}{imel@caltech.edu}{California Institute of Technology, IPAC}{}
@@ -92,12 +86,11 @@
 \attendee{{\sc Kathleen Labrie}}{klabrie@gemini.edu}{Gemini Observatory}{}
 \attendee{{\sc Christopher Laidler}}{claidler@cs.uct.ac.za}{University of Cape Town}{}
 \attendee{{\sc Gilles Landais}}{gilles.landais@unistra.fr}{CNRS/Observatoire Astron. de Strasbourg}{}
-\attendee{{\sc Jean-Paul Le F\`{e}vre}}{jean-paul.lefevre@cea.fr}{CEA Irfu}{}
+\attendee{{\sc Jean-Paul Le F\`evre}}{jean-paul.lefevre@cea.fr}{CEA Irfu}{}
 \attendee{{\sc Matthias Lee}}{matthias.a.lee@gmail.com}{Johns Hopkins University}{}
 \attendee{{\sc Karen Levay}}{klevay@stsci.edu}{STScI / CSC}{}
 \attendee{{\sc James Lewis}}{jrl@ast.cam.ac.uk}{University of Cambridge}{}
 \attendee{{\sc Feng Liang}}{liangf@illinois.edu}{Department of Statistics, University of Illinois}{}
-\attendee{{\sc Jun Lin}}{jlin@ynao.ac.cn}{Yunnan Astronomical Observatory}{}
 \attendee{{\sc Omar Laurino}}{olaurino@head.cfa.harvard.edu}{SAO}{}
 \attendee{{\sc Nuria Lorente}}{nuria.lorente@aao.gov.au}{AAO}{}
 \attendee{{\sc Steve Lubow}}{lubow@stsci.edu}{Space Telescope Science Institute}{}
@@ -115,14 +108,13 @@
 \attendee{{\sc Tien Duc Nguyen}}{nguyen@cfht.hawaii.edu}{Canada-France-Hawaii Telescope Corporation}{}
 \attendee{{\sc Francois Ochsenbein}}{Francois.Ochsenbein@astro.unistra.fr}{CDS, Observatoire de Strasbourg}{}
 \attendee{{\sc Eduardo Ojero-Pascual}}{eduardo.ojero@esa.int}{European Space Astronomy Centre (ESAC)}{}
-\attendee{{\sc Pedro Osuna}}{}{ESAC}{}
 \attendee{{\sc Stephan Ott}}{sott@rssd.esa.int}{ESA/ESTEC}{}
 \attendee{{\sc Sergio Pascual}}{sergiopr@fis.ucm.es}{Universidad Complutense de Madrid}{}
 \attendee{{\sc William Pence}}{William.Pence@nasa.gov}{HEASARC, NASA/GSFC}{}
-\attendee{{\sc Oscar P\'{e}rez Navarro}}{formacion@gmv.com}{GMV Aerospace and Defence S.A.U.}{}
+\attendee{{\sc Oscar P\'erez Navarro}}{formacion@gmv.com}{GMV Aerospace and Defence S.A.U.}{}
 \attendee{{\sc Don Petravick}}{petravic@illinois.edu}{NCSA}{}
-\attendee{{\sc Fran\c{c}ois-Xavier Pineau}}{francois-xavier.pineau@astro.unistra.fr}{CNRS/Observatoire Astron. de Strasbourg}{}
-\attendee{{\sc Ray Plante}}{rplante@ncsa.uiuc.edu}{NCSA/University of Illinois}{}
+\attendee{{\sc François-Xavier Pineau}}{francois-xavier.pineau@astro.unistra.fr}{CNRS/Observatoire Astron. de Strasbourg}{}
+\attendee{{\sc Raymond Plante}}{rplante@ncsa.uiuc.edu}{NCSA/University of Illinois}{}
 \attendee{{\sc Joseph Pollizzi}}{pollizzi@stsci.edu}{STScI}{}
 \attendee{{\sc Kai Lars Polsterer}}{polsterer@astro.rub.de}{Ruhr-University Bochum}{}
 \attendee{{\sc Marc Pound}}{mpound@umd.edu}{University of Maryland}{}
@@ -134,7 +126,7 @@
 \attendee{{\sc William Roby}}{roby@ipac.caltech.edu}{California Institute of Technology}{}
 \attendee{{\sc Anthony Rogers}}{rogers@stsci.edu}{Space Telescope Science Institute}{}
 \attendee{{\sc Arnold Rots}}{arots@head.cfa.harvard.edu}{SAO}{}
-\attendee{{\sc Frédéric Royer}}{frederic.royer@obspm.fr}{GEPI - Observatoire de Paris}{}
+\attendee{{\sc Fr\'ed\'eric Royer}}{frederic.royer@obspm.fr}{GEPI - Observatoire de Paris}{}
 \attendee{{\sc Andre Schaaff}}{andre.schaaff@astro.unistra.fr}{CDS, CNRS, Obs. astron. de Strasbourg}{}
 \attendee{{\sc Matthew Schneps}}{mschneps@cfa.harvard.edu}{Harvard-Smithsonian Center for Astrophysics}{}
 \attendee{{\sc Rob Seaman}}{seaman@noao.edu}{NOAO}{}
@@ -147,14 +139,14 @@
 \attendee{{\sc Yihan Song}}{syh.lamost@gmail.com}{Natl Astron. Obs., Chinese Acad. of Sciences}{}
 \attendee{{\sc Thomas Stephens}}{thomas.stephens@nasa.gov}{Wyle ST\&E/NASA GFSC}{}
 \attendee{{\sc Elizabeth Stobie}}{bstobie@noao.edu}{National Optical Astronomy Observatory}{}
-\attendee{{\sc Jos\'{e} Stoop}}{j.stoop@elsevier.com}{Elsevier}{}
+\attendee{{\sc Jos\'e Stoop}}{j.stoop@elsevier.com}{Elsevier}{}
 \attendee{{\sc Daryl Swade}}{swade@stsci.edu}{Space Telescope Science Institute}{}
 \attendee{{\sc Alexander Szalay}}{szalay@jhu.edu}{Johns Hopkins}{}
 \attendee{{\sc Tadafumi Takata}}{tadafumi.takata@nao.ac.jp}{National Astronomical Observatory of Japan}{}
 \attendee{{\sc Mark Taylor}}{m.b.taylor@bristol.ac.uk}{University of Bristol}{}
 \attendee{{\sc Harry Teplitz}}{hit@ipac.caltech.edu}{IRSA/Caltech}{}
 \attendee{{\sc Peter Teuben}}{teuben@astro.umd.edu}{University of Maryland}{}
-\attendee{{\sc Jon Thaler}}{jjt@illinois.edu}{University of Illinois}{}
+\attendee{{\sc John Thaler}}{jjt@illinois.edu}{University of Illinois}{}
 \attendee{{\sc Brian Thomas}}{bthomas@noao.edu}{NOAO}{}
 \attendee{{\sc Linda Thompson}}{lthomp@stsci.edu}{STScI}{}
 \attendee{{\sc Michael Tibbetts}}{mtibbetts@cfa.harvard.edu}{Smithsonian Astrophysical Observatory}{}
